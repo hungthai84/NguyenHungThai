@@ -1,0 +1,3223 @@
+:root {
+  --primary: #8A5CF6;
+  --secondary: #66C4FF;
+  --accent: #FF63C9;
+  --background: #F8FAFF;
+  --card-bg: rgba(255,255,255,0.60);
+  --glass-border: rgba(255,255,255,0.30);
+  --text: #1E293B;
+  --text-secondary: #64748B;
+  --success: #45D483;
+  --warning: #FFA45A;
+  --danger: #FF6B81;
+  --primary-gradient: linear-gradient(135deg, #66C4FF, #8A5CF6, #FF63C9);
+}
+
+html.dark {
+  --background: #0D1117;
+  --card-bg: #161B22;
+  --glass-border: rgba(255,255,255,.05);
+  --primary: #9D7BFF;
+  --secondary: #74D3FF;
+  --accent: #FF7AD9;
+  --text: #F8FAFC;
+}
+
+@keyframes gradient-x {
+    0%, 100% {
+        background-size: 200% 200%;
+        background-position: left center;
+    }
+    50% {
+        background-size: 200% 200%;
+        background-position: right center;
+    }
+}
+.animate-gradient-x {
+    animation: gradient-x 3s ease infinite;
+}
+
+@keyframes project-glow-pulse {
+    0%, 100% {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 12px rgba(59, 130, 246, 0.2);
+    }
+    50% {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 24px rgba(59, 130, 246, 0.6);
+    }
+}
+
+/* Grid gap consistency and responsiveness */
+.education-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px !important;
+}
+
+@media (min-width: 768px) {
+    .education-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.about-page-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px !important;
+}
+
+@media (min-width: 1024px) {
+    .about-page-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.services-grid, .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px !important;
+}
+
+@media (min-width: 640px) {
+    .services-grid, .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .services-grid, .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.memories-grid {
+    column-count: 1;
+    column-gap: 15px;
+}
+
+@media (min-width: 640px) {
+    .memories-grid {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 768px) {
+    .memories-grid {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1024px) {
+    .memories-grid {
+        column-count: 4;
+    }
+}
+
+    /* --- Project Post Styling --- */
+    .project-post-content-wrapper {
+        position: relative;
+        transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        padding: 15px !important;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 640px) {
+        .project-post-content-wrapper {
+            padding: 15px !important;
+        }
+    }
+
+    .project-post-content-wrapper::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+        background-size: 200% auto;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        pointer-events: none;
+    }
+
+    .project-post-content-wrapper:hover {
+        animation: project-glow-pulse 2s infinite ease-in-out;
+    }
+
+    .project-post-content-wrapper:hover::after {
+        opacity: 1;
+        animation: flow-border 1.5s linear infinite;
+    }
+
+    .project-post-content-wrapper:active {
+        transform: scale(0.98);
+    }
+
+    /* Refined styling for the project title container in achievement card */
+    .project-title-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding-left: 8px;
+      border-left: 3px solid transparent;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @media (max-width: 767px) {
+      .project-title-container {
+        padding-left: 12px !important;
+      }
+    }
+
+    .project-title-container:hover {
+      border-left: 3px solid var(--accent-color, #3b82f6) !important;
+    }
+
+    .project-title-container:active {
+      transform: scale(0.95);
+      filter: saturate(1.5);
+    }
+
+    .project-title-icon {
+      width: 20px !important;
+      height: 20px !important;
+      padding-left: 0px !important;
+      margin: 0px !important;
+      flex-shrink: 0;
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      align-self: center;
+    }
+
+    .project-title-container:hover .project-title-icon {
+      transform: rotate(15deg) translateY(-2px);
+      animation: bounce 0.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: rotate(15deg) translateY(-2px); }
+      to { transform: rotate(15deg) translateY(-6px); }
+    }
+
+    .project-title {
+      font-size: 28px !important;
+      line-height: 1.2 !important;
+      margin: 0px !important;
+      transition: color 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+    }
+
+    @media (max-width: 640px) {
+        .project-title {
+            font-size: 20px !important;
+        }
+    }
+
+    .project-title-container:hover .project-title,
+    .project-title:hover {
+      color: var(--accent-color) !important;
+      filter: brightness(1.15);
+      cursor: pointer;
+    }
+
+@keyframes flow-border {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+#project-1\.1 svg {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+#project-1\.1 svg:hover {
+    transform: rotate(45deg);
+    color: #3b82f6;
+}
+
+.horoscope-summary-and-radar-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+.horoscope-summary-and-radar-wrapper > * {
+    flex: 1;
+}
+
+@media (max-width: 900px) {
+    .horoscope-summary-and-radar-wrapper {
+        flex-direction: column;
+    }
+}
+
+.content {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+
+/* --- Glass Settings Styles --- */
+.glass-settings-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 38px;
+    padding: 0 14px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--color-brand-text-primary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+.glass-settings-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1.5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+.glass-settings-btn:active {
+    transform: translateY(0);
+}
+.settings-dropdown-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 220px;
+    padding: 14px;
+    border-radius: 16px;
+    background: var(--color-brand-card-bg, rgba(23, 23, 37, 0.95));
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid var(--color-brand-border, rgba(255, 255, 255, 0.12));
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: slideDownScale 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: top right;
+    z-index: 50;
+}
+@keyframes slideDownScale {
+    from { opacity: 0; transform: translateY(-8px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --- High-end Glassmorphism Info Card Layout --- */
+.info-card {
+    padding: 20px !important;
+    position: relative;
+    border-radius: 16px !important;
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    
+    border: 1px solid var(--glass-border) !important;
+    
+    box-shadow: 0 20px 60px rgba(130,130,255,.15) !important;
+    
+    transition: all 0.3s ease-in-out !important;
+    overflow: hidden;
+}
+
+@media (max-width: 640px) {
+    .info-card {
+        padding: 15px !important;
+        border-radius: 14px !important;
+    }
+}
+
+/* Realistic Highlight Reflection on top edge of Glass Card */
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 100%) !important;
+    pointer-events: none !important;
+    z-index: 1;
+}
+
+/* Dark theme overrides for optimized contrast */
+html.dark .info-card {
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    
+    border: 1px solid var(--glass-border) !important;
+    
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+}
+
+/* Hover state glow and slight elevation */
+/* Removed hover effect as requested */
+
+.timeline-navigation-wrapper {
+    overflow-y: hidden !important;
+    overscroll-behavior-y: none !important;
+    touch-action: pan-x !important; /* Allow only horizontal touch actions if needed, or none if strictly no sliding */
+}
+
+.timeline-navigation-wrapper.vertical {
+    overflow-y: hidden !important;
+}
+
+.timeline-milestone {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    margin-left: 0px !important;
+}
+
+.timeline-dot {
+    background-color: transparent !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+}
+
+/* Fix cover letter content in dark mode */
+html.dark .cover-letter-inner-card {
+    background-color: rgba(30, 41, 59, 0.7) !important;
+    backdrop-filter: none !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+@media (max-width: 640px) {
+    .cover-letter-inner-card {
+        padding: 15px !important;
+    }
+    .cover-letter-header h1 {
+        font-size: 1.5rem !important;
+    }
+}
+
+.cover-letter-content {
+    background: transparent !important;
+}
+
+
+    /* --- Advanced Glassmorphism Immersive Background Theme --- */
+    .app-background.wallpaper-glassmorphism {
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0, #cbd5e1, #93c5fd, #c084fc, #f472b6) !important;
+      background-size: 400% 400% !important;
+      animation: glassBackgroundGrad 20s ease infinite !important;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -2;
+    }
+    
+    html.dark .app-background.wallpaper-glassmorphism {
+      background: linear-gradient(135deg, #090d16, #0f172a, #1e1b4b, #311042, #020617) !important;
+      background-size: 400% 400% !important;
+      animation: glassBackgroundGrad 20s ease infinite !important;
+    }
+
+    @keyframes glassBackgroundGrad {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .glassmorphism-background {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    /* Noise Texture Overlay for authentic glass micro-grain feel */
+    .glassmorphism-background::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 2;
+    }
+    
+    /* Background Particles & Sparkles Animation */
+    .glassmorphism-background::before {
+      content: '✨';
+      position: absolute;
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.4);
+      top: 15%;
+      left: 20%;
+      text-shadow: 
+        400px 300px 10px rgba(255,255,255,0.2), 
+        -200px 500px 8px rgba(139, 92, 246, 0.3), 
+        600px 600px 15px rgba(59, 130, 246, 0.3);
+      animation: glassSparkleFloat 16s infinite ease-in-out alternate;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    @keyframes glassSparkleFloat {
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(0.9);
+        opacity: 0.2;
+      }
+      50% {
+        transform: translate(40px, -40px) rotate(180deg) scale(1.15);
+        opacity: 0.45;
+      }
+      100% {
+        transform: translate(-30px, 30px) rotate(360deg) scale(0.9);
+        opacity: 0.2;
+      }
+    }
+
+    /* Highly blurred fluid color blobs drifting in background */
+    .glass-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: none;
+      opacity: 0.5;
+      mix-blend-mode: plus-lighter;
+      animation: glassFloat 30s infinite ease-in-out alternate;
+    }
+
+    .glass-blob-1 {
+      width: 45vw;
+      height: 45vw;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.7) 0%, rgba(59, 130, 246, 0) 70%);
+      top: -15%;
+      left: -15%;
+      animation-delay: 0s;
+      animation-duration: 25s;
+    }
+
+    .glass-blob-2 {
+      width: 40vw;
+      height: 40vw;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.65) 0%, rgba(139, 92, 246, 0) 70%);
+      bottom: -15%;
+      right: -15%;
+      animation-delay: -6s;
+      animation-duration: 35s;
+    }
+
+    .glass-blob-3 {
+      width: 35vw;
+      height: 35vw;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, rgba(16, 185, 129, 0) 70%);
+      top: 35%;
+      left: 55%;
+      animation-delay: -12s;
+      animation-duration: 28s;
+    }
+
+    .glass-blob-4 {
+      width: 30vw;
+      height: 30vw;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, rgba(236, 72, 153, 0) 70%);
+      bottom: 25%;
+      left: 10%;
+      animation-delay: -18s;
+      animation-duration: 32s;
+    }
+
+    @keyframes glassFloat {
+      0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+      }
+      33% {
+        transform: translate(12%, 10%) scale(1.1) rotate(60deg);
+      }
+      66% {
+        transform: translate(-8%, 15%) scale(0.95) rotate(120deg);
+      }
+      100% {
+        transform: translate(0, 0) scale(1) rotate(180deg);
+      }
+    }
+    
+    /* Global class for strong blur when this is active */
+    body.on-page-glassmorphism-effect .site-wrapper {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    /* --- Glassmorphism UI Elements Styling --- */
+    
+    /* Glass Buttons Styling with high-end hover state */
+    .btn, .btn-primary, .btn-secondary, .filter-dropdown-button, .view-mode-btn, 
+    .header-icon-button, .speak-message-btn, .chatbot-attach-btn, .chatbot-send-btn,
+    .suggested-prompt-btn, .ai-media-prompt-btn {
+        background: var(--card-bg) !important;
+        backdrop-filter: blur(30px) !important;
+        -webkit-backdrop-filter: blur(30px) !important;
+        border: 1px solid var(--glass-border) !important;
+        color: var(--text) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 12px rgba(130,130,255,0.1) !important;
+        transition: all 0.3s ease-in-out !important;
+    }
+
+    .btn:hover, .btn-primary:hover, .btn-secondary:hover, .filter-dropdown-button:hover,
+    .header-icon-button:hover, .speak-message-btn:hover, .chatbot-attach-btn:hover,
+    .suggested-prompt-btn:hover, .ai-media-prompt-btn:hover {
+        transform: translateY(-2px) !important;
+        filter: brightness(110%) !important;
+        background: var(--card-bg) !important;
+        box-shadow: 0 8px 24px rgba(130,130,255,0.2) !important;
+    }
+
+    /* Glass Input and Form Controls */
+    input[type="text"], input[type="email"], input[type="password"], textarea, select {
+        background: var(--card-bg) !important;
+        backdrop-filter: blur(30px) !important;
+        -webkit-backdrop-filter: blur(30px) !important;
+        border: 1px solid var(--glass-border) !important;
+        color: var(--text) !important;
+        border-radius: 12px !important;
+        transition: all 0.3s ease-in-out !important;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03) !important;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus, textarea:focus, select:focus {
+        border-color: var(--accent) !important;
+        box-shadow: 0 0 0 2px var(--accent) !important;
+        background: var(--card-bg) !important;
+        outline: none !important;
+    }
+
+/* Glass Badges & Indicators */
+    .info-badge, .role-pill, .unanswered-badge, .project-card-new-hashtag {
+        background: rgba(255, 255, 255, 0.15) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+        /* transition: none !important; */
+    }
+    
+    .info-badge:hover {
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+    }
+
+    html.dark .info-badge, html.dark .role-pill, html.dark .project-card-new-hashtag {
+        background: rgba(15, 23, 42, 0.5) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* Glass Sidebar and Navigation Rail */
+    aside.left-sidebar {
+        background: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-right: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1) !important;
+        display: block;
+    }
+
+    @media (max-width: 1024px) {
+        aside.left-sidebar {
+            display: none;
+        }
+    }
+
+    html.dark aside.left-sidebar {
+        background: rgba(9, 13, 22, 0.35) !important;
+        border-right-color: rgba(255, 255, 255, 0.05) !important;
+        box-shadow: 10px 0 40px rgba(0, 0, 0, 0.45) !important;
+    }
+
+    /* Glass Widgets & Grid Items */
+    .project-card-new, .resume-item-card, .traits-card, .service-box, .experience-item {
+        background: var(--card-bg) !important;
+        backdrop-filter: blur(30px) !important;
+        -webkit-backdrop-filter: blur(30px) !important;
+        border: 1px solid var(--glass-border) !important;
+        box-shadow: 0 20px 60px rgba(130,130,255,.15) !important;
+        border-radius: 16px !important;
+        padding: 10px !important;
+    }
+
+    html.dark .project-card-new, html.dark .resume-item-card, html.dark .traits-card, html.dark .service-box, html.dark .experience-item {
+        background: var(--card-bg) !important;
+        backdrop-filter: blur(30px) !important;
+        -webkit-backdrop-filter: blur(30px) !important;
+        border: 1px solid var(--glass-border) !important;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+    }
+
+
+/* AI Chat Categories Grid */
+.ai-categories-view {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.ai-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+.ai-category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    gap: 0.75rem;
+    text-align: center;
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(30px) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 16px !important;
+    cursor: pointer;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+    width: 100%;
+}
+
+.ai-category-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1) !important;
+    border-color: var(--primary) !important;
+    filter: brightness(110%);
+}
+
+.ai-category-card .category-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(138, 92, 246, 0.1);
+    color: var(--primary);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.ai-category-card:hover .category-icon {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.ai-category-card .category-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.back-btn-inline {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    background: rgba(0,0,0,0.05) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text) !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-btn-inline:hover {
+    background: rgba(0,0,0,0.1) !important;
+    transform: translateX(-2px);
+}
+.home-hero-card {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.home-hero-card-bg-video {
+  border-radius: 16px !important;
+}
+
+
+                .custom-video-player-wrapper {
+                    position: absolute;
+                    top: 1.5rem;
+                    right: 1.5rem;
+                    width: 100px;
+                    height: 100px;
+                    z-index: 50;
+                    overflow: visible !important;
+                }
+                
+                .custom-video-player-wrapper.is-playing::before {
+                    content: '';
+                    position: absolute;
+                    top: -4px;
+                    left: -4px;
+                    right: -4px;
+                    bottom: -4px;
+                    background: linear-gradient(45deg, #ff0000, #dc2626, #991b1b, #ef4444, #7f1d1d, #f87171, #b91c1c);
+                    background-size: 400%;
+                    z-index: -1;
+                    filter: blur(5px);
+                    width: calc(100% + 8px);
+                    height: calc(100% + 8px);
+                    animation: glowing-border 20s linear infinite;
+                    opacity: 1;
+                    border-radius: 50%;
+                }
+
+                @keyframes glowing-border {
+                    0% { background-position: 0 0; }
+                    50% { background-position: 400% 0; }
+                    100% { background-position: 0 0; }
+                }
+
+                .custom-video-player-wrapper .cover-letter-video-container {
+                    width: 100px;
+                    height: 100px;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    position: relative;
+                    z-index: 2;
+                    border: 2px solid rgba(255, 255, 255, 0.8);
+                }
+                .cover-letter-video-element {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                }
+                .custom-video-player-wrapper .custom-play-button {
+                    width: 30px;
+                    height: 30px;
+                    bottom: -15px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+                }
+                .custom-video-player-wrapper .custom-play-button svg {
+                    width: 14px;
+                    height: 14px;
+                }
+
+                .cover-letter-hint-bubble {
+                    position: absolute;
+                    right: calc(100% + 15px);
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+                    color: white;
+                    padding: 10px 16px;
+                    border-radius: 18px 18px 4px 18px;
+                    font-size: 13.5px;
+                    font-weight: 500;
+                    line-height: 1.4;
+                    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+                    z-index: 60;
+                    pointer-events: auto;
+                    animation: cover-letter-hint-bounce-x 1.5s infinite ease-in-out;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    cursor: pointer;
+                    width: max-content;
+                    max-width: 200px;
+                    text-align: left;
+                }
+                @media (min-width: 640px) {
+                    .cover-letter-hint-bubble {
+                        right: calc(100% + 20px);
+                    }
+                }
+                .cover-letter-hint-bubble::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 6px;
+                    right: -6px;
+                    transform: none;
+                    border-width: 6px 0 6px 6px;
+                    border-style: solid;
+                    border-color: transparent transparent transparent #dc2626;
+                    display: block;
+                    width: 0;
+                }
+                @keyframes cover-letter-hint-bounce-x {
+                    0%, 100% { transform: translate(0, -50%); }
+                    50% { transform: translate(-6px, -50%); }
+                }
+
+.floating-btn-group {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+.floating-action-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    color: var(--color-brand-text-primary, #fff);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: -2px 4px 10px rgba(0,0,0,0.1);
+}
+.floating-action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-4px);
+}
+html.dark .floating-action-btn {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-right-actions {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 100;
+}
+
+/* Settings Page Styles */
+.settings-content-container {
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.settings-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+.settings-card:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+html.dark .settings-card {
+    background: rgba(15, 23, 42, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    border-top-color: rgba(255, 255, 255, 0.15) !important;
+    border-left-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.settings-card-title {
+    color: var(--accent-color);
+    letter-spacing: -0.01em;
+}
+
+.mode-selector {
+    background: rgba(0, 0, 0, 0.05) !important;
+    padding: 4px !important;
+}
+
+html.dark .mode-selector {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.mode-button {
+    transition: all 0.2s ease !important;
+}
+
+.mode-button.active {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    transform: scale(1.02) !important;
+}
+
+.accent-slider {
+    background: rgba(255, 255, 255, 0.1) !important;
+    height: 6px !important;
+}
+
+.accent-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.color-pallet button {
+    border-width: 2px !important;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.color-pallet button:hover {
+    transform: scale(1.2) rotate(15deg) !important;
+}
+
+.toggle-switch {
+    width: 36px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toggle-switch.is-on {
+    background: var(--accent-color);
+}
+
+.toggle-slider {
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toggle-switch.is-on .toggle-slider {
+    left: 18px;
+}
+
+
+/* Banner Audio Button Glowing Effect */
+.banner-audio-button-glowing {
+    border: 1px solid rgba(var(--accent-color-rgb, 59, 130, 246), 0.5) !important;
+    animation: audio-glow-pulse-light 2s infinite ease-in-out !important;
+}
+
+html.dark .banner-audio-button-glowing {
+    border: 1px solid rgba(var(--accent-color-rgb, 96, 165, 250), 0.6) !important;
+    animation: audio-glow-pulse-dark 2s infinite ease-in-out !important;
+}
+
+@keyframes audio-glow-pulse-light {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.3), inset 0 0 4px rgba(59, 130, 246, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(59, 130, 246, 0.6), inset 0 0 8px rgba(59, 130, 246, 0.4);
+    }
+}
+
+@keyframes audio-glow-pulse-dark {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(96, 165, 250, 0.4), inset 0 0 5px rgba(96, 165, 250, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(96, 165, 250, 0.7), inset 0 0 10px rgba(96, 165, 250, 0.4);
+    }
+}
+
+.app-background.wallpaper-soft-pastel-gradient {
+    background-color: #f5f6fb !important;
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(191,220,255,.85) 0%, rgba(191,220,255,.35) 18%, transparent 42%),
+        radial-gradient(circle at 50% 35%, rgba(214,203,255,.70) 0%, rgba(214,203,255,.28) 20%, transparent 45%),
+        radial-gradient(circle at 88% 78%, rgba(255,210,220,.65) 0%, rgba(255,210,220,.22) 18%, transparent 40%),
+        radial-gradient(circle at 40% 70%, rgba(255,255,255,.9) 0%, transparent 40%) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    min-height: 100vh !important;
+}
+
+.app-background.wallpaper-apple-glass {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(170,210,255,.95) 0%, rgba(170,210,255,.35) 18%, transparent 42%),
+        radial-gradient(circle at 55% 25%, rgba(218,205,255,.75) 0%, rgba(218,205,255,.30) 22%, transparent 45%),
+        radial-gradient(circle at 88% 78%, rgba(255,214,225,.75) 0%, rgba(255,214,225,.28) 20%, transparent 45%),
+        radial-gradient(circle at 40% 70%, rgba(255,255,255,.95), transparent 55%),
+        linear-gradient(135deg, #f9fbff 0%, #f3f6fd 40%, #eef3fa 100%) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    min-height: 100vh !important;
+    overflow: hidden;
+}
+
+.app-background.wallpaper-apple-glass::before {
+    content: "";
+    position: fixed;
+    width: 900px;
+    height: 900px;
+    left: -200px;
+    top: -250px;
+    background: #b6dbff;
+    filter: blur(180px);
+    opacity: .35;
+    border-radius: 50%;
+    animation: float1 18s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.app-background.wallpaper-apple-glass::after {
+    content: "";
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    right: -150px;
+    bottom: -180px;
+    background: #ffd8e5;
+    filter: blur(180px);
+    opacity: .28;
+    border-radius: 50%;
+    animation: float2 22s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes float1 {
+    0% {
+        transform: translate(0,0);
+    }
+    50% {
+        transform: translate(60px,40px);
+    }
+    100% {
+        transform: translate(0,0);
+    }
+}
+
+@keyframes float2 {
+    0% {
+        transform: translate(0,0);
+    }
+    50% {
+        transform: translate(-70px,-40px);
+    }
+    100% {
+        transform: translate(0,0);
+    }
+}
+
+
+/* --- Glassmorphism Mode Enhancements --- */
+.glass-enabled .info-card,
+.glass-enabled .project-card-new,
+.glass-enabled .resume-item-card,
+.glass-enabled .traits-card,
+.glass-enabled .service-box,
+.glass-enabled .experience-item,
+.glass-enabled .ai-category-card,
+.glass-enabled .settings-card {
+    backdrop-filter: blur(40px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+    background: rgba(var(--accent-color-rgb), 0.03) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+html.dark.glass-enabled .info-card,
+html.dark.glass-enabled .project-card-new,
+html.dark.glass-enabled .resume-item-card,
+html.dark.glass-enabled .settings-card {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.glass-enabled .btn, 
+.glass-enabled .btn-primary, 
+.glass-enabled .btn-secondary,
+.glass-enabled .header-icon-button {
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* --- premium Microsoft Fluent 2 / Apple VisionOS Glass Fluent Hybrid --- */
+html.theme-glass-fluent-hybrid {
+    /* Color Palette */
+    --background: #F8FAFF !important;
+    --card-bg: rgba(255, 255, 255, 0.60) !important;
+    --glass-border: rgba(255, 255, 255, 0.30) !important;
+    --primary: #8A5CF6 !important;
+    --secondary: #66C4FF !important;
+    --accent: #FF63C9 !important;
+    --text: #1E293B !important;
+    --text-secondary: #64748B !important;
+    --success: #45D483 !important;
+    --warning: #FFA45A !important;
+    --danger: #FF6B81 !important;
+    
+    --accent-gradient: linear-gradient(135deg, #66C4FF, #8A5CF6, #FF63C9) !important;
+    --primary-gradient: linear-gradient(135deg, #66C4FF, #8A5CF6, #FF63C9) !important;
+    
+    font-family: 'Inter', 'SF Pro Display', 'Geist', sans-serif !important;
+}
+
+html.theme-glass-fluent-hybrid.dark {
+    --background: #0D1117 !important;
+    --card-bg: rgba(255, 255, 255, 0.05) !important;
+    --glass-border: rgba(255, 255, 255, 0.08) !important;
+    --primary: #9D7BFF !important;
+    --secondary: #74D3FF !important;
+    --accent: #FF7AD9 !important;
+    --text: #F8FAFC !important;
+    --text-secondary: #94A3B8 !important;
+}
+
+/* Background canvas for Glass Fluent Hybrid */
+.app-background.wallpaper-glass-fluent-hybrid {
+    background: var(--background) !important;
+    overflow: hidden;
+}
+
+/* Floating colorful volumetric blobs behind the interface */
+.wallpaper-glass-fluent-hybrid .fluent-blob {
+    position: absolute;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    filter: blur(110px);
+    opacity: 0.35;
+    animation: fluentBlobFloat 30s infinite ease-in-out alternate;
+    mix-blend-mode: plus-lighter;
+}
+
+html:not(.dark) .wallpaper-glass-fluent-hybrid .fluent-blob {
+    opacity: 0.28;
+    mix-blend-mode: multiply;
+    filter: blur(90px);
+}
+
+.wallpaper-glass-fluent-hybrid .fluent-blob-1 {
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(138, 92, 246, 0.45) 0%, transparent 70%);
+    top: -15%;
+    left: -15%;
+    animation-duration: 25s;
+}
+
+.wallpaper-glass-fluent-hybrid .fluent-blob-2 {
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(102, 196, 255, 0.4) 0%, transparent 70%);
+    bottom: -15%;
+    right: -15%;
+    animation-duration: 32s;
+    animation-delay: -6s;
+}
+
+.wallpaper-glass-fluent-hybrid .fluent-blob-3 {
+    width: 45vw;
+    height: 45vw;
+    background: radial-gradient(circle, rgba(255, 99, 201, 0.35) 0%, transparent 70%);
+    top: 35%;
+    left: 30%;
+    animation-duration: 38s;
+    animation-delay: -12s;
+}
+
+@keyframes fluentBlobFloat {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+    50% {
+        transform: translate(60px, -40px) scale(1.08) rotate(180deg);
+        border-radius: 60% 40% 50% 50% / 50% 60% 40% 60%;
+    }
+    100% {
+        transform: translate(-30px, 50px) scale(0.92) rotate(360deg);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+}
+
+/* Micro-grid overlay for Fluent design structure */
+.wallpaper-glass-fluent-hybrid::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+html:not(.dark) .wallpaper-glass-fluent-hybrid::after {
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.012) 1px, transparent 1px);
+}
+
+/* Acrylic noise overlay */
+.wallpaper-glass-fluent-hybrid .fluent-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Cards & Surface Components (Glassmorphism layout specs) */
+.theme-glass-fluent-hybrid .info-card,
+.theme-glass-fluent-hybrid .project-card-new,
+.theme-glass-fluent-hybrid .resume-item-card,
+.theme-glass-fluent-hybrid .traits-card,
+.theme-glass-fluent-hybrid .service-box,
+.theme-glass-fluent-hybrid .experience-item,
+.theme-glass-fluent-hybrid .ai-category-card,
+.theme-glass-fluent-hybrid .settings-card,
+.theme-glass-fluent-hybrid .chart-container,
+.theme-glass-fluent-hybrid .quick-weather-card,
+.theme-glass-fluent-hybrid .portrait-item-card,
+.theme-glass-fluent-hybrid .horoscope-radar-card,
+.theme-glass-fluent-hybrid .horoscope-summary-card,
+.theme-glass-fluent-hybrid .horoscope-banner-card,
+.theme-glass-fluent-hybrid .traits-solution-card,
+.theme-glass-fluent-hybrid .memories-grid-item,
+.theme-glass-fluent-hybrid .education-box,
+.theme-glass-fluent-hybrid .about-personal-info-card,
+.theme-glass-fluent-hybrid .about-bio-text-card,
+.theme-glass-fluent-hybrid .cover-letter-inner-card {
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 16px !important; /* Cards: 16px */
+    box-shadow: 0 20px 60px rgba(120, 120, 255, 0.12) !important;
+    transition: box-shadow 250ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 250ms ease !important;
+}
+
+html.dark.theme-glass-fluent-hybrid .info-card,
+html.dark.theme-glass-fluent-hybrid .project-card-new,
+html.dark.theme-glass-fluent-hybrid .resume-item-card,
+html.dark.theme-glass-fluent-hybrid .settings-card {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Hover depth, elevation & brightness */
+.theme-glass-fluent-hybrid .info-card:hover,
+.theme-glass-fluent-hybrid .project-card-new:hover,
+.theme-glass-fluent-hybrid .resume-item-card:hover,
+.theme-glass-fluent-hybrid .traits-card:hover,
+.theme-glass-fluent-hybrid .service-box:hover,
+.theme-glass-fluent-hybrid .experience-item:hover,
+.theme-glass-fluent-hybrid .ai-category-card:hover,
+.theme-glass-fluent-hybrid .settings-card:hover,
+.theme-glass-fluent-hybrid .chart-container:hover,
+.theme-glass-fluent-hybrid .quick-weather-card:hover,
+.theme-glass-fluent-hybrid .portrait-item-card:hover,
+.theme-glass-fluent-hybrid .horoscope-radar-card:hover,
+.theme-glass-fluent-hybrid .horoscope-summary-card:hover,
+.theme-glass-fluent-hybrid .horoscope-banner-card:hover,
+.theme-glass-fluent-hybrid .traits-solution-card:hover,
+.theme-glass-fluent-hybrid .memories-grid-item:hover,
+.theme-glass-fluent-hybrid .education-box:hover,
+.theme-glass-fluent-hybrid .about-personal-info-card:hover,
+.theme-glass-fluent-hybrid .about-bio-text-card:hover,
+.theme-glass-fluent-hybrid .cover-letter-inner-card:hover {
+    background: rgba(255, 255, 255, 0.70) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 24px 68px rgba(120, 120, 255, 0.16) !important;
+}
+
+html.dark.theme-glass-fluent-hybrid .info-card:hover,
+html.dark.theme-glass-fluent-hybrid .project-card-new:hover,
+html.dark.theme-glass-fluent-hybrid .resume-item-card:hover,
+html.dark.theme-glass-fluent-hybrid .traits-card:hover,
+html.dark.theme-glass-fluent-hybrid .service-box:hover,
+html.dark.theme-glass-fluent-hybrid .experience-item:hover,
+html.dark.theme-glass-fluent-hybrid .ai-category-card:hover,
+html.dark.theme-glass-fluent-hybrid .settings-card:hover,
+html.dark.theme-glass-fluent-hybrid .chart-container:hover,
+html.dark.theme-glass-fluent-hybrid .quick-weather-card:hover,
+html.dark.theme-glass-fluent-hybrid .portrait-item-card:hover,
+html.dark.theme-glass-fluent-hybrid .horoscope-radar-card:hover,
+html.dark.theme-glass-fluent-hybrid .horoscope-summary-card:hover,
+html.dark.theme-glass-fluent-hybrid .horoscope-banner-card:hover,
+html.dark.theme-glass-fluent-hybrid .traits-solution-card:hover,
+html.dark.theme-glass-fluent-hybrid .memories-grid-item:hover,
+html.dark.theme-glass-fluent-hybrid .education-box:hover,
+html.dark.theme-glass-fluent-hybrid .about-personal-info-card:hover,
+html.dark.theme-glass-fluent-hybrid .about-bio-text-card:hover,
+html.dark.theme-glass-fluent-hybrid .cover-letter-inner-card:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 24px 68px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Left Sidebar (Floating Glass Rail) */
+.theme-glass-fluent-hybrid aside.left-sidebar {
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border-right: 1px solid var(--glass-border) !important;
+    border-radius: 0 18px 18px 0 !important; /* Sidebar panel: 18px */
+}
+
+/* Right Panel */
+.theme-glass-fluent-hybrid .right-panel {
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(30px) !important;
+    border-left: 1px solid var(--glass-border) !important;
+}
+
+.theme-glass-fluent-hybrid .right-panel-middle-controls {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 14px !important;
+}
+
+html.dark.theme-glass-fluent-hybrid .right-panel-middle-controls {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Buttons (Primary uses Gradient, Secondary uses Glass Button) */
+.theme-glass-fluent-hybrid .btn-primary,
+.theme-glass-fluent-hybrid .chatbot-send-btn,
+.theme-glass-fluent-hybrid .primary-action-btn {
+    background: var(--primary-gradient) !important;
+    color: #ffffff !important;
+    border-radius: 12px !important; /* Buttons: 12px */
+    padding: 10px 24px !important;
+    border: none !important;
+    font-weight: 500 !important;
+    box-shadow: 0 4px 12px rgba(138, 92, 246, 0.2) !important;
+    transition: all 250ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.theme-glass-fluent-hybrid .btn-primary:hover,
+.theme-glass-fluent-hybrid .chatbot-send-btn:hover {
+    box-shadow: 0 6px 18px rgba(138, 92, 246, 0.35), 0 0 15px rgba(255, 99, 201, 0.2) !important;
+    transform: translateY(-1px) !important;
+}
+
+.theme-glass-fluent-hybrid .btn-secondary,
+.theme-glass-fluent-hybrid .theme-preset-btn,
+.theme-glass-fluent-hybrid .secondary-action-btn {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    color: var(--text) !important;
+    border-radius: 12px !important;
+    padding: 10px 24px !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    transition: background-color 200ms ease !important;
+}
+
+html.dark.theme-glass-fluent-hybrid .btn-secondary,
+html.dark.theme-glass-fluent-hybrid .theme-preset-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+}
+
+.theme-glass-fluent-hybrid .btn-secondary:hover,
+.theme-glass-fluent-hybrid .theme-preset-btn:hover {
+    background: rgba(255, 255, 255, 0.45) !important;
+}
+
+html.dark.theme-glass-fluent-hybrid .btn-secondary:hover,
+html.dark.theme-glass-fluent-hybrid .theme-preset-btn:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Glass Inputs & Text areas (Rounded 12px) */
+.theme-glass-fluent-hybrid .chatbot-input-container,
+.theme-glass-fluent-hybrid input[type="text"],
+.theme-glass-fluent-hybrid textarea,
+.theme-glass-fluent-hybrid select {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 12px !important; /* Input: 12px */
+    color: var(--text) !important;
+    outline: none !important;
+    padding: 10px 16px !important;
+}
+
+html.dark.theme-glass-fluent-hybrid .chatbot-input-container,
+html.dark.theme-glass-fluent-hybrid input[type="text"],
+html.dark.theme-glass-fluent-hybrid textarea,
+html.dark.theme-glass-fluent-hybrid select {
+    background: rgba(15, 23, 42, 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.theme-glass-fluent-hybrid .chatbot-input-container textarea {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Floating Action Button (FAB) */
+.theme-glass-fluent-hybrid .header-icon-button.control-cv,
+.theme-glass-fluent-hybrid .voice-control-btn,
+.theme-glass-fluent-hybrid .scroll-to-top-btn {
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--primary) !important;
+    border-radius: 50% !important; /* Circular FAB */
+    width: 46px !important;
+    height: 46px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 10px 30px rgba(120, 120, 255, 0.1) !important;
+}
+
+html.dark.theme-glass-fluent-hybrid .header-icon-button.control-cv,
+html.dark.theme-glass-fluent-hybrid .voice-control-btn,
+html.dark.theme-glass-fluent-hybrid .scroll-to-top-btn {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Modals & Dialogs (Rounded 20px) */
+.theme-glass-fluent-hybrid .popup-content,
+.theme-glass-fluent-hybrid .project-post-popup {
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(35px) !important;
+    border-radius: 20px !important; /* Modal: 20px */
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15) !important;
+}
+
+
+
+/* --- Google Material Design 3 (Material You) Design Tokens & Component Styles --- */
+html.theme-m3 {
+    --primary: var(--md-sys-color-primary) !important;
+    --primary-rgb: var(--md-sys-color-primary) !important;
+    --secondary: var(--md-sys-color-secondary) !important;
+    --accent: var(--md-sys-color-tertiary) !important;
+    --background: var(--md-sys-color-background) !important;
+    --card-bg: var(--md-sys-color-surface-container-low) !important;
+    --text: var(--md-sys-color-on-surface) !important;
+    --text-secondary: var(--md-sys-color-on-surface-variant) !important;
+    --glass-border: var(--md-sys-color-outline-variant) !important;
+    --success: var(--md-sys-color-primary) !important;
+    --warning: var(--md-sys-color-tertiary) !important;
+    --danger: var(--md-sys-color-error) !important;
+    
+    --accent-gradient: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-secondary)) !important;
+    --primary-gradient: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-secondary)) !important;
+    
+    font-family: 'Roboto Flex', 'Inter', 'Google Sans', system-ui, -apple-system, sans-serif !important;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Background canvas for Material Design 3 */
+.app-background.wallpaper-material-design-3 {
+    background: var(--md-sys-color-background) !important;
+    overflow: hidden;
+}
+
+/* Material Design 3 dynamic background shapes */
+.wallpaper-material-design-3 .m3-shape {
+    position: absolute;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    filter: blur(100px);
+    opacity: 0.35;
+    animation: m3BlobFloat 25s infinite ease-in-out alternate;
+}
+
+html.dark .wallpaper-material-design-3 .m3-shape {
+    opacity: 0.16;
+}
+
+.wallpaper-material-design-3 .m3-shape-1 {
+    width: 65vw;
+    height: 65vw;
+    background: radial-gradient(circle, var(--md-sys-color-primary-container) 0%, transparent 70%);
+    top: -20%;
+    left: -20%;
+    animation-duration: 22s;
+}
+
+.wallpaper-material-design-3 .m3-shape-2 {
+    width: 55vw;
+    height: 55vw;
+    background: radial-gradient(circle, var(--md-sys-color-secondary-container) 0%, transparent 70%);
+    bottom: -15%;
+    right: -15%;
+    animation-duration: 28s;
+    animation-delay: -5s;
+}
+
+.wallpaper-material-design-3 .m3-shape-3 {
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--md-sys-color-tertiary-container) 0%, transparent 70%);
+    top: 30%;
+    left: 25%;
+    animation-duration: 32s;
+    animation-delay: -10s;
+}
+
+@keyframes m3BlobFloat {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+    50% {
+        transform: translate(80px, -50px) scale(1.1) rotate(180deg);
+        border-radius: 60% 40% 50% 50% / 50% 60% 40% 60%;
+    }
+    100% {
+        transform: translate(-40px, 60px) scale(0.9) rotate(360deg);
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+}
+
+/* Material Design 3 Typography Scale Overrides */
+.theme-m3 h1, .theme-m3 .display-large {
+    font-size: 32px !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 40px !important;
+    color: var(--md-sys-color-on-surface) !important;
+}
+
+.theme-m3 h2, .theme-m3 .headline-medium {
+    font-size: 24px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0px !important;
+    line-height: 32px !important;
+    color: var(--md-sys-color-on-surface) !important;
+}
+
+.theme-m3 h3, .theme-m3 .title-large {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0px !important;
+    line-height: 26px !important;
+    color: var(--md-sys-color-on-surface) !important;
+}
+
+.theme-m3 p, .theme-m3 .body-large {
+    font-weight: 400 !important;
+    letter-spacing: 0.25px !important;
+    line-height: 20px !important;
+    color: var(--md-sys-color-on-surface-variant) !important;
+}
+
+.theme-m3 .label-medium {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+    line-height: 16px !important;
+    color: var(--md-sys-color-on-surface) !important;
+}
+
+/* Component Overrides under Material 3 Theme */
+
+/* Layout Left Sidebar (Material Drawer / Navigation Rail) */
+.theme-m3 aside.left-sidebar {
+    background: var(--md-sys-color-surface-container) !important;
+    border-right: none !important;
+    border-radius: 0 24px 24px 0 !important;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.05), 0px 4px 8px rgba(0,0,0,0.05) !important;
+    transition: width 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Cards & Surface Containers (Elevated/Filled Cards) */
+.theme-m3 .info-card,
+.theme-m3 .project-card-new,
+.theme-m3 .resume-item-card,
+.theme-m3 .traits-card,
+.theme-m3 .service-box,
+.theme-m3 .experience-item,
+.theme-m3 .ai-category-card,
+.theme-m3 .settings-card,
+.theme-m3 .chart-container,
+.theme-m3 .quick-weather-card,
+.theme-m3 .portrait-item-card,
+.theme-m3 .horoscope-radar-card,
+.theme-m3 .horoscope-summary-card,
+.theme-m3 .horoscope-banner-card,
+.theme-m3 .traits-solution-card,
+.theme-m3 .memories-grid-item,
+.theme-m3 .education-box,
+.theme-m3 .about-personal-info-card,
+.theme-m3 .about-bio-text-card,
+.theme-m3 .cover-letter-inner-card {
+    background: var(--md-sys-color-surface-container-low) !important;
+    border-radius: 24px !important;
+    border: none !important;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.1) !important;
+    transition: box-shadow 200ms cubic-bezier(0.2, 0, 0, 1), transform 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Hover Elevated cards states */
+.theme-m3 .info-card:hover,
+.theme-m3 .project-card-new:hover,
+.theme-m3 .resume-item-card:hover,
+.theme-m3 .traits-card:hover,
+.theme-m3 .service-box:hover,
+.theme-m3 .experience-item:hover,
+.theme-m3 .ai-category-card:hover,
+.theme-m3 .settings-card:hover,
+.theme-m3 .chart-container:hover,
+.theme-m3 .quick-weather-card:hover,
+.theme-m3 .portrait-item-card:hover,
+.theme-m3 .horoscope-radar-card:hover,
+.theme-m3 .horoscope-summary-card:hover,
+.theme-m3 .horoscope-banner-card:hover,
+.theme-m3 .traits-solution-card:hover,
+.theme-m3 .memories-grid-item:hover,
+.theme-m3 .education-box:hover,
+.theme-m3 .about-personal-info-card:hover,
+.theme-m3 .about-bio-text-card:hover,
+.theme-m3 .cover-letter-inner-card:hover {
+    background: var(--md-sys-color-surface-container) !important;
+    box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.08), 0px 1px 2px 0px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Buttons (Filled, Filled Tonal, Outlined, and Text Buttons) */
+.theme-m3 .btn-primary,
+.theme-m3 .chatbot-send-btn,
+.theme-m3 .primary-action-btn {
+    background: var(--md-sys-color-primary) !important;
+    color: var(--md-sys-color-on-primary) !important;
+    border-radius: 100px !important;
+    padding: 10px 24px !important;
+    border: none !important;
+    font-weight: 500 !important;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.1), 0px 1px 3px rgba(0,0,0,0.15) !important;
+    transition: box-shadow 150ms cubic-bezier(0.2, 0, 0, 1), transform 150ms cubic-bezier(0.2, 0, 0, 1), background-color 150ms cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+.theme-m3 .btn-primary:hover,
+.theme-m3 .chatbot-send-btn:hover {
+    background: var(--md-sys-color-primary) !important;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.12), 0px 4px 8px rgba(0,0,0,0.2) !important;
+    transform: translateY(-1px) !important;
+    filter: brightness(1.05);
+}
+
+.theme-m3 .btn-secondary,
+.theme-m3 .theme-preset-btn,
+.theme-m3 .secondary-action-btn {
+    background: var(--md-sys-color-secondary-container) !important;
+    color: var(--md-sys-color-on-secondary-container) !important;
+    border-radius: 100px !important;
+    padding: 10px 24px !important;
+    border: none !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+.theme-m3 .btn-secondary:hover,
+.theme-m3 .theme-preset-btn:hover {
+    background: var(--md-sys-color-surface-container-highest) !important;
+    filter: brightness(1.02);
+}
+
+/* Material Design Chips (Assist, Filter, Suggestion, Input) */
+.theme-m3 .suggested-prompt-btn,
+.theme-m3 .ai-media-prompt-btn,
+.theme-m3 .tag-chip,
+.theme-m3 .tech-badge,
+.theme-m3 .trait-chip {
+    background: var(--md-sys-color-surface-container-high) !important;
+    color: var(--md-sys-color-on-surface-variant) !important;
+    border: 1px solid var(--md-sys-color-outline-variant) !important;
+    border-radius: 100px !important; /* Fully rounded pills for Chips */
+    font-weight: 500 !important;
+    padding: 6px 16px !important;
+    box-shadow: none !important;
+    transition: all 150ms cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+.theme-m3 .suggested-prompt-btn:hover,
+.theme-m3 .tech-badge:hover,
+.theme-m3 .trait-chip:hover {
+    background: var(--md-sys-color-surface-container-highest) !important;
+    color: var(--md-sys-color-on-surface) !important;
+    border-color: var(--md-sys-color-outline) !important;
+}
+
+/* Search Bar & Text Fields (Filled Text Fields with active indicator lines) */
+.theme-m3 .chatbot-input-container {
+    background: var(--md-sys-color-surface-container-high) !important;
+    border-radius: 28px !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+    padding: 8px 18px !important;
+    transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+.theme-m3 .chatbot-input-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 16px;
+    height: 1px;
+    background-color: var(--md-sys-color-outline-variant);
+    transition: transform 150ms cubic-bezier(0.2, 0, 0, 1), background-color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.theme-m3 .chatbot-input-container:focus-within::after {
+    height: 2px;
+    background-color: var(--md-sys-color-primary);
+}
+
+.theme-m3 .chatbot-input-container textarea,
+.theme-m3 .custom-text-input {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color: var(--md-sys-color-on-surface) !important;
+    font-family: inherit !important;
+}
+
+/* Dialogs & Popups (Large Surface Containers) */
+.theme-m3 .popup-content,
+.theme-m3 .project-post-popup,
+.theme-m3 .lightbox-content {
+    background: var(--md-sys-color-surface-container-high) !important;
+    border-radius: 28px !important;
+    border: none !important;
+    box-shadow: 0px 4px 12px 6px rgba(0,0,0,0.1), 0px 1px 3px rgba(0,0,0,0.2) !important;
+    padding: 24px !important;
+}
+
+/* FAB (Floating Action Button) styling */
+.theme-m3 .header-icon-button.control-cv,
+.theme-m3 .voice-control-btn,
+.theme-m3 .scroll-to-top-btn {
+    background: var(--md-sys-color-primary-container) !important;
+    color: var(--md-sys-color-on-primary-container) !important;
+    border-radius: 16px !important; /* M3 standard shape */
+    box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.12), 0px 1px 3px rgba(0,0,0,0.2) !important;
+    border: none !important;
+    transition: box-shadow 200ms cubic-bezier(0.2, 0, 0, 1), transform 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+.theme-m3 .header-icon-button.control-cv:hover,
+.theme-m3 .voice-control-btn:hover {
+    background: var(--md-sys-color-primary-container) !important;
+    box-shadow: 0px 6px 12px 4px rgba(0,0,0,0.18) !important;
+    transform: translateY(-2px) !important;
+    filter: brightness(1.04);
+}
+
+/* Material Switch (Toggle) styling */
+.theme-m3 .theme-toggle-switch {
+    background: var(--md-sys-color-surface-container-highest) !important;
+    border: 2px solid var(--md-sys-color-outline) !important;
+    border-radius: 100px !important;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+.theme-m3 .theme-toggle-switch.is-checked {
+    background: var(--md-sys-color-primary) !important;
+    border-color: var(--md-sys-color-primary) !important;
+}
+
+/* Material Select dropdown input */
+.theme-m3 select,
+.theme-m3 select.theme-select {
+    background: var(--md-sys-color-surface-container-high) !important;
+    color: var(--md-sys-color-on-surface) !important;
+    border: 1px solid var(--md-sys-color-outline) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    outline: none !important;
+}
+
+/* Smooth Material Ripple Feedback State */
+.theme-m3 .btn:active,
+.theme-m3 .chatbot-send-btn:active,
+.theme-m3 .suggested-prompt-btn:active,
+.theme-m3 .info-card:active {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.12) 10%, transparent 10.01%) !important;
+    background-size: 100% !important;
+    transition: background-image 0s !important;
+}
+
+/* Right Panel Surface Tinting */
+.theme-m3 .right-panel {
+    background: var(--md-sys-color-surface-container-lowest) !important;
+    border-left: none !important;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.02) !important;
+}
+
+html.dark.theme-m3 .right-panel {
+    background: var(--md-sys-color-surface-container-lowest) !important;
+    box-shadow: -4px 0 16px rgba(0,0,0,0.15) !important;
+}
+
+.theme-m3 .right-panel-middle-controls {
+    background: var(--md-sys-color-surface-container) !important;
+    border-radius: 20px !important;
+    padding: 16px !important;
+    border: none !important;
+}
+
+
+
+/* --- premium Neumorphism (Soft UI 2.0) Design System --- */
+html.theme-neumorphism {
+    /* Color Palette */
+    --background: #F3F5F9 !important;
+    --card-bg: #F6F8FB !important;
+    --surface: #EEF2F7 !important;
+    --primary: #3B82F6 !important;
+    --success: #22C55E !important;
+    --warning: #F59E0B !important;
+    --danger: #EF4444 !important;
+    --text: #2C3E50 !important;
+    --text-secondary: #7F8C8D !important;
+    
+    /* Dynamic Shadows */
+    --neumorphic-raised-shadow: 8px 8px 16px rgba(163, 177, 198, 0.35), -8px -8px 16px rgba(255, 255, 255, 0.8) !important;
+    --neumorphic-raised-shadow-sm: 4px 4px 8px rgba(163, 177, 198, 0.35), -4px -4px 8px rgba(255, 255, 255, 0.8) !important;
+    --neumorphic-inset-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.35), inset -4px -4px 8px rgba(255, 255, 255, 0.8) !important;
+    
+    font-family: 'Inter', 'SF Pro Display', 'Segoe UI', sans-serif !important;
+}
+
+html.theme-neumorphism.dark {
+    /* Color Palette Dark Mode */
+    --background: #1B1F26 !important;
+    --card-bg: #2C3340 !important;
+    --surface: #252B36 !important;
+    --primary: #60A5FA !important;
+    --text: #E2E8F0 !important;
+    --text-secondary: #94A3B8 !important;
+    
+    /* Dynamic Shadows Dark Mode */
+    --neumorphic-raised-shadow: 8px 8px 16px rgba(0, 0, 0, 0.45), -8px -8px 16px rgba(255, 255, 255, 0.035) !important;
+    --neumorphic-raised-shadow-sm: 4px 4px 8px rgba(0, 0, 0, 0.4), -4px -4px 8px rgba(255, 255, 255, 0.03) !important;
+    --neumorphic-inset-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.45), inset -4px -4px 8px rgba(255, 255, 255, 0.035) !important;
+}
+
+/* Background wallpaper container styling */
+.app-background.wallpaper-neumorphism {
+    background: var(--background) !important;
+    transition: background-color 200ms ease !important;
+}
+
+/* Roundings & Spacing */
+.theme-neumorphism .info-card,
+.theme-neumorphism .project-card-new,
+.theme-neumorphism .resume-item-card,
+.theme-neumorphism .traits-card,
+.theme-neumorphism .service-box,
+.theme-neumorphism .experience-item,
+.theme-neumorphism .ai-category-card,
+.theme-neumorphism .settings-card,
+.theme-neumorphism .chart-container,
+.theme-neumorphism .quick-weather-card,
+.theme-neumorphism .portrait-item-card,
+.theme-neumorphism .horoscope-radar-card,
+.theme-neumorphism .horoscope-summary-card,
+.theme-neumorphism .horoscope-banner-card,
+.theme-neumorphism .traits-solution-card,
+.theme-neumorphism .memories-grid-item,
+.theme-neumorphism .education-box,
+.theme-neumorphism .about-personal-info-card,
+.theme-neumorphism .about-bio-text-card,
+.theme-neumorphism .cover-letter-inner-card {
+    background: var(--card-bg) !important;
+    border-radius: 20px !important;
+    border: none !important;
+    box-shadow: var(--neumorphic-raised-shadow) !important;
+    transition: box-shadow 200ms ease, transform 200ms ease, background-color 200ms ease !important;
+}
+
+/* Interactive Card states */
+.theme-neumorphism .project-card-new:hover,
+.theme-neumorphism .info-card:hover,
+.theme-neumorphism .settings-card:hover,
+.theme-neumorphism .service-box:hover {
+    box-shadow: var(--neumorphic-raised-shadow) !important;
+    transform: translateY(-2px) scale(1.01) !important;
+}
+
+.theme-neumorphism .project-card-new:active,
+.theme-neumorphism .info-card:active {
+    box-shadow: var(--neumorphic-inset-shadow) !important;
+    transform: translateY(0) scale(1.0) !important;
+}
+
+/* Soft UI Navigation Sidebar drawer */
+.theme-neumorphism aside.left-sidebar {
+    background: var(--surface) !important;
+    border-right: none !important;
+    border-radius: 0 20px 20px 0 !important;
+    box-shadow: 6px 0 16px rgba(0, 0, 0, 0.03) !important;
+}
+
+html.theme-neumorphism.dark aside.left-sidebar {
+    box-shadow: 6px 0 24px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Right layout panel tinting */
+.theme-neumorphism .right-panel {
+    background: var(--surface) !important;
+    border-left: none !important;
+    box-shadow: -6px 0 16px rgba(0, 0, 0, 0.03) !important;
+}
+
+html.theme-neumorphism.dark .right-panel {
+    box-shadow: -6px 0 24px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Buttons (Raised Buttons & Pressed/Inset Active states) */
+.theme-neumorphism .btn,
+.theme-neumorphism .btn-primary,
+.theme-neumorphism .chatbot-send-btn,
+.theme-neumorphism .theme-preset-btn,
+.theme-neumorphism .primary-action-btn {
+    background: var(--card-bg) !important;
+    color: var(--primary) !important;
+    border-radius: 16px !important;
+    padding: 10px 24px !important;
+    border: none !important;
+    font-weight: 600 !important;
+    box-shadow: var(--neumorphic-raised-shadow) !important;
+    transition: box-shadow 200ms ease, transform 200ms ease, color 200ms ease !important;
+}
+
+.theme-neumorphism .btn:hover,
+.theme-neumorphism .btn-primary:hover,
+.theme-neumorphism .chatbot-send-btn:hover {
+    box-shadow: var(--neumorphic-raised-shadow-sm) !important;
+    transform: translateY(-1px) !important;
+}
+
+.theme-neumorphism .btn:active,
+.theme-neumorphism .btn-primary:active,
+.theme-neumorphism .chatbot-send-btn:active,
+.theme-neumorphism .theme-preset-btn:active {
+    box-shadow: var(--neumorphic-inset-shadow) !important;
+    transform: translateY(1px) !important;
+    color: var(--text) !important;
+}
+
+/* Outlined buttons fallback in Neumorphism */
+.theme-neumorphism .btn-secondary,
+.theme-neumorphism .btn-outline {
+    background: transparent !important;
+    border: 1px solid var(--text-secondary) !important;
+    color: var(--text-secondary) !important;
+    border-radius: 16px !important;
+    box-shadow: none !important;
+}
+
+/* Inputs (Search, Input, TextArea - Inset shadows applied) */
+.theme-neumorphism .chatbot-input-container,
+.theme-neumorphism .custom-text-input,
+.theme-neumorphism input[type="text"],
+.theme-neumorphism input[type="email"],
+.theme-neumorphism textarea,
+.theme-neumorphism select {
+    background: var(--surface) !important;
+    border-radius: 14px !important;
+    border: none !important;
+    box-shadow: var(--neumorphic-inset-shadow) !important;
+    color: var(--text) !important;
+    outline: none !important;
+    padding: 10px 16px !important;
+}
+
+.theme-neumorphism .chatbot-input-container textarea {
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* Floating Action Button (FAB) */
+.theme-neumorphism .header-icon-button.control-cv,
+.theme-neumorphism .voice-control-btn,
+.theme-neumorphism .scroll-to-top-btn {
+    background: var(--card-bg) !important;
+    color: var(--primary) !important;
+    border-radius: 50% !important; /* Circular FAB */
+    box-shadow: var(--neumorphic-raised-shadow) !important;
+    border: none !important;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.theme-neumorphism .header-icon-button.control-cv:hover,
+.theme-neumorphism .voice-control-btn:hover {
+    box-shadow: var(--neumorphic-raised-shadow-sm) !important;
+    transform: translateY(-2px) !important;
+}
+
+.theme-neumorphism .header-icon-button.control-cv:active,
+.theme-neumorphism .voice-control-btn:active {
+    box-shadow: var(--neumorphic-inset-shadow) !important;
+    transform: translateY(1px) !important;
+}
+
+/* Chips and badges */
+.theme-neumorphism .suggested-prompt-btn,
+.theme-neumorphism .ai-media-prompt-btn,
+.theme-neumorphism .tag-chip,
+.theme-neumorphism .tech-badge,
+.theme-neumorphism .trait-chip {
+    background: var(--card-bg) !important;
+    color: var(--text-secondary) !important;
+    border: none !important;
+    border-radius: 16px !important;
+    box-shadow: var(--neumorphic-raised-shadow-sm) !important;
+    font-weight: 500 !important;
+    padding: 6px 16px !important;
+    transition: all 180ms ease !important;
+}
+
+.theme-neumorphism .suggested-prompt-btn:hover,
+.theme-neumorphism .tech-badge:hover {
+    box-shadow: var(--neumorphic-inset-shadow) !important;
+    color: var(--primary) !important;
+}
+
+/* Avatar rounded layout */
+.theme-neumorphism .avatar-container img,
+.theme-neumorphism .about-avatar-img {
+    border-radius: 50% !important;
+    box-shadow: var(--neumorphic-raised-shadow) !important;
+}
+
+/* Dialog & Popup modals */
+.theme-neumorphism .popup-content,
+.theme-neumorphism .project-post-popup {
+    background: var(--card-bg) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--neumorphic-raised-shadow) !important;
+    border: none !important;
+}
+
+/* Switches / Toggle slider */
+.theme-neumorphism .theme-toggle-switch {
+    background: var(--surface) !important;
+    box-shadow: var(--neumorphic-inset-shadow) !important;
+    border: none !important;
+}
+
+
+/* --- premium Glassmorphism Design System (VisionOS / Fluent inspired) --- */
+html.theme-glassmorphism {
+    /* Dynamic Color Mappings */
+    --primary: #3B82F6 !important;
+    --primary-rgb: 59, 130, 246 !important;
+    --secondary: #6366F1 !important;
+    --accent: #8B5CF6 !important;
+    --success: #22C55E !important;
+    --warning: #F59E0B !important;
+    --danger: #EF4444 !important;
+    --info: #06B6D4 !important;
+    
+    /* Card Glass Material Specs */
+    --glass-bg-light: rgba(255, 255, 255, 0.07) !important;
+    --glass-bg-dark: rgba(15, 23, 42, 0.42) !important;
+    --glass-border-light: 1px solid rgba(255, 255, 255, 0.18) !important;
+    --glass-border-dark: 1px solid rgba(255, 255, 255, 0.07) !important;
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.12) !important;
+    --glass-shadow-dark: 0 16px 48px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Glassmorphism Background Canvas (slow ambient blobs + noise) */
+.app-background.wallpaper-glassmorphism-effect {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%) !important;
+    overflow: hidden;
+}
+
+html:not(.dark) .app-background.wallpaper-glassmorphism-effect {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%) !important;
+}
+
+/* Frosted Glass Cards & Surface Components */
+.theme-glassmorphism .info-card,
+.theme-glassmorphism .project-card-new,
+.theme-glassmorphism .resume-item-card,
+.theme-glassmorphism .traits-card,
+.theme-glassmorphism .service-box,
+.theme-glassmorphism .experience-item,
+.theme-glassmorphism .ai-category-card,
+.theme-glassmorphism .settings-card,
+.theme-glassmorphism .chart-container,
+.theme-glassmorphism .quick-weather-card,
+.theme-glassmorphism .portrait-item-card,
+.theme-glassmorphism .horoscope-radar-card,
+.theme-glassmorphism .horoscope-summary-card,
+.theme-glassmorphism .horoscope-banner-card,
+.theme-glassmorphism .traits-solution-card,
+.theme-glassmorphism .memories-grid-item,
+.theme-glassmorphism .education-box,
+.theme-glassmorphism .about-personal-info-card,
+.theme-glassmorphism .about-bio-text-card,
+.theme-glassmorphism .cover-letter-inner-card {
+    background: var(--glass-bg-light) !important;
+    backdrop-filter: blur(24px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+    border: var(--glass-border-light) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--glass-shadow) !important;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+html.dark.theme-glassmorphism .info-card,
+html.dark.theme-glassmorphism .project-card-new,
+html.dark.theme-glassmorphism .resume-item-card,
+html.dark.theme-glassmorphism .traits-card,
+html.dark.theme-glassmorphism .service-box,
+html.dark.theme-glassmorphism .experience-item,
+html.dark.theme-glassmorphism .ai-category-card,
+html.dark.theme-glassmorphism .settings-card,
+html.dark.theme-glassmorphism .chart-container,
+html.dark.theme-glassmorphism .quick-weather-card,
+html.dark.theme-glassmorphism .portrait-item-card,
+html.dark.theme-glassmorphism .horoscope-radar-card,
+html.dark.theme-glassmorphism .horoscope-summary-card,
+html.dark.theme-glassmorphism .horoscope-banner-card,
+html.dark.theme-glassmorphism .traits-solution-card,
+html.dark.theme-glassmorphism .memories-grid-item,
+html.dark.theme-glassmorphism .education-box,
+html.dark.theme-glassmorphism .about-personal-info-card,
+html.dark.theme-glassmorphism .about-bio-text-card,
+html.dark.theme-glassmorphism .cover-letter-inner-card {
+    background: var(--glass-bg-dark) !important;
+    border: var(--glass-border-dark) !important;
+    box-shadow: var(--glass-shadow-dark) !important;
+}
+
+/* Hover reflection and lift states */
+.theme-glassmorphism .info-card:hover,
+.theme-glassmorphism .project-card-new:hover,
+.theme-glassmorphism .resume-item-card:hover,
+.theme-glassmorphism .traits-card:hover,
+.theme-glassmorphism .service-box:hover,
+.theme-glassmorphism .experience-item:hover,
+.theme-glassmorphism .ai-category-card:hover,
+.theme-glassmorphism .settings-card:hover,
+.theme-glassmorphism .chart-container:hover,
+.theme-glassmorphism .quick-weather-card:hover,
+.theme-glassmorphism .portrait-item-card:hover,
+.theme-glassmorphism .horoscope-radar-card:hover,
+.theme-glassmorphism .horoscope-summary-card:hover,
+.theme-glassmorphism .horoscope-banner-card:hover,
+.theme-glassmorphism .traits-solution-card:hover,
+.theme-glassmorphism .memories-grid-item:hover,
+.theme-glassmorphism .education-box:hover,
+.theme-glassmorphism .about-personal-info-card:hover,
+.theme-glassmorphism .about-bio-text-card:hover,
+.theme-glassmorphism .cover-letter-inner-card:hover {
+    background: rgba(255, 255, 255, 0.13) !important;
+    transform: translateY(-3px) scale(1.01) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16), 0 0 12px rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark.theme-glassmorphism .info-card:hover,
+html.dark.theme-glassmorphism .project-card-new:hover,
+html.dark.theme-glassmorphism .resume-item-card:hover,
+html.dark.theme-glassmorphism .traits-card:hover,
+html.dark.theme-glassmorphism .service-box:hover,
+html.dark.theme-glassmorphism .experience-item:hover,
+html.dark.theme-glassmorphism .ai-category-card:hover,
+html.dark.theme-glassmorphism .settings-card:hover,
+html.dark.theme-glassmorphism .chart-container:hover,
+html.dark.theme-glassmorphism .quick-weather-card:hover,
+html.dark.theme-glassmorphism .portrait-item-card:hover,
+html.dark.theme-glassmorphism .horoscope-radar-card:hover,
+html.dark.theme-glassmorphism .horoscope-summary-card:hover,
+html.dark.theme-glassmorphism .horoscope-banner-card:hover,
+html.dark.theme-glassmorphism .traits-solution-card:hover,
+html.dark.theme-glassmorphism .memories-grid-item:hover,
+html.dark.theme-glassmorphism .education-box:hover,
+html.dark.theme-glassmorphism .about-personal-info-card:hover,
+html.dark.theme-glassmorphism .about-bio-text-card:hover,
+html.dark.theme-glassmorphism .cover-letter-inner-card:hover {
+    background: rgba(15, 23, 42, 0.52) !important;
+    box-shadow: 0 20px 56px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Navigation Drawers (Sidebar) */
+.theme-glassmorphism aside.left-sidebar {
+    background: rgba(255, 255, 255, 0.04) !important;
+    backdrop-filter: blur(32px) !important;
+    -webkit-backdrop-filter: blur(32px) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 0 24px 24px 0 !important;
+    box-shadow: 6px 0 24px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.dark.theme-glassmorphism aside.left-sidebar {
+    background: rgba(15, 23, 42, 0.35) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: 6px 0 32px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Right layout panel */
+.theme-glassmorphism .right-panel {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(32px) !important;
+    -webkit-backdrop-filter: blur(32px) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: -6px 0 24px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.dark.theme-glassmorphism .right-panel {
+    background: rgba(15, 23, 42, 0.25) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: -6px 0 32px rgba(0, 0, 0, 0.25) !important;
+}
+
+.theme-glassmorphism .right-panel-middle-controls {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+}
+
+/* Glass Buttons */
+.theme-glassmorphism .btn,
+.theme-glassmorphism .btn-primary,
+.theme-glassmorphism .chatbot-send-btn,
+.theme-glassmorphism .theme-preset-btn,
+.theme-glassmorphism .primary-action-btn {
+    background: rgba(255, 255, 255, 0.11) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    color: var(--primary) !important;
+    border-radius: 20px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.theme-glassmorphism .btn:hover,
+.theme-glassmorphism .btn-primary:hover,
+.theme-glassmorphism .chatbot-send-btn:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08), 0 0 12px rgba(255, 255, 255, 0.12) !important;
+    transform: translateY(-1px) !important;
+}
+
+html.dark.theme-glassmorphism .btn,
+html.dark.theme-glassmorphism .btn-primary,
+html.dark.theme-glassmorphism .chatbot-send-btn {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+}
+
+html.dark.theme-glassmorphism .btn:hover,
+html.dark.theme-glassmorphism .btn-primary:hover,
+html.dark.theme-glassmorphism .chatbot-send-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Glass Inputs & Textareas */
+.theme-glassmorphism .chatbot-input-container,
+.theme-glassmorphism input[type="text"],
+.theme-glassmorphism textarea,
+.theme-glassmorphism select {
+    background: rgba(255, 255, 255, 0.04) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 12px !important;
+    color: var(--text) !important;
+    outline: none !important;
+    padding: 10px 16px !important;
+}
+
+html.dark.theme-glassmorphism .chatbot-input-container,
+html.dark.theme-glassmorphism input[type="text"],
+html.dark.theme-glassmorphism textarea,
+html.dark.theme-glassmorphism select {
+    background: rgba(15, 23, 42, 0.35) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.theme-glassmorphism .chatbot-input-container textarea {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Circular FAB (Floating Action Button) */
+.theme-glassmorphism .header-icon-button.control-cv,
+.theme-glassmorphism .voice-control-btn,
+.theme-glassmorphism .scroll-to-top-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    color: var(--primary) !important;
+    border-radius: 50% !important; /* Circular M3/VisionOS mix */
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+html.dark.theme-glassmorphism .header-icon-button.control-cv,
+html.dark.theme-glassmorphism .voice-control-btn,
+html.dark.theme-glassmorphism .scroll-to-top-btn {
+    background: rgba(15, 23, 42, 0.45) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+}
+
+.theme-glassmorphism .header-icon-button.control-cv:hover,
+.theme-glassmorphism .voice-control-btn:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Chips and tags */
+.theme-glassmorphism .suggested-prompt-btn,
+.theme-glassmorphism .ai-media-prompt-btn,
+.theme-glassmorphism .tag-chip,
+.theme-glassmorphism .tech-badge,
+.theme-glassmorphism .trait-chip {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: var(--text-secondary) !important;
+    border-radius: 20px !important;
+    padding: 6px 16px !important;
+    transition: all 180ms ease !important;
+}
+
+.theme-glassmorphism .suggested-prompt-btn:hover,
+.theme-glassmorphism .tech-badge:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: var(--primary) !important;
+}
+
+/* Glass Modals / Dialog Popups */
+.theme-glassmorphism .popup-content,
+.theme-glassmorphism .project-post-popup {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(36px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.2) !important;
+}
+
+html.dark.theme-glassmorphism .popup-content,
+html.dark.theme-glassmorphism .project-post-popup {
+    background: rgba(15, 23, 42, 0.7) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5) !important;
+}
+
+
+/* --- Apple Human Interface System Specs (macOS / iOS styled) --- */
+html.theme-apple-human {
+    /* Color Palette */
+    --primary: #007AFF !important; /* Classic Apple Blue */
+    --accent: #5856D6 !important;
+    --success: #34C759 !important;
+    --warning: #FF9500 !important;
+    --danger: #FF3B30 !important;
+    --info: #5AC8FA !important;
+    
+    /* Apple Hover Background Overlay (referenced in React Sidebar) */
+    --apple-hover-bg: rgba(0, 0, 0, 0.04) !important;
+    
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif !important;
+}
+
+html.theme-apple-human.dark {
+    --primary: #0A84FF !important;
+    --accent: #5E5CE6 !important;
+    --success: #30D158 !important;
+    --warning: #FF9F0A !important;
+    --danger: #FF453A !important;
+    
+    --apple-hover-bg: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Apple iOS/macOS styled cards (Thin Materials, light shadows) */
+.theme-apple-human .info-card,
+.theme-apple-human .project-card-new,
+.theme-apple-human .resume-item-card,
+.theme-apple-human .traits-card,
+.theme-apple-human .service-box,
+.theme-apple-human .experience-item,
+.theme-apple-human .ai-category-card,
+.theme-apple-human .settings-card,
+.theme-apple-human .chart-container,
+.theme-apple-human .quick-weather-card,
+.theme-apple-human .portrait-item-card,
+.theme-apple-human .horoscope-radar-card,
+.theme-apple-human .horoscope-summary-card,
+.theme-apple-human .horoscope-banner-card,
+.theme-apple-human .traits-solution-card,
+.theme-apple-human .memories-grid-item,
+.theme-apple-human .education-box,
+.theme-apple-human .about-personal-info-card,
+.theme-apple-human .about-bio-text-card,
+.theme-apple-human .cover-letter-inner-card {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 16px !important; /* Apple Card Corner: 16px */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.035) !important;
+    transition: transform 200ms cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 200ms cubic-bezier(0.25, 0.8, 0.25, 1), background-color 200ms ease !important;
+}
+
+html.dark.theme-apple-human .info-card,
+html.dark.theme-apple-human .project-card-new,
+html.dark.theme-apple-human .resume-item-card,
+html.dark.theme-apple-human .traits-card,
+html.dark.theme-apple-human .service-box,
+html.dark.theme-apple-human .experience-item,
+html.dark.theme-apple-human .ai-category-card,
+html.dark.theme-apple-human .settings-card,
+html.dark.theme-apple-human .chart-container,
+html.dark.theme-apple-human .quick-weather-card,
+html.dark.theme-apple-human .portrait-item-card,
+html.dark.theme-apple-human .horoscope-radar-card,
+html.dark.theme-apple-human .horoscope-summary-card,
+html.dark.theme-apple-human .horoscope-banner-card,
+html.dark.theme-apple-human .traits-solution-card,
+html.dark.theme-apple-human .memories-grid-item,
+html.dark.theme-apple-human .education-box,
+html.dark.theme-apple-human .about-personal-info-card,
+html.dark.theme-apple-human .about-bio-text-card,
+html.dark.theme-apple-human .cover-letter-inner-card {
+    background: rgba(30, 30, 32, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+}
+
+/* Hover depth adjustments */
+.theme-apple-human .info-card:hover,
+.theme-apple-human .project-card-new:hover,
+.theme-apple-human .resume-item-card:hover,
+.theme-apple-human .traits-card:hover,
+.theme-apple-human .service-box:hover,
+.theme-apple-human .experience-item:hover,
+.theme-apple-human .ai-category-card:hover,
+.theme-apple-human .settings-card:hover,
+.theme-apple-human .chart-container:hover,
+.theme-apple-human .quick-weather-card:hover,
+.theme-apple-human .portrait-item-card:hover,
+.theme-apple-human .horoscope-radar-card:hover,
+.theme-apple-human .horoscope-summary-card:hover,
+.theme-apple-human .horoscope-banner-card:hover,
+.theme-apple-human .traits-solution-card:hover,
+.theme-apple-human .memories-grid-item:hover,
+.theme-apple-human .education-box:hover,
+.theme-apple-human .about-personal-info-card:hover,
+.theme-apple-human .about-bio-text-card:hover,
+.theme-apple-human .cover-letter-inner-card:hover {
+    transform: scale(1.012) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+}
+
+html.dark.theme-apple-human .info-card:hover,
+html.dark.theme-apple-human .project-card-new:hover,
+html.dark.theme-apple-human .resume-item-card:hover,
+html.dark.theme-apple-human .traits-card:hover,
+html.dark.theme-apple-human .service-box:hover,
+html.dark.theme-apple-human .experience-item:hover,
+html.dark.theme-apple-human .ai-category-card:hover,
+html.dark.theme-apple-human .settings-card:hover,
+html.dark.theme-apple-human .chart-container:hover,
+html.dark.theme-apple-human .quick-weather-card:hover,
+html.dark.theme-apple-human .portrait-item-card:hover,
+html.dark.theme-apple-human .horoscope-radar-card:hover,
+html.dark.theme-apple-human .horoscope-summary-card:hover,
+html.dark.theme-apple-human .horoscope-banner-card:hover,
+html.dark.theme-apple-human .traits-solution-card:hover,
+html.dark.theme-apple-human .memories-grid-item:hover,
+html.dark.theme-apple-human .education-box:hover,
+html.dark.theme-apple-human .about-personal-info-card:hover,
+html.dark.theme-apple-human .about-bio-text-card:hover,
+html.dark.theme-apple-human .cover-letter-inner-card:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Left Navigation Sidebar Drawer (macOS Sidebar style) */
+.theme-apple-human aside.left-sidebar {
+    background: rgba(246, 246, 246, 0.82) !important;
+    backdrop-filter: blur(28px) !important;
+    -webkit-backdrop-filter: blur(28px) !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
+    border-radius: 0 20px 20px 0 !important;
+}
+
+html.dark.theme-apple-human aside.left-sidebar {
+    background: rgba(28, 28, 30, 0.85) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Right layout panel and weather panel */
+.theme-apple-human .right-panel {
+    background: rgba(246, 246, 246, 0.65) !important;
+    backdrop-filter: blur(28px) !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+html.dark.theme-apple-human .right-panel {
+    background: rgba(28, 28, 30, 0.65) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.theme-apple-human .right-panel-middle-controls {
+    background: rgba(0, 0, 0, 0.02) !important;
+    border: 1px solid rgba(0, 0, 0, 0.04) !important;
+    border-radius: 14px !important;
+}
+
+html.dark.theme-apple-human .right-panel-middle-controls {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Apple Buttons (Slightly rounded capsule buttons) */
+.theme-apple-human .btn,
+.theme-apple-human .btn-primary,
+.theme-apple-human .chatbot-send-btn,
+.theme-apple-human .primary-action-btn {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    border-radius: 12px !important; /* Buttons corner: 12px */
+    padding: 8px 20px !important;
+    border: none !important;
+    font-weight: 500 !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+    transition: all 150ms ease !important;
+}
+
+.theme-apple-human .btn:hover,
+.theme-apple-human .btn-primary:hover,
+.theme-apple-human .chatbot-send-btn:hover {
+    filter: brightness(1.06);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1) !important;
+}
+
+.theme-apple-human .btn-secondary,
+.theme-apple-human .theme-preset-btn,
+.theme-apple-human .secondary-action-btn {
+    background: rgba(0, 0, 0, 0.04) !important;
+    color: var(--text) !important;
+    border-radius: 12px !important;
+    border: none !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    transition: background-color 150ms ease !important;
+}
+
+html.dark.theme-apple-human .btn-secondary,
+html.dark.theme-apple-human .theme-preset-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.theme-apple-human .btn-secondary:hover,
+.theme-apple-human .theme-preset-btn:hover {
+    background: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.dark.theme-apple-human .btn-secondary:hover,
+html.dark.theme-apple-human .theme-preset-btn:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Outlined Buttons */
+.theme-apple-human .btn-outline {
+    background: transparent !important;
+    border: 1px solid var(--primary) !important;
+    color: var(--primary) !important;
+    border-radius: 12px !important;
+}
+
+/* Hộp nhập liệu inputs */
+.theme-apple-human .chatbot-input-container,
+.theme-apple-human input[type="text"],
+.theme-apple-human textarea,
+.theme-apple-human select {
+    background: rgba(0, 0, 0, 0.02) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    border-radius: 10px !important;
+    color: var(--text) !important;
+    outline: none !important;
+    padding: 8px 14px !important;
+    transition: border-color 150ms ease !important;
+}
+
+html.dark.theme-apple-human .chatbot-input-container,
+html.dark.theme-apple-human input[type="text"],
+html.dark.theme-apple-human textarea,
+html.dark.theme-apple-human select {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.theme-apple-human .chatbot-input-container textarea {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+.theme-apple-human .chatbot-input-container:focus-within {
+    border-color: var(--primary) !important;
+}
+
+/* Floating Action Button (FAB) */
+.theme-apple-human .header-icon-button.control-cv,
+.theme-apple-human .voice-control-btn,
+.theme-apple-human .scroll-to-top-btn {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: var(--primary) !important;
+    border-radius: 50% !important; /* Circular buttons */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html.dark.theme-apple-human .header-icon-button.control-cv,
+html.dark.theme-apple-human .voice-control-btn,
+html.dark.theme-apple-human .scroll-to-top-btn {
+    background: rgba(44, 44, 46, 0.95) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.theme-apple-human .header-icon-button.control-cv:hover,
+.theme-apple-human .voice-control-btn:hover {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Chips and suggestions */
+.theme-apple-human .suggested-prompt-btn,
+.theme-apple-human .ai-media-prompt-btn,
+.theme-apple-human .tag-chip,
+.theme-apple-human .tech-badge,
+.theme-apple-human .trait-chip {
+    background: rgba(0, 0, 0, 0.03) !important;
+    color: var(--text-secondary) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 6px 14px !important;
+}
+
+html.dark.theme-apple-human .suggested-prompt-btn,
+html.dark.theme-apple-human .tag-chip {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.theme-apple-human .suggested-prompt-btn:hover,
+.theme-apple-human .tech-badge:hover {
+    background: rgba(0, 0, 0, 0.06) !important;
+    color: var(--primary) !important;
+}
+
+/* Modals & Popups (Windows) */
+.theme-apple-human .popup-content,
+.theme-apple-human .project-post-popup {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border-radius: 20px !important; /* Windows / Dialogs: 20px */
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.1) !important;
+}
+
+html.dark.theme-apple-human .popup-content,
+html.dark.theme-apple-human .project-post-popup {
+    background: rgba(30, 30, 32, 0.88) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+    box-shadow: 0 20px 48px rgba(0,0,0,0.3) !important;
+}
+
+/* Switch & Toggle slider */
+.theme-apple-human .theme-toggle-switch {
+    background: rgba(120, 120, 128, 0.16) !important;
+    border: none !important;
+}
+
+.theme-apple-human .theme-toggle-switch.is-checked {
+    background: var(--primary) !important;
+}
+
+
+/* --- Microsoft Fluent UI 2 Web Design System --- */
+html.theme-fluent-2 {
+    --primary: #0078d4 !important; /* classic Microsoft Blue */
+    --accent: #0078d4 !important;
+    --success: #107c41 !important;
+    --warning: #d83b01 !important;
+    --danger: #a80000 !important;
+    --info: #0078d4 !important;
+    
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important;
+}
+
+/* Fluent UI 2 backgrounds */
+.app-background.wallpaper-gradient {
+    background: #f3f3f3 !important;
+}
+
+html.dark .app-background.wallpaper-gradient {
+    background: #202020 !important;
+}
+
+/* Fluent UI 2 Card components (Segoe UI, slight shadow, rounded 8px) */
+.theme-fluent-2 .info-card,
+.theme-fluent-2 .project-card-new,
+.theme-fluent-2 .resume-item-card,
+.theme-fluent-2 .traits-card,
+.theme-fluent-2 .service-box,
+.theme-fluent-2 .experience-item,
+.theme-fluent-2 .ai-category-card,
+.theme-fluent-2 .settings-card,
+.theme-fluent-2 .chart-container,
+.theme-fluent-2 .quick-weather-card,
+.theme-fluent-2 .portrait-item-card,
+.theme-fluent-2 .horoscope-radar-card,
+.theme-fluent-2 .horoscope-summary-card,
+.theme-fluent-2 .horoscope-banner-card,
+.theme-fluent-2 .traits-solution-card,
+.theme-fluent-2 .memories-grid-item,
+.theme-fluent-2 .education-box,
+.theme-fluent-2 .about-personal-info-card,
+.theme-fluent-2 .about-bio-text-card,
+.theme-fluent-2 .cover-letter-inner-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 8px !important; /* Fluent Corner: 8px */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+    transition: all 150ms ease-in-out !important;
+}
+
+html.dark.theme-fluent-2 .info-card,
+html.dark.theme-fluent-2 .project-card-new,
+html.dark.theme-fluent-2 .resume-item-card,
+html.dark.theme-fluent-2 .traits-card,
+html.dark.theme-fluent-2 .service-box,
+html.dark.theme-fluent-2 .experience-item,
+html.dark.theme-fluent-2 .ai-category-card,
+html.dark.theme-fluent-2 .settings-card,
+html.dark.theme-fluent-2 .chart-container,
+html.dark.theme-fluent-2 .quick-weather-card,
+html.dark.theme-fluent-2 .portrait-item-card,
+html.dark.theme-fluent-2 .horoscope-radar-card,
+html.dark.theme-fluent-2 .horoscope-summary-card,
+html.dark.theme-fluent-2 .horoscope-banner-card,
+html.dark.theme-fluent-2 .traits-solution-card,
+html.dark.theme-fluent-2 .memories-grid-item,
+html.dark.theme-fluent-2 .education-box,
+html.dark.theme-fluent-2 .about-personal-info-card,
+html.dark.theme-fluent-2 .about-bio-text-card,
+html.dark.theme-fluent-2 .cover-letter-inner-card {
+    background: #2d2d2d !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+.theme-fluent-2 .info-card:hover,
+.theme-fluent-2 .project-card-new:hover,
+.theme-fluent-2 .resume-item-card:hover,
+.theme-fluent-2 .traits-card:hover,
+.theme-fluent-2 .service-box:hover,
+.theme-fluent-2 .experience-item:hover,
+.theme-fluent-2 .ai-category-card:hover,
+.theme-fluent-2 .settings-card:hover,
+.theme-fluent-2 .chart-container:hover,
+.theme-fluent-2 .quick-weather-card:hover,
+.theme-fluent-2 .portrait-item-card:hover,
+.theme-fluent-2 .horoscope-radar-card:hover,
+.theme-fluent-2 .horoscope-summary-card:hover,
+.theme-fluent-2 .horoscope-banner-card:hover,
+.theme-fluent-2 .traits-solution-card:hover,
+.theme-fluent-2 .memories-grid-item:hover,
+.theme-fluent-2 .education-box:hover,
+.theme-fluent-2 .about-personal-info-card:hover,
+.theme-fluent-2 .about-bio-text-card:hover,
+.theme-fluent-2 .cover-letter-inner-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+html.dark.theme-fluent-2 .info-card:hover,
+html.dark.theme-fluent-2 .project-card-new:hover,
+html.dark.theme-fluent-2 .resume-item-card:hover,
+html.dark.theme-fluent-2 .traits-card:hover,
+html.dark.theme-fluent-2 .service-box:hover,
+html.dark.theme-fluent-2 .experience-item:hover,
+html.dark.theme-fluent-2 .ai-category-card:hover,
+html.dark.theme-fluent-2 .settings-card:hover,
+html.dark.theme-fluent-2 .chart-container:hover,
+html.dark.theme-fluent-2 .quick-weather-card:hover,
+html.dark.theme-fluent-2 .portrait-item-card:hover,
+html.dark.theme-fluent-2 .horoscope-radar-card:hover,
+html.dark.theme-fluent-2 .horoscope-summary-card:hover,
+html.dark.theme-fluent-2 .horoscope-banner-card:hover,
+html.dark.theme-fluent-2 .traits-solution-card:hover,
+html.dark.theme-fluent-2 .memories-grid-item:hover,
+html.dark.theme-fluent-2 .education-box:hover,
+html.dark.theme-fluent-2 .about-personal-info-card:hover,
+html.dark.theme-fluent-2 .about-bio-text-card:hover,
+html.dark.theme-fluent-2 .cover-letter-inner-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Sidebar & Layout Panel */
+.theme-fluent-2 aside.left-sidebar {
+    background: #f3f3f3 !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+html.dark.theme-fluent-2 aside.left-sidebar {
+    background: #202020 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.theme-fluent-2 .right-panel {
+    background: #f3f3f3 !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+html.dark.theme-fluent-2 .right-panel {
+    background: #202020 !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Buttons (Rounded 6px) */
+.theme-fluent-2 .btn,
+.theme-fluent-2 .btn-primary,
+.theme-fluent-2 .chatbot-send-btn,
+.theme-fluent-2 .primary-action-btn {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    border-radius: 6px !important; /* Button: 6px */
+    padding: 8px 18px !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+
+.theme-fluent-2 .btn-secondary,
+.theme-fluent-2 .theme-preset-btn,
+.theme-fluent-2 .secondary-action-btn {
+    background: #ffffff !important;
+    color: var(--text) !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 6px !important;
+}
+
+html.dark.theme-fluent-2 .btn-secondary,
+html.dark.theme-fluent-2 .theme-preset-btn {
+    background: #2d2d2d !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Text Fields (Segoe inputs) */
+.theme-fluent-2 .chatbot-input-container,
+.theme-fluent-2 input[type="text"],
+.theme-fluent-2 textarea,
+.theme-fluent-2 select {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.4) !important;
+    border-radius: 4px !important;
+    color: var(--text) !important;
+    padding: 8px 12px !important;
+}
+
+html.dark.theme-fluent-2 .chatbot-input-container,
+html.dark.theme-fluent-2 input[type="text"],
+html.dark.theme-fluent-2 textarea,
+html.dark.theme-fluent-2 select {
+    background: #202020 !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.theme-fluent-2 .chatbot-input-container:focus-within {
+    border-bottom: 2px solid var(--primary) !important;
+}
+
+
+/* --- Detached Sidebar Layout Style Overrides --- */
+@media (min-width: 768px) {
+    html.sidebar-detached .site-wrapper {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    html.sidebar-detached .site-wrapper:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    
+    html.sidebar-detached aside.left-sidebar {
+        margin: 10px 0 10px 10px !important;
+        border-radius: 16px !important;
+        height: calc(100% - 20px) !important;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+        border: 1.5px solid var(--glass-border) !important;
+        overflow: hidden !important;
+    }
+    
+    html.sidebar-detached main.content {
+        margin: 10px !important;
+        border-radius: 16px !important;
+        height: calc(100% - 20px) !important;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+        border: 1.5px solid var(--glass-border) !important;
+    }
+    
+    html.sidebar-detached .right-panel {
+        margin: 10px 10px 10px 0 !important;
+        border-radius: 16px !important;
+        height: calc(100% - 20px) !important;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+        border: 1.5px solid var(--glass-border) !important;
+    }
+
+    /* Neumorphism theme adaptations */
+    html.theme-neumorphism.sidebar-detached aside.left-sidebar {
+        background: var(--card-bg) !important;
+        box-shadow: var(--neumorphic-raised-shadow) !important;
+        border: none !important;
+        margin: 10px 0 10px 10px !important;
+    }
+    html.theme-neumorphism.sidebar-detached main.content {
+        background: var(--card-bg) !important;
+        box-shadow: var(--neumorphic-raised-shadow) !important;
+        border: none !important;
+        margin: 10px !important;
+    }
+    html.theme-neumorphism.sidebar-detached .right-panel {
+        background: var(--card-bg) !important;
+        box-shadow: var(--neumorphic-raised-shadow) !important;
+        border: none !important;
+        margin: 10px 10px 10px 0 !important;
+    }
+    
+    /* Material Design 3 adaptations */
+    html.theme-m3.sidebar-detached aside.left-sidebar {
+        background: var(--md-sys-color-surface-container-low) !important;
+        border: none !important;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.1) !important;
+    }
+    html.theme-m3.sidebar-detached main.content {
+        background: var(--md-sys-color-surface-container-low) !important;
+        border: none !important;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.1) !important;
+    }
+    html.theme-m3.sidebar-detached .right-panel {
+        background: var(--md-sys-color-surface-container-low) !important;
+        border: none !important;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.1) !important;
+    }
+}
+
+body, p, span, li, button, input, select, textarea, .info-item-value, .info-item-text, .traits-list-item, .job-achievement-card-value {
+    font-size: 13.372px !important;
+}
+
+h1, h2, h3, h4, h5, h6, .section-title, .project-title, .category-title, .personal-info-title, .job-header-info h3 {
+    font-size: revert !important;
+}
+
+.cover-letter-inner-card, .cover-letter-inner-card * {
+    font-size: 13px !important;
+}
+
+.about-bio-text-card, .about-bio-text-card *,
+.about-personal-info-card, .about-personal-info-card * {
+    font-size: 13px !important;
+}
+
+/* Dynamic screen scale / zoom */
+@media (min-width: 768px) {
+    body {
+        zoom: var(--ui-scale, 1);
+    }
+}
+
+@media print {
+    body {
+        zoom: 1 !important;
+    }
+}
+
+/* Card title badge icon - remove accent/theme color, use black in light mode and white in dark mode */
+.about-badge-container svg, 
+.info-badge svg, 
+.badge-content svg {
+    color: #000000 !important;
+    stroke: #000000 !important;
+}
+
+html.dark .about-badge-container svg, 
+html.dark .info-badge svg, 
+html.dark .badge-content svg {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+/* AI Chat page adjustments - 4 columns grid on desktop */
+@media (min-width: 1025px) {
+    /* 4 columns for categories */
+    .ai-categories-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
+    }
+    
+    /* 4 columns and 4 rows grid for suggested questions */
+    .selected-category-view .suggested-prompts-container {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        grid-template-rows: repeat(4, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+    
+    .selected-category-view .suggested-prompt-btn {
+        height: 100% !important;
+        min-height: 85px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 0.75rem !important;
+        margin: 0 !important;
+        transform: none !important;
+    }
+    
+    .selected-category-view .suggested-prompt-btn:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    }
+}
+
+/* Premium Glassmorphic Hero Typography Overrides */
+.home-hero-content .welcome-msg,
+.welcome-msg {
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+    font-weight: 350 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    font-size: 0.95rem !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.hero-intro-text {
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 1.4rem !important;
+    color: #ffffff !important;
+    opacity: 0.85 !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.home-hero-content h1.hero-name-text {
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
+    background: linear-gradient(135deg, #ffffff 30%, #f1f5f9 70%, rgba(255,255,255,0.7) 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: 0 8px 32px rgba(255, 255, 255, 0.08) !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.home-hero-content h2.hero-typed-text-container {
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: clamp(1.3rem, 3vw, 2.2rem) !important;
+    color: var(--accent-color, #38bdf8) !important;
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.35) !important;
+    letter-spacing: -0.01em !important;
+    min-height: 50px !important;
+}
+
+.glass-tagline {
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: clamp(1.3rem, 3vw, 2.2rem) !important;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.25) !important;
+    letter-spacing: -0.01em !important;
+}
+
+.hero-typed-text-container .typed-cursor {
+    color: var(--accent-color, #38bdf8) !important;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.5) !important;
+    font-weight: 600 !important;
+}
+
+/* Skills Page Font Size Adjustment */
+.skill-item-v2 h4 {
+    font-size: 13px !important;
+}
+
+.skill-item-v2 span {
+    font-size: 13px !important;
+}
+
+
+
+

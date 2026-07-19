@@ -1,0 +1,293 @@
+import React from 'react';
+import { SubtitlePanel } from './SubtitlePanel';
+import { useI18n } from '../contexts/i18n';
+import PageLayout from './PageLayout';
+import * as Icons from './Icons';
+
+export const AboutPage: React.FC<{ id?: string }> = ({ id }) => {
+    const { t, language } = useI18n();
+    const pageData = t.aboutPage;
+
+    const DEFAULT_VIDEO = " https://cdn.scena.ai/project/9741/6a62abb47b287f1f1573998b767c35aa33f2c9d7adfe24b9a84c9459a02c3c38.mp4";
+    const INTRO_VIDEO = "https://cdn.scena.ai/project/9626/42eba857297b415c8be72327102671129b5ebbdbaab55ac9eb6897411b4bdeda.mp4";
+
+    const [videoUrl, setVideoUrl] = React.useState(DEFAULT_VIDEO);
+    const [isMuted, setIsMuted] = React.useState(true);
+
+    const isIntroPlaying = videoUrl === INTRO_VIDEO;
+
+    const handleToggleIntro = () => {
+        if (isIntroPlaying) {
+            setVideoUrl(DEFAULT_VIDEO);
+            setIsMuted(true);
+        } else {
+            setVideoUrl(INTRO_VIDEO);
+            setIsMuted(false);
+        }
+    };
+
+    return (
+        <PageLayout id={id}>
+            
+            <style>{`
+                .about-hero-buttons-container {
+                    position: absolute;
+                    bottom: 15px;
+                    right: 15px;
+                    z-index: 10;
+                }
+                .about-hero-buttons-container .magic-btn-wrapper {
+                    display: flex;
+                }
+                @keyframes border-glow-about {
+                    0%, 100% {
+                        border-color: rgba(var(--accent-color-rgb), 0.5);
+                        box-shadow: 0 8px 25px rgba(var(--accent-color-rgb), 0.4);
+                    }
+                    50% {
+                        border-color: rgba(255, 74, 255, 0.8);
+                        box-shadow: 0 8px 25px rgba(255, 74, 255, 0.6);
+                    }
+                }
+                 @keyframes border-glow-main {
+                                0% { box-shadow: 0 0 5px #a541ff, inset 0 0 5px #a541ff, 0 8px 25px rgba(168, 85, 247, 0.4); }
+                                50% { box-shadow: 0 0 20px #a541ff, inset 0 0 10px #a541ff, 0 12px 30px rgba(168, 85, 247, 0.6); }
+                                100% { box-shadow: 0 0 5px #a541ff, inset 0 0 5px #a541ff, 0 8px 25px rgba(168, 85, 247, 0.4); }
+                            }
+                @keyframes border-glow-cancel {
+                    0% { box-shadow: 0 0 5px #FF3B30, inset 0 0 5px #FF3B30, 0 8px 25px rgba(255, 59, 48, 0.4); }
+                    50% { box-shadow: 0 0 20px #FF6B81, inset 0 0 10px #FF6B81, 0 12px 30px rgba(255, 107, 129, 0.6); }
+                    100% { box-shadow: 0 0 5px #FF3B30, inset 0 0 5px #FF3B30, 0 8px 25px rgba(255, 59, 48, 0.4); }
+                }
+                .about-hero-buttons-container .magic-btn-main {
+                    position: relative;
+                    background: linear-gradient(90deg, #4361ff, #a541ff, #ff4aff);
+                    border-radius: 28px;
+                    height: 35px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-size: 0.8rem;
+                    font-weight: 400;
+                    letter-spacing: 0.5px;
+                    border: 1px solid rgba(255, 255, 255, 0.4);
+                    cursor: default;
+                    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+                    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+                    min-width: 112px;
+                    animation: border-glow-main 2.5s infinite;
+                    overflow: hidden;
+                    padding: 0;
+                }
+                .about-hero-buttons-container .magic-btn-main.is-playing {
+                    background: linear-gradient(90deg, #FF3B30 0%, #FF6B81 100%) !important;
+                    box-shadow: 0 8px 25px rgba(255, 59, 48, 0.4) !important;
+                    animation: border-glow-cancel 2.5s infinite !important;
+                    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+                    border-radius: 28px !important;
+                    height: 35px !important;
+                }
+                .about-hero-buttons-container .magic-btn-main:hover {
+                    transform: translateY(-3px) scale(1.02);
+                }
+                
+            `}</style>
+            <div className="info-card" style={{ height: '100%', padding: '15px', display: 'flex', flexDirection: 'column' }}>
+                <CardTitle
+                    icon={<Icons.UserIcon />}
+                    text={pageData.badge}
+                    tooltipTitle={pageData.tooltipTitle}
+                    tooltipText={pageData.tooltipText}
+                    style={{ marginBottom: '1.5rem' }}
+                />
+                <div className="about-page-content-wrapper no-scrollbar" style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column', paddingRight: '5px' }}>
+                    <div className="about-page-grid flex flex-col lg:flex-row gap-6 lg:gap-8" style={{ minHeight: 'min-content', paddingBottom: '20px' }}>
+                        {/* Left Column: Personal Info Card with Video nested inside on top */}
+                        <div className="about-left-column scena-banner-column" style={{ display: 'flex', flexDirection: 'column', gap: '15px', flex: 1 }}>
+                            {/* Personal Info Card containing nested Video on top */}
+                            {pageData.infoItems && pageData.infoItems.length > 0 && (
+                                <div className="about-personal-info-card" style={{ width: '100%', padding: '15px', display: 'flex', flexDirection: 'column', height: 'auto' }}>
+                                    <h3 className="personal-info-title" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '15px', paddingBottom: '10px' }}>
+                                        <Icons.UserIcon size={18} />
+                                        {pageData.personalInfoTitle}
+                                    </h3>
+                                    
+                                    {/* HTML5 Video Player inside Personal Info Card (On Top) */}
+                                    <div className="scena-banner-video-container" style={{ 
+                                        width: '100%', 
+                                        margin: '0 0 15px 0',
+                                        height: '210px', 
+                                        borderRadius: '10px', 
+                                        overflow: 'hidden', 
+                                        border: 'var(--color-brand-glass-border)',
+                                        boxShadow: 'var(--card-box-shadow)',
+                                        position: 'relative',
+                                        flexShrink: 0
+                                    }}>
+                                        <video 
+                                            key={videoUrl}
+                                            autoPlay 
+                                            muted={isMuted} 
+                                            loop={!isIntroPlaying} 
+                                            playsInline 
+                                            style={{ 
+                                                width: '100%', 
+                                                height: '100%', 
+                                                objectFit: 'cover',
+                                                borderRadius: '10px',
+                                                display: 'block'
+                                            }}
+                                            src={videoUrl}
+                                            poster=""
+                                            onEnded={() => {
+                                                if (isIntroPlaying) {
+                                                    setVideoUrl(DEFAULT_VIDEO);
+                                                    setIsMuted(true);
+                                                }
+                                            }}
+                                        />
+                                        {/* Introduction Overlay Button */}
+                                        <div className="about-hero-buttons-container">
+                                            <div className="magic-btn-wrapper">
+                                                <div className={`magic-btn-main ${isIntroPlaying ? 'is-playing' : ''}`} style={{ padding: '0 14px 0 0', background: isIntroPlaying ? 'linear-gradient(90deg, #FF3B30 0%, #FF6B81 100%)' : 'linear-gradient(90deg, #4361ff, #a541ff, #ff4aff)', animation: isIntroPlaying ? 'border-glow-cancel 2.5s infinite' : 'border-glow-main 2.5s infinite' }}>
+                                    <button 
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setIsMuted(!isMuted);
+                                        }}
+                                        style={{
+                                            height: '100%',
+                                            width: '38px',
+                                            background: 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 100%)',
+                                            border: 'none',
+                                            borderRight: '1px solid rgba(255,255,255,0.3)',
+                                            color: 'white',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            cursor: 'pointer',
+                                            flexShrink: 0
+                                        }}
+                                        title={isMuted ? "Bật âm thanh" : "Tắt âm thanh"}
+                                    >
+                                        {isMuted ? <Icons.SpeakerOffIcon size={14} /> : <Icons.SpeakerWaveIcon size={14} />}
+                                    </button>
+                                    
+                                    <button 
+                                        onClick={() => handleToggleIntro()}
+                                        style={{
+                                            height: '100%',
+                                            background: 'transparent',
+                                            border: 'none',
+                                            color: 'white',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            gap: '7px',
+                                            cursor: 'pointer',
+                                            flex: 1,
+                                            paddingLeft: '11px'
+                                        }}
+                                    >
+                                        <span style={{ fontWeight: 600 }}>{isIntroPlaying ? (language === "vi" ? "Hủy bỏ" : "Cancel") : (language === "vi" ? "Giới thiệu" : "Intro")}</span>
+                                        {isIntroPlaying ? <Icons.XMarkIcon size={14} /> : <Icons.SparklesIcon size={14} />}
+                                    </button>
+                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Personal Info Grid underneath the video */}
+                                    <div className="personal-info-grid no-scrollbar" style={{ 
+                                        flex: 1,
+                                        padding: '5px 0 10px 0', 
+                                        marginTop: '0px', 
+                                        marginBottom: '0px', 
+                                        display: 'grid',
+                                        gridTemplateColumns: '1fr 1fr',
+                                        alignContent: 'start',
+                                        gap: '12px'
+                                    }}>
+                                        {pageData.infoItems.map((item) => {
+                                            const Icon = Icons[item.icon as keyof typeof Icons] || Icons.UserIcon;
+                                            
+                                            return (
+                                                <div key={item.key} className="personal-info-item" style={{ 
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.8rem'
+                                                }}>
+                                                    <div style={{
+                                                        width: '42px',
+                                                        height: '42px',
+                                                        borderRadius: '10px',
+                                                        background: 'rgba(255, 255, 255, 0.08)',
+                                                        border: '1px solid rgba(255, 255, 255, 0.15)',
+                                                        boxShadow: '0 4px 10px -2px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.2)',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        flexShrink: 0
+                                                    }}>
+                                                        <Icon className="info-item-icon" style={{ width: '18px', height: '18px' }} />
+                                                    </div>
+                                                    <div className="info-item-text">
+                                                        <span className="info-item-label" style={{ fontSize: '0.75rem', opacity: 0.7, display: 'block', textAlign: 'left' }}>{item.label}</span>
+                                                        <span className="info-item-value" style={{ fontSize: '0.8rem', fontWeight: 600, display: 'block', textAlign: 'left', wordBreak: 'break-word' }}>
+                                                            {item.link ? (
+                                                                 <a href={item.link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-brand-orange)', textDecoration: 'underline' }}>
+                                                                    {item.key === 'website' ? (language === 'vi' ? 'Liên kết' : 'Link') : item.value}
+                                                                </a>
+                                                            ) : (
+                                                                item.value
+                                                            )}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Right Column: Bio Text Card (Swapped from Left) */}
+                        <div className="about-right-column" style={{ display: 'flex', flexDirection: 'column', gap: '15px', flex: 1.5 }}>
+                            {/* Bio Text Card */}
+                            <div className="about-bio-text-card no-scrollbar" style={{ 
+                                display: 'flex',
+                                flexDirection: 'column',
+                                height: 'auto',
+                                width: '100%',
+                                padding: '15px'
+                            }}>
+                                <h3 className="personal-info-title" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '15px', paddingBottom: '10px' }}>
+                                    <Icons.SparklesIcon size={18} />
+                                    {pageData.tooltipTitle}
+                                </h3>
+                                <div className="about-bio-and-video-container no-scrollbar" style={{ 
+                                    flex: 1, 
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '12px'
+                                }}>
+                                    {pageData.paragraphs.map((p, index) => (
+                                        <p key={index} className="m-0 p-0" style={{ marginTop: '0px', marginBottom: '0px' }} dangerouslySetInnerHTML={{ __html: p }} />
+                                    ))}
+                                    <div className="core-values m-0 p-0" role="complementary" style={{ marginTop: '0px', marginBottom: '0px', paddingBottom: '0px', paddingTop: '0px', paddingRight: '0px', paddingLeft: '0px' }}>
+                                        {pageData.coreValues}
+                                    </div>
+                                    <p className="m-0 p-0" style={{ marginTop: '0px', marginBottom: '0px' }} dangerouslySetInnerHTML={{ __html: pageData.concludingParagraph }} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <SubtitlePanel isPlaying={isIntroPlaying} text="Let me introduce myself properly. I am passionate about creating impactful digital experiences." />
+        </PageLayout>
+    );
+};
+
+export default AboutPage;

@@ -73,19 +73,7 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
     const [welcomeMessage, setWelcomeMessage] = React.useState('');
     const [isMobile, setIsMobile] = React.useState(typeof window !== 'undefined' ? window.innerWidth <= 767 : false);
     
-    // Language dropdown state and ref
-    const [isLangOpen, setIsLangOpen] = React.useState(false);
-    const langDropdownRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
-                setIsLangOpen(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
     
     React.useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 767);
@@ -399,78 +387,6 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                     {!isMobile && !isIntroPlaying && (
                         <div className="top-right-actions flex items-center gap-3">
                             <ThemeButton />
-                            <div className="relative" ref={langDropdownRef}>
-                                <button 
-                                    className="glass-settings-btn flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 active:scale-95" 
-                                    onClick={() => setIsLangOpen(!isLangOpen)}
-                                    title={language === 'vi' ? 'Switch to English' : 'Chuyển sang tiếng Việt'}
-                                    style={{
-                                        height: '48px',
-                                        borderRadius: '24px',
-                                        padding: '0 16px',
-                                        background: 'rgba(255, 255, 255, 0.2)',
-                                        border: '1px solid rgba(255, 255, 255, 0.3)',
-                                        color: '#FFFFFF',
-                                        boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-                                        cursor: 'pointer'
-                                    }}
-                                >
-                                    <Icons.GlobeAltIcon size={20} style={{ color: '#FFFFFF' }} />
-                                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.5px' }}>
-                                        {language === 'vi' ? 'Tiếng Việt' : 'English'}
-                                    </span>
-                                    <Icons.ChevronDownIcon 
-                                        size={14} 
-                                        style={{ 
-                                            color: '#FFFFFF', 
-                                            opacity: 0.8,
-                                            transform: isLangOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                                            transition: 'transform 0.2s ease'
-                                        }} 
-                                    />
-                                </button>
-                                
-                                {isLangOpen && (
-                                    <div 
-                                        className="absolute right-0 mt-2 py-1 w-36 rounded-xl shadow-xl border border-white/10 overflow-hidden z-[9999]"
-                                        style={{
-                                            background: 'rgba(23, 23, 37, 0.85)',
-                                            backdropFilter: 'blur(16px)',
-                                            WebkitBackdropFilter: 'blur(16px)',
-                                            animation: 'slideDownIn 0.2s ease forwards'
-                                        }}
-                                    >
-                                        <button
-                                            onClick={() => {
-                                                setLanguage('vi');
-                                                setIsLangOpen(false);
-                                            }}
-                                            className="w-full text-left px-4 py-2.5 text-sm font-semibold flex items-center gap-2 hover:bg-white/10 transition-colors"
-                                            style={{
-                                                color: language === 'vi' ? 'var(--accent-color, #38bdf8)' : '#FFFFFF',
-                                                cursor: 'pointer',
-                                                background: language === 'vi' ? 'rgba(255, 255, 255, 0.05)' : 'transparent'
-                                            }}
-                                        >
-                                            Tiếng Việt
-                                        </button>
-                                        <button
-                                            onClick={() => {
-                                                setLanguage('en');
-                                                setIsLangOpen(false);
-                                            }}
-                                            className="w-full text-left px-4 py-2.5 text-sm font-semibold flex items-center gap-2 hover:bg-white/10 transition-colors"
-                                            style={{
-                                                color: language === 'en' ? 'var(--accent-color, #38bdf8)' : '#FFFFFF',
-                                                cursor: 'pointer',
-                                                background: language === 'en' ? 'rgba(255, 255, 255, 0.05)' : 'transparent'
-                                            }}
-                                        >
-                                            English
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
                         </div>
                     )}
                     {!isIntroPlaying ? (

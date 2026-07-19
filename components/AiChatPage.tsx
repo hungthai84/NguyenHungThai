@@ -28,6 +28,49 @@ interface MediaPrompt {
     questions?: string[];
 }
 
+const getCategoryIcon = (index: number) => {
+    switch (index) {
+        case 0: return <Icons.UserIcon size={18} />;
+        case 1: return <Icons.GlobeAltIcon size={18} />;
+        case 2: return <Icons.UsersIcon size={18} />;
+        case 3: return <Icons.ShieldCheckIcon size={18} />;
+        case 4: return <Icons.SettingsIcon size={18} />;
+        case 5: return <Icons.HeartIcon size={18} />;
+        case 6: return <Icons.LayersIcon size={18} />;
+        case 7: return <Icons.SparklesIcon size={18} />;
+        default: return <Icons.FolderIcon size={18} />;
+    }
+};
+
+const getCategoryTitle = (title: string, lang: string) => {
+    if (lang === 'vi') {
+        const viMap: Record<string, string> = {
+            "I. GIỚI THIỆU CÁ NHÂN": "I. Giới thiệu cá nhân",
+            "II. TẦM NHÌN & CHIẾN LƯỢC": "II. Tầm nhìn & Chiến lược",
+            "III. QUẢN LÝ & ĐÀO TẠO": "III. Quản lý & Đào tạo",
+            "IV. TÌNH HUỐNG & KHỦNG HOẢNG": "IV. Tình huống & Khủng hoảng",
+            "V. CÔNG NGHỆ & QUY TRÌNH": "V. Công nghệ & Quy trình",
+            "VI. VĂN HÓA & THẤU CẢM": "VI. Văn hóa & Thấu cảm",
+            "VII. TỔ CHỨC & PHỐI HỢP": "VII. Tổ chức & Phối hợp",
+            "VIII. LÃNH ĐẠO & TƯ DUY KHÁC BIỆT": "VIII. Lãnh đạo & Tư duy khác biệt",
+            "VIII. LẠNH ĐẠO & TƯ DUY KHÁC BIỆT": "VIII. Lãnh đạo & Tư duy khác biệt"
+        };
+        return viMap[title] || title;
+    } else {
+        const enMap: Record<string, string> = {
+            "I. PERSONAL INTRODUCTION": "I. Personal Introduction",
+            "II. VISION & STRATEGY": "II. Vision & Strategy",
+            "III. MANAGEMENT & TRAINING": "III. Management & Training",
+            "IV. SITUATIONS & CRISIS": "IV. Situations & Crisis",
+            "V. TECHNOLOGY & PROCESS": "V. Technology & Process",
+            "VI. CULTURE & EMPATHY": "VI. Culture & Empathy",
+            "VII. ORGANIZATION & COORDINATION": "VII. Organization & Coordination",
+            "VIII. LEADERSHIP & DIFFERENTIATING MINDSET": "VIII. Leadership & Differentiating Mindset"
+        };
+        return enMap[title] || title;
+    }
+};
+
 const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
     const { t, language } = useI18n();
     const defaultPageData = { 
@@ -475,9 +518,9 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
                                         onClick={() => setSelectedGroup(group)}
                                     >
                                         <div className="category-icon">
-                                            <Icons.FolderIcon size={24} />
+                                            {getCategoryIcon(i)}
                                         </div>
-                                        <span className="category-title">{group.title}</span>
+                                        <span className="category-title">{getCategoryTitle(group.title, language)}</span>
                                     </button>
                                 ))}
                             </div>

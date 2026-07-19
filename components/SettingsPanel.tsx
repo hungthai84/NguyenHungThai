@@ -66,7 +66,7 @@ const VIDEO_WALLPAPERS = [
 ];
 
 const SettingsPage: React.FC<SettingsPageProps> = ({ id }) => {
-    const { t } = useI18n();
+    const { t, language } = useI18n();
     const {
         isSoundOn, setSoundOn,
         isAiVoiceOn, setAiVoiceOn,
@@ -92,6 +92,78 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ id }) => {
         resetToDefault
     } = useTheme();
     const { voices, speak, cancel, isSpeaking } = useSpeechSynthesis();
+    const [savedCard, setSavedCard] = useState<string | null>(null);
+
+    const handleSave = (cardType: string) => {
+        if (cardType === 'sound') {
+            localStorage.setItem('isSoundOn', String(isSoundOn));
+        } else if (cardType === 'voice') {
+            localStorage.setItem('isAiVoiceOn', String(isAiVoiceOn));
+            localStorage.setItem('selectedAiVoiceName', selectedAiVoiceName);
+            localStorage.setItem('aiVoiceRate', String(aiVoiceRate));
+            localStorage.setItem('aiVoicePitch', String(aiVoicePitch));
+            localStorage.setItem('aiVoiceGenderPreferred', genderPreferred);
+        } else if (cardType === 'color') {
+            localStorage.setItem('accentColorType', accentColorType);
+            localStorage.setItem('lightThemeColor', lightThemeColor);
+            localStorage.setItem('darkThemeColor', darkThemeColor);
+        } else if (cardType === 'interface') {
+            localStorage.setItem('themePreset', themePreset);
+            localStorage.setItem('isSidebarDetached', String(isSidebarDetached));
+            localStorage.setItem('isGlassEnabled', String(isGlassEnabled));
+            localStorage.setItem('uiScaleMode', uiScaleMode);
+            localStorage.setItem('uiScaleValue', String(uiScaleValue));
+        } else if (cardType === 'wallpaper') {
+            localStorage.setItem('wallpaper', wallpaper);
+        } else if (cardType === 'transparency') {
+            localStorage.setItem('cardOpacity', String(cardOpacity));
+            localStorage.setItem('sidebarOpacity', String(sidebarOpacity));
+            localStorage.setItem('gridCardOpacity', String(gridCardOpacity));
+            localStorage.setItem('contentOpacity', String(contentOpacity));
+            localStorage.setItem('layoutOpacity', String(layoutOpacity));
+            localStorage.setItem('subComponentOpacity', String(subComponentOpacity));
+        }
+
+        setSavedCard(cardType);
+        setTimeout(() => {
+            setSavedCard(null);
+        }, 2000);
+    };
+
+    const renderSaveButton = (cardType: string) => {
+        const isSaved = savedCard === cardType;
+        return (
+            <button
+                onClick={() => handleSave(cardType)}
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: '5px 12px',
+                    borderRadius: '16px',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    background: isSaved 
+                        ? 'rgba(34, 197, 94, 0.15)' 
+                        : 'rgba(var(--accent-color-rgb), 0.12)',
+                    border: '1px solid',
+                    borderColor: isSaved 
+                        ? 'rgba(34, 197, 94, 0.4)' 
+                        : 'rgba(var(--accent-color-rgb), 0.3)',
+                    color: isSaved ? '#22c55e' : 'var(--accent-color)',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+                    outline: 'none',
+                    userSelect: 'none'
+                }}
+                className="save-settings-btn hover:scale-105 active:scale-95"
+            >
+                {isSaved && <Icons.CheckIcon size={12} />}
+                <span>{isSaved ? (language === 'vi' ? 'Đã lưu' : 'Saved') : (language === 'vi' ? 'Lưu' : 'Save')}</span>
+            </button>
+        );
+    };
 
     const [genderPreferred, setGenderPreferred] = useState<string>(() => {
         return (typeof window !== 'undefined' ? localStorage.getItem('aiVoiceGenderPreferred') : 'female') || 'female';
@@ -161,11 +233,14 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ id }) => {
                         padding: '20px',
                         boxShadow: '0 20px 60px rgba(130,130,255,.15)'
                     }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
-                            <Icons.SpeakerWaveIcon size={20} style={{ color: 'var(--accent-color)' }} />
-                            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
-                                Tính năng Âm thanh
-                            </h3>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px', gap: '10px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <Icons.SpeakerWaveIcon size={20} style={{ color: 'var(--accent-color)' }} />
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
+                                    {language === 'vi' ? 'Tính năng Âm thanh' : 'Sound Settings'}
+                                </h3>
+                            </div>
+                            {renderSaveButton('sound')}
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(128,128,128,0.1)' }}>
                             <div>
@@ -205,11 +280,14 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ id }) => {
                         padding: '20px',
                         boxShadow: '0 20px 60px rgba(130,130,255,.15)'
                     }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
-                            <Icons.BotIcon size={20} style={{ color: 'var(--accent-color)' }} />
-                            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
-                                Giọng nói AI
-                            </h3>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px', gap: '10px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <Icons.BotIcon size={20} style={{ color: 'var(--accent-color)' }} />
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
+                                    {language === 'vi' ? 'Giọng nói AI' : 'AI Voice Settings'}
+                                </h3>
+                            </div>
+                            {renderSaveButton('voice')}
                         </div>
 
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(128,128,128,0.1)' }}>
@@ -363,11 +441,14 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ id }) => {
                         padding: '20px',
                         boxShadow: '0 20px 60px rgba(130,130,255,.15)'
                     }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
-                            <Icons.PaletteIcon size={20} style={{ color: 'var(--accent-color)' }} />
-                            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
-                                Tính năng Màu sắc
-                            </h3>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px', gap: '10px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <Icons.PaletteIcon size={20} style={{ color: 'var(--accent-color)' }} />
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
+                                    {language === 'vi' ? 'Tính năng Màu sắc' : 'Color Customization'}
+                                </h3>
+                            </div>
+                            {renderSaveButton('color')}
                         </div>
 
                         {/* Mode selection option */}
@@ -498,11 +579,14 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ id }) => {
                         padding: '20px',
                         boxShadow: '0 20px 60px rgba(130,130,255,.15)'
                     }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
-                            <Icons.SparklesIcon size={20} style={{ color: 'var(--accent-color)' }} />
-                            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
-                                Thẻ Giao diện
-                            </h3>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px', gap: '10px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <Icons.SparklesIcon size={20} style={{ color: 'var(--accent-color)' }} />
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
+                                    {language === 'vi' ? 'Thẻ Giao diện' : 'Interface & Layout'}
+                                </h3>
+                            </div>
+                            {renderSaveButton('interface')}
                         </div>
 
                         {/* Theme Preset Selection */}
@@ -680,11 +764,14 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ id }) => {
                         padding: '20px',
                         boxShadow: '0 20px 60px rgba(130,130,255,.15)'
                     }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
-                            <Icons.PhotoIcon size={20} style={{ color: 'var(--accent-color)' }} />
-                            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
-                                Hình nền hệ thống
-                            </h3>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px', gap: '10px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <Icons.PhotoIcon size={20} style={{ color: 'var(--accent-color)' }} />
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
+                                    {language === 'vi' ? 'Hình nền hệ thống' : 'System Wallpaper'}
+                                </h3>
+                            </div>
+                            {renderSaveButton('wallpaper')}
                         </div>
 
                         {/* Tabs for wallpaper types */}
@@ -883,11 +970,14 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ id }) => {
                         padding: '20px',
                         boxShadow: '0 20px 60px rgba(130,130,255,.15)'
                     }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                            <Icons.LayersIcon size={20} style={{ color: 'var(--accent-color)' }} />
-                            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
-                                Cài đặt thẻ & Độ trong suốt
-                            </h3>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px', gap: '10px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <Icons.LayersIcon size={20} style={{ color: 'var(--accent-color)' }} />
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, margin: 0 }}>
+                                    {language === 'vi' ? 'Cài đặt thẻ & Độ trong suốt' : 'Opacity & Transparency'}
+                                </h3>
+                            </div>
+                            {renderSaveButton('transparency')}
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', fontSize: '0.85rem', color: 'var(--color-brand-text-secondary)' }}>
                             <span>Chọn hình thức trong suốt</span>

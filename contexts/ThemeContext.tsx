@@ -225,17 +225,14 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     const setIsSidebarDetached = (detached: boolean) => {
         setIsSidebarDetachedState(detached);
-        localStorage.setItem('isSidebarDetached', String(detached));
     };
 
     const setUiScaleMode = (mode: 'auto' | 'manual') => {
         setUiScaleModeState(mode);
-        localStorage.setItem('uiScaleMode', mode);
     };
 
     const setUiScaleValue = (val: number) => {
         setUiScaleValueState(val);
-        localStorage.setItem('uiScaleValue', String(val));
     };
 
     const [themePreset, setThemePresetState] = useState<ThemePreset>('default');
@@ -244,37 +241,62 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     const [currentUiScale, setCurrentUiScale] = useState<number>(1.0);
     
     const resetToDefault = () => {
-        setThemeMode(DEFAULT_SETTINGS.themeMode);
-        setLightThemeColor(DEFAULT_SETTINGS.lightThemeColor);
-        setDarkThemeColor(DEFAULT_SETTINGS.darkThemeColor);
-        setSoundOn(DEFAULT_SETTINGS.isSoundOn);
-        setAiVoiceOn(DEFAULT_SETTINGS.isAiVoiceOn);
-        setSelectedAiVoiceName(DEFAULT_SETTINGS.selectedAiVoiceName);
-        setAiVoicePitch(DEFAULT_SETTINGS.aiVoicePitch);
-        setAiVoiceRate(DEFAULT_SETTINGS.aiVoiceRate);
-        setWallpaper(DEFAULT_SETTINGS.wallpaper);
-        setCardOpacity(DEFAULT_SETTINGS.cardOpacity);
-        setSidebarOpacity(DEFAULT_SETTINGS.sidebarOpacity);
-        setGridCardOpacity(DEFAULT_SETTINGS.gridCardOpacity);
-        setContentOpacity(DEFAULT_SETTINGS.contentOpacity);
-        setLayoutOpacity(DEFAULT_SETTINGS.layoutOpacity);
-        setSubComponentOpacity(DEFAULT_SETTINGS.subComponentOpacity);
-        setIsMirrorOn(DEFAULT_SETTINGS.isMirrorOn);
-        setIs2x2Grid(DEFAULT_SETTINGS.is2x2Grid);
-        setIsGlassEnabled(DEFAULT_SETTINGS.isGlassEnabled);
-        setAccentColorType(DEFAULT_SETTINGS.accentColorType);
-        setThemePreset('default');
-        setIsSidebarDetached(false);
-        setProjectFilter([]);
-        setUiScaleMode('auto');
-        setUiScaleValue(1.0);
+        setThemeModeState(DEFAULT_SETTINGS.themeMode);
+        setLightThemeColorState(DEFAULT_SETTINGS.lightThemeColor);
+        setDarkThemeColorState(DEFAULT_SETTINGS.darkThemeColor);
+        setSoundOnState(DEFAULT_SETTINGS.isSoundOn);
+        setAiVoiceOnState(DEFAULT_SETTINGS.isAiVoiceOn);
+        setSelectedAiVoiceNameState(DEFAULT_SETTINGS.selectedAiVoiceName);
+        setAiVoicePitchState(DEFAULT_SETTINGS.aiVoicePitch);
+        setAiVoiceRateState(DEFAULT_SETTINGS.aiVoiceRate);
+        setWallpaperState(DEFAULT_SETTINGS.wallpaper);
+        setCardOpacityState(DEFAULT_SETTINGS.cardOpacity);
+        setSidebarOpacityState(DEFAULT_SETTINGS.sidebarOpacity);
+        setGridCardOpacityState(DEFAULT_SETTINGS.gridCardOpacity);
+        setContentOpacityState(DEFAULT_SETTINGS.contentOpacity);
+        setLayoutOpacityState(DEFAULT_SETTINGS.layoutOpacity);
+        setSubComponentOpacityState(DEFAULT_SETTINGS.subComponentOpacity);
+        setIsMirrorOnState(DEFAULT_SETTINGS.isMirrorOn);
+        setIs2x2GridState(DEFAULT_SETTINGS.is2x2Grid);
+        setIsGlassEnabledState(DEFAULT_SETTINGS.isGlassEnabled);
+        setAccentColorTypeState(DEFAULT_SETTINGS.accentColorType);
+        setThemePresetState('default');
+        setIsSidebarDetachedState(false);
+        setProjectFilterState([]);
+        setUiScaleModeState('auto');
+        setUiScaleValueState(1.0);
+
+        // Reset localStorage too
+        localStorage.setItem('themeMode', DEFAULT_SETTINGS.themeMode);
+        localStorage.setItem('lightThemeColor', DEFAULT_SETTINGS.lightThemeColor);
+        localStorage.setItem('darkThemeColor', DEFAULT_SETTINGS.darkThemeColor);
+        localStorage.setItem('isSoundOn', String(DEFAULT_SETTINGS.isSoundOn));
+        localStorage.setItem('isAiVoiceOn', String(DEFAULT_SETTINGS.isAiVoiceOn));
+        localStorage.setItem('selectedAiVoiceName', DEFAULT_SETTINGS.selectedAiVoiceName);
+        localStorage.setItem('aiVoicePitch', String(DEFAULT_SETTINGS.aiVoicePitch));
+        localStorage.setItem('aiVoiceRate', String(DEFAULT_SETTINGS.aiVoiceRate));
+        localStorage.setItem('wallpaper', DEFAULT_SETTINGS.wallpaper);
+        localStorage.setItem('cardOpacity', String(DEFAULT_SETTINGS.cardOpacity));
+        localStorage.setItem('sidebarOpacity', String(DEFAULT_SETTINGS.sidebarOpacity));
+        localStorage.setItem('gridCardOpacity', String(DEFAULT_SETTINGS.gridCardOpacity));
+        localStorage.setItem('contentOpacity', String(DEFAULT_SETTINGS.contentOpacity));
+        localStorage.setItem('layoutOpacity', String(DEFAULT_SETTINGS.layoutOpacity));
+        localStorage.setItem('subComponentOpacity', String(DEFAULT_SETTINGS.subComponentOpacity));
+        localStorage.setItem('isMirrorOn', String(DEFAULT_SETTINGS.isMirrorOn));
+        localStorage.setItem('is2x2Grid', String(DEFAULT_SETTINGS.is2x2Grid));
+        localStorage.setItem('isGlassEnabled', String(DEFAULT_SETTINGS.isGlassEnabled));
+        localStorage.setItem('accentColorType', DEFAULT_SETTINGS.accentColorType);
+        localStorage.setItem('themePreset', 'default');
+        localStorage.setItem('isSidebarDetached', 'false');
+        localStorage.setItem('projectFilter', '[]');
+        localStorage.setItem('uiScaleMode', 'auto');
+        localStorage.setItem('uiScaleValue', '1.0');
     };
     
-    // --- Setter Functions that include saving to localStorage ---
+    // --- Setter Functions (state-only for Settings page persistence) ---
 
     const setAccentColorType = (type: 'solid' | 'gradient') => {
         setAccentColorTypeState(type);
-        localStorage.setItem('accentColorType', type);
     };
 
     const setThemeMode = (mode: ThemeMode) => {
@@ -289,39 +311,30 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     const setLightThemeColor = (color: ThemeColor) => {
         setLightThemeColorState(color);
-        localStorage.setItem('lightThemeColor', color);
     };
 
     const setDarkThemeColor = (color: ThemeColor) => {
         setDarkThemeColorState(color);
-        localStorage.setItem('darkThemeColor', color);
     };
-
-    
 
     const setSoundOn = (isOn: boolean) => {
         setSoundOnState(isOn);
-        localStorage.setItem('isSoundOn', String(isOn));
     };
     
     const setAiVoiceOn = (isOn: boolean) => {
         setAiVoiceOnState(isOn);
-        localStorage.setItem('isAiVoiceOn', String(isOn));
     };
 
     const setSelectedAiVoiceName = (name: string) => {
         setSelectedAiVoiceNameState(name);
-        localStorage.setItem('selectedAiVoiceName', name);
     };
 
     const setAiVoicePitch = (pitch: number) => {
         setAiVoicePitchState(pitch);
-        localStorage.setItem('aiVoicePitch', String(pitch));
     };
 
     const setAiVoiceRate = (rate: number) => {
         setAiVoiceRateState(rate);
-        localStorage.setItem('aiVoiceRate', String(rate));
     };
 
     const setProjectFilter = (filter: string[]) => {
@@ -331,56 +344,45 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     const setWallpaper = (wp: WallpaperType) => {
         setWallpaperState(wp);
-        localStorage.setItem('wallpaper', wp);
     };
 
     const setCardOpacity = (opacity: number) => {
         setCardOpacityState(opacity);
-        localStorage.setItem('cardOpacity', String(opacity));
     };
 
     const setSidebarOpacity = (opacity: number) => {
         setSidebarOpacityState(opacity);
-        localStorage.setItem('sidebarOpacity', String(opacity));
     };
 
     const setGridCardOpacity = (opacity: number) => {
         setGridCardOpacityState(opacity);
-        localStorage.setItem('gridCardOpacity', String(opacity));
     };
 
     const setContentOpacity = (opacity: number) => {
         setContentOpacityState(opacity);
-        localStorage.setItem('contentOpacity', String(opacity));
     };
 
     const setLayoutOpacity = (opacity: number) => {
         setLayoutOpacityState(opacity);
-        localStorage.setItem('layoutOpacity', String(opacity));
     };
 
     const setSubComponentOpacity = (opacity: number) => {
         setSubComponentOpacityState(opacity);
-        localStorage.setItem('subComponentOpacity', String(opacity));
     };
 
     const setIsMirrorOn = (isOn: boolean) => {
         setIsMirrorOnState(isOn);
-        localStorage.setItem('isMirrorOn', String(isOn));
     };
 
     const setIs2x2Grid = (isOn: boolean) => {
         setIs2x2GridState(isOn);
-        localStorage.setItem('is2x2Grid', String(isOn));
     };
 
     const setIsGlassEnabled = (isEnabled: boolean) => {
         setIsGlassEnabledState(isEnabled);
-        localStorage.setItem('isGlassEnabled', String(isEnabled));
     };
     const setThemePreset = (preset: ThemePreset) => {
         setThemePresetState(preset);
-        localStorage.setItem('themePreset', preset);
         // Apply preset logic here
         switch (preset) {
             case 'glass-fluent-hybrid':

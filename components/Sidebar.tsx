@@ -347,7 +347,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                                         )}
                                     </a>
 
-                                    {tooltipData && (
+                                    {isCollapsed && tooltipData && (
                                         <div 
                                             className="sidebar-tooltip"
                                             style={{

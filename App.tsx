@@ -71,8 +71,84 @@ const baseNavStructure: {
 ];
 
 const App: React.FC = () => {
-    const { t } = useI18n();
+    const { t, language } = useI18n();
     const { isSoundOn, wallpaper } = useTheme();
+    const [hoveredRightIcon, setHoveredRightIcon] = useState<string | null>(null);
+
+    const renderRightTooltip = (key: string, titleVi: string, titleEn: string, textVi: string, textEn: string, Icon: React.FC<any>, color: string) => {
+        if (hoveredRightIcon !== key) return null;
+        return (
+            <div 
+                className="right-panel-tooltip animate-fade-in"
+                style={{
+                    position: 'absolute',
+                    right: '55px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    zIndex: 999999,
+                    background: 'var(--sidebar-bg, rgba(23, 23, 37, 0.95))',
+                    border: 'var(--color-brand-glass-border, 1px solid rgba(255, 255, 255, 0.1))',
+                    borderRadius: '15px',
+                    padding: '1rem',
+                    boxShadow: 'var(--card-box-shadow, 0 10px 30px rgba(0,0,0,0.25))',
+                    width: '280px',
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    pointerEvents: 'none'
+                }}
+            >
+                <div className="tooltip-inner" style={{ position: 'relative' }}>
+                    <div className="tooltip-header" style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.75rem',
+                        marginBottom: '0.75rem'
+                    }}>
+                        <div className="tooltip-icon-wrapper" style={{
+                            width: '2.25rem',
+                            height: '2.25rem',
+                            borderRadius: '50%',
+                            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                            border: `1px solid ${color}`,
+                            color: color,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0
+                        }}>
+                            <Icon size={18} />
+                        </div>
+                        <h3 style={{
+                            margin: 0,
+                            fontSize: '0.9375rem',
+                            fontWeight: 'bold',
+                            color: 'var(--color-brand-text-primary, #ffffff)',
+                            textAlign: 'left'
+                        }}>{language === 'vi' ? titleVi : titleEn}</h3>
+                    </div>
+                    <p style={{
+                        margin: 0,
+                        fontSize: '0.8rem',
+                        lineHeight: '1.4',
+                        color: 'var(--color-brand-text-secondary, #94a3b8)',
+                        textAlign: 'left',
+                        whiteSpace: 'normal',
+                        overflow: 'visible',
+                    }}>{language === 'vi' ? textVi : textEn}</p>
+                    <div className="sidebar-tooltip-arrow" style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '100%',
+                        transform: 'translateY(-50%)',
+                        borderWidth: '6px',
+                        borderStyle: 'solid',
+                        borderColor: 'transparent transparent transparent var(--sidebar-bg, rgba(23, 23, 37, 0.95))',
+                        marginRight: '-12px'
+                    }}></div>
+                </div>
+            </div>
+        );
+    };
 
     const { allPages, pageKeys, mainPages, mainPageKeys } = React.useMemo(() => {
         const projects = t.projectsPage?.projects || [];
@@ -448,23 +524,44 @@ const App: React.FC = () => {
         }
     };
 
-        const PageNavButtons = () => {
+    const PageNavButtons = () => {
         return (
             <>
                 {canGoPrev && (
-                    <button onClick={handlePrevPage} className="header-icon-button page-nav-button relative flex items-center justify-center overflow-hidden" aria-label="Previous Page" title="Trang trước" style={{ width: '48px', height: '48px', border: '1px solid var(--card-border)', borderRadius: '50%', background: 'var(--card-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur-webkit)' }}>
-                        <Icons.ChevronUpIcon size={24} className="z-10" />
-                    </button>
+                    <div 
+                        className="relative"
+                        onMouseEnter={() => setHoveredRightIcon('prevPage')}
+                        onMouseLeave={() => setHoveredRightIcon(null)}
+                    >
+                        <button onClick={handlePrevPage} className="header-icon-button page-nav-button relative flex items-center justify-center overflow-hidden" aria-label="Previous Page" style={{ width: '48px', height: '48px', border: '1px solid var(--card-border)', borderRadius: '50%', background: 'var(--card-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur-webkit)' }}>
+                            <Icons.ChevronUpIcon size={24} className="z-10" />
+                        </button>
+                        {renderRightTooltip('prevPage', 'Trang trước', 'Previous Page', 'Quay lại mục nội dung phía trước.', 'Go back to the previous section.', Icons.ChevronUpIcon, 'var(--accent-color)')}
+                    </div>
                 )}
                 {isOnMainPage && (
                     isLastMainPage ? (
-                        <button onClick={handleGoToTop} className="header-icon-button page-nav-button relative flex items-center justify-center overflow-hidden" aria-label="Back to Top" title="Về đầu trang" style={{ width: '48px', height: '48px', border: '1px solid var(--card-border)', borderRadius: '50%', background: 'var(--card-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur-webkit)' }}>
-                            <Icons.ArrowUpIcon size={24} className="z-10" />
-                        </button>
+                        <div 
+                            className="relative"
+                            onMouseEnter={() => setHoveredRightIcon('goToTop')}
+                            onMouseLeave={() => setHoveredRightIcon(null)}
+                        >
+                            <button onClick={handleGoToTop} className="header-icon-button page-nav-button relative flex items-center justify-center overflow-hidden" aria-label="Back to Top" style={{ width: '48px', height: '48px', border: '1px solid var(--card-border)', borderRadius: '50%', background: 'var(--card-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur-webkit)' }}>
+                                <Icons.ArrowUpIcon size={24} className="z-10" />
+                            </button>
+                            {renderRightTooltip('goToTop', 'Về đầu trang', 'Back to Top', 'Quay trở lại trang chủ giới thiệu.', 'Return to the home introduction section.', Icons.ArrowUpIcon, 'var(--accent-color)')}
+                        </div>
                     ) : (
-                        <button onClick={handleNextPage} className="header-icon-button page-nav-button relative flex items-center justify-center overflow-hidden" aria-label="Next Page" title="Trang sau" style={{ width: '48px', height: '48px', border: '1px solid var(--card-border)', borderRadius: '50%', background: 'var(--card-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur-webkit)' }}>
-                            <Icons.ChevronDownIcon size={24} className="z-10" />
-                        </button>
+                        <div 
+                            className="relative"
+                            onMouseEnter={() => setHoveredRightIcon('nextPage')}
+                            onMouseLeave={() => setHoveredRightIcon(null)}
+                        >
+                            <button onClick={handleNextPage} className="header-icon-button page-nav-button relative flex items-center justify-center overflow-hidden" aria-label="Next Page" style={{ width: '48px', height: '48px', border: '1px solid var(--card-border)', borderRadius: '50%', background: 'var(--card-bg)', backdropFilter: 'var(--glass-blur)', WebkitBackdropFilter: 'var(--glass-blur-webkit)' }}>
+                                <Icons.ChevronDownIcon size={24} className="z-10" />
+                            </button>
+                            {renderRightTooltip('nextPage', 'Trang sau', 'Next Page', 'Chuyển sang mục nội dung tiếp theo.', 'Proceed to the next section.', Icons.ChevronDownIcon, 'var(--accent-color)')}
+                        </div>
                     )
                 )}
             </>
@@ -613,45 +710,69 @@ const App: React.FC = () => {
                              <ClockWeatherWidget />
                             <div className="right-panel-middle-controls" style={{ marginBottom: "0px", marginRight: "0px", marginTop: "30px" }}>
                                 {/* Printer Icon */}
-                                <button 
-                                    onClick={() => setIsPrintViewOpen(true)} 
-                                    className="header-icon-button control-cv shadow-sm hover:shadow-md transition-all" 
-                                    aria-label="View or download CV"
-                                    title="Xem & In CV"
+                                <div 
+                                    className="relative"
+                                    onMouseEnter={() => setHoveredKey && setHoveredKey !== undefined ? null : setHoveredRightIcon('printer')}
+                                    onMouseLeave={() => setHoveredRightIcon(null)}
                                 >
-                                    <Icons.PrinterIcon size={22} />
-                                </button>
+                                    <button 
+                                        onClick={() => setIsPrintViewOpen(true)} 
+                                        className="header-icon-button control-cv shadow-sm hover:shadow-md transition-all" 
+                                        aria-label="View or download CV"
+                                    >
+                                        <Icons.PrinterIcon size={22} />
+                                    </button>
+                                    {renderRightTooltip('printer', 'In hoặc lưu PDF', 'Print or Save PDF', 'Tải xuống hoặc in sơ yếu lý lịch đầy đủ, chuyên nghiệp trực tiếp từ trang web.', 'Download or print the complete, professional resume directly from the website.', Icons.PrinterIcon, '#0284c7')}
+                                </div>
                                 
                                 {/* Calendar Days Icon */}
-                                <button 
-                                    onClick={() => handleSetPage('scheduler')} 
-                                    className={`header-icon-button control-scheduler shadow-sm hover:shadow-md transition-all ${pageKeys[activeIndex] === 'scheduler' ? 'active ring-2 ring-[var(--accent-color)]' : ''}`} 
-                                    aria-label="Lên lịch hẹn"
-                                    title="Lên Lịch Hẹn"
+                                <div 
+                                    className="relative"
+                                    onMouseEnter={() => setHoveredRightIcon('scheduler')}
+                                    onMouseLeave={() => setHoveredRightIcon(null)}
                                 >
-                                    <Icons.CalendarDaysIcon size={22} />
-                                </button>
+                                    <button 
+                                        onClick={() => handleSetPage('scheduler')} 
+                                        className={`header-icon-button control-scheduler shadow-sm hover:shadow-md transition-all ${pageKeys[activeIndex] === 'scheduler' ? 'active ring-2 ring-[var(--accent-color)]' : ''}`} 
+                                        aria-label="Lên lịch hẹn"
+                                    >
+                                        <Icons.CalendarDaysIcon size={22} />
+                                    </button>
+                                    {renderRightTooltip('scheduler', 'Đặt lịch hẹn', 'Schedule Meeting', 'Liên hệ trực tiếp và lên lịch hẹn trao đổi công việc nhanh chóng.', 'Contact directly and schedule a quick business discussion meeting.', Icons.CalendarDaysIcon, '#10b981')}
+                                </div>
 
                                 {/* AI Chat Icon */}
-                                <button 
-                                    onClick={() => handleSetPage('aiChat')} 
-                                    className={`header-icon-button control-ai shadow-sm hover:shadow-md transition-all ${pageKeys[activeIndex] === 'aiChat' ? 'active ring-2 ring-[var(--accent-color)]' : ''}`} 
-                                    aria-label="Chat AI"
-                                    title="Trợ Lý AI"
+                                <div 
+                                    className="relative"
+                                    onMouseEnter={() => setHoveredRightIcon('aiChat')}
+                                    onMouseLeave={() => setHoveredRightIcon(null)}
                                 >
-                                    <Icons.BotIcon size={22} />
-                                </button>
+                                    <button 
+                                        onClick={() => handleSetPage('aiChat')} 
+                                        className={`header-icon-button control-ai shadow-sm hover:shadow-md transition-all ${pageKeys[activeIndex] === 'aiChat' ? 'active ring-2 ring-[var(--accent-color)]' : ''}`} 
+                                        aria-label="Chat AI"
+                                    >
+                                        <Icons.BotIcon size={22} />
+                                    </button>
+                                    {renderRightTooltip('aiChat', 'Trợ lý AI', 'AI Assistant', 'Trò chuyện và hỏi đáp nhanh về kinh nghiệm, năng lực của tôi.', 'Chat and ask quick questions about my experience and competencies.', Icons.BotIcon, '#6366f1')}
+                                </div>
 
                                 {/* Zalo Link */}
-                                <a 
-                                    href="https://zalo.me/0909097882" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    className="header-icon-button control-zalo"
-                                    title="Trực Tiếp Zalo"
+                                <div 
+                                    className="relative"
+                                    onMouseEnter={() => setHoveredRightIcon('zalo')}
+                                    onMouseLeave={() => setHoveredRightIcon(null)}
                                 >
-                                    <Icons.MessageCircleIcon size={24} />
-                                </a>
+                                    <a 
+                                        href="https://zalo.me/0909097882" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="header-icon-button control-zalo"
+                                    >
+                                        <Icons.MessageCircleIcon size={24} />
+                                    </a>
+                                    {renderRightTooltip('zalo', 'Trực tiếp Zalo', 'Direct Zalo', 'Kết nối qua ứng dụng Zalo để thảo luận và phản hồi nhanh chóng.', 'Connect via Zalo app for instant response and discussions.', Icons.MessageCircleIcon, '#007AFF')}
+                                </div>
                             </div>
                     </div>
                         <div className="right-panel-bottom-controls">

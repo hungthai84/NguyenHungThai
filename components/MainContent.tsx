@@ -309,27 +309,31 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                         }
 
                         .hero-name-text {
-                            font-size: 3.5rem;
-                            font-weight: 800;
-                            line-height: 1.1;
+                            font-size: var(--font-h1) !important;
+                            font-weight: var(--fw-bold) !important;
+                            line-height: var(--line-tight, 1.15);
                             letter-spacing: -0.02em;
                         }
 
                         .hero-intro-text {
-                            font-size: 1.25rem;
-                            font-weight: 500;
+                            font-size: clamp(17px, 1.5vw, 18px) !important;
+                            font-weight: var(--fw-normal) !important;
                             margin-bottom: 0.5rem;
                             color: white;
                             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
                         }
 
+                        .welcome-msg {
+                            font-size: clamp(13px, 1.2vw, 14px) !important;
+                            font-weight: var(--fw-semibold) !important;
+                        }
+
+                        .hero-typed-text-container {
+                            font-size: var(--font-subtitle) !important;
+                            font-weight: var(--fw-medium) !important;
+                        }
+
                         @media (max-width: 767px) {
-                            .hero-name-text {
-                                font-size: 2.2rem;
-                            }
-                            .hero-intro-text {
-                                font-size: 1rem;
-                            }
                             .hero-name-row {
                                 gap: 12px !important;
                                 justify-content: center !important;
@@ -338,12 +342,6 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                             .home-hero-content {
                                 align-items: center;
                                 text-align: center;
-                            }
-                        }
-
-                        @media (max-width: 480px) {
-                            .hero-name-text {
-                                font-size: 1.8rem;
                             }
                         }
 
@@ -358,9 +356,6 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                             }
                             .premium-sound-toggle {
                                 width: 44px;
-                            }
-                            .premium-btn-text {
-                                font-size: 0.95rem;
                             }
                             .premium-main-toggle {
                                 gap: 8px;
@@ -393,7 +388,7 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                         <>
                             <div className="home-hero-content" style={{ display: "flex", flexDirection: "column", gap: "0px", width: "100%" }}>
                                 {welcomeMessage && (
-                                    <div className="welcome-msg text-xl md:text-2xl font-medium text-white/90 mb-3 drop-shadow-md tracking-wide">
+                                    <div className="welcome-msg text-white/90 mb-3 drop-shadow-md tracking-wide">
                                         {welcomeMessage}
                                     </div>
                                 )}

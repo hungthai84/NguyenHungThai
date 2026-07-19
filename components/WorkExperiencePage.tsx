@@ -90,23 +90,24 @@ const JobAchievementCard: React.FC<JobAchievementCardProps> = ({
         className="job-achievement-card-header"
         style={{
           padding: "0 0.5rem",
-          height: "18px",
           display: "flex",
-          alignItems: "center",
-          gap: "0.4rem",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: "4px",
+          minHeight: "80px",
         }}
       >
         <span
-          className="job-achievement-card-label"
-          style={{ fontSize: "13.8924px", lineHeight: "1" }}
-        >
-          {achievement.label}
-        </span>
-        <span
           className="job-achievement-card-value"
-          style={{ fontSize: "13.8924px", lineHeight: "1" }}
+          style={{ fontSize: "48px", fontWeight: 700, color: "var(--achievement-color)", lineHeight: "1" }}
         >
           {achievement.value}%
+        </span>
+        <span
+          className="job-achievement-card-label"
+          style={{ fontSize: "15px", fontWeight: 500, color: "var(--color-brand-text-secondary)", lineHeight: "1.2" }}
+        >
+          {achievement.label}
         </span>
       </div>
       <div

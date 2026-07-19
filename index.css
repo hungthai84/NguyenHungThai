@@ -11,6 +11,35 @@
   --warning: #FFA45A;
   --danger: #FF6B81;
   --primary-gradient: linear-gradient(135deg, #66C4FF, #8A5CF6, #FF63C9);
+
+  /* Typography Design Tokens */
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-base: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+
+  --font-h5: 24px;
+  --font-h4: 32px;
+  --font-h3: 44px;
+  --font-h2: 56px;
+  --font-h1: 64px;
+
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --line-tight: 1.15;
+  --line-normal: 1.4;
+  --line-body: 1.7;
+
+  /* Responsive clamp typography */
+  --font-h1: clamp(42px, 5vw, 64px);
+  --font-h2: clamp(36px, 4vw, 56px);
+  --font-h3: clamp(30px, 3vw, 44px);
+  --font-body: clamp(16px, 1.2vw, 18px);
+  --font-subtitle: clamp(20px, 2vw, 24px);
 }
 
 html.dark {
@@ -3091,21 +3120,45 @@ html.dark.theme-fluent-2 select {
     }
 }
 
-body, p, span, li, button, input, select, textarea, .info-item-value, .info-item-text, .traits-list-item, .job-achievement-card-value {
-    font-size: 13.372px !important;
+body, p, span, li, button, input, select, textarea, .info-item-value, .info-item-text, .traits-list-item {
+    font-size: var(--font-body) !important;
+    font-weight: var(--fw-normal) !important;
+    line-height: var(--line-body) !important;
 }
 
-h1, h2, h3, h4, h5, h6, .section-title, .project-title, .category-title, .personal-info-title, .job-header-info h3 {
-    font-size: revert !important;
+h1, .hero-name-text {
+    font-size: var(--font-h1) !important;
+    font-weight: var(--fw-bold) !important;
+    line-height: var(--line-tight) !important;
+}
+
+h2, .section-title {
+    font-size: var(--font-h3) !important; /* H2: 44px */
+    font-weight: var(--fw-bold) !important;
+    line-height: var(--line-tight) !important;
+}
+
+h3 {
+    font-size: var(--font-h4) !important; /* H3: 32px */
+    font-weight: var(--fw-semibold) !important;
+    line-height: var(--line-tight) !important;
+}
+
+h4, .card-title, .personal-info-title {
+    font-size: var(--font-h5) !important; /* H4 / Card Title: 24px */
+    font-weight: var(--fw-semibold) !important;
+    line-height: var(--line-tight) !important;
 }
 
 .cover-letter-inner-card, .cover-letter-inner-card * {
-    font-size: 13px !important;
+    font-size: var(--font-body) !important;
+    line-height: var(--line-body) !important;
 }
 
 .about-bio-text-card, .about-bio-text-card *,
 .about-personal-info-card, .about-personal-info-card * {
-    font-size: 13px !important;
+    font-size: var(--font-body) !important;
+    line-height: var(--line-body) !important;
 }
 
 /* Dynamic screen scale / zoom */
@@ -3172,13 +3225,14 @@ html.dark .badge-content svg {
 }
 
 /* Premium Glassmorphic Hero Typography Overrides */
+/* Hero Section Sizing overrides */
 .home-hero-content .welcome-msg,
 .welcome-msg {
     font-family: 'Outfit', 'Inter', sans-serif !important;
-    font-weight: 350 !important;
+    font-weight: var(--fw-semibold) !important; /* 600 */
     letter-spacing: 0.08em !important;
     text-transform: uppercase !important;
-    font-size: 0.95rem !important;
+    font-size: clamp(13px, 1.2vw, 14px) !important; /* 14px desktop/tablet, 13px mobile */
     color: rgba(255, 255, 255, 0.8) !important;
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
     margin-bottom: 0.75rem !important;
@@ -3186,8 +3240,8 @@ html.dark .badge-content svg {
 
 .hero-intro-text {
     font-family: 'Outfit', 'Inter', sans-serif !important;
-    font-weight: 400 !important;
-    font-size: 1.4rem !important;
+    font-weight: var(--fw-normal) !important; /* 400 */
+    font-size: clamp(17px, 1.5vw, 18px) !important; /* 18px desktop/tablet, 17px mobile */
     color: #ffffff !important;
     opacity: 0.85 !important;
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
@@ -3196,8 +3250,8 @@ html.dark .badge-content svg {
 
 .home-hero-content h1.hero-name-text {
     font-family: 'Outfit', 'Inter', sans-serif !important;
-    font-weight: 800 !important;
-    font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
+    font-weight: var(--fw-bold) !important; /* 700 */
+    font-size: var(--font-h1) !important; /* 64px desktop, 56px tablet, 42px mobile */
     background: linear-gradient(135deg, #ffffff 30%, #f1f5f9 70%, rgba(255,255,255,0.7) 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
@@ -3208,8 +3262,8 @@ html.dark .badge-content svg {
 
 .home-hero-content h2.hero-typed-text-container {
     font-family: 'Outfit', 'Inter', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: clamp(1.3rem, 3vw, 2.2rem) !important;
+    font-weight: var(--fw-medium) !important; /* 500 */
+    font-size: var(--font-subtitle) !important; /* 24px desktop, 22px tablet, 20px mobile */
     color: var(--accent-color, #38bdf8) !important;
     text-shadow: 0 0 15px rgba(56, 189, 248, 0.35) !important;
     letter-spacing: -0.01em !important;
@@ -3218,8 +3272,8 @@ html.dark .badge-content svg {
 
 .glass-tagline {
     font-family: 'Outfit', 'Inter', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: clamp(1.3rem, 3vw, 2.2rem) !important;
+    font-weight: var(--fw-medium) !important; /* 500 */
+    font-size: var(--font-subtitle) !important; /* 24px desktop, 22px tablet, 20px mobile */
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.25) !important;
     letter-spacing: -0.01em !important;
 }
@@ -3227,7 +3281,71 @@ html.dark .badge-content svg {
 .hero-typed-text-container .typed-cursor {
     color: var(--accent-color, #38bdf8) !important;
     text-shadow: 0 0 12px rgba(56, 189, 248, 0.5) !important;
-    font-weight: 600 !important;
+    font-weight: var(--fw-semibold) !important;
+}
+
+.premium-btn-text {
+    font-size: clamp(15px, 1.2vw, 16px) !important; /* 16px desktop/tablet, 15px mobile */
+    font-weight: var(--fw-semibold) !important; /* 600 */
+}
+
+/* Card Glass */
+.info-card .card-title, .info-card h4, .info-card .personal-info-title {
+    font-size: var(--font-h5) !important; /* 24px */
+    font-weight: var(--fw-semibold) !important; /* 600 */
+}
+
+.info-card p, .info-card .info-item-value, .info-card .about-bio-and-video-container {
+    font-size: var(--font-base) !important; /* 16px */
+    font-weight: var(--fw-normal) !important; /* 400 */
+}
+
+.info-card svg, .info-card .info-item-icon {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+/* Timeline */
+.year-text, .job-date {
+    font-size: var(--font-lg) !important; /* 18px */
+    font-weight: var(--fw-bold) !important; /* 700 */
+}
+
+.job-header-info h4, .print-job-item h4 {
+    font-size: 22px !important; /* 22px */
+    font-weight: var(--fw-semibold) !important; /* 600 */
+}
+
+.job-card p, .popup-responsibilities li, .print-job-item p, .print-job-item li {
+    font-size: var(--font-base) !important; /* 16px */
+    font-weight: var(--fw-normal) !important; /* 400 */
+}
+
+/* Thống kê (Stats) */
+.stat-number, .stat-value, .job-achievement-card-value {
+    font-size: 48px !important; /* 48px */
+    font-weight: var(--fw-bold) !important; /* 700 */
+}
+
+.stat-label, .job-achievement-card-label {
+    font-size: 15px !important; /* 15px */
+    font-weight: var(--fw-medium) !important; /* 500 */
+}
+
+/* Footer typography spec */
+.sidebar-footer, footer, .site-footer {
+    font-size: 15px !important; /* 15px */
+    font-weight: var(--fw-normal) !important; /* 400 */
+}
+
+.sidebar-footer h5, .sidebar-footer h6, footer h5, footer h6, .site-footer h5, .site-footer h6, .footer-title {
+    font-size: 18px !important; /* 18px */
+    font-weight: var(--fw-semibold) !important; /* 600 */
+}
+
+.sidebar-footer .copyright, footer .copyright, .site-footer .copyright, .footer-copyright {
+    font-size: 14px !important; /* 14px */
+    font-weight: var(--fw-normal) !important; /* 400 */
 }
 
 /* Skills Page Font Size Adjustment */
@@ -3237,6 +3355,27 @@ html.dark .badge-content svg {
 
 .skill-item-v2 span {
     font-size: 13px !important;
+}
+
+/* General Typography helper classes */
+.body-large {
+    font-size: var(--font-lg) !important; /* 18px */
+    font-weight: var(--fw-normal) !important;
+}
+
+.body-regular {
+    font-size: var(--font-base) !important; /* 16px */
+    font-weight: var(--fw-normal) !important;
+}
+
+.caption-text {
+    font-size: var(--font-sm) !important; /* 14px */
+    font-weight: var(--fw-normal) !important;
+}
+
+.metadata-text {
+    font-size: var(--font-xs) !important; /* 12px */
+    font-weight: var(--fw-normal) !important;
 }
 
 

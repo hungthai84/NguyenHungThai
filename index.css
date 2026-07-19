@@ -3126,28 +3126,99 @@ body, p, span, li, button, input, select, textarea, .info-item-value, .info-item
     line-height: var(--line-body) !important;
 }
 
-h1, .hero-name-text {
-    font-size: var(--font-h1) !important;
-    font-weight: var(--fw-bold) !important;
-    line-height: var(--line-tight) !important;
+/* ================================================================= */
+/* TYPOGRAPHY
+/* ================================================================= */
+h1, h2, h3, h4, h5, h6, .section-title, .card-title, .personal-info-title {
+    color: #33303E;
+    font-family: "Poppins", "Outfit", "Inter", sans-serif;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6,
+html.dark .section-title, html.dark .card-title, html.dark .personal-info-title {
+    color: var(--text) !important;
+}
+
+h1 {
+    font-size: 36px !important;
 }
 
 h2, .section-title {
-    font-size: var(--font-h3) !important; /* H2: 44px */
-    font-weight: var(--fw-bold) !important;
-    line-height: var(--line-tight) !important;
+    font-size: 28px !important;
 }
 
 h3 {
-    font-size: var(--font-h4) !important; /* H3: 32px */
-    font-weight: var(--fw-semibold) !important;
-    line-height: var(--line-tight) !important;
+    font-size: 24px !important;
 }
 
 h4, .card-title, .personal-info-title {
-    font-size: var(--font-h5) !important; /* H4 / Card Title: 24px */
-    font-weight: var(--fw-semibold) !important;
-    line-height: var(--line-tight) !important;
+    font-size: 18px !important;
+}
+
+a {
+    color: #FF6525 !important;
+    outline: 0;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #33303E !important;
+    text-decoration: none;
+}
+
+html.dark a:hover {
+    color: var(--text) !important;
+}
+
+a:focus {
+    outline: 0;
+}
+
+ul li {
+    list-style-type: circle;
+}
+
+blockquote {
+    padding: 20px 20px !important;
+    margin: 0 0 20px !important;
+    font-size: 16px !important;
+    background: #F7F7F7 !important;
+    border-radius: 10px !important;
+}
+
+html.dark blockquote {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text) !important;
+}
+
+blockquote p {
+    line-height: 1.6 !important;
+}
+
+/* === Pre === */
+pre {
+    display: block !important;
+    padding: 9.5px !important;
+    margin: 0 0 10px !important;
+    font-size: 13px !important;
+    line-height: 1.42857143 !important;
+    color: #333 !important;
+    word-break: break-all !important;
+    word-wrap: break-word !important;
+    background-color: #f5f5f5 !important;
+    border: 1px solid #ccc !important;
+    border-radius: 0 !important;
+}
+
+html.dark pre {
+    color: #f8fafc !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .cover-letter-inner-card, .cover-letter-inner-card * {

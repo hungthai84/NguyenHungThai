@@ -158,7 +158,8 @@ const JobCardItem: React.FC<{
       tabIndex={0}
       aria-label={`Xem chi tiết kinh nghiệm: ${job.title} tại ${job.company}`}
     >
-      <div className="project-card-new-image relative w-full aspect-video overflow-hidden shrink-0 bg-slate-900/40">
+      {/* Banner Image: Hidden on mobile, shown on tablet/desktop */}
+      <div className="project-card-new-image relative w-full aspect-video overflow-hidden shrink-0 bg-slate-900/40 hidden sm:block">
         <OptimizedImage
           src={job.images?.[0] || job.logoUrl}
           alt={job.company}
@@ -210,14 +211,27 @@ const JobCardItem: React.FC<{
         </div>
       </div>
 
-      <div className="project-card-new-content relative flex flex-col flex-1 p-4">
-        <h4 className="project-card-new-title m-0 mb-1 pr-2 font-bold text-[16px] leading-[1.3] line-clamp-2" style={{ color: "var(--text-primary)" }}>
+      <div className="project-card-new-content relative flex flex-col flex-1 p-3 sm:p-4">
+        {/* Mobile-Only Header: Shown when banner is hidden */}
+        <div className="flex items-center gap-2.5 sm:hidden mb-2.5">
+          <img 
+            src={job.logoUrl} 
+            alt={job.company} 
+            className="w-9 h-9 rounded-full object-cover border border-white/20 bg-white/90 p-0.5 shrink-0"
+          />
+          <div className="min-w-0 flex-1">
+            <h5 className="font-bold text-[12.5px] leading-tight truncate" style={{ color: "var(--text-primary)" }}>{job.company}</h5>
+            <span className="text-[10px]" style={{ color: "var(--text-secondary)" }}>{job.period}</span>
+          </div>
+        </div>
+
+        <h4 className="project-card-new-title m-0 mb-1 pr-2 font-bold text-[14.5px] sm:text-[16px] leading-[1.3] line-clamp-2" style={{ color: "var(--text-primary)" }}>
           <span className="project-card-new-id mr-1" style={{ color: accentColor }}>{idx + 1}.</span>
           {job.title}
         </h4>
 
-        {/* Metadata Row */}
-        <div className="flex flex-wrap items-center gap-2 mb-2.5 text-xs">
+        {/* Metadata Row: Hidden on mobile (since header shows info) */}
+        <div className="hidden sm:flex flex-wrap items-center gap-2 mb-2.5 text-xs">
           <span
             className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-white shadow-sm"
             style={{ backgroundColor: accentColor }}
@@ -233,22 +247,22 @@ const JobCardItem: React.FC<{
         </div>
 
         {/* Responsibilities Preview */}
-        <div className="space-y-1.5 mb-3 flex-1">
+        <div className="space-y-1 sm:space-y-1.5 mb-2.5 sm:mb-3 flex-1">
           {job.responsibilities.slice(0, 2).map((resp, rIdx) => (
-            <div key={rIdx} className="flex items-start gap-2 text-[13px] leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-              <Icons.CheckIcon size={13} className="text-emerald-400 shrink-0 mt-1" />
-              <span className="line-clamp-2">{resp}</span>
+            <div key={rIdx} className="flex items-start gap-1.5 sm:gap-2 text-[12px] sm:text-[13px] leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              <Icons.CheckIcon size={12} className="text-emerald-400 shrink-0 mt-1" />
+              <span className="line-clamp-1 sm:line-clamp-2">{resp}</span>
             </div>
           ))}
         </div>
 
         {/* Achievements / Footer Hashtags */}
         {job.achievements && job.achievements.length > 0 && (
-          <div className="mt-auto pt-2.5 border-t border-white/10 dark:border-white/5 flex flex-wrap gap-1.5">
+          <div className="mt-auto pt-2 sm:pt-2.5 border-t border-white/10 dark:border-white/5 flex flex-wrap gap-1 sm:gap-1.5">
             {job.achievements.map((ach, aIdx) => (
               <span
                 key={aIdx}
-                className="text-[11px] px-2 py-0.5 font-medium rounded bg-[var(--accent-color)]/10 text-[var(--accent-color)] border border-[var(--accent-color)]/20 inline-flex items-center gap-1"
+                className="text-[10px] sm:text-[11px] px-1.5 sm:px-2 py-0.5 font-medium rounded bg-[var(--accent-color)]/10 text-[var(--accent-color)] border border-[var(--accent-color)]/20 inline-flex items-center gap-1"
               >
                 <Icons.TrophyIcon size={10} className="text-amber-400" />
                 {ach.label}: {ach.value}%

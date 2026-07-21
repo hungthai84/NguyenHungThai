@@ -1104,8 +1104,13 @@ const WorkExperiencePage: React.FC<WorkExperiencePageProps> = ({
 
           {viewMode === "card" ? (
             <div
-              className="work-experience-cards-view grid grid-cols-1 md:grid-cols-2 gap-6 overflow-y-auto no-scrollbar pb-8 px-6"
-              style={{ flex: 1, minHeight: 0 }}
+              className="work-experience-cards-view grid grid-cols-2 grid-rows-4 gap-6 overflow-y-auto no-scrollbar pb-8 px-6"
+              style={{ 
+                flex: 1, 
+                minHeight: 0,
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gridTemplateRows: 'repeat(4, auto)'
+              }}
             >
               {filteredJobs.length === 0 ? (
                 <div className="col-span-full flex flex-col items-center justify-center p-12 text-white/50" style={{ fontFamily: "'Play', sans-serif" }}>

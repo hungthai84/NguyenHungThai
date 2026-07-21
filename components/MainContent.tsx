@@ -425,7 +425,6 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle, onNavigate
 
                     {!isIntroPlaying && (
                         <div className="top-right-actions flex items-center gap-3" style={{ position: 'absolute', top: '24px', right: '24px', zIndex: 1000 }}>
-                            <LanguageSwitcher />
                             <ThemeButton />
                         </div>
                     )}

@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+@import "tailwindcss";
 
 /*--------------------
 Leaderboard
@@ -3865,7 +3865,6 @@ html.dark .info-card.is-settings {
 
 html,body {
   width: 100%;
-  min-
   overflow:hidden;
   min-height: 99vh;
 }

@@ -8,46 +8,60 @@ const assetsDir = path.join(distDir, 'assets');
 const indexPath = path.join(distDir, 'index.html');
 let htmlContent = fs.readFileSync(indexPath, 'utf8');
 
-// 2. Find the js file in dist/assets
+// 2. Find and inline CSS files
 const files = fs.readdirSync(assetsDir);
-const jsFile = files.find(file => file.endsWith('.js'));
+const cssFiles = files.filter(file => file.endsWith('.css'));
+
+if (cssFiles.length > 0) {
+  cssFiles.forEach(cssFile => {
+    console.log(`Found CSS bundle to inline: ${cssFile}`);
+    const cssPath = path.join(assetsDir, cssFile);
+    const cssContent = fs.readFileSync(cssPath, 'utf8');
+
+    // Regex to match: <link rel="stylesheet" crossorigin href="/assets/index-XXXX.css">
+    const cssTagRegex = new RegExp(`<link\\s+rel="stylesheet"\\s+crossorigin\\s+href="\\/assets\\/${cssFile.replace('.', '\\.')}"\\s*\\/?>`);
+    
+    if (cssTagRegex.test(htmlContent)) {
+      htmlContent = htmlContent.replace(cssTagRegex, `<style>${cssContent}</style>`);
+      console.log(`Successfully inlined CSS: ${cssFile}`);
+    } else {
+      // Fallback matching if exact structure differs
+      const fallbackCssRegex = /<link[^>]*href="\/assets\/[^"]+\.css"[^>]*>/g;
+      htmlContent = htmlContent.replace(fallbackCssRegex, `<style>${cssContent}</style>`);
+      console.log(`Fallback inlined CSS: ${cssFile}`);
+    }
+  });
+} else {
+  console.log('No CSS bundle file found in dist/assets to inline.');
+}
+
+// 3. Find and inline JS files
+const jsFiles = files.filter(file => file.endsWith('.js'));
+const jsFile = jsFiles.find(file => file.includes('index'));
 
 if (!jsFile) {
-  console.error('No JS bundle file found in dist/assets!');
+  console.error('No main JS bundle file found in dist/assets!');
   process.exit(1);
 }
 
-console.log(`Found JS bundle: ${jsFile}`);
-
-// 3. Read JS bundle content
+console.log(`Found JS bundle to inline: ${jsFile}`);
 const jsPath = path.join(assetsDir, jsFile);
-let jsContent = fs.readFileSync(jsPath, 'utf8');
+const jsContent = fs.readFileSync(jsPath, 'utf8');
 
-// Escape code to make sure it doesn't break script tags inside string literals (e.g. </script> -> <\/script>)
-// (Vite already handles this for JS literals, but let's be safe)
+// Regex to match: <script type="module" crossorigin src="/assets/index-XXXX.js"></script>
+const scriptTagRegex = new RegExp(`<script\\s+type="module"\\s+crossorigin\\s+src="\\/assets\\/${jsFile.replace('.', '\\.')}"\\s*><\\/script>`);
 
-// 4. Replace script tag in HTML content
-// The tag looks like: <script type="module" crossorigin src="/assets/index-GbBBtvav.js"></script>
-const scriptTagRegex = /<script\s+type="module"\s+crossorigin\s+src="\/assets\/index-[a-zA-Z0-9_-]+\.js"\s*><\/script>/;
-
-if (!scriptTagRegex.test(htmlContent)) {
-  console.warn('Could not match standard script tag regex, trying fallback match...');
+if (scriptTagRegex.test(htmlContent)) {
+  htmlContent = htmlContent.replace(scriptTagRegex, `<script type="module">${jsContent}</script>`);
+  console.log(`Successfully inlined JS: ${jsFile}`);
+} else {
+  // Fallback replacement if exact regex failed
+  const fallbackJsRegex = /<script[^>]*src="\/assets\/index-[^"]+\.js"[^>]*><\/script>/g;
+  htmlContent = htmlContent.replace(fallbackJsRegex, `<script type="module">${jsContent}</script>`);
+  console.log(`Fallback inlined JS: ${jsFile}`);
 }
 
-// Replace the tag
-htmlContent = htmlContent.replace(
-  scriptTagRegex,
-  `<script type="module">${jsContent}</script>`
-);
-
-// Fallback replacement if regex failed to match exact tag structure
-if (htmlContent.includes('/assets/index-')) {
-  // Let's replace any script referencing assets/index-*.js
-  const fallbackRegex = /<script[^>]*src="\/assets\/index-[^"]+\.js"[^>]*><\/script>/g;
-  htmlContent = htmlContent.replace(fallbackRegex, `<script type="module">${jsContent}</script>`);
-}
-
-// 5. Save the single file as my-resume-complete.html in the root
+// 4. Save the single file as my-resume-complete.html in the root
 const outputPath = path.join(process.cwd(), 'my-resume-complete.html');
 fs.writeFileSync(outputPath, htmlContent, 'utf8');
 

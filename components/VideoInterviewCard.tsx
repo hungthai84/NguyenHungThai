@@ -2,7 +2,6 @@ import React, { useState, useRef, useCallback } from 'react';
 import * as Icons from './Icons';
 import CardTitle from './CardTitle';
 import { useI18n } from '../contexts/i18n';
-import VideoControlButtons from './VideoControlButtons';
 
 interface VideoInterviewCardProps {
     pageData: any;
@@ -178,6 +177,7 @@ const VideoInterviewCard: React.FC<VideoInterviewCardProps> = ({ pageData }) => 
         font-weight: 700;
         font-size: 0.95rem;
         letter-spacing: 0.5px;
+        width: 120.822px;
     }
     .premium-btn-icon {
         color: white;

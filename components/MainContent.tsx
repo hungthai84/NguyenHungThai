@@ -5,14 +5,15 @@ import { useTheme } from '../contexts/ThemeContext';
 import PageLayout from './PageLayout';
 import * as Icons from './Icons';
 import VideoHomeCard from './VideoHomeCard';
+import LanguageSwitcher from './LanguageSwitcher';
 import ThemeButton from './ThemeButton';
-
 
 declare var Typed: any; // Let TypeScript know Typed exists on the global scope
 
 interface MainContentProps {
     id?: string;
     onIntroToggle?: (isPlaying: boolean) => void;
+    onNavigate?: (pageId: string) => void;
 }
 
 const getRandomVibrantColor = () => {
@@ -22,7 +23,7 @@ const getRandomVibrantColor = () => {
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 };
 
-const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
+const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle, onNavigate }) => {
     const { t, language, setLanguage } = useI18n();
     const { themeMode, setThemeMode } = useTheme();
     const heroData = t.hero;
@@ -61,9 +62,15 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
         },
        {
             idle: "https://cdn.scena.ai/project/9741/2a39ca2d544de96eb461b9e895a283060fd87031bee393b94f68d2fbab586371.mp4",
-            intro: "https://cdn.scena.ai/project/8606/2e7340744cbfe1651694fbd190c1b3e6f1c1960ba73310d7c5759d96f1449e91.mp4 "
+            intro: "https://cdn.scena.ai/project/8606/87d892c1c37f70cfae99aa55e5888f93ea6b7015050fe44e5d1f54418f0b06b9.mp4"
         }
     ];
+
+    
+    const TRANSITION_0_TO_1 = "https://cdn.scena.ai/project/10124/2c5df2cd27cd1bcaa6fdf3b3aca254988d34a2933c461281b1332dabd1d1c89b.mp4";
+    const TRANSITION_1_TO_0 = "https://cdn.scena.ai/project/10124/a2f3d2280da33e96bd8c66c95d1192f2fe192c1fec1357b24bf23c9a85494e22.mp4";
+    const [isTransitioning, setIsTransitioning] = React.useState(false);
+    const [targetSetIndex, setTargetSetIndex] = React.useState<number | null>(null);
 
     const [videoSetIndex, setVideoSetIndex] = React.useState(0);
     const currentVideoSet = VIDEO_SETS[videoSetIndex];
@@ -73,7 +80,6 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
     const [welcomeMessage, setWelcomeMessage] = React.useState('');
     const [isMobile, setIsMobile] = React.useState(typeof window !== 'undefined' ? window.innerWidth <= 767 : false);
     
-
     
     React.useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 767);
@@ -83,10 +89,24 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
 
     const isIntroPlaying = videoUrl === currentVideoSet.intro;
 
+    const startTransition = (toIndex: number, withIntro: boolean = false) => {
+        if (isTransitioning || videoSetIndex === toIndex) return;
+        setIsTransitioning(true);
+        setTargetSetIndex(toIndex);
+        if (videoSetIndex === 0 && toIndex === 1) {
+            setVideoUrl(TRANSITION_0_TO_1);
+            setIsMuted(true);
+        } else if (videoSetIndex === 1 && toIndex === 0) {
+            setVideoUrl(TRANSITION_1_TO_0);
+            setIsMuted(true);
+        }
+    };
+
+
     useEffect(() => {
         const interval = setInterval(() => {
             if (!isIntroPlaying) {
-                setVideoSetIndex((prev) => (prev === 0 ? 1 : 0));
+                startTransition(videoSetIndex === 0 ? 1 : 0);
             }
         }, 5 * 60 * 1000); // 5 minutes
         return () => clearInterval(interval);
@@ -121,6 +141,7 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
     }, [language]);
 
     const handleToggleIntro = (setIndex?: number) => {
+        if (isTransitioning) return;
         const targetIndex = setIndex !== undefined ? setIndex : videoSetIndex;
         const targetSet = VIDEO_SETS[targetIndex];
         
@@ -136,7 +157,7 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
 
     useEffect(() => {
         // Strings for the typing animation from translations
-        const strings = heroData.taglines.map(
+        const strings = (heroData?.taglines || []).map(
             (line: string) => `<span class="glass-tagline" style="color: ${getRandomVibrantColor()}">${line}</span>`
         );
 
@@ -178,8 +199,15 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                 videoUrl={videoUrl}
                 isMuted={isMuted}
                 isIntroPlaying={isIntroPlaying}
+                loop={!isTransitioning && !isIntroPlaying}
                 onEnded={() => {
-                    if (isIntroPlaying) {
+                    if (isTransitioning && targetSetIndex !== null) {
+                        setVideoSetIndex(targetSetIndex);
+                        setVideoUrl(VIDEO_SETS[targetSetIndex].idle);
+                        setIsTransitioning(false);
+                        setTargetSetIndex(null);
+                        setIsMuted(true);
+                    } else if (isIntroPlaying) {
                         setVideoUrl(currentVideoSet.idle);
                         setIsMuted(true);
                     }
@@ -188,6 +216,13 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                 <div className="home-hero-card-overlay" style={{ opacity: 0 }}></div>
                 <div className="home-hero-card-content-wrapper">
                     <style>{`
+                        .typed-cursor { font-size: 20px !important; }
+                        .glass-tagline {
+                            font-size: 20px !important;
+                            -webkit-text-stroke: 1px white;
+                            text-shadow: 0 0 1px white;
+                        }
+
                         .glass-btn-container {
                             display: flex;
                             align-items: center;
@@ -309,31 +344,31 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                         }
 
                         .hero-name-text {
-                            font-size: var(--font-h1) !important;
-                            font-weight: var(--fw-bold) !important;
-                            line-height: var(--line-tight, 1.15);
+                            font-size: 30px;
+                            font-weight: 800;
+                            line-height: 1.1;
                             letter-spacing: -0.02em;
+                        color: ${themeMode === "dark" ? "white" : "#111827"};
                         }
 
                         .hero-intro-text {
-                            font-size: clamp(17px, 1.5vw, 18px) !important;
-                            font-weight: var(--fw-normal) !important;
+                            font-size: 18px;
+                            font-weight:  800;
                             margin-bottom: 0.5rem;
-                            color: white;
-                            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-                        }
-
-                        .welcome-msg {
-                            font-size: clamp(13px, 1.2vw, 14px) !important;
-                            font-weight: var(--fw-semibold) !important;
-                        }
-
-                        .hero-typed-text-container {
-                            font-size: var(--font-subtitle) !important;
-                            font-weight: var(--fw-medium) !important;
+                             color: ${themeMode === "dark" ? "white" : "#111827"};
+                            line-height: 1.1;
+                            letter-spacing: -0.02em;
+                            text-shadow: ${themeMode === "dark" ? "0 2px 4px rgba(0,0,0,0.3)" : "none"};
                         }
 
                         @media (max-width: 767px) {
+                            .hero-name-text {
+                                font-size: 30px;
+                            }
+                            .hero-intro-text {
+                                font-size: 18px;
+                            }
+                            
                             .hero-name-row {
                                 gap: 12px !important;
                                 justify-content: center !important;
@@ -342,6 +377,12 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                             .home-hero-content {
                                 align-items: center;
                                 text-align: center;
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            .hero-name-text {
+                                font-size: 30px;
                             }
                         }
 
@@ -356,6 +397,9 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                             }
                             .premium-sound-toggle {
                                 width: 44px;
+                            }
+                            .premium-btn-text {
+                                font-size: 0.95rem;
                             }
                             .premium-main-toggle {
                                 gap: 8px;
@@ -379,56 +423,54 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                         }
                     `}</style>
 
-                    {!isMobile && !isIntroPlaying && (
-                        <div className="top-right-actions flex items-center gap-3">
+                    {!isIntroPlaying && (
+                        <div className="top-right-actions flex items-center gap-3" style={{ position: 'absolute', top: '24px', right: '24px', zIndex: 1000 }}>
+                            <LanguageSwitcher />
                             <ThemeButton />
                         </div>
                     )}
                     {!isIntroPlaying ? (
                         <>
-                            <div className="home-hero-content" style={{ display: "flex", flexDirection: "column", gap: "0px", width: "100%" }}>
-                                {welcomeMessage && (
-                                    <div className="welcome-msg text-white/90 mb-3 drop-shadow-md tracking-wide">
-                                        {welcomeMessage}
-                                    </div>
-                                )}
-                                <p className="hero-intro-text">{heroData.intro}</p>
-                                <div className="hero-name-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", gap: "16px", flexWrap: "wrap" }}>
-                                    <h1 className="hero-name-text" style={{ margin: 0 }}>{heroData.name}</h1>
-                                    
-                                    <div className="premium-intro-btn glass-btn" style={{ position: 'relative', flexShrink: 0, bottom: 0, right: 0 }}>
-                                            <div 
-                                                className="premium-sound-toggle"
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    setIsMuted(!isMuted);
-                                                }}
-                                                title={isMuted ? 'Bật âm thanh' : 'Tắt âm thanh'}
-                                            >
-                                                {isMuted ? (
-                                                    <Icons.SpeakerOffIcon size={20} style={{ color: 'white' }} />
-                                                ) : (
-                                                    <Icons.SpeakerWaveIcon size={20} style={{ color: 'white' }} className="animate-pulse" />
-                                                )}
-                                            </div>
-                                            <div 
-                                                className="premium-main-toggle"
-                                                onClick={() => handleToggleIntro(videoSetIndex)}
-                                                title="Xem Giới thiệu"
-                                            >
-                                                <span className="premium-btn-text">
-                                                    Giới thiệu
-                                                </span>
-                                                <div className="premium-btn-icon">
-                                                    <Icons.PlayIcon size={20} />
-                                                </div>
+                            <div className="home-hero-content flex flex-col md:flex-row items-center gap-6 w-full md:w-1/2" style={{ background: themeMode === "dark" ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.2)", backdropFilter: "blur(12px)", border: themeMode === "dark" ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(0, 0, 0, 0.15)", padding: '32px', borderRadius: '16px', justifyContent: 'space-between', width: 'auto', height: 'auto' }}>
+                                <div className="hero-left-column flex-1 flex flex-col justify-center" style={{ gap: '0.5rem', alignItems: 'flex-start', textAlign: 'left' }}>
+                                    <h3 style={{ color: 'var(--accent-color, #0ea5e9)', fontSize: '1.25rem', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 400, margin: 0, lineHeight: '20px' }}>
+                                        {language === 'en' ? 'WEB DESIGNER' : (heroData.taglines?.[0] || 'CHUYÊN GIA TRẢI NGHIỆM KHÁCH HÀNG')}
+                                    </h3>
+                                    <h1 className="hero-name-text" style={{ margin: '8px 0', fontSize: '20px', fontWeight: 600, lineHeight: '20px', color: 'var(--text-primary)' }}>
+                                        {language === 'en' ? 'Hello , I\'m ' : 'Xin chào , Tôi là '} 
+                                        <span style={{ color: 'var(--accent-color, #0ea5e9)' }}>{heroData.name}</span><br />
+                                        {language === 'en' ? 'Welcome to my World.' : 'Chào mừng đến thế giới của tôi.'}
+                                    </h1>
+                                </div>
+                                <div className="hero-right-column" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transform: 'scale(0.5)', transformOrigin: 'right center' }}>
+                                    <div className="premium-intro-btn glass-btn" style={{ position: 'relative' }}>
+                                        <div 
+                                            className="premium-sound-toggle"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setIsMuted(!isMuted);
+                                            }}
+                                            title={isMuted ? 'Bật âm thanh' : 'Tắt âm thanh'}
+                                        >
+                                            {isMuted ? (
+                                                <Icons.SpeakerOffIcon size={20} style={{ color: 'white' }} />
+                                            ) : (
+                                                <Icons.SpeakerWaveIcon size={20} style={{ color: 'white' }} className="animate-pulse" />
+                                            )}
+                                        </div>
+                                        <div 
+                                            className="premium-main-toggle"
+                                            onClick={() => handleToggleIntro(videoSetIndex)}
+                                            title="Xem Giới thiệu"
+                                        >
+                                            <span className="premium-btn-text">
+                                                Giới thiệu
+                                            </span>
+                                            <div className="premium-btn-icon">
+                                                <Icons.PlayIcon size={20} />
                                             </div>
                                         </div>
-                                </div>
-                                <div className="flex flex-wrap items-center justify-between w-full gap-4" style={{ marginTop: '0.2rem' }}>
-                                    <h2 className="hero-typed-text-container" style={{ margin: 0, flex: 1, minWidth: '250px' }}>
-                                        <span ref={typedEl}></span>
-                                    </h2>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -470,15 +512,7 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                     <div 
                         className="left-intro-btn glass-btn transparent"
                         onClick={() => {
-                            const nextIndex = 0;
-                            setVideoSetIndex(nextIndex);
-                            if (isIntroPlaying) {
-                                setVideoUrl(VIDEO_SETS[nextIndex].intro);
-                                setIsMuted(false);
-                            } else {
-                                setVideoUrl(VIDEO_SETS[nextIndex].idle);
-                                setIsMuted(true);
-                            }
+                            if (!isTransitioning) startTransition(0);
                         }}
                         title={'Xem Giới thiệu 1'}
                     >
@@ -489,15 +523,7 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                     <div 
                         className={`round-intro-btn glass-btn ${videoSetIndex === 0 ? 'transparent' : ''}`}
                         onClick={() => {
-                            const nextIndex = videoSetIndex === 0 ? 1 : 0;
-                            setVideoSetIndex(nextIndex);
-                            if (isIntroPlaying) {
-                                setVideoUrl(VIDEO_SETS[nextIndex].intro);
-                                setIsMuted(false);
-                            } else {
-                                setVideoUrl(VIDEO_SETS[nextIndex].idle);
-                                setIsMuted(true);
-                            }
+                            if (!isTransitioning) startTransition(videoSetIndex === 0 ? 1 : 0);
                         }}
                         title={videoSetIndex === 0 ? 'Xem Giới thiệu 2' : 'Xem Giới thiệu 1'}
                     >
@@ -505,6 +531,7 @@ const MainContent: React.FC<MainContentProps> = ({ id, onIntroToggle }) => {
                     </div>
                 </div>
             </VideoHomeCard>
+            
         </PageLayout>
     );
 };

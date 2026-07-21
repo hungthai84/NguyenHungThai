@@ -296,4 +296,24 @@ Your knowledge is strictly limited to the information provided in this portfolio
   }
 });
 
+router.post("/transcribe", async (req, res) => {
+  const { audioBase64, mimeType } = req.body;
+  try {
+    const ai = getGeminiClient();
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents: {
+        parts: [
+          { inlineData: { mimeType, data: audioBase64 } },
+          { text: "Hãy chép lại âm thanh này thành văn bản." }
+        ]
+      },
+    });
+    res.json({ transcription: response.text });
+  } catch (error) {
+    console.error("Transcription error:", error);
+    res.status(500).json({ error: "Lỗi chép lại âm thanh." });
+  }
+});
+
 export { router as apiRouter };

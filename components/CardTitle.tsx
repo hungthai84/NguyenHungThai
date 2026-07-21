@@ -35,7 +35,7 @@ export const CardTitle: React.FC<CardTitleProps> = ({
             >
                 <span className="badge-content">
                     {icon}
-                    <span>{text}</span>
+                    <span style={{ textTransform: 'uppercase' }}>{text}</span>
                 </span>
             </div>
         </div>

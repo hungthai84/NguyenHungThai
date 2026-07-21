@@ -367,7 +367,7 @@ const ProjectPostPage: React.FC<ProjectPostPageProps> = ({ id, projectId, onNavi
                                 }}
                             >
                                 <Icons.ChevronLeftIcon size={18} />
-                                <span style={{ fontWeight: 'bold', lineHeight: '24.6598px', fontSize: '14.5057px' }}>Quay lại thẻ Công ty</span>
+                                <span style={{ fontWeight: 'bold', lineHeight: '24.6598px', fontSize: '14.5057px', fontFamily: 'Play, sans-serif' }}>Quay lại thẻ Công ty</span>
                             </button>
                         ) : (
                             <button
@@ -383,7 +383,7 @@ const ProjectPostPage: React.FC<ProjectPostPageProps> = ({ id, projectId, onNavi
                                 }}
                             >
                                 <Icons.ChevronLeftIcon size={18} />
-                                <span style={{ fontWeight: 'bold', lineHeight: '24.6598px', fontSize: '14.5057px' }}>{pageData.backToProjects}</span>
+                                <span style={{ fontWeight: 'bold', lineHeight: '24.6598px', fontSize: '14.5057px', fontFamily: 'Play, sans-serif' }}>{pageData.backToProjects}</span>
                             </button>
                         )}
                     </div>
@@ -392,9 +392,9 @@ const ProjectPostPage: React.FC<ProjectPostPageProps> = ({ id, projectId, onNavi
                  <div className="project-post-scroll-content no-scrollbar" ref={scrollRef}>
 
                     <main className="project-post-main">
-                        <div className="project-post-content-wrapper p-[15px]">
-                            <div className="project-post-layout-grid">
-                                <div className="project-article-card fade-in-up hover:scale-105 transition-transform duration-300" style={{ borderRadius: '16px', width: '100%', height: '100%', padding: '15px' }}>
+                        <div className="project-post-content-wrapper" style={{ padding: '15px' }}>
+                            <div className="project-post-layout-grid" style={{ display: 'flex', justifyContent: 'center' }}>
+                                <div className="project-article-card fade-in-up hover:scale-105 transition-transform duration-300" style={{ borderRadius: '16px', width: '100%', height: '100%', padding: '0px', overflow: 'hidden' }}>
                                         <div className="project-hero-container">
                                             {post.heroImage && <img src={post.heroImage} alt={post.title} className="project-post-hero-image-bg" />}
                                             <div className="project-hero-container-inner">
@@ -527,45 +527,55 @@ const ProjectPostPage: React.FC<ProjectPostPageProps> = ({ id, projectId, onNavi
                                                  </div>
                                              )}
                                          
-                                             {/* Phase & Goal Summary Box */}
-                                             {(parsedContent.goal || post.date) && (
-                                                 <div className="project-post-meta-summary-grid mb-6 animate-fadeIn">
-                                                     {post.date && (
-                                                        <div className="meta-summary-card role-card" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-                                                            <div style={{ padding: '1.5rem', zIndex: 1, position: 'relative', background: PROJECT_IMAGES[projectId] ? (isDark ? 'linear-gradient(to bottom, rgba(15,23,42,0.9), rgba(15,23,42,0.7))' : 'linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.7))') : undefined, flex: PROJECT_IMAGES[projectId] ? 0 : 1 }}>
-                                                                <div className="meta-summary-header">
-                                                                    <Icons.LightBulbIcon className="meta-summary-icon" />
-                                                                    <span>Sơ đồ tư duy</span>
-                                                                </div>
-                                                                <div className="meta-summary-body">{projectId.startsWith('1.') ? "" : post.date}</div>
-                                                            </div>
-                                                            {PROJECT_IMAGES[projectId] && (
-                                                                <img 
-                                                                    src={PROJECT_IMAGES[projectId]} 
-                                                                    alt={post.title} 
-                                                                    style={{ width: '100%', height: '100%', objectFit: 'cover', flex: 1, cursor: 'pointer', position: 'absolute', inset: 0, zIndex: 0 }} 
-                                                                    onClick={() => setIsLightboxOpen(true)}
-                                                                />
-                                                            )}
-                                                        </div>
-                                                    )}
-                                                     {parsedContent.goal && (
-                                                         <div className="meta-summary-card goal-card">
+                                             {/* Other introductory text */}
+                                              {parsedContent.otherParagraphs.map((p, index) => {
+                                                  const formattedText = p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                                                  return <p key={index} className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: formattedText }} />;
+                                              })}
+
+                                              {/* Section: Sơ đồ tư duy */}
+                                             {post.date && (
+                                                 <div className="mb-6 animate-fadeIn">
+                                                     <div className="project-section-title">
+                                                         <Icons.PresentationIcon size={18} className="shrink-0 text-[var(--accent-color)]" />
+                                                         <span>Sơ đồ tư duy</span>
+                                                     </div>
+                                                     <div className="meta-summary-card role-card" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative', minHeight: PROJECT_IMAGES[projectId] ? '320px' : 'auto' }}>
+                                                         <div style={{ padding: '1.5rem', zIndex: 1, position: 'relative', background: PROJECT_IMAGES[projectId] ? (isDark ? 'linear-gradient(to bottom, rgba(15,23,42,0.9), rgba(15,23,42,0.7))' : 'linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.7))') : undefined, flex: PROJECT_IMAGES[projectId] ? 0 : 1 }}>
                                                              <div className="meta-summary-header">
-                                                                 <Icons.LightBulbIcon className="meta-summary-icon" />
-                                                                 <span>Mục tiêu dự án</span>
+                                                                 <Icons.PresentationIcon className="meta-summary-icon" />
+                                                                 <span>Sơ đồ tư duy</span>
                                                              </div>
-                                                             <div className="meta-summary-body">{parsedContent.goal}</div>
+                                                             <div className="meta-summary-body">{projectId.startsWith('1.') ? "" : post.date}</div>
                                                          </div>
-                                                     )}
+                                                         {PROJECT_IMAGES[projectId] && (
+                                                             <img 
+                                                                 src={PROJECT_IMAGES[projectId]} 
+                                                                 alt={post.title} 
+                                                                 style={{ width: '100%', height: '100%', objectFit: 'cover', flex: 1, cursor: 'pointer', position: 'absolute', inset: 0, zIndex: 0 }} 
+                                                                 onClick={() => setIsLightboxOpen(true)}
+                                                             />
+                                                         )}
+                                                     </div>
                                                  </div>
                                              )}
 
-                                             {/* Other introductory text */}
-                                             {parsedContent.otherParagraphs.map((p, index) => {
-                                                 const formattedText = p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                                                 return <p key={index} className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: formattedText }} />;
-                                             })}
+                                             {/* Section: Mục tiêu dự án */}
+                                             {parsedContent.goal && (
+                                                 <div className="mb-6 animate-fadeIn">
+                                                     <div className="project-section-title">
+                                                         <Icons.LightBulbIcon size={18} className="shrink-0 text-[var(--accent-color)]" />
+                                                         <span>Mục tiêu dự án</span>
+                                                     </div>
+                                                     <div className="meta-summary-card goal-card">
+                                                         <div className="meta-summary-header">
+                                                             <Icons.LightBulbIcon className="meta-summary-icon" />
+                                                             <span>Mục tiêu dự án</span>
+                                                         </div>
+                                                         <div className="meta-summary-body">{parsedContent.goal}</div>
+                                                     </div>
+                                                 </div>
+                                             )}
 
                                              {/* Section Title for Steps */}
                                              {parsedContent.steps.length > 0 && (
@@ -602,29 +612,35 @@ const ProjectPostPage: React.FC<ProjectPostPageProps> = ({ id, projectId, onNavi
                                                          </div>
                                                      )}
                                                  </div>
-                                             ))}
+                                              ))}
+                                             </div>
 
-                                             {/* Achievements / Kết quả đạt được card */}
+                                             {/* Section: Kết quả đạt được */}
                                              {parsedContent.achievements && (
-                                                 <div className="project-achievements-showcase animate-fadeIn bg-[var(--card-bg)] border border-[var(--border-color)] rounded-2xl p-6 md:p-8 mt-8 shadow-sm">
-                                                     <div className="achievements-showcase-header">
-                                                         <Icons.TrophyIcon className="achievements-showcase-icon" />
-                                                         <h3>{parsedContent.achievements.title}</h3>
+                                                 <div className="mb-6 animate-fadeIn">
+                                                     <div className="project-section-title">
+                                                         <Icons.TrophyIcon size={18} className="shrink-0 text-[var(--accent-color)]" />
+                                                         <span>Kết quả đạt được</span>
                                                      </div>
-                                                     
-                                                     {parsedContent.achievements.bullets.length > 0 && (
-                                                         <div className="achievements-showcase-list project-steps-grid">
-                                                             {parsedContent.achievements.bullets.map((bullet, bIdx) => {
-                                                                 const formattedText = bullet.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                                                                 return (
-                                                                     <div key={bIdx} className="achievements-showcase-item">
-                                                                         <Icons.SparklesIcon className="showcase-spark-icon" size={14} />
-                                                                         <span dangerouslySetInnerHTML={{ __html: formattedText }} />
-                                                                     </div>
-                                                                 );
-                                                             })}
+                                                     <div className="meta-summary-card goal-card">
+                                                         <div className="meta-summary-header">
+                                                             <Icons.TrophyIcon className="meta-summary-icon" />
+                                                             <span>{parsedContent.achievements.title}</span>
                                                          </div>
-                                                     )}
+                                                         {parsedContent.achievements.bullets.length > 0 && (
+                                                             <div className="meta-summary-body mt-4 flex flex-col gap-3">
+                                                                 {parsedContent.achievements.bullets.map((bullet, bIdx) => {
+                                                                     const formattedText = bullet.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                                                                     return (
+                                                                         <div key={bIdx} className="flex items-start gap-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">
+                                                                             <Icons.SparklesIcon className="text-yellow-500 shrink-0 mt-1" size={14} />
+                                                                             <span dangerouslySetInnerHTML={{ __html: formattedText }} />
+                                                                         </div>
+                                                                     );
+                                                                 })}
+                                                             </div>
+                                                         )}
+                                                     </div>
                                                  </div>
                                              )}
                                          
@@ -632,12 +648,11 @@ const ProjectPostPage: React.FC<ProjectPostPageProps> = ({ id, projectId, onNavi
 
                                             </div>
                                          </div>
-                                         </div>
-                                         </div>
-                                         </div>
-                                     </main>
-                    </div>
-                </div>
+                                     </div>
+                                 </div>
+                             </main>
+                         </div>
+                     </div>
             {embeddingUrl && document.getElementById('popup-root') && createPortal(
                 <LinkEmbedPopup url={embeddingUrl} onClose={() => setEmbeddingUrl(null)} />,
                 document.getElementById('popup-root')!

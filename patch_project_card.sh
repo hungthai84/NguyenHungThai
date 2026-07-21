@@ -1,8 +1,8 @@
+cat << 'INNER_EOF' > components/ProjectCard.tsx
 import React from 'react';
 import { useI18n } from '../contexts/i18n';
 import type { Project, ViewMode } from './project-types';
 import OptimizedImage from './OptimizedImage';
-import * as Icons from './Icons';
 
 interface ProjectCardProps {
     project: Project;
@@ -21,7 +21,7 @@ const STAGE_COLORS: Record<string, string> = {
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, hasPost, onClick }) => {
-    const { t, language } = useI18n();
+    const { t } = useI18n();
     
     // Safety checks to prevent rendering errors
     const stageStr = project?.stage || '';
@@ -54,7 +54,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, hasPost, onClick }) 
                 {/* Stage Badge - Top Right */}
                 {project?.stage && (
                     <div className="absolute top-2 right-2 z-10 px-2.5 py-1 rounded-md text-[11px] font-bold text-white shadow-md backdrop-blur-md"
-                         style={{ backgroundColor: `${stageColor}CC`, border: '1px solid rgba(255, 255, 255, 0.3)' }}>
+                        style={{ backgroundColor: `${stageColor}CC`, border: '1px solid rgba(255, 255, 255, 0.3)' }}>
                         {project.stage}
                     </div>
                 )}
@@ -80,53 +80,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, hasPost, onClick }) 
             </div>
             
             <div className="project-card-new-content relative flex flex-col flex-1 p-4">
-                <h4 className="project-card-new-title m-0 mb-1 pr-2 font-bold text-[16px] leading-[1.3] line-clamp-2" style={{ color: 'var(--text-primary)' }}>
+                <h4 className="project-card-new-title m-0 mb-2 pr-2 font-bold text-[16px] leading-[1.3] line-clamp-2" style={{ color: 'var(--text-primary)' }}>
                     {project?.id ? <span className="project-card-new-id text-[var(--accent-color)] mr-1">{project.id}.</span> : null}
                     {project?.title || 'Chưa có tiêu đề'}
                 </h4>
-
-                {/* Stage (Phase) and Group Metadata Row */}
-                <div className="flex flex-wrap items-center gap-2 mb-2.5 text-xs">
-                    {project?.stage && (
-                        <span 
-                            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-white shadow-sm"
-                            style={{ backgroundColor: `${stageColor}` }}
-                        >
-                            <Icons.LayersIcon size={11} />
-                            {language === 'vi' ? `Giai đoạn ${project.stage}` : `Phase ${project.stage}`}
-                        </span>
-                    )}
-                    {project?.group && (
-                        <span className="text-white/40 dark:text-white/30 text-[11px] font-medium bg-white/5 dark:bg-white/5 px-2 py-0.5 rounded border border-white/10 dark:border-white/5">
-                            {project.group}
-                        </span>
-                    )}
-                </div>
-
-                <p className="project-card-new-description m-0 text-[13.5px] leading-relaxed line-clamp-3 mb-3" style={{ color: 'var(--text-secondary)' }}>
+                <p className="project-card-new-description m-0 text-[13.5px] leading-relaxed line-clamp-3" style={{ color: 'var(--text-secondary)' }}>
                     {project?.description || 'Chưa có mô tả'}
                 </p>
-
-                {/* Hashtags/Tags Row inside card body */}
-                {project?.hashtags && Array.isArray(project.hashtags) && project.hashtags.length > 0 && (
-                    <div className="mt-auto pt-2.5 border-t border-white/10 dark:border-white/5 flex flex-wrap gap-1.5">
-                        {project.hashtags.map((tag, idx) => {
-                            if (!tag) return null;
-                            const displayTag = typeof tag === 'string' && tag.startsWith('#') ? tag : `#${tag}`;
-                            return (
-                                <span
-                                    key={idx}
-                                    className="text-[11px] px-2 py-0.5 font-medium rounded bg-[var(--accent-color)]/10 text-[var(--accent-color)] border border-[var(--accent-color)]/20 transition-all duration-200 hover:bg-[var(--accent-color)]/20"
-                                >
-                                    {displayTag}
-                                </span>
-                            );
-                        })}
-                    </div>
-                )}
             </div>
         </div>
     );
 };
 
 export default ProjectCard;
+INNER_EOF

@@ -18,8 +18,8 @@ const CustomWeatherIcon = ({ time }: { time: Date }) => {
                         <stop offset="100%" stopColor="#d1d5db" />
                     </linearGradient>
                     <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#ffffff" />
-                        <stop offset="100%" stopColor="#cfdfeb" />
+                        <stop offset="0%" stopColor="rgba(255, 255, 255, 0.8)" />
+                        <stop offset="100%" stopColor="rgba(255, 255, 255, 0.2)" />
                     </linearGradient>
                     <filter id="weatherGlow" x="-20%" y="-20%" width="140%" height="140%">
                         <feGaussianBlur stdDeviation="3" result="blur" />
@@ -69,8 +69,10 @@ const CustomWeatherIcon = ({ time }: { time: Date }) => {
                 <path
                     d="M32 62 C26 62 21 57 21 51 C21 45 26 40 32 40 C34 34 39 30 46 30 C53 30 58 35 59 41 C64 41 68 45 68 50 C68 56 63 61 57 61 Z"
                     fill="url(#cloudGradient)"
+                    stroke="rgba(255, 255, 255, 0.6)"
+                    strokeWidth="1.5"
                     className="weather-cloud-animated"
-                    filter="drop-shadow(0px 3px 5px rgba(0,0,0,0.18))"
+                    filter="drop-shadow(0px 4px 6px rgba(0,0,0,0.15))"
                 />
             </svg>
         </div>
@@ -111,8 +113,8 @@ const ClockWeatherWidget: React.FC = () => {
     
     // Retrieve weather variables dynamically
     const weatherData = (t as any).weather || {
-        city: "Thành phố Hồ Chí Minh",
-        country: "Việt Nam",
+        city: "Hồ Chí Minh",
+        country: "",
         condition: "Nhiều mây, nắng gián đoạn"
     };
     
@@ -144,7 +146,7 @@ const ClockWeatherWidget: React.FC = () => {
 
             <div className="location-display">
                 <span className="city">{city}</span>
-                <span className="country">{country}</span>
+                {country && <span className="country">{country}</span>}
             </div>
         </div>
     );

@@ -45,22 +45,25 @@ const ServiceCard: React.FC<{ service: Service, index: number }> = ({ service, i
         };
     }, []);
     
+    const isConsulting = service.key === 'consulting';
+    const displayColor = isConsulting ? '#22c55e' : service.color;
+
     return (
         <div 
             ref={cardRef} 
             className="service-box fade-in-up-on-scroll h-[250px]" 
             style={{ 
-                '--item-color': service.color, 
+                '--item-color': displayColor, 
                 transitionDelay: `${index * 50}ms` 
             } as React.CSSProperties}
         >
-            <div className="service-card-glow" style={{ background: `radial-gradient(circle at 50% 50%, ${service.color}25, transparent 70%)` }} />
-            <div className="service-card-content">
-                <div className="service-title-wrapper">
-                    <Icon style={{ color: service.color }} />
-                    <h4 style={{ color: service.color }}>{service.title}</h4>
+            <div className="service-card-glow" style={{ background: `radial-gradient(circle at 50% 50%, ${displayColor}25, transparent 70%)` }} />
+            <div className="service-card-content" style={{ textAlign: 'left' }}>
+                <div className="service-title-wrapper" style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <Icon style={{ color: displayColor, marginRight: '-5px' }} />
+                    <h4 style={{ color: displayColor, margin: 0, fontSize: '20px', fontWeight: 'bold', marginLeft: '10px' }}>{service.title}</h4>
                 </div>
-                <p className="service-description">{service.description}</p>
+                <p className="service-description" style={{ textAlign: 'left' }}>{service.description}</p>
             </div>
             {service.logos && service.logos.length > 0 && (
                 <div className="service-logos-container">
@@ -69,7 +72,7 @@ const ServiceCard: React.FC<{ service: Service, index: number }> = ({ service, i
                     ) : null)}
                 </div>
             )}
-            <div className="service-card-indicator" style={{ backgroundColor: service.color }} />
+            <div className="service-card-indicator" style={{ backgroundColor: displayColor }} />
         </div>
     );
 };

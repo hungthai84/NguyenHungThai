@@ -32,20 +32,6 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({
             </button>
             {activePageKey !== 'home' && <h1 className="mobile-header-title" style={{ fontSize: '1.125rem' }}>{title}</h1>}
             <div className="mobile-header-controls">
-                <button
-                    onClick={() => {
-                        setThemeMode(themeMode === 'light' ? 'dark' : 'light');
-                    }}
-                    className="header-icon-button theme-toggle-btn"
-                    title={themeMode === 'dark' ? 'Chế độ tối' : 'Chế độ sáng'}
-                    aria-label="Toggle theme"
-                >
-                    {themeMode === 'dark' ? (
-                        <Icons.MoonIcon size={20} style={{ color: 'var(--accent-color)' }} />
-                    ) : (
-                        <Icons.SunIcon size={20} style={{ color: '#f59e0b' }} />
-                    )}
-                </button>
                 <button onClick={onOpenAiChat} className={`header-icon-button ${isIdle && activePageKey !== 'aiChat' ? 'ai-chat-pulse' : ''}`} aria-label="Trợ lý AI" title="Trợ lý AI">
                     <Icons.BotIcon size={20} />
                 </button>

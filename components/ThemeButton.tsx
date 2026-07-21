@@ -47,7 +47,8 @@ const ThemeButton: React.FC = () => {
                     background: 'rgba(255, 255, 255, 0.2)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
                     color: isCurrentlyDark ? '#FFB800' : '#F59E0B',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+                    backdropFilter: 'blur(5px)'
                 }}
             >
                 {isCurrentlyDark ? <Icons.MoonIcon size={20} /> : <Icons.SunIcon size={22} />}

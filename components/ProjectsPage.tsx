@@ -39,6 +39,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ id, onNavigate }) =>
     const allProjects: Project[] = pageData.projects || [];
 
     // --- State Management ---
+    const [isLoading, setIsLoading] = useState(true);
     const [viewMode, setViewMode] = useState<ViewMode>('grid');
     const [selectedGroups, setSelectedGroups] = useState<string[]>([]);
     const [selectedStages, setSelectedStages] = useState<string[]>([]);
@@ -59,6 +60,9 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ id, onNavigate }) =>
         const savedStages = safeJSONParse<string[]>(localStorage.getItem('projectsSelectedStages'), []);
         if (Array.isArray(savedGroups)) setSelectedGroups(savedGroups);
         if (Array.isArray(savedStages)) setSelectedStages(savedStages);
+        // Simulate network delay for perceived performance
+        const timer = setTimeout(() => setIsLoading(false), 800);
+        return () => clearTimeout(timer);
     }, []);
 
     // --- Save state to localStorage on change ---
@@ -109,7 +113,25 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ id, onNavigate }) =>
                 />
 
                 <div className="projects-grid-wrapper no-scrollbar">
-                    {filteredProjects.length > 0 ? (
+                    
+                    {isLoading ? (
+                        <div className={`projects-grid view-${viewMode}`}>
+                            {[1, 2, 3, 4, 5, 6].map((i) => (
+                                <div key={`skeleton-${i}`} className="project-card-new animate-pulse" style={{ height: viewMode === 'list' ? '120px' : '300px', backgroundColor: 'var(--card-bg, rgba(255,255,255,0.05))', borderRadius: '20px' }}>
+                                    <div style={{ width: '100%', height: viewMode === 'list' ? '0' : '150px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '20px 20px 0 0' }}></div>
+                                    <div style={{ padding: '20px' }}>
+                                        <div style={{ width: '60%', height: '20px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '4px', marginBottom: '10px' }}></div>
+                                        <div style={{ width: '40%', height: '14px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '4px', marginBottom: '20px' }}></div>
+                                        <div style={{ display: 'flex', gap: '8px' }}>
+                                            <div style={{ width: '40px', height: '12px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '10px' }}></div>
+                                            <div style={{ width: '60px', height: '12px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '10px' }}></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : filteredProjects.length > 0 ? (
+
                         <div className={`projects-grid view-${viewMode}`}>
                             {filteredProjects.map((project) => (
                                 <div

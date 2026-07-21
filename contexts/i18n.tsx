@@ -21,7 +21,7 @@ export const I18nProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             const browserLang = navigator.language.split('-')[0];
             return browserLang === 'vi' ? 'vi' : 'en';
         }
-        return 'vi';
+        return 'en';
     });
 
     const setLanguage = (lang: Language) => {
@@ -51,8 +51,8 @@ export const useI18n = () => {
     if (context === undefined) {
         console.warn('useI18n was called outside I18nProvider. Using fallback translations.');
         return {
-            t: translations.vi,
-            language: 'vi' as Language,
+            t: (translations as any).en || translations.vi,
+            language: 'en' as Language,
             setLanguage: () => {}
         };
     }

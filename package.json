@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@google/genai": "^2.8.0",
-    "@types/express": "^5.0.6",
-    "@vitejs/plugin-react": "^5.0.0",
     "esbuild": "^0.28.0",
     "express": "^5.2.1",
     "firebase": "^12.13.0",
@@ -30,7 +28,18 @@
   },
   "devDependencies": {
     "@firebase/eslint-plugin-security-rules": "^0.0.2",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/express": "^5.0.6",
     "@types/node": "^22.14.0",
-    "eslint-config-flat-gitignore": "^2.3.0"
-  }
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^8.0.2",
+    "eslint-config-flat-gitignore": "^2.3.0",
+    "postcss": "^8.5.21",
+    "tailwindcss": "^4.0.0"
+  },
+  "description": "<div align=\"center\"> <img width=\"1200\" height=\"475\" alt=\"GHBanner\" src=\"https://ai.google.dev/static/site-assets/images/share-ais-513315318.png\" /> </div>",
+  "keywords": [],
+  "author": "Nguyễn Hùng Thái",
+  "license": "ISC"
 }

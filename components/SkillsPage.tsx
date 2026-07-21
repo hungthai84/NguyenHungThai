@@ -55,11 +55,11 @@ const SkillItem: React.FC<{ skill: Skill; color: string; index: number }> = ({ s
         <div 
             ref={itemRef} 
             className="skill-item-v2 fade-in-up-on-scroll"
-            style={{ transitionDelay: `${index * 50}ms` }}
+            style={{ transitionDelay: `${index * 50}ms`, fontSize: '13.792px' }}
         >
             <div className="skill-info">
-                <h4 className="whitespace-nowrap overflow-hidden text-ellipsis">{skill.name}</h4>
-                <span>{skill.level}%</span>
+                <h4 className="whitespace-nowrap overflow-hidden text-ellipsis" style={{ fontSize: '16px' }}>{skill.name}</h4>
+                <span style={{ fontSize: '16px', fontWeight: 'bold' }}>{skill.level}%</span>
             </div>
             <div className="progress-bar-container">
                 <div className="progress-bar-bg">
@@ -101,7 +101,7 @@ const SkillsPage: React.FC<SkillsPageProps> = ({ id }) => {
         <PageLayout id={id}>
             <div className="info-card" >
                 <CardTitle
-                    icon={<Icons.WrenchScrewdriverIcon />}
+                    icon={<Icons.LightBulbIcon />}
                     text={pageData.title}
                     tooltipTitle={pageData.tooltipTitle}
                     tooltipText={pageData.tooltipText}
@@ -132,7 +132,7 @@ const SkillsPage: React.FC<SkillsPageProps> = ({ id }) => {
                     ) : (
                         <div style={{ textAlign: 'center', padding: '4rem 1rem', color: 'var(--color-brand-text-secondary)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
                             <Icons.WrenchScrewdriverIcon size={48} style={{ marginBottom: '1rem', opacity: 0.5 }}/>
-                            <p>Dữ liệu về kỹ năng đang được cập nhật. <br/>Vui lòng quay lại sau.</p>
+                            <p dangerouslySetInnerHTML={{ __html: pageData.noData }} />
                         </div>
                     )}
                 </div>

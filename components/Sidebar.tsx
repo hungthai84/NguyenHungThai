@@ -81,12 +81,6 @@ const Sidebar: React.FC<SidebarProps> = ({
 }) => {
     const { t } = useI18n();
     const { themePreset } = useTheme();
-    const isM3 = themePreset === 'material-design-3';
-    const isNeumorphic = themePreset === 'neumorphism';
-    const isGlassmorphism = themePreset === 'glassmorphism';
-    const isApple = themePreset === 'apple-human-interface';
-    const isFluentHybrid = themePreset === 'glass-fluent-hybrid';
-    const isFluent2 = themePreset === 'fluent-ui-2';
     const navLabels = t.sidebar.nav;
     const [hoveredKey, setHoveredKey] = React.useState<string | null>(null);
 
@@ -102,8 +96,8 @@ const Sidebar: React.FC<SidebarProps> = ({
             <button className="sidebar-toggle-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
                 {isCollapsed ? <Icons.ChevronRightIcon size={16} /> : <Icons.ChevronLeftIcon size={16} />}
             </button>
-            <nav className="main-menu" style={{ overflow: 'visible' }}>
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', width: '100%' }}>
+            <nav className="main-menu" style={{ overflow: "visible", display: "flex", flexDirection: "column", flex: 1, height: "100%" }}>
+                <ul className="flex flex-col justify-between h-full py-8 w-full" style={{ margin: 0 }}>
                     {navStructure
                         .filter(item => item.showInMenu !== false)
                         .map((item) => {
@@ -115,22 +109,14 @@ const Sidebar: React.FC<SidebarProps> = ({
                             const isProjectPostActive = activeItemKey.startsWith('project-');
                             const isActive = activeItemKey === item.key || (isProjectsParent && isProjectPostActive);
                             
-                            const itemColor = isM3 ? 'var(--md-sys-color-primary)' : isNeumorphic ? 'var(--primary)' : isGlassmorphism ? 'var(--primary)' : isApple ? 'var(--primary)' : isFluentHybrid ? 'var(--primary)' : isFluent2 ? 'var(--primary)' : (itemColors[item.key] || '#ef4444');
+                            const itemColor = 'var(--primary)';
                             const isHovered = hoveredKey === item.key;
-                            const activeOrHovered = isActive || isHovered;
-                            const glowColor = `${itemColor}40`; // 25% opacity glow
-                            
                             const tooltipData = getTooltipData(item.key, t);
                             
                             return (
                                 <li 
                                     key={item.key} 
-                                    className="relative group"
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        width: '100%',
-                                    }}
+                                    className="relative group flex items-center justify-center w-full"
                                 >
                                     <a
                                         href={`#${item.key}`}
@@ -144,94 +130,12 @@ const Sidebar: React.FC<SidebarProps> = ({
                                         onMouseLeave={() => setHoveredKey(null)}
                                         aria-label={label}
                                         style={{
-                                            color: isM3 
-                                                ? (isActive 
-                                                    ? 'var(--md-sys-color-on-secondary-container)' 
-                                                    : isHovered 
-                                                        ? 'var(--md-sys-color-on-surface)' 
-                                                        : 'var(--md-sys-color-on-surface-variant)')
-                                                : isNeumorphic
-                                                    ? (isActive
-                                                        ? 'var(--primary)'
-                                                        : isHovered
-                                                            ? 'var(--text)'
-                                                            : 'var(--text-secondary)')
-                                                    : isGlassmorphism
-                                                        ? (isActive
-                                                            ? 'var(--primary)'
-                                                            : isHovered
-                                                                ? 'var(--text)'
-                                                                : 'var(--text-secondary)')
-                                                        : isApple
-                                                            ? (isActive
-                                                                ? '#ffffff'
-                                                                : isHovered
-                                                                    ? 'var(--text)'
-                                                                    : 'var(--text-secondary)')
-                                                            : isFluentHybrid
-                                                                ? (isActive
-                                                                    ? 'var(--primary)'
-                                                                    : isHovered
-                                                                        ? 'var(--text)'
-                                                                        : 'var(--text-secondary)')
-                                                                : isFluent2
-                                                                    ? (isActive
-                                                                        ? 'var(--primary)'
-                                                                        : isHovered
-                                                                            ? 'var(--text)'
-                                                                            : 'var(--text-secondary)')
-                                                                : (activeOrHovered ? itemColor : 'var(--color-brand-text-secondary)'),
-                                            backgroundColor: isM3 
-                                                ? (isActive 
-                                                    ? 'var(--md-sys-color-secondary-container)' 
-                                                    : isHovered 
-                                                        ? 'var(--md-sys-color-surface-container-highest)' 
-                                                        : 'transparent')
-                                                : isNeumorphic
-                                                    ? (isActive || isHovered ? 'var(--card-bg)' : 'transparent')
-                                                    : isGlassmorphism
-                                                        ? (isActive ? 'rgba(255, 255, 255, 0.18)' : isHovered ? 'rgba(255, 255, 255, 0.08)' : 'transparent')
-                                                        : isApple
-                                                            ? (isActive ? 'var(--primary)' : isHovered ? 'var(--apple-hover-bg)' : 'transparent')
-                                                            : isFluentHybrid
-                                                                ? (isActive ? 'rgba(255, 255, 255, 0.25)' : isHovered ? 'rgba(255, 255, 255, 0.12)' : 'transparent')
-                                                                : isFluent2
-                                                                    ? (isActive ? 'rgba(0, 0, 0, 0.04)' : isHovered ? 'rgba(0, 0, 0, 0.02)' : 'transparent')
-                                                                    : (isActive 
-                                                                        ? 'rgba(255, 255, 255, 0.15)' 
-                                                                        : isHovered 
-                                                                            ? 'rgba(255, 255, 255, 0.12)' 
-                                                                            : 'transparent'),
-                                            border: isM3 || isNeumorphic || isApple || isFluent2
-                                                ? 'none' 
-                                                : isGlassmorphism
-                                                    ? (isActive ? '1px solid rgba(255, 255, 255, 0.25)' : isHovered ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid transparent')
-                                                    : isFluentHybrid
-                                                        ? (isActive ? '1px solid rgba(255, 255, 255, 0.4)' : isHovered ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid transparent')
-                                                        : (isActive 
-                                                            ? `1.5px solid ${itemColor}` 
-                                                            : isHovered 
-                                                                ? '1px solid rgba(255, 255, 255, 0.2)' 
-                                                                : '1px solid transparent'),
-                                            boxShadow: isM3 || isApple || isFluent2
-                                                ? 'none' 
-                                                : isNeumorphic
-                                                    ? (isActive
-                                                        ? 'var(--neumorphic-inset-shadow)'
-                                                        : isHovered
-                                                            ? 'var(--neumorphic-raised-shadow-sm)'
-                                                            : 'none')
-                                                    : isGlassmorphism
-                                                        ? (isActive ? '0 4px 12px rgba(0, 0, 0, 0.05)' : 'none')
-                                                        : isFluentHybrid
-                                                            ? (isActive ? '0 10px 30px rgba(120, 120, 255, 0.08)' : 'none')
-                                                            : (isActive 
-                                                                ? `0 0 15px ${glowColor}, inset 0 1px 1px rgba(255, 255, 255, 0.25)` 
-                                                                : isHovered 
-                                                                    ? '0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.1)' 
-                                                                    : 'none'),
-                                            transform: isM3 || isApple || isFluent2 ? 'none' : isNeumorphic ? (isHovered ? 'scale(1.02)' : 'none') : isGlassmorphism || isFluentHybrid ? (isHovered ? 'translateY(-1px)' : 'none') : (isHovered ? 'translateY(-2px) scale(1.02)' : 'none'),
-                                            borderRadius: isM3 ? '100px' : isNeumorphic ? '16px' : isGlassmorphism ? '14px' : isApple ? '8px' : isFluentHybrid ? '12px' : isFluent2 ? '8px' : (activeOrHovered ? '999px' : '10px'),
+                                            color: isActive ? 'var(--primary)' : isHovered ? 'var(--text)' : 'var(--text-secondary)',
+                                            backgroundColor: isActive ? 'rgba(255, 255, 255, 0.18)' : isHovered ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
+                                            border: isActive ? '1px solid rgba(255, 255, 255, 0.25)' : isHovered ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid transparent',
+                                            boxShadow: isActive ? '0 4px 12px rgba(0, 0, 0, 0.05)' : 'none',
+                                            transform: isHovered ? 'translateY(-1px)' : 'none',
+                                            borderRadius: '14px',
                                             padding: isCollapsed ? '0' : '0 12px',
                                             margin: '0.12rem auto',
                                             display: 'flex',
@@ -253,43 +157,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                                             aria-hidden="true" 
                                             size={isCollapsed ? 16 : 14}
                                             style={{
-                                                color: isM3 
-                                                    ? (isActive 
-                                                        ? 'var(--md-sys-color-on-secondary-container)' 
-                                                        : isHovered 
-                                                            ? 'var(--md-sys-color-on-surface)' 
-                                                            : 'var(--md-sys-color-on-surface-variant)')
-                                                    : isNeumorphic
-                                                        ? (isActive
-                                                            ? 'var(--primary)'
-                                                            : isHovered
-                                                                ? 'var(--text)'
-                                                                : 'var(--text-secondary)')
-                                                        : isGlassmorphism
-                                                            ? (isActive
-                                                                ? 'var(--primary)'
-                                                                : isHovered
-                                                                    ? 'var(--text)'
-                                                                    : 'var(--text-secondary)')
-                                                            : isApple
-                                                                ? (isActive
-                                                                    ? '#ffffff'
-                                                                    : isHovered
-                                                                        ? 'var(--text)'
-                                                                        : 'var(--text-secondary)')
-                                                            : isFluentHybrid
-                                                                ? (isActive
-                                                                    ? 'var(--primary)'
-                                                                    : isHovered
-                                                                        ? 'var(--text)'
-                                                                        : 'var(--text-secondary)')
-                                                            : isFluent2
-                                                                ? (isActive
-                                                                    ? 'var(--primary)'
-                                                                    : isHovered
-                                                                        ? 'var(--text)'
-                                                                        : 'var(--text-secondary)')
-                                                                : (activeOrHovered ? itemColor : 'var(--color-brand-text-secondary)'),
+                                                color: isActive ? 'var(--primary)' : isHovered ? 'var(--text)' : 'var(--text-secondary)',
                                                 transition: 'all 0.25s ease',
                                                 flexShrink: 0
                                             }} 
@@ -297,46 +165,10 @@ const Sidebar: React.FC<SidebarProps> = ({
                                         {!isCollapsed && (
                                             <span 
                                                 style={{
-                                                    color: isM3 
-                                                    ? (isActive 
-                                                        ? 'var(--md-sys-color-on-secondary-container)' 
-                                                        : isHovered 
-                                                            ? 'var(--md-sys-color-on-surface)' 
-                                                            : 'var(--md-sys-color-on-surface-variant)')
-                                                    : isNeumorphic
-                                                        ? (isActive
-                                                            ? 'var(--primary)'
-                                                            : isHovered
-                                                                ? 'var(--text)'
-                                                                : 'var(--text-secondary)')
-                                                        : isGlassmorphism
-                                                            ? (isActive
-                                                                ? 'var(--primary)'
-                                                                : isHovered
-                                                                    ? 'var(--text)'
-                                                                    : 'var(--text-secondary)')
-                                                            : isApple
-                                                                ? (isActive
-                                                                    ? '#ffffff'
-                                                                    : isHovered
-                                                                        ? 'var(--text)'
-                                                                        : 'var(--text-secondary)')
-                                                            : isFluentHybrid
-                                                                ? (isActive
-                                                                    ? 'var(--primary)'
-                                                                    : isHovered
-                                                                        ? 'var(--text)'
-                                                                        : 'var(--text-secondary)')
-                                                            : isFluent2
-                                                                ? (isActive
-                                                                    ? 'var(--primary)'
-                                                                    : isHovered
-                                                                        ? 'var(--text)'
-                                                                        : 'var(--text-secondary)')
-                                                                : (activeOrHovered ? itemColor : 'var(--color-brand-text-secondary)'),
+                                                    color: isActive ? 'var(--primary)' : isHovered ? 'var(--text)' : 'var(--text-secondary)',
                                                     transition: 'color 0.25s ease',
                                                     fontWeight: 'bold',
-                                                    fontSize: '14px',
+                                                    fontSize: '15px',
                                                     whiteSpace: 'nowrap',
                                                     overflow: 'hidden',
                                                     textOverflow: 'ellipsis',
@@ -347,12 +179,12 @@ const Sidebar: React.FC<SidebarProps> = ({
                                         )}
                                     </a>
 
-                                    {isCollapsed && tooltipData && (
+                                    {tooltipData && isCollapsed && (
                                         <div 
                                             className="sidebar-tooltip"
                                             style={{
                                                 position: 'absolute',
-                                                left: isCollapsed ? '65px' : '230px',
+                                                left: '65px',
                                                 top: '50%',
                                                 transform: hoveredKey === item.key 
                                                     ? 'translateY(-50%) translateX(5px)' 
@@ -374,7 +206,6 @@ const Sidebar: React.FC<SidebarProps> = ({
                                         >
                                             <div className="tooltip-inner" style={{ position: 'relative' }}>
                                                 <div className="tooltip-header" style={{
-                                                    display: 'flex',
                                                     alignItems: 'center',
                                                     gap: '0.75rem',
                                                     marginBottom: '0.75rem'
@@ -386,9 +217,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                                                         backgroundColor: 'var(--sidebar-bg)',
                                                         border: `1px solid ${itemColor}`,
                                                         color: itemColor,
-                                                        display: 'flex',
                                                         alignItems: 'center',
-                                                        justifyContent: 'center',
                                                         flexShrink: 0
                                                     }}>
                                                         <Icon size={18} />

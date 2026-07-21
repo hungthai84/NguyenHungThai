@@ -39,6 +39,7 @@ import {
     BookOpen,
     Presentation,
     Camera,
+    Video,
     MapPin,
     Send,
     Volume2,
@@ -83,9 +84,20 @@ import {
     Languages,
     Monitor,
     MessageSquare,
+    CheckCircle,
+    Smile,
+    AlertCircle,
     Database,
+    Quote,
+    Eye,
+    HelpCircle,
+    Save,
 } from 'lucide-react';
 
+export const SaveIcon = Save;
+export const QuoteIcon = Quote;
+export const ScalingIcon = Maximize;
+export const EyeIcon = Eye;
 export const RotateCcwIcon = RotateCcw;
 export const LaptopIcon = Laptop;
 
@@ -180,3 +192,9 @@ export const MonitorIcon = Monitor;
 export const MessageSquareIcon = MessageSquare;
 export const CloudIcon = Cloud;
 export const DatabaseIcon = Database;
+export const CheckCircleIcon = CheckCircle;
+export const SmileIcon = Smile;
+export const AlertCircleIcon = AlertCircle;
+export const HelpCircleIcon = HelpCircle;
+
+export const VideoIcon = Video;

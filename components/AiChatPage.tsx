@@ -28,74 +28,9 @@ interface MediaPrompt {
     questions?: string[];
 }
 
-const getCategoryIcon = (index: number) => {
-    switch (index) {
-        case 0: return <Icons.UserIcon size={18} />;
-        case 1: return <Icons.GlobeAltIcon size={18} />;
-        case 2: return <Icons.UsersIcon size={18} />;
-        case 3: return <Icons.ShieldCheckIcon size={18} />;
-        case 4: return <Icons.SettingsIcon size={18} />;
-        case 5: return <Icons.HeartIcon size={18} />;
-        case 6: return <Icons.LayersIcon size={18} />;
-        case 7: return <Icons.SparklesIcon size={18} />;
-        default: return <Icons.FolderIcon size={18} />;
-    }
-};
-
-const getCategoryTitle = (title: string, lang: string) => {
-    if (lang === 'vi') {
-        const viMap: Record<string, string> = {
-            "I. GIỚI THIỆU CÁ NHÂN": "I. Giới thiệu cá nhân",
-            "II. TẦM NHÌN & CHIẾN LƯỢC": "II. Tầm nhìn & Chiến lược",
-            "III. QUẢN LÝ & ĐÀO TẠO": "III. Quản lý & Đào tạo",
-            "IV. TÌNH HUỐNG & KHỦNG HOẢNG": "IV. Tình huống & Khủng hoảng",
-            "V. CÔNG NGHỆ & QUY TRÌNH": "V. Công nghệ & Quy trình",
-            "VI. VĂN HÓA & THẤU CẢM": "VI. Văn hóa & Thấu cảm",
-            "VII. TỔ CHỨC & PHỐI HỢP": "VII. Tổ chức & Phối hợp",
-            "VIII. LÃNH ĐẠO & TƯ DUY KHÁC BIỆT": "VIII. Lãnh đạo & Tư duy khác biệt",
-            "VIII. LẠNH ĐẠO & TƯ DUY KHÁC BIỆT": "VIII. Lãnh đạo & Tư duy khác biệt"
-        };
-        return viMap[title] || title;
-    } else {
-        const enMap: Record<string, string> = {
-            "I. PERSONAL INTRODUCTION": "I. Personal Introduction",
-            "II. VISION & STRATEGY": "II. Vision & Strategy",
-            "III. MANAGEMENT & TRAINING": "III. Management & Training",
-            "IV. SITUATIONS & CRISIS": "IV. Situations & Crisis",
-            "V. TECHNOLOGY & PROCESS": "V. Technology & Process",
-            "VI. CULTURE & EMPATHY": "VI. Culture & Empathy",
-            "VII. ORGANIZATION & COORDINATION": "VII. Organization & Coordination",
-            "VIII. LEADERSHIP & DIFFERENTIATING MINDSET": "VIII. Leadership & Differentiating Mindset"
-        };
-        return enMap[title] || title;
-    }
-};
-
 const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
     const { t, language } = useI18n();
-    const defaultPageData = { 
-        badge: 'AI Chat', 
-        collectInfoGreeting: 'Xin chào! Vui lòng nhập tên và giới tính của bạn để chúng ta bắt đầu.',
-        welcomeMessage: 'Chào bạn! Rất vui được hỗ trợ!',
-        startChatBtn: 'Bắt đầu',
-        speakerOn: 'Bật loa',
-        speakerOff: 'Tắt loa',
-        avatarAlt: 'AI Support',
-        errorMessage: 'Đã xảy ra lỗi, vui lòng thử lại.',
-        interviewResponseText: 'Dưới đây là thông tin phỏng vấn.',
-        namePlaceholder: 'Tên của bạn',
-        genderMale: 'Nam',
-        genderFemale: 'Nữ',
-        questionsPopupTitle: 'Câu hỏi gợi ý',
-        tooltipTitle: 'Trợ lý AI',
-        tooltipText: 'Trợ lý AI hỗ trợ bạn.',
-        newChat: 'Chat mới',
-        suggestedQuestionsBtn: 'Câu hỏi gợi ý',
-        attachFile: 'Đính kèm tệp',
-        placeholder: 'Nhập tin nhắn...'
-    };
-    const pageData = { ...defaultPageData, ...(t?.aiChatPage || {}) };
-    console.log("DEBUG: pageData is", pageData);
+    const pageData = t.aiChatPage;
     const { isAiVoiceOn, selectedAiVoiceName, setAiVoiceOn, aiVoicePitch, aiVoiceRate } = useTheme();
     
     const [messages, setMessages] = useState<Message[]>([]);
@@ -111,6 +46,8 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
     const [isQuestionsPopupOpen, setIsQuestionsPopupOpen] = useState(false);
     const [showQuestionsBtn, setShowQuestionsBtn] = useState(false);
     const [selectedGroup, setSelectedGroup] = useState<QuestionGroup | null>(null);
+    const [isRecording, setIsRecording] = useState(false);
+    const recognitionRef = useRef<any>(null);
 
     const userVoiceName = useMemo(() => {
         if (language === 'vi') {
@@ -176,6 +113,57 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
             lastSpokenViewRef.current = 'chat';
         }
     }, [view, isAiVoiceOn, aiVoiceToUse, language, aiVoicePitch, aiVoiceRate, userName, userSalutation, pageData.welcomeMessage, speak]);
+
+
+    const toggleRecording = async () => {
+        if (isRecording) {
+            recognitionRef.current?.stop();
+            setIsRecording(false);
+            return;
+        }
+
+        try {
+            await navigator.mediaDevices.getUserMedia({ audio: true });
+            const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                alert('Trình duyệt không hỗ trợ nhận diện giọng nói / Browser does not support speech recognition');
+                return;
+            }
+            
+            const recognition = new SpeechRecognition();
+            recognition.lang = language === 'vi' ? 'vi-VN' : 'en-US';
+            recognition.interimResults = false;
+            recognition.continuous = false;
+            
+            recognition.onresult = (event: any) => {
+                let finalTranscript = '';
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        finalTranscript += event.results[i][0].transcript;
+                    }
+                }
+                if (finalTranscript) {
+                    setInput(prev => prev ? prev + ' ' + finalTranscript : finalTranscript);
+                }
+            };
+
+            recognition.onerror = (event: any) => {
+                console.error("Speech recognition error", event.error);
+                setIsRecording(false);
+            };
+
+            recognition.onend = () => {
+                setIsRecording(false);
+            };
+
+            recognition.start();
+            recognitionRef.current = recognition;
+            setIsRecording(true);
+        } catch (err) {
+            console.error("Microphone permission denied", err);
+            alert("Vui lòng cấp quyền sử dụng microphone / Please grant microphone permission");
+        }
+    };
 
     const startNewChat = () => {
         cancel();
@@ -465,7 +453,7 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
     );
 
     const renderSuggestionsView = () => {
-        const mediaPromptsToDisplay = (pageData.mediaPrompts || []).filter(prompt => {
+        const mediaPromptsToDisplay = (pageData.mediaPrompts as MediaPrompt[]).filter(prompt => {
             if (selectedCategory) {
                 // When a category is selected, only show the 'back' button in the media prompts
                 return prompt.action === 'show_categories';
@@ -500,7 +488,7 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
                                             speak(personalizedWelcomeMessage, { voiceName: aiVoiceToUse, lang: language, pitch: aiVoicePitch, rate: aiVoiceRate });
                                         }
                                     }}
-                                    title={isSpeaking ? (pageData?.speakerOn || 'Bật loa') : (pageData?.speakerOff || 'Tắt loa')}
+                                    title={isSpeaking ? t.aiChatPage.speakerOn : t.aiChatPage.speakerOff}
                                 >
                                     {isSpeaking ? <Icons.PauseIcon size={18} /> : <Icons.SpeakerWaveIcon size={18} />}
                                 </button>
@@ -508,59 +496,39 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
                         </div>
                     </div>
 
-                    {!selectedCategory && !selectedGroup ? (
-                        <div className="ai-categories-view">
-                            <div className="ai-categories-grid">
-                                {(questionGroups[language] || []).map((group, i) => (
+                    {!selectedCategory ? (
+                        <div className="suggested-prompts-container grid grid-cols-2 gap-4">
+                            {questionGroups[language].map((group, i) => {
+                                const Icon = Icons[group.icon as keyof typeof Icons] || Icons.ListIcon;
+                                return (
                                     <button 
                                         key={i} 
-                                        className="ai-category-card"
-                                        onClick={() => setSelectedGroup(group)}
+                                        className="suggested-prompt-btn flex flex-col items-center justify-center gap-2 p-4 text-center"
+                                        onClick={() => {
+                                            setSelectedCategory({
+                                                key: `cat-${i}`,
+                                                title: group.title,
+                                                icon: group.icon as keyof typeof Icons, 
+                                                questions: group.questions,
+                                                action: 'show_questions'
+                                            });
+                                        }}
                                     >
-                                        <div className="category-icon">
-                                            {getCategoryIcon(i)}
-                                        </div>
-                                        <span className="category-title">{getCategoryTitle(group.title, language)}</span>
+                                        <Icon size={24} />
+                                        <span>{group.title}</span>
                                     </button>
-                                ))}
-                            </div>
-                        </div>
-                    ) : selectedGroup ? (
-                        <div className="selected-category-view">
-                            <div className="category-header">
-                                <button className="back-btn-inline" onClick={() => setSelectedGroup(null)}>
-                                    <Icons.ChevronLeftIcon size={18} />
-                                    <span>Quay lại</span>
-                                </button>
-                                <h3>{selectedGroup.title}</h3>
-                            </div>
-                            <div className="suggested-prompts-container">
-                                {selectedGroup.questions.map((q, i) => {
-                                    const hasAnswer = !!hardcodedAnswers[language][q.trim()];
-                                    return (
-                                        <button 
-                                            key={i} 
-                                            className={`suggested-prompt-btn ${!hasAnswer ? 'unanswered' : ''}`}
-                                            onClick={() => handleQuestionClick(q)}
-                                        >
-                                            <span>{q}</span>
-                                            {!hasAnswer && <span className="unanswered-badge">{language === 'vi' ? 'Chưa trả lời' : 'No answer'}</span>}
-                                        </button>
-                                    );
-                                })}
-                            </div>
+                                );
+                            })}
                         </div>
                     ) : (
                         <div className="selected-category-view">
-                            <div className="category-header">
-                                <button className="back-btn-inline" onClick={() => setSelectedCategory(null)}>
-                                    <Icons.ChevronLeftIcon size={18} />
-                                    <span>Quay lại</span>
-                                </button>
-                                <h3>{selectedCategory?.title}</h3>
-                            </div>
+                            <button className="back-btn" onClick={() => setSelectedCategory(null)} style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <Icons.ChevronLeftIcon size={16} />
+                                Quay lại
+                            </button>
+                            <h3>{selectedCategory.title}</h3>
                             <div className="suggested-prompts-container">
-                                {selectedCategory?.questions?.map((q, i) => {
+                                {selectedCategory.questions?.map((q, i) => {
                                     const hasAnswer = !!hardcodedAnswers[language][q.trim()];
                                     return (
                                         <button 
@@ -584,6 +552,27 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
                             <button key={prompt.key} className="ai-media-prompt-btn" onClick={() => handleMediaPromptClick(prompt)}>
                                 <Icon size={18} />
                                 {prompt.title}
+                            </button>
+                        );
+                    })}
+                    {questionGroups[language].map((group, i) => {
+                        const Icon = Icons[group.icon as keyof typeof Icons] || Icons.ListIcon;
+                        return (
+                            <button 
+                                key={`cat-${i}`} 
+                                className="ai-media-prompt-btn" 
+                                onClick={() => {
+                                    setSelectedCategory({
+                                        key: `cat-${i}`,
+                                        title: group.title,
+                                        icon: group.icon as keyof typeof Icons,
+                                        questions: group.questions,
+                                        action: 'show_questions'
+                                    });
+                                }}
+                            >
+                                <Icon size={18} />
+                                {group.title}
                             </button>
                         );
                     })}
@@ -621,6 +610,7 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
                             onChange={(e) => setUserName(e.target.value)}
                             required
                             aria-label="Your name"
+                            style={{ fontFamily: "'Play', sans-serif" }}
                         />
                         <div className="gender-selector">
                             <button 
@@ -678,16 +668,20 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
                     </div>
                     <div className="questions-list no-scrollbar">
                         {!selectedGroup ? (
-                            groups.map((group, i) => (
-                                <button 
-                                    key={i} 
-                                    className="question-item category-item"
-                                    onClick={() => setSelectedGroup(group)}
-                                >
-                                    <span>{group.title}</span>
-                                    <Icons.ChevronRightIcon size={16} />
-                                </button>
-                            ))
+                            groups.map((group, i) => {
+                                const Icon = Icons[group.icon as keyof typeof Icons] || Icons.ListIcon;
+                                return (
+                                    <button 
+                                        key={i} 
+                                        className="question-item category-item flex items-center gap-3"
+                                        onClick={() => setSelectedGroup(group)}
+                                    >
+                                        <Icon size={18} />
+                                        <span>{group.title}</span>
+                                        <Icons.ChevronRightIcon size={16} />
+                                    </button>
+                                );
+                            })
                         ) : (
                             selectedGroup.questions.map((q, i) => {
                                 const hasAnswer = !!hardcodedAnswers[language][q.trim()];
@@ -715,15 +709,15 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexShrink: 0, gap: '1rem' }}>
                     <CardTitle
                         icon={<Icons.BotIcon />}
-                        text={pageData?.badge || 'AI Chat'}
-                        tooltipTitle={pageData?.tooltipTitle || 'Trợ lý AI'}
-                        tooltipText={pageData?.tooltipText || 'Hỗ trợ bạn.'}
+                        text={pageData.badge}
+                        tooltipTitle={pageData.tooltipTitle}
+                        tooltipText={pageData.tooltipText}
                     />
                     <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-                        <button onClick={startNewChat} className="header-icon-button" title={pageData?.newChat || 'Chat mới'}>
+                        <button onClick={startNewChat} className="header-icon-button" title={pageData.newChat}>
                             <Icons.PencilIcon size={22} />
                         </button>
-                        <button onClick={() => setAiVoiceOn(!isAiVoiceOn)} className="header-icon-button" title={isAiVoiceOn ? (pageData?.speakerOn || 'Bật loa') : (pageData?.speakerOff || 'Tắt loa')}>
+                        <button onClick={() => setAiVoiceOn(!isAiVoiceOn)} className="header-icon-button" title={isAiVoiceOn ? pageData.speakerOn : pageData.speakerOff}>
                             {isAiVoiceOn ? <Icons.SpeakerWaveIcon size={22} /> : <Icons.SpeakerOffIcon size={22} />}
                         </button>
                     </div>
@@ -739,7 +733,8 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
                             <div className="chatbot-input-area">
                                 {showQuestionsBtn && !isLoading && (
                                     <button 
-                                        className="suggested-questions-btn-toggle"
+                                        className="suggested-questions-btn-toggle rounded-full"
+                                        style={{ borderRadius: '999px' }}
                                         onClick={toggleQuestionsPopup}
                                     >
                                         <Icons.ListIcon size={18} />
@@ -756,15 +751,18 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
                                     </div>
                                 )}
                                 <form
-                                    className="chatbot-input-form"
+                                    className="chatbot-input-form" style={{ border: "none", boxShadow: "none", background: "transparent" }}
                                     onSubmit={(e) => {
                                         e.preventDefault();
                                         handleSend();
                                     }}
                                 >
                                     <input type="file" accept="image/*" ref={fileInputRef} onChange={handleAttachmentChange} style={{ display: 'none' }} />
-                                    <button type="button" className="chatbot-attach-btn" title={pageData.attachFile} onClick={() => fileInputRef.current?.click()}>
+                                    <button type="button" className="chatbot-attach-btn rounded-full" style={{ borderRadius: '999px' }} title={pageData.attachFile} onClick={() => fileInputRef.current?.click()}>
                                         <Icons.AttachmentIcon />
+                                    </button>
+                                    <button type="button" className="chatbot-attach-btn rounded-full" style={{ borderRadius: '999px', color: isRecording ? 'red' : undefined }} onClick={toggleRecording}>
+                                        <Icons.MicrophoneIcon />
                                     </button>
                                     <textarea
                                         ref={textareaRef}
@@ -779,10 +777,12 @@ const AiChatPage: React.FC<{ id?: string }> = ({ id }) => {
                                         placeholder={pageData.placeholder}
                                         className="chatbot-textarea no-scrollbar"
                                         rows={1}
+                                        style={{ fontFamily: "'Play', sans-serif" }}
                                     />
                                     <button
                                         type="submit"
-                                        className="chatbot-send-btn"
+                                        className="chatbot-send-btn rounded-full"
+                                        style={{ borderRadius: '999px' }}
                                         disabled={isLoading || (!input.trim() && !attachment)}
                                     >
                                         {isLoading ? <Icons.CpuIcon className="animate-spin" /> : <Icons.PaperAirplaneIcon />}

@@ -5,17 +5,18 @@ interface VideoHomeCardProps {
     isMuted: boolean;
     isIntroPlaying: boolean;
     onEnded: () => void;
+    loop?: boolean;
     children?: React.ReactNode; // For the content on top
 }
 
-const VideoHomeCard: React.FC<VideoHomeCardProps> = ({ videoUrl, isMuted, isIntroPlaying, onEnded, children }) => {
+const VideoHomeCard: React.FC<VideoHomeCardProps> = ({ videoUrl, isMuted, isIntroPlaying, onEnded, children, loop = true }) => {
     return (
         <div className="info-card home-hero-card overflow-hidden flex flex-col h-full" style={{ position: 'relative', width: '100%' }}>
             <video 
                 key={videoUrl}
                 autoPlay 
                 muted={isMuted} 
-                loop={!isIntroPlaying} 
+                loop={loop} 
                 playsInline 
                 className="home-hero-card-bg-video"
                 src={videoUrl}

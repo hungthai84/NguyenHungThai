@@ -39,21 +39,21 @@ const FilterDropdown: React.FC<{
 
     return (
         <div className="filter-dropdown" ref={dropdownRef}>
-            <button className="filter-dropdown-button" onClick={() => setIsOpen(!isOpen)}>
+            <button className="filter-dropdown-button" onClick={() => setIsOpen(!isOpen)} style={{ fontFamily: "'Play', sans-serif" }}>
                 {icon}
-                <span>{title} {selectedOptions.length > 0 ? `(${selectedOptions.length})` : ''}</span>
+                <span style={{ fontFamily: "'Play', sans-serif" }}>{title} {selectedOptions.length > 0 ? `(${selectedOptions.length})` : ''}</span>
                 <Icons.ChevronDownIcon size={16} className={`chevron-icon ${isOpen ? 'open' : ''}`} />
             </button>
             {isOpen && (
-                <div className="filter-dropdown-panel no-scrollbar">
+                <div className="filter-dropdown-panel no-scrollbar" style={{ fontFamily: "'Play', sans-serif" }}>
                     {options.map(option => (
-                        <label key={option} className="filter-dropdown-item">
+                        <label key={option} className="filter-dropdown-item" style={{ fontFamily: "'Play', sans-serif" }}>
                             <input
                                 type="checkbox"
                                 checked={selectedOptions.includes(option)}
                                 onChange={() => onSelectionChange(option)}
                             />
-                            <span>{itemPrefix}{option}</span>
+                            <span style={{ fontFamily: "'Play', sans-serif" }}>{itemPrefix}{option}</span>
                         </label>
                     ))}
                 </div>

@@ -223,22 +223,110 @@ const CoverLetter: React.FC<CoverLetterProps> = ({ id }) => {
                         color: 'var(--color-brand-text-primary)',
                         fontSize: '13px'
                     }}>
-                        <p style={{ marginBottom: '1rem', marginTop: '0px', fontWeight: '600', fontSize: '13px' }}>{pageData.greeting}</p>
-                        {paragraphs.map((p, index) => {
-                            const lines = p.split('\n').map((line, lineIndex) => (
-                                <React.Fragment key={lineIndex}>
-                                    {line}
-                                    <br />
-                                </React.Fragment>
-                            ));
-                            return <p key={index} style={{ marginBottom: '1rem', marginTop: '0px' }}>{lines}</p>;
-                        })}
-                        <div className="cover-letter-signature-block" style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px dashed var(--card-border)' }}>
-                            <p style={{marginBottom: 0, lineHeight: '1.2', marginTop: '0px', fontStyle: 'italic'}}>{pageData.closing}</p>
-                            {pageData.signatureImage && (
-                                <img src={pageData.signatureImage} alt="Chữ ký" className="signature-image" style={{ margin: '0.75rem 0', maxWidth: '120px' }} />
-                            )}
-                            <p style={{margin: 0, lineHeight: '1.2', marginTop: '0px'}} className="signature-name">{pageData.signature}</p>
+                        <p className="font-bold text-slate-900 dark:text-white text-fluid-body border-l-4 border-orange-500 pl-3">Kính chào Quý Công ty!</p>
+
+                        <p className="text-fluid-body">
+                          Tôi là <span className="text-orange-500 font-bold">Nguyễn Hùng Thái</span>, Trưởng phòng Chăm sóc Khách hàng với hơn <span className="text-orange-500 font-bold border-b border-orange-500/20 pb-0.5">22 năm thực chiến sâu sắc</span> trong lĩnh vực xây dựng, vận hành và phát triển dịch vụ khách hàng.
+                        </p>
+                        
+                        <div className="space-y-4 border-l-2 border-slate-300 dark:border-slate-700 pl-4 ml-2">
+                          <div className="relative">
+                            <div className="absolute -left-[21px] top-1.5 w-2 h-2 bg-orange-500 rounded-full"></div>
+                            <p className="text-fluid-body">
+                              Tôi bắt đầu sự nghiệp từ năm <span className="font-bold text-slate-900 dark:text-white">2002 tại MobiFone</span>, nơi tôi được đào tạo nền tảng vững chắc về dịch vụ khách hàng, quản lý tổng đài, xử lý sự cố và xây dựng quy trình phục vụ theo tiêu chuẩn khắt khe của ngành viễn thông.
+                            </p>
+                          </div>
+                        
+                          <div className="relative">
+                            <div className="absolute -left-[21px] top-1.5 w-2 h-2 bg-orange-500 rounded-full"></div>
+                            <p className="text-fluid-body">
+                              Tiếp đó, tại <span className="font-bold text-slate-900 dark:text-white">Viễn Liên V247</span>, tôi phát triển năng lực quản lý đội ngũ, trực tiếp giám sát chất lượng dịch vụ và tối ưu hiệu quả vận hành của trung tâm chăm sóc khách hàng.
+                            </p>
+                          </div>
+                        
+                          <div className="relative">
+                            <div className="absolute -left-[21px] top-1.5 w-2 h-2 bg-orange-500 rounded-full"></div>
+                            <p className="text-fluid-body">
+                              Một cột mốc quan trọng trong sự nghiệp của tôi là khi gia nhập <span className="font-bold text-slate-900 dark:text-white">LBC – Truyền hình Cáp HTV</span>, nơi tôi lần đầu tiên đảm nhiệm vị trí <span className="font-bold text-slate-900 dark:text-white">Trưởng phòng Chăm sóc Khách hàng</span>. Đây là giai đoạn giúp tôi chuyển mình từ một nhà quản lý vận hành sang một nhà quản trị toàn diện. Tôi học cách điều hành hoạt động của cả phòng ban, xây dựng và chuẩn hóa quy trình, phát triển đội ngũ, thiết lập các chỉ số quản trị (KPI) và phối hợp hiệu quả với nhiều phòng ban nhằm nâng cao chất lượng dịch vụ.
+                            </p>
+                          </div>
+                        
+                          <div className="relative">
+                            <div className="absolute -left-[21px] top-1.5 w-2 h-2 bg-orange-500 rounded-full"></div>
+                            <p className="text-fluid-body">
+                              Khi làm việc tại <span className="font-bold text-slate-900 dark:text-white">Garena</span>, tôi quản lý hoạt động chăm sóc khách hàng trong lĩnh vực thể thao điện tử, nơi đòi hỏi tốc độ xử lý nhanh, chính xác và khả năng đáp ứng tốt khối lượng khách hàng cực kỳ lớn.
+                            </p>
+                          </div>
+                        
+                          <div className="relative">
+                            <div className="absolute -left-[21px] top-1.5 w-2 h-2 bg-orange-500 rounded-full"></div>
+                            <p className="text-fluid-body">
+                              Trong giai đoạn phát triển <span className="font-bold text-slate-900 dark:text-white">VED, Shopee và AirPay</span>, tôi tham gia sâu sát vào xây dựng trải nghiệm khách hàng trong lĩnh vực thương mại điện tử và thanh toán số, với định hướng nhất quán lấy khách hàng làm trung tâm.
+                            </p>
+                          </div>
+                        
+                          <div className="relative">
+                            <div className="absolute -left-[21px] top-1.5 w-2 h-2 bg-orange-500 rounded-full"></div>
+                            <p className="text-fluid-body">
+                              Tại <span className="font-bold text-slate-900 dark:text-white">MoMo</span>, tôi tiếp tục mở rộng kinh nghiệm trong lĩnh vực dịch vụ tài chính số, tối ưu hóa các quy trình hỗ trợ khách hàng đa kênh và nâng cao hiệu quả vận hành trên nền tảng công nghệ cao.
+                            </p>
+                          </div>
+                        
+                          <div className="relative">
+                            <div className="absolute -left-[21px] top-1.5 w-2 h-2 bg-orange-500 rounded-full"></div>
+                            <p className="text-fluid-body">
+                              Làm việc tại <span className="font-bold text-slate-900 dark:text-white">Prudential và Ví ECO (Finviet)</span> giúp tôi hiểu sâu sắc hơn về trải nghiệm khách hàng trong lĩnh vực bảo hiểm và tài chính công nghệ, nơi sự chính xác, minh bạch và niềm tin luôn được đặt lên hàng đầu.
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <p className="text-fluid-body">
+                          Qua mỗi môi trường làm việc đầy thử thách, tôi nhận ra rằng chăm sóc khách hàng không chỉ là giải quyết vấn đề đơn thuần, mà còn là xây dựng một hệ thống tối ưu giúp doanh nghiệp phát triển bền vững.
+                        </p>
+                        
+                        <div className="glass-panel p-4 rounded-xl border border-orange-500/10 my-4 bg-orange-500/5">
+                          <p className="text-fluid-small text-orange-500 uppercase tracking-wider font-bold mb-3 flex items-center gap-2">
+                            <i className="fa-solid fa-graduation-cap"></i> Ba nguyên tắc cốt lõi của tôi:
+                          </p>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div className="p-3 bg-white/20 dark:bg-slate-900/40 rounded-lg text-center border border-white/10">
+                              <i className="fa-solid fa-sliders text-orange-500 mb-1 text-base block"></i>
+                              <span className="font-bold text-slate-800 dark:text-white text-fluid-xs">QUY TRÌNH TẠO NỀN TẢNG</span>
+                            </div>
+                            <div className="p-3 bg-white/20 dark:bg-slate-900/40 rounded-lg text-center border border-white/10">
+                              <i className="fa-solid fa-users text-blue-500 mb-1 text-base block"></i>
+                              <span className="font-bold text-slate-800 dark:text-white text-fluid-xs">CON NGƯỜI TẠO GIÁ TRỊ</span>
+                            </div>
+                            <div className="p-3 bg-white/20 dark:bg-slate-900/40 rounded-lg text-center border border-white/10">
+                              <i className="fa-solid fa-bolt text-purple-500 mb-1 text-base block"></i>
+                              <span className="font-bold text-slate-800 dark:text-white text-fluid-xs">CÔNG NGHỆ TẠO ĐÒN BẨY</span>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <p className="text-fluid-body">
+                          Từ những nguyên tắc đó, tôi tập trung xây dựng các hệ thống CRM, Dashboard quản trị, AI Chatbot và các giải pháp tự động hóa nhằm nâng cao tối đa hiệu quả vận hành. Bên cạnh công nghệ, tôi luôn chú trọng đào tạo đội ngũ biết lắng nghe, thấu cảm chân thành và mang đến những trải nghiệm vượt mong đợi cho khách hàng.
+                        </p>
+                        
+                        <div className="glass-panel p-4 rounded-xl border-l-4 border-r-4 border-orange-500/60 bg-gradient-to-r from-orange-500/5 to-transparent text-left my-4">
+                          <i className="fa-solid fa-quote-left text-orange-500/30 text-2xl -mt-2 block"></i>
+                          <p className="text-fluid-body italic font-semibold text-slate-800 dark:text-amber-100/95 leading-relaxed pl-4 -mt-2">
+                            "Sự hài lòng của khách hàng không đến từ sự hoàn hảo, mà đến từ <span className="text-orange-500 dark:text-orange-400 font-bold underline decoration-2 underline-offset-4">sự đồng cảm kịp thời</span>."
+                          </p>
+                        </div>
+                        
+                        <p className="text-fluid-body">
+                          Tôi mong muốn được đồng hành cùng Quý Công ty để xây dựng một hệ thống chăm sóc khách hàng hiện đại, lấy khách hàng làm trung tâm, tối ưu hiệu quả vận hành và tạo ra giá trị phát triển bền vững lâu dài.
+                        </p>
+
+                        <div className="flex justify-between items-end mt-8 border-t border-slate-500/10 pt-4 flex-shrink-0">
+                            <div className="text-left">
+                                <p className="text-fluid-small text-slate-400 mb-1 italic">Xin trân trọng cảm ơn Quý Công ty đã dành thời gian lắng nghe!</p>
+                                <p className="font-bold text-[13px] text-orange-500 m-0 font-play uppercase tracking-wider">Nguyễn Hùng Thái</p>
+                            </div>
+                            <div className="relative group cursor-pointer text-right flex flex-col items-end">
+                                <img className="h-10 md:h-12 w-auto opacity-90 transition-transform group-hover:scale-105 duration-300 filter dark:brightness-110" src="https://i.postimg.cc/VNfdSvPT/Ch-k.png" alt="Chữ ký Nguyễn Hùng Thái" />
+                            </div>
                         </div>
                     </div>
                 </div>

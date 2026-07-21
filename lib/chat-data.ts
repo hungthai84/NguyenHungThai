@@ -114,22 +114,24 @@ export const hardcodedAnswers: Record<string, Record<string, string>> = {
 export interface QuestionGroup {
   title: string;
   questions: string[];
+  icon: string;
 }
 
 export const questionGroups: Record<string, QuestionGroup[]> = {
   vi: [
     {
-      title: "I. GIỚI THIỆU CÁ NHÂN",
+      title: "I. Giới thiệu cá nhân",
       questions: [
         "Chào anh Nguyễn Hùng Thái, anh có thể giới thiệu ngắn gọn về bản thân cũng như hành trình 22 năm trong lĩnh vực chăm sóc khách hàng của mình không?",
         "Điều gì khiến anh gắn bó lâu dài với lĩnh vực chăm sóc khách hàng đến vậy?",
         "Thành tựu nào anh cảm thấy tự hảo nhất trong sự nghiệp của mình?",
         "Các lĩnh vực ngành nghề anh từng tham gia và trải nghiệm đa dạng như thế nào?",
         "Nếu muốn tìm hiểu thêm về anh (CV/Hồ sơ năng lực), chúng tôi có thể xem ở đâu?"
-      ]
+      ],
+      icon: "UserIcon"
     },
     {
-      title: "II. TẦM NHÌN & CHIẾN LƯỢC",
+      title: "II. Tầm nhìn & Chiến lược",
       questions: [
         "Anh hãy mô tả một chiến lược chăm sóc khách hàng thành công mà anh từng triển khai (bối cảnh – giải pháp – kết quả)?",
         "Theo anh, chăm sóc khách hàng đóng vai trò gì trong toàn bộ vòng đời khách hàng?",
@@ -137,10 +139,11 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "Theo anh, yếu tố quan trọng nhất khi xây dựng phòng Chăm Sóc Khách Hàng là gì?",
         "Những chỉ số thành công nào (Chỉ số đo lường lòng trung thành, Mức độ hài lòng, Tỷ lệ nỗ lực của khách hàng…) anh đặc biệt quan tâm trong các chiến lược của mình?",
         "Anh hình dung thế nào về một “hệ sinh thái chăm sóc khách hàng lý tưởng” trong 3–5 năm tới?"
-      ]
+      ],
+      icon: "LightbulbIcon"
     },
     {
-      title: "III. QUẢN LÝ & ĐÀO TẠO",
+      title: "III. Quản lý & Đào tạo",
       questions: [
         "Anh từng quản lý đội ngũ bao nhiêu nhân sự, với những cấp độ nào?",
         "Phong cách lãnh đạo của anh trong vai trò trưởng phòng Chăm Sóc Khách Hàng là gì?",
@@ -148,10 +151,11 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "Anh xử lý ra sao khi nhân viên chăm sóc khách hàng bị khách hàng phàn nàn?",
         "Anh có kinh nghiệm thiết kế lộ trình thăng tiến hoặc khung năng lực cho phòng chăm sóc khách hàng không?",
         "Với vai trò lãnh đạo, anh thường truyền động lực cho đội ngũ bằng cách nào?"
-      ]
+      ],
+      icon: "UsersIcon"
     },
     {
-      title: "IV. TÌNH HUỐNG & KHỦNG HOẢNG",
+      title: "IV. Tình huống & Khủng hoảng",
       questions: [
         "Anh có thể chia sẻ một tình huống khủng hoảng dịch vụ mà anh từng xử lý theo mô hình Tình huống - Nhiệm vụ - Hành động - Kết quả?",
         "Tình huống áp lực nhất anh từng xử lý trong Chăm Sóc Khách Hàng là gì?",
@@ -159,10 +163,11 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "Trong trường hợp hệ thống lỗi diện rộng, anh sẽ truyền thông và giữ uy tín thế nào với khách hàng?",
         "Nếu có mâu thuẫn gay gắt giữa chăm sóc khách hàng và khách hàng, đâu là nguyên tắc “đỏ” anh luôn tuân thủ?",
         "Bài học lớn nhất anh rút ra từ một sự cố khủng hoảng dịch vụ là gì?"
-      ]
+      ],
+      icon: "AlertCircleIcon"
     },
     {
-      title: "V. CÔNG NGHỆ & QUY TRÌNH",
+      title: "V. Công nghệ & Quy trình",
       questions: [
         "Anh từng triển khai hoặc cải tiến hệ thống quản trị dữ liệu khách hàng/tiếp nhận yêu cầu nào?",
         "Quan điểm của anh về ứng dụng chuyển đổi số trong Chăm Sóc Khách Hàng?",
@@ -170,52 +175,57 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "Anh thường sử dụng các chỉ số hiệu suất nào để đánh giá hiệu quả dịch vụ?",
         "Khi mở rộng quy mô, làm sao để hệ thống chăm sóc khách hàng vẫn cá nhân hóa và ổn định?",
         "Anh có thể chia sẻ một ví dụ thực tế về việc dùng dữ liệu/Trí tuệ nhân tạo để nâng trải nghiệm khách hàng?"
-      ]
+      ],
+      icon: "CpuIcon"
     },
     {
-      title: "VI. VĂN HÓA & THẤU CẢM",
+      title: "VI. Văn hóa & Thấu cảm",
       questions: [
         "Theo anh, thế thế nào là một “dịch vụ tuyệt hảo”?",
         "Làm sao để đo lường được cảm xúc khách hàng ngoài những con số khảo sát?",
         "Trong đội ngũ, anh nuôi dưỡng “tư duy dịch vụ” bằng cách nào?",
         "Anh có câu chuyện nào đáng nhớ về việc thấu cảm với khách hàng một cách ngoài mong đợi không?",
         "Nếu phải chọn một giá trị cốt lõi duy nhất cho văn hóa dịch vụ của phòng chăm sóc khách hàng, anh sẽ chọn gì?"
-      ]
+      ],
+      icon: "HeartIcon"
     },
     {
-      title: "VII. TỔ CHỨC & PHỐI HỢP",
+      title: "VII. Tổ chức & Phối hợp",
       questions: [
         "Nếu chia phòng chăm sóc khách hàng thành các nhóm nhỏ, anh sẽ tổ chức như thế nào?",
         "Chăm sóc khách hàng nên phối hợp thế nào với phòng Kinh doanh, Tiếp thị, Sản phẩm để tạo trải nghiệm liền mạch?",
         "Khi có mâu thuẫn giữa phòng chăm sóc khách hàng và các phòng ban khác, anh thường xử lý thế nào?",
         "Anh từng tham gia dự án liên phòng ban nào để cải thiện trải nghiệm khách hàng chưa?",
         "Theo anh, đâu là cơ chế báo cáo – phối hợp hiệu quả nhất giữa chăm sóc khách hàng và lãnh đạo cấp cao?"
-      ]
+      ],
+      icon: "LayoutGridIcon"
     },
     {
-      title: "VIII. LÃNH ĐẠO & TƯ DUY KHÁC BIỆT",
+      title: "VIII. Lãnh đạo & Tư duy khác biệt",
       questions: [
         "Nếu nhận vai trò Trưởng phòng chăm sóc khách hàng, 90 ngày đầu tiên anh sẽ tập trung làm gì?",
         "Tư duy dịch vụ của anh khác gì so với thông thường?",
         "Anh nhìn nhận thế nào về vai trò lãnh đạo: kiểm soát – đồng hành – hay dẫn dắt?",
         "Theo anh, đâu là sự cân bằng giữa “chi tiết” và “tầm nhìn xa” trong lãnh đạo dịch vụ?",
         "Trong bối cảnh chuyển đổi số, đâu là “điểm khác biệt” mà anh muốn để lại dấu ấn?"
-      ]
+      ],
+      icon: "ShieldCheckIcon"
     }
   ],
   en: [
     {
-      title: "I. PERSONAL INTRODUCTION",
+      title: "I. Personal Introduction",
       questions: [
         "Hello Mr. Nguyen Hung Thai, could you briefly introduce yourself and your 22-year journey in the customer service field?",
         "What has kept you committed to the customer service field for so long?",
         "What achievement are you most proud of in your career?",
         "How diverse are the industries and fields you have participated in and experienced?",
         "If we want to learn more about you (CV/Profile), where can we look?"
-      ]
+      ],
+      icon: "UserIcon"
     },
     {
-      title: "II. VISION & STRATEGY",
+      title: "II. Vision & Strategy",
       questions: [
         "Can you describe a successful customer service strategy you have implemented (context - solution - results)?",
         "In your opinion, what role does customer service play in the entire customer lifecycle?",
@@ -223,10 +233,11 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "In your opinion, what is the most important factor when building a customer service department?",
         "Which success metrics (NPS, CSAT, retention...) do you particularly focus on in your strategies?",
         "How do you envision an 'ideal customer service ecosystem' in the next 3-5 years?"
-      ]
+      ],
+      icon: "LightbulbIcon"
     },
     {
-      title: "III. MANAGEMENT & TRAINING",
+      title: "III. Management & Training",
       questions: [
         "What is your team management philosophy, according to Tri Nhan?",
         "What is the largest team you have ever managed?",
@@ -236,10 +247,11 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "On what criteria do you evaluate employee performance?",
         "Which group does your leadership style belong to?",
         "What are you most proud of when looking back at the teams you have managed?"
-      ]
+      ],
+      icon: "UsersIcon"
     },
     {
-      title: "IV. SITUATIONS & CRISIS",
+      title: "IV. Situations & Crisis",
       questions: [
         "How do you view a customer service crisis?",
         "When an incident affects a large number of customers, what do you prioritize first?",
@@ -251,10 +263,11 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "What competencies help you handle high-pressure situations well?",
         "What is the measure of success after a crisis?",
         "What message do you want to send to young customer service managers?"
-      ]
+      ],
+      icon: "AlertCircleIcon"
     },
     {
-      title: "V. TECHNOLOGY & PROCESS",
+      title: "V. Technology & Process",
       questions: [
         "What role does technology play in your customer service strategy?",
         "What creates your competitive advantage in the customer service field?",
@@ -264,10 +277,11 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "How do you view AI in the customer service field?",
         "What is the most important principle when designing a process?",
         "What is your technology vision for the future?"
-      ]
+      ],
+      icon: "CpuIcon"
     },
     {
-      title: "VI. CULTURE & EMPATHY",
+      title: "VI. Culture & Empathy",
       questions: [
         "What is the core value throughout your career?",
         "Where does customer satisfaction come from, in your opinion?",
@@ -277,10 +291,11 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "What makes customers return to a brand?",
         "What do you want to leave for future generations?",
         "How does Tri Nhan evaluate your professional profile?"
-      ]
+      ],
+      icon: "HeartIcon"
     },
     {
-      title: "VII. ORGANIZATION & COORDINATION",
+      title: "VII. Organization & Coordination",
       questions: [
         "How do you view the role of the organization?",
         "Why do you always emphasize coordination between departments?",
@@ -289,10 +304,11 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "How do you evaluate the role of data in organizational management?",
         "How do you build a successor team?",
         "What is your biggest mark in building an organization?"
-      ]
+      ],
+      icon: "LayoutGridIcon"
     },
     {
-      title: "VIII. LEADERSHIP & DIFFERENTIATING MINDSET",
+      title: "VIII. Leadership & Differentiating Mindset",
       questions: [
         "What creates your difference?",
         "How do you define success?",
@@ -301,7 +317,8 @@ export const questionGroups: Record<string, QuestionGroup[]> = {
         "If you had to choose a single role to describe yourself, what would it be?",
         "What is your professional vision for the future?",
         "What is the final message that Tri Nhan wants to send about you?"
-      ]
+      ],
+      icon: "ShieldCheckIcon"
     }
   ]
 };

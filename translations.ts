@@ -1,7 +1,8 @@
+
 export const vi = {
   weather: {
-    city: "Thành phố Hồ Chí Minh",
-    country: "Việt Nam",
+    city: "Hồ Chí Minh",
+    country: "",
     condition: "Nhiều mây, nắng gián đoạn"
   },
   languageName: "Tiếng Việt",
@@ -23,11 +24,12 @@ export const vi = {
       systems: "Hệ thống",
       interview: "Phỏng vấn",
       scheduler: "Đặt lịch hẹn",
-      aiChat: "Trợ lý AI",
+      aiChat: "Trợ Lý AI Trí Nhân",
       transcribe: "Dịch giọng nói",
       settings: "Cài đặt",
       print: "Máy in",
       glassmorphism: "Kính mờ (Glass)",
+      demo: "Trang Demo",
     },
     name: "Nguyễn Hùng Thái",
     jobTitle: "Trưởng Phòng Dịch vụ Khách hàng",
@@ -50,19 +52,24 @@ export const vi = {
     badge: "Thư ngỏ",
     tooltipTitle: "Đôi lời gửi đến bạn",
     tooltipText: "Một lá thư tâm huyết chia sẻ về triết lý công việc và những giá trị cốt lõi tôi theo đuổi trong sự nghiệp.",
-    greeting: "Kính gửi Quý Công ty,",
-    paragraphs: [
-      "Có một câu nói tôi luôn mang theo bên mình: \"Sự hài lòng của khách hàng không đến từ sự hoàn hảo, mà đến từ sự đồng cảm kịp thời.\"",
-      "Tôi là Nguyễn Hùng Thái, hiện đang là một người làm nghề Dịch vụ Khách hàng – một người đồng hành thầm lặng trong mọi khoảnh khắc doanh nghiệp chạm đến trái tim người dùng. Tôi bắt đầu sự nghiệp Chăm Sóc Khách Hàng (CSKH) từ năm 2002 – khi những tổng đài viên còn ghi nhận ticket bằng Excel và hai từ \"dịch vụ\" chỉ đơn giản là... nghe - ghi nhận - phản hồi.",
-      "Hai mươi năm sau, tôi đã đi qua nhiều môi trường – từ viễn thông, thương mại điện tử, bảo hiểm, tài chính, game đến công nghệ – mỗi nơi dạy tôi một góc nhìn mới về điều gì thực sự làm nên một trải nghiệm đáng nhớ.",
-      "Từ Mobifone, Viễn liên V247, Garena, Shopee, Airpay, Ví MoMo, Prudential, và Ví ECO, và bây giờ – tôi không chỉ Chăm Sóc Khách Hàng; tôi xây dựng hệ thống để tất cả mọi người trong đội ngũ có thể Chăm Sóc Khách Hàng tốt hơn cả tôi.",
-      "Điều khiến tôi yêu công việc này không chỉ là những lời cảm ơn, mà còn là những bài học từ những khách hàng không hài lòng. Tôi luôn tâm niệm:\n👉 Quy trình tạo nền tảng.\n👉 Con người tạo sức mạnh.\n👉 Công nghệ tạo đòn bẩy.",
-      "Vì vậy, tôi dành rất nhiều thời gian xây dựng hệ thống CRM, dashboard dữ liệu, chatbot AI... nhưng quan trọng hơn là đào tạo đội ngũ biết lắng nghe kỹ – thấu hiểu sâu – xử lý tinh. Trên hành trình phía trước, tôi không chỉ muốn khách hàng “không phàn nàn”, mà còn chủ động giới thiệu doanh nghiệp cho người khác. Tôi không chỉ muốn đội ngũ làm đúng, mà còn cảm thấy tự hào về mỗi vấn đề họ giải quyết được. Và tôi tin rằng: chăm sóc khách hàng trong tương lai sẽ không chỉ nằm ở tổng đài, mà sẽ hiện diện ở mọi điểm chạm – mọi phòng ban – mọi tương tác.",
-      "Tôi ở đây không chỉ để kể một câu chuyện thành công, mà để cùng Quý Công ty viết một chương mới cho trải nghiệm khách hàng – nơi dịch vụ là một sự kết nối sâu sắc, không chỉ là một phản hồi kịp thời. Và hành trình này vẫn đang tiếp diễn. Mỗi tin nhắn, mỗi phút lắng nghe, mỗi thay đổi nhỏ trong hệ thống đều là một bước đi trong một hành trình lớn: biến khách hàng thành người đồng hành bền vững."
+    greeting: "Kính chào Quý Công ty!",
+                paragraphs: [
+      "Tôi là Nguyễn Hùng Thái, Trưởng phòng Chăm sóc Khách hàng với hơn 22 năm kinh nghiệm trong lĩnh vực xây dựng, vận hành và phát triển dịch vụ khách hàng.",
+      "Tôi bắt đầu sự nghiệp từ năm 2002 tại MobiFone, nơi tôi được đào tạo nền tảng về dịch vụ khách hàng, quản lý tổng đài, xử lý sự cố và xây dựng quy trình phục vụ theo tiêu chuẩn viễn thông.\nTiếp đó, tại Viễn Liên V247, tôi phát triển năng lực quản lý đội ngũ, giám sát chất lượng dịch vụ và tối ưu hiệu quả vận hành của trung tâm chăm sóc khách hàng.\nMột cột mốc quan trọng trong sự nghiệp của tôi là khi gia nhập LBC – Truyền hình Cáp HTV, nơi tôi lần đầu tiên đảm nhiệm vị trí Trưởng phòng Chăm sóc Khách hàng. Đây là giai đoạn giúp tôi chuyển mình từ một nhà quản lý vận hành sang một nhà quản trị toàn diện. Tôi học cách điều hành hoạt động của cả phòng ban, xây dựng và chuẩn hóa quy trình, phát triển đội ngũ, thiết lập các chỉ số quản trị (KPI) và phối hợp hiệu quả với nhiều phòng ban nhằm nâng cao chất lượng dịch vụ.\nKhi làm việc tại Garena, tôi quản lý hoạt động chăm sóc khách hàng trong lĩnh vực game, nơi đòi hỏi tốc độ xử lý nhanh, chính xác và khả năng đáp ứng khối lượng khách hàng rất lớn.\nTrong giai đoạn phát triển VED, Shopee và AirPay, tôi tham gia xây dựng trải nghiệm khách hàng trong lĩnh vực thương mại điện tử và thanh toán số, với định hướng lấy khách hàng làm trung tâm.\nTại MoMo, tôi tiếp tục mở rộng kinh nghiệm trong lĩnh vực dịch vụ tài chính số, tối ưu quy trình hỗ trợ khách hàng và nâng cao hiệu quả vận hành trên nền tảng công nghệ.\nLàm việc tại Prudential và Ví ECO giúp tôi hiểu sâu hơn về trải nghiệm khách hàng trong lĩnh vực bảo hiểm và tài chính, nơi sự chính xác, minh bạch và niềm tin luôn được đặt lên hàng đầu.",
+      "Qua mỗi môi trường làm việc, tôi nhận ra rằng chăm sóc khách hàng không chỉ là giải quyết vấn đề, mà còn là xây dựng một hệ thống giúp doanh nghiệp phát triển bền vững. Tôi luôn làm việc với ba nguyên tắc cốt lõi:\n👉 Quy trình tạo nền tảng.\n👉 Con người tạo giá trị.\n👉 Công nghệ tạo đòn bẩy.",
+      "Từ những nguyên tắc đó, tôi tập trung xây dựng các hệ thống CRM, Dashboard quản trị, AI Chatbot và các giải pháp tự động hóa nhằm nâng cao hiệu quả vận hành. Bên cạnh công nghệ, tôi luôn chú trọng đào tạo đội ngũ biết lắng nghe, thấu hiểu và mang đến những trải nghiệm vượt mong đợi cho khách hàng.",
+      "Tôi luôn tâm niệm rằng:\n\"Sự hài lòng của khách hàng không đến từ sự hoàn hảo, mà đến từ sự đồng cảm kịp thời.\"",
+      "Tôi mong muốn được đồng hành cùng Quý Công ty để xây dựng một hệ thống chăm sóc khách hàng hiện đại, lấy khách hàng làm trung tâm, tối ưu hiệu quả vận hành và tạo ra giá trị phát triển bền vững."
     ],
     closing: "Xin cảm ơn. Trân trọng,",
     signature: "Nguyễn Hùng Thái",
     signatureImage: "https://i.postimg.cc/VNfdSvPT/Ch-k.png",
+    hintTitle: "Bấm vào để xem video",
+    hintText: "Bấm vào để xem video giới thiệu của anh!",
+    videoNotSupported: "Trình duyệt của bạn không hỗ trợ thẻ video.",
+  },
+  schedulerPage: {
+    tooltipTitle: "Đặt lịch hẹn"
   },
   aboutPage: {
     badge: "Giới thiệu",
@@ -77,16 +84,16 @@ export const vi = {
     concludingParagraph: "Tôi luôn nỗ lực để mang lại sản phẩm, dịch vụ chất lượng cao với chi phí hợp lý. Và trên hết, để mỗi khách hàng cảm nhận được một điều đơn giản mà cốt lõi: <strong>Họ luôn được lắng nghe.</strong>",
     personalInfoTitle: "Thông tin cá nhân",
     infoItems: [
-        { key: "gender", label: "Giới tính", value: "Nam giới", icon: "UserIcon" },
-        { key: "ethnicity", label: "Dân tộc", value: "Kinh", icon: "GlobeAltIcon" },
-        { key: "maritalStatus", label: "tình trạng", value: "Độc thân", icon: "HeartIcon" },
-        { key: "birthday", label: "Sinh nhật", value: "22/06/1984", icon: "CalendarDaysIcon" },
-        { key: "zodiac", label: "Con giáp", value: "Tý (Chuột)", icon: "MonkeyIcon" },
-        { key: "tempResidence", label: "Tạm trú", value: "Q7, Hồ Chí Minh", icon: "MapPinIcon" },
-        { key: "permResidence", label: "Cư trú", value: "Mỹ Tho, Tiền Giang", icon: "HomeIcon" },
-        { key: "email", label: "Email", value: "hungthai84@gmail.com", link: "mailto:hungthai84@gmail.com", icon: "MailIcon" },
-        { key: "phoneZalo", label: "Điện thoại Zalo", value: "0909097882", link: "https://zalo.me/0909097882", icon: "PhoneIcon" },
-        { key: "website", label: "Website", value: "www.nguyenhungthai.powerservice.one", link: "https://www.nguyenhungthai.powerservice.one", icon: "LinkIcon" },
+        { key: "gender", label: "giới tính", value: "Nam giới", icon: "UserIcon" },
+        { key: "ethnicity", label: "dân tộc", value: "Kinh", icon: "UsersIcon" },
+        { key: "status", label: "tình trạng", value: "Độc thân", icon: "HeartIcon" },
+        { key: "birthday", label: "sinh nhật", value: "22/06/1984", icon: "CalendarDaysIcon" },
+        { key: "tempResidence", label: "tạm trú", value: "Q7, Hồ Chí Minh", icon: "MapPinIcon" },
+        { key: "residence", label: "cư trú", value: "Mỹ Tho, Tiền Giang", icon: "HomeIcon" },
+        { key: "email", label: "email", value: "hungthai84@gmail.com", link: "mailto:hungthai84@gmail.com", icon: "MailIcon" },
+        { key: "phoneZalo", label: "điện thoại zalo", value: "0909097882", link: "https://zalo.me/0909097882", icon: "PhoneIcon" },
+        { key: "website", label: "website", value: "https://nguyenhungthai.powerservice.one/", link: "https://nguyenhungthai.powerservice.one/", icon: "GlobeAltIcon" },
+        { key: "linkedin", label: "linkedin", value: "https://www.linkedin.com/in/hungthai84/", link: "https://www.linkedin.com/in/hungthai84/", icon: "LinkIcon" },
     ]
   },
   workExperiencePage: {
@@ -116,12 +123,12 @@ export const vi = {
                 "Phụ trách tư vấn, hỗ trợ khách hàng qua tổng đài, xử lý khiếu nại và đào tạo nhân viên mới. Được bổ nhiệm Trưởng nhóm, quản lý 12 nhân sự và đảm bảo chất lượng dịch vụ khách hàng."
             ],
             tasks: [
-                "Nghe điện thoại tư vấn trả lời khách hàng.",
-                "Giải quyết khiếu nại trường hợp khó.",
-                "Gọi điện tư vấn những phiếu đã hoàn thành xong.",
-                "Hỗ trợ các nhân viên mới nghiệp vụ.",
-                "Xử lý các cuộc gọi quấy rối từ khách hàng.",
-                "Quản lý đội ngũ 12 nhân viên CSKH."
+                "1. Nghe điện thoại tư vấn trả lời khách hàng",
+                "2. Giải quyết khiếu nại trường hợp khó",
+                "3. Gọi điện tư vấn những phiếu đã hoàn thành xong",
+                "4. Hỗ trợ các nhân viên mới nghiệp vụ",
+                "5. Xử lý các cuộc gọi quấy rối từ khách hàng",
+                "6. Quản lý đội ngũ 12 nhân viên CSKH"
             ],
             projects: ["N/A"],
             achievements: [
@@ -146,14 +153,14 @@ export const vi = {
                 "Quản lý vận hành đội ngũ CSKH đa kênh, giám sát chất lượng dịch vụ, đào tạo nhân viên và xử lý các vấn đề khiếu nại khách hàng nhằm nâng cao hiệu quả vận hành."
             ],
             tasks: [
-                "Quản lý và giám sát đội ngũ chăm sóc khách hàng.",
-                "Theo dõi, phân bổ và phân phối cuộc gọi đến cho các thành viên.",
-                "Đánh giá và huấn luyện nhân viên chăm sóc khách hàng.",
-                "Lập kế hoạch và lịch trình chăm sóc khách hàng (giờ ăn trưa, cuối tuần).",
-                "Xử lý những trở ngại của nhân viên.",
-                "Quản lý và xử lý yêu cầu khách hàng từ đa kênh (Email, Fax, Phone, Chat).",
-                "Khảo sát sự hài lòng của khách hàng.",
-                "Nghe ghi âm cuộc gọi và định hướng đào tạo."
+                "1. Quản lý và giám sát đội ngũ chăm sóc khách hàng",
+                "2. Theo dõi, phân bổ và phân phối cuộc gọi đến cho các thành viên",
+                "3. Đánh giá và huấn luyện nhân viên chăm sóc khách hàng",
+                "4. Lập kế hoạch và lịch trình chăm sóc khách hàng (giờ ăn trưa, cuối tuần)",
+                "5. Xử lý những trở ngại của nhân viên",
+                "6. Quản lý và xử lý yêu cầu khách hàng từ đa kênh (Email, Fax, Phone, Chat)",
+                "7. Khảo sát sự hài lòng của khách hàng",
+                "8. Nghe ghi âm cuộc gọi và định hướng đào tạo"
             ],
             projects: ["N/A"],
             achievements: [
@@ -172,7 +179,7 @@ export const vi = {
         {
             key: "lbc",
             date: "2011 - 2013",
-            company: "Công ty CPTT Băng Rộng Cuộc Sống LBC ( Truyền hình cáp HTVC)",
+            company: "Công ty CPTTBR Cuộc Sống LBC ( Truyền hình cáp HTVC)",
             logoUrl: "https://i.ibb.co/DDYsQ20B/LBC.png",
             color: "#009E49",
             title: "Trưởng Phòng Dịch vụ Khách hàng",
@@ -181,17 +188,17 @@ export const vi = {
                 "Điều hành hoạt động dịch vụ khách hàng, xây dựng quy trình, chương trình chăm sóc khách hàng và hệ thống đào tạo. Phối hợp các phòng ban để nâng cao trải nghiệm khách hàng và chất lượng dịch vụ."
             ],
             tasks: [
-                "Quản lý và giám sát Phòng chăm sóc khách hàng.",
-                "Xử lý khiếu nại của khách hàng và cải thiện sản phẩm.",
-                "Đào tạo và huấn luyện Nhân Viên.",
-                "Khảo sát sự hài lòng của khách hàng.",
-                "Phối hợp các phòng ban thực hiện chương trình quảng cáo, khuyến mãi.",
-                "Theo dõi và phân tích hoạt động CSKH của đối thủ cạnh tranh.",
-                "Lập kế hoạch thăm hỏi khách hàng VIP, đại lý.",
-                "Ghi nhận ý kiến khách hàng để cải tiến công việc."
+                "1. Quản lý và giám sát Phòng Dịch Vụ Khách Hàng",
+                "2. Xử lý khiếu nại của khách hàng và cải thiện sản phẩm",
+                "3. Đào tạo và huấn luyện Nhân Viên",
+                "4. Khảo sát sự hài lòng của khách hàng",
+                "5. Phối hợp các phòng ban thực hiện chương trình quảng cáo, khuyến mãi",
+                "6. Theo dõi và phân tích hoạt động Dịch Vụ Khách Hàng của đối thủ cạnh tranh",
+                "7. Lập kế hoạch thăm hỏi khách hàng VIP, đại lý",
+                "8. Ghi nhận ý kiến khách hàng để cải tiến công việc"
             ],
             projects: [
-                "1.Xây dựng Phòng Dịch vụ Khách hàng",
+                "1. Xây dựng P.CSKH",
                 "2.Thiết lập mục tiêu phòng ban",
                 "5.Thúc đẩy cải tiến sản phẩm",
                 "6.Chuẩn hóa quy trình CSKH",
@@ -226,18 +233,18 @@ export const vi = {
                 "Quản lý hơn 150 nhân sự, xây dựng hệ thống CRM, Call Center và quy trình vận hành dịch vụ khách hàng. Tham gia phát triển sản phẩm, quản lý KPI và triển khai các dự án chuyển đổi số."
             ],
             tasks: [
-                "Tham gia xây dựng các dự án Sản phẩm mới.",
-                "Quản lý Đội ngũ và tổ chức P. Chăm Sóc Khách Hàng.",
-                "Xây dựng Quy trình tại Phòng Chăm Sóc Khách Hàng.",
-                "Xây dựng hệ thống CRM cho các dòng sản phẩm của Cty.",
-                "Đào tạo đội ngũ CSKH và Giao tiếp với khách hàng.",
-                "Báo cáo tình hình P.CSKH hàng tháng.",
-                "Giải quyết Khiếu nại đơn hàng.",
-                "Đánh giá và tham gia các chương trình MKT.",
-                "Kiểm tra và đánh giá sản phẩm trước khi cung cấp."
+                "1. Tham gia xây dựng các dự án Sản phẩm mới",
+                "2. Quản lý Đội ngũ và tổ chức Phòng Dịch Vụ Khách Hàng",
+                "3. Xây dựng Quy trình tại Phòng Dịch Vụ Khách Hàng",
+                "4. Xây dựng hệ thống CRM cho các dòng sản phẩm của Cty",
+                "5. Đào tạo đội ngũ Dịch Vụ Khách Hàng và Giao tiếp với khách hàng",
+                "6. Báo cáo tình hình Phòng Dịch Vụ Khách Hàng hàng tháng",
+                "7. Giải quyết Khiếu nại đơn hàng",
+                "8. Đánh giá và tham gia các chương trình MKT",
+                "9. Kiểm tra và đánh giá sản phẩm trước khi cung cấp"
             ],
             projects: [
-                "1.Xây dựng Phòng Dịch vụ Khách hàng",
+                "1. Xây dựng P.CSKH",
                 "2.Thiết lập mục tiêu phòng ban",
                 "4.Quản lý dự án CSKH",
                 "6.Chuẩn hóa quy trình CSKH",
@@ -270,12 +277,12 @@ export const vi = {
                 "Trưởng Phòng CallCenter, tối ưu vận hành và triển khai các dự án tích hợp công nghệ, bao gồm Videocall, E-Commerce và hệ thống quản trị dịch vụ khách hàng."
             ],
             tasks: [
-                "Quản lý hệ thống Callcenter của Prudential.",
-                "Sắp xếp nhân sự cho hệ thống mới.",
-                "Xây dựng và phối hợp đưa E-commerce kết nối hệ thống Callcenter.",
-                "Xây dựng quy trình quản trị tư vấn qua kênh Videocall.",
-                "Xây dựng và chỉnh sửa lại hệ thống BCP.",
-                "Phối hợp giải quyết quyền lợi đáo hạn và bảo hiểm khách hàng."
+                "1. Quản lý hệ thống Callcenter của Prudential",
+                "2. Sắp xếp nhân sự cho hệ thống mới",
+                "3. Xây dựng và phối hợp đưa E-commerce kết nối hệ thống Callcenter",
+                "4. Xây dựng quy trình quản trị tư vấn qua kênh Videocall",
+                "5. Xây dựng và chỉnh sửa lại hệ thống BCP",
+                "6. Phối hợp giải quyết quyền lợi đáo hạn và bảo hiểm khách hàng"
             ],
             projects: [
                 "4.Quản lý dự án CSKH",
@@ -310,18 +317,18 @@ export const vi = {
                 "Quản lý hoạt động chăm sóc khách hàng đa kênh, xây dựng CRM, tối ưu quy trình và hệ thống KPI. Tham gia xây dựng các giải pháp tự động hóa nhằm nâng cao trải nghiệm khách hàng và hiệu suất vận hành."
             ],
             tasks: [
-                "Quản lý phòng CSKH đa kênh (Ví điện tử MoMo).",
-                "Xây dựng hệ thống CRM - Quan hệ khách hàng.",
-                "Xây dựng và cải thiện quy trình phối hợp cùng pháp lý.",
-                "Đào tạo và cải thiện khả năng CSKH của nhân viên.",
-                "Chịu trách nhiệm toàn bộ KPIs của phòng.",
-                "Đánh giá và nâng cấp trải nghiệm khách hàng.",
-                "Hỗ trợ đối tác và tham gia dự án kết nối Ví điện tử.",
-                "Thành lập trung tâm hỗ trợ khách hàng.",
-                "Quản lý BPO – Mắt Bảo."
+                "1. Quản lý phòng Dịch Vụ Khách Hàng đa kênh (Ví điện tử MoMo)",
+                "2. Xây dựng hệ thống CRM - Quan hệ khách hàng",
+                "3. Xây dựng và cải thiện quy trình phối hợp cùng pháp lý",
+                "4. Đào tạo và cải thiện khả năng Dịch Vụ Khách Hàng của nhân viên",
+                "5. Chịu trách nhiệm toàn bộ KPIs của phòng",
+                "6. Đánh giá và nâng cấp trải nghiệm khách hàng",
+                "7. Hỗ trợ đối tác và tham gia dự án kết nối Ví điện tử",
+                "8. Thành lập trung tâm hỗ trợ khách hàng",
+                "9. Quản lý BPO – Mắt Bảo"
             ],
             projects: [
-                "1.Xây dựng Phòng Dịch vụ Khách hàng",
+                "1. Xây dựng P.CSKH",
                 "2.Thiết lập mục tiêu phòng ban",
                 "4.Quản lý dự án CSKH",
                 "5.Thúc đẩy cải tiến sản phẩm",
@@ -361,19 +368,19 @@ export const vi = {
                 "Điều hành đội ngũ CSKH, chuẩn hóa quy trình, nâng cao chất lượng dịch vụ và triển khai các chương trình cải tiến trải nghiệm khách hàng trên toàn hệ thống."
             ],
             tasks: [
-                "Quản lý và giám sát đội ngũ chăm sóc khách hàng.",
-                "Theo dõi, phân bổ cuộc gọi đến cho các thành viên.",
-                "Đánh giá và huấn luyện nhân viên CSKH.",
-                "Lập kế hoạch và lịch trình chăm sóc khách hàng.",
-                "Xử lý những trở ngại của nhân viên.",
-                "Xử lý khiếu nại của khách hàng và trao đổi sản phẩm.",
-                "Quản lý yêu cầu khách hàng đa kênh (Email, Fax, Phone, Chat).",
-                "Khảo sát sự hài lòng của khách hàng.",
-                "Thực hiện nhiệm vụ từ Ban Giám Đốc.",
-                "Nghe ghi âm và định hướng chiến lược đào tạo."
+                "1. Quản lý và giám sát đội ngũ Dịch Vụ Khách Hàng",
+                "2. Theo dõi, phân bổ cuộc gọi đến cho các thành viên",
+                "3. Đánh giá và huấn luyện nhân viên Dịch Vụ Khách Hàng",
+                "4. Lập kế hoạch và lịch trình Dịch Vụ Khách Hàng",
+                "5. Xử lý những trở ngại của nhân viên",
+                "6. Xử lý khiếu nại của khách hàng và trao đổi sản phẩm",
+                "7. Quản lý yêu cầu khách hàng đa kênh (Email, Fax, Phone, Chat)",
+                "8. Khảo sát sự hài lòng của khách hàng",
+                "9. Thực hiện nhiệm vụ từ Ban Giám Đốc",
+                "10. Nghe ghi âm và định hướng chiến lược đào tạo"
             ],
             projects: [
-                "1.Xây dựng Phòng Dịch vụ Khách hàng",
+                "1. Xây dựng P.CSKH",
                 "2.Thiết lập mục tiêu phòng ban",
                 "6.Chuẩn hóa quy trình CSKH",
                 "7.Tối ưu hóa kênh hỗ trợ",
@@ -399,7 +406,7 @@ export const vi = {
             key: "jobsearch",
             date: "2026 - Hiện tại",
             company: "Đang tìm kiếm cơ hội mới (Job Tìm kiếm)",
-            logoUrl: "https://i.ibb.co/ynnj4BXr/T-m-vi-c-2026.png", // Updated logo for 2026
+            logoUrl: "https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png", // Updated logo for 2026
             color: "gradient-2026",
             title: "Sẵn sàng cho thử thách mới",
             teamSize: "N/A",
@@ -407,10 +414,10 @@ export const vi = {
                 "Tôi đang tìm kiếm các cơ hội làm việc ở vị trí Trưởng phòng Dịch vụ Khách hàng (Head of CS/Director) hoặc Quản lý dự án tại các công ty công nghệ, Fintech hoặc Bảo hiểm."
             ],
             tasks: [
-                "Phân tích thị trường lao động và xu hướng công nghệ.",
-                "Cập nhật kiến thức về AI và tự động hóa trong CSKH.",
-                "Xây dựng mạng lưới kết nối chuyên nghiệp.",
-                "Chuẩn bị cho các dự án chuyển đổi số quy mô lớn."
+                "1. Phân tích thị trường lao động và xu hướng công nghệ",
+                "2. Cập nhật kiến thức về AI và tự động hóa trong Dịch Vụ Khách Hàng",
+                "3. Xây dựng mạng lưới kết nối chuyên nghiệp",
+                "4. Chuẩn bị cho các dự án chuyển đổi số quy mô lớn"
             ],
             projects: [
                 "Phát triển Portfolio cá nhân",
@@ -436,6 +443,7 @@ export const vi = {
         title: "Kỹ năng chuyên môn",
         color: "#0078D4",
         skills: [
+          { name: "Thiết kế & Lập trình Web (Responsive)", level: 85 },
           { name: "Kiến thức sâu về hệ thống CRM", level: 95 },
           { name: "Phân tích dữ liệu khách hàng", level: 90 },
           { name: "Xây dựng quy trình dịch vụ", level: 90 },
@@ -465,7 +473,7 @@ export const vi = {
         color: "#6C6CE5",
         skills: [
           { name: "Trải nghiệm Khách hàng", level: 90 },
-          { name: "Ngôn ngữ tiếng Anh", level: 85 },
+          { name: "Ngôn ngữ tiếng Anh", level: 90 },
           { name: "Xây dựng văn hóa dịch vụ nội bộ", level: 85 },
           { name: "Phối hợp liên phòng ban", level: 90 }
         ]
@@ -492,24 +500,26 @@ export const vi = {
       {
         year: "2024",
         title: "Thiết kế Webpages",
-        institution: "Tự học và phát triển",
-        description: "Cập nhật các ngôn ngữ C++ / PHP / CSS / HTML.",
+        institution: "Tự học & Phát triển chuyên môn",
+        description: "Được trang bị kiến thức về phát triển website hiện đại với HTML5, CSS3, JavaScript, PHP và C++, đồng thời nâng cao kỹ năng thiết kế giao diện Responsive, tối ưu trải nghiệm người dùng (UI/UX) và ứng dụng AI trong phát triển website.",
         icon: "CodeIcon",
-        color: "#6C6CE5"
+        color: "#6C6CE5",
+        logos: ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         year: "2019",
-        title: "Phân tích dữ liệu Bigdata",
+        title: "Phân tích dữ liệu Big Data",
         institution: "Phát triển chuyên môn",
-        description: "Cập nhật thêm học phần phân tích dữ liệu cho báo cáo.",
+        description: "Nâng cao năng lực phân tích và trực quan hóa dữ liệu, xây dựng hệ thống báo cáo, KPI và Dashboard nhằm hỗ trợ quản trị và ra quyết định dựa trên dữ liệu.",
         icon: "ChartBarIcon",
-        color: "#0078D4"
+        color: "#0078D4",
+        logos: ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         year: "2017",
         title: "Quản lý rủi ro",
-        institution: "Prudential",
-        description: "Được đào tạo quản lý dự án và rủi ro từ Cty Prudential.",
+        institution: "Prudential Việt Nam",
+        description: "Được đào tạo phương pháp nhận diện, đánh giá và kiểm soát rủi ro, xây dựng kế hoạch ứng phó nhằm giảm thiểu tác động và đảm bảo hiệu quả vận hành dự án.",
         icon: "ShieldCheckIcon",
         color: "#AE2070",
         logos: ["https://i.ibb.co/LThmXHs/Prudentinal.png"]
@@ -517,8 +527,8 @@ export const vi = {
       {
         year: "2016",
         title: "Quản lý Dự án",
-        institution: "Prudential",
-        description: "Được đào tạo quản lý dự án và rủi ro từ Cty Prudential.",
+        institution: "Prudential Việt Nam",
+        description: "Nắm vững quy trình quản lý dự án từ lập kế hoạch, phân bổ nguồn lực, quản lý tiến độ, ngân sách, chất lượng đến đánh giá hiệu quả sau khi triển khai.",
         icon: "FolderIcon",
         color: "#AE2070",
         logos: ["https://i.ibb.co/LThmXHs/Prudentinal.png"]
@@ -526,8 +536,8 @@ export const vi = {
       {
         year: "2015",
         title: "Quản lý cấp cao",
-        institution: "Trường Dale Carnegie",
-        description: "Được hỗ trợ học phần từ Cty VED hoàn tất khoá học quản lý.",
+        institution: "Dale Carnegie Training",
+        description: "Phát triển tư duy lãnh đạo, quản trị chiến lược, xây dựng đội ngũ và nâng cao năng lực điều hành tổ chức trong môi trường doanh nghiệp.",
         icon: "UsersIcon",
         color: "#ED1B2F",
         logos: ["https://i.ibb.co/BKHcWL5R/Logo-VED.gif"]
@@ -535,60 +545,65 @@ export const vi = {
       {
         year: "2014",
         title: "Quản lý cấp trung",
-        institution: "Trường Dale Carnegie",
-        description: "Được hỗ trợ học phần từ Cty VED hoàn tất khoá học quản lý.",
+        institution: "Dale Carnegie Training",
+        description: "Hoàn thiện kỹ năng quản lý nhân sự, phân công công việc, giám sát hiệu quả thực hiện, huấn luyện nhân viên và phối hợp giữa các phòng ban.",
         icon: "UsersIcon",
         color: "#ED1B2F",
         logos: ["https://i.ibb.co/BKHcWL5R/Logo-VED.gif"]
       },
       {
         year: "2013",
-        title: "Đào tạo & thuyết trình",
+        title: "Đào tạo & Thuyết trình",
         institution: "VietnamWorks",
-        description: "Hoàn thành kỹ năng đào tạo và thuyết trình từ VietnamWorks.",
+        description: "Nâng cao kỹ năng xây dựng chương trình đào tạo, thiết kế nội dung, thuyết trình và truyền đạt kiến thức hiệu quả cho nhiều đối tượng.",
         icon: "PresentationIcon",
-        color: "#FFB300"
+        color: "#FFB300",
+        logos: ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         year: "2013",
-        title: "Phỏng vấn",
+        title: "Kỹ năng Phỏng vấn",
         institution: "VietnamWorks",
-        description: "Hoàn thành kỹ năng phỏng vấn từ VietnamWorks.",
+        description: "Trang bị phương pháp tuyển dụng, kỹ thuật phỏng vấn, đánh giá năng lực ứng viên và lựa chọn nhân sự phù hợp với yêu cầu công việc.",
         icon: "ClipboardDocumentListIcon",
-        color: "#FFB300"
+        color: "#FFB300",
+        logos: ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         year: "2007",
-        title: "Bằng Đại học CNTT",
-        institution: "ĐH Công Nghệ STU",
-        description: "Hoàn thành khóa học chính quy trường ĐH Công Nghệ STU.",
+        title: "Cử nhân Công nghệ Thông tin",
+        institution: "Trường Đại học Công nghệ Sài Gòn (STU)",
+        description: "Được đào tạo nền tảng về lập trình, cơ sở dữ liệu, phân tích thiết kế hệ thống, mạng máy tính và phát triển phần mềm, tạo nền tảng vững chắc cho sự nghiệp trong lĩnh vực công nghệ.",
         icon: "AcademicCapIcon",
-        color: "#1E90FF"
+        color: "#1E90FF",
+        logos: ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         year: "2007",
-        title: "Chứng nhận Mobifone",
-        institution: "Mobifone",
-        description: "Hoàn thành khoá đào tạo nội bộ chuẩn hoá tổng đài viên Do Mobifone chứng nhận.",
+        title: "Chứng nhận Tổng đài viên",
+        institution: "MobiFone",
+        description: "Được đào tạo chuyên sâu về nghiệp vụ Contact Center, quy trình chăm sóc khách hàng, kỹ năng giao tiếp, xử lý tình huống và tiêu chuẩn chất lượng dịch vụ.",
         icon: "PhoneIcon",
         color: "#0078D4",
         logos: ["https://i.ibb.co/qYBWg57r/Mobifone.png"]
       },
       {
         year: "2006",
-        title: "Quản trị hệ thống CCNA",
+        title: "Quản trị mạng CCNA",
         institution: "Trường Nghề Nhất Nghệ",
-        description: "Học phần quản lý mạng.",
+        description: "Được đào tạo về thiết kế, triển khai và quản trị hệ thống mạng Cisco, bao gồm Routing, Switching, TCP/IP, VLAN và các kỹ thuật đảm bảo an toàn mạng.",
         icon: "ServerIcon",
-        color: "#1E90FF"
+        color: "#1E90FF",
+        logos: ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         year: "2005",
         title: "Quản trị hệ thống MCSA",
         institution: "Trường Nghề Nhất Nghệ",
-        description: "Học phần quản trị hệ thống máy chủ.",
+        description: "Được trang bị kiến thức về quản trị hệ thống Windows Server, Active Directory, DNS, DHCP, bảo mật, quản lý tài nguyên và vận hành hạ tầng máy chủ doanh nghiệp.",
         icon: "ServerIcon",
-        color: "#1E90FF"
+        color: "#1E90FF",
+        logos: ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       }
     ]
   },
@@ -604,7 +619,32 @@ export const vi = {
       year: "Giáp Tý",
       element: "Hải Trung Kim",
       destiny: "Kim Tứ Cục",
-      summary: "Phần này phân tích sự hội tụ của các bộ sao lớn tại cung Mệnh và Thân. Sự kết hợp giữa Thiên Phủ và Phá Quân tạo ra một nghịch lý hoàn hảo: Khả năng duy trì hệ thống vững chắc đồng thời sẵn sàng phá vỡ để tái cấu trúc."
+      summary: "Phần này phân tích sự hội tụ của các bộ sao lớn tại cung Mệnh và Thân. Sự kết hợp giữa Thiên Phủ và Phá Quân tạo ra một nghịch lý hoàn hảo:\n\n\"Khả năng duy trì hệ thống vững chắc đồng thời sẵn sàng phá vỡ để tái cấu trúc.\""
+    },
+
+    radarSection: {
+      title: "Sự Giao Thoa Của Sự Ổn Định & Đột Phá",
+      items: [
+        {
+          title: "Kiến tạo Hệ thống (Thiên Phủ)",
+          description: "Năng lực duy trì, quản trị kho tàng và vận hành tổ chức một cách nhân hậu, bền vững."
+        },
+        {
+          title: "Năng lực Tái cấu trúc (Phá Quân)",
+          description: "Sự quyết liệt đập bỏ cái cũ kỹ, trì trệ để xây dựng quy trình mới hiệu quả hơn."
+        },
+        {
+          title: "Uy quyền Thực chứng (Khoa / Quyền)",
+          description: "Quyền lực được xây dựng dựa trên danh tiếng, bằng cấp và sự nể trọng thực sự từ tổ chức."
+        }
+      ],
+      chart: [
+        { subject: 'Quản trị Hệ\nthống (Phủ)', A: 80, fullMark: 100 },
+        { subject: 'Năng lực Tái cấu\ntrúc (Phá)', A: 40, fullMark: 100 },
+        { subject: 'Uy tín Học thức\n(Khoa)', A: 100, fullMark: 100 },
+        { subject: 'Quyền lực Lãnh\nđạo (Quyền)', A: 100, fullMark: 100 },
+        { subject: 'Bản lĩnh đối\ndiện Sát tinh', A: 20, fullMark: 100 }
+      ]
     },
     sections: {
       portrait: {
@@ -693,7 +733,7 @@ export const vi = {
       },
       conclusion: {
         title: "V. KẾT LUẬN TỪ TRÍ NHÂN",
-        content: "Phần này phân tích sự hội tụ của các bộ sao lớn tại cung Mệnh và Thân. Sự kết hợp giữa Thiên Phủ và Phá Quân tạo ra một nghịch lý hoàn hảo: Khả năng duy trì hệ thống vững chắc đồng thời sẵn sàng phá vỡ để tái cấu trúc.. Giờ Dậu khiến anh sắc bén về chiều tối, rất hợp để ra các quyết định quan trọng cuối ngày. Kết hợp với đúng người, anh sẽ đi rất xa."
+        content: "Phần này phân tích sự hội tụ của các bộ sao lớn tại cung Mệnh và Thân. Sự kết hợp giữa Thiên Phủ và Phá Quân tạo ra một nghịch lý hoàn hảo:\n\n\"Khả năng duy trì hệ thống vững chắc đồng thời sẵn sàng phá vỡ để tái cấu trúc.\"\n\nGiờ Dậu khiến anh sắc bén về chiều tối, rất hợp để ra các quyết định quan trọng cuối ngày. Kết hợp với đúng người, anh sẽ đi rất xa."
       }
     }
   },
@@ -702,7 +742,7 @@ export const vi = {
     tooltipTitle: "Năng lực & Thành tựu",
     tooltipText: "Tổng hợp các năng lực cốt lõi và tỷ lệ hoàn thành mục tiêu trong các lĩnh vực chuyên môn chính.",
     achievements: [
-      { id: "1.1", title: "Xây dựng Phòng Dịch vụ Khách hàng", branch: "Xây dựng Phòng Dịch vụ Khách hàng", rate: 100, category: "📌 1. Chiến lược & Quản lý", hashtag: "#CS_Strategy", icon: "BriefcaseIcon", color: "#2980b9" },
+      { id: "1.1", title: "Xây dựng Phòng Dịch Vụ Khách Hàng", branch: "Xây dựng Phòng Dịch Vụ Khách Hàng", rate: 100, category: "📌 1. Chiến lược & Quản lý", hashtag: "#CS_Strategy", icon: "BriefcaseIcon", color: "#2980b9" },
       { id: "1.2", title: "Đặt mục tiêu phòng ban", branch: "Đặt mục tiêu phòng ban", rate: 80, category: "📌 1. Chiến lược & Quản lý", hashtag: "#CS_Strategy", icon: "TrophyIcon", color: "#27ae60" },
       { id: "1.3", title: "Nâng cao trải nghiệm khách hàng", branch: "Nâng cao trải nghiệm khách hàng", rate: 90, category: "📌 1. Chiến lược & Quản lý", hashtag: "#CS_Strategy", icon: "SparklesIcon", color: "#f39c12" },
       { id: "1.4", title: "Quản lý dự án CS", branch: "Quản lý dự án CS", rate: 90, category: "📌 1. Chiến lược & Quản lý", hashtag: "#CS_Strategy", icon: "FolderIcon", color: "#8e44ad" },
@@ -771,7 +811,7 @@ export const vi = {
             description: "Tư vấn xây dựng và tối ưu hệ thống Chăm Sóc Khách Hàng toàn diện, từ quy trình, nhân sự đến CRM và tự động hóa, nâng cao hiệu quả vận hành doanh nghiệp.",
             icon: "WrenchScrewdriverIcon",
             color: "#101733",
-            logos: []
+            logos: ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
         }
     ]
   },
@@ -791,12 +831,17 @@ export const vi = {
     projects: [
       {
           id: "1.1",
-          title: "Xây dựng Phòng Dịch vụ Khách hàng",
+          title: "Xây dựng Phòng Dịch Vụ Khách Hàng",
           description: "Thiết lập cấu trúc, sơ đồ tổ chức và định hướng hoạt động cho phòng ban.",
           group: "Chiến lược & Quản lý",
           stage: "1",
-          hashtags: ["#CS_Strategy", "#Structure"],
+          hashtags: ["CS Strategy", "Cấu trúc", "Lãnh đạo"],
           imageUrl: "https://i.ibb.co/27LMqKRp/1-X-y-d-ng-P-CSKH.jpg",
+          metrics: {
+              codingEffort: 40,
+              complexity: 70,
+              impact: 95
+          }
       },
       {
           id: "1.2",
@@ -1048,7 +1093,7 @@ export const vi = {
       }
     },
     "1.1": {
-      title: "Xây dựng và Vận hành Phòng Chăm sóc Khách hàng",
+      title: "1. Xây dựng P.CSKH",
       date: "Giai đoạn 1",
       tags: ["CS Strategy", "Cấu trúc", "Lãnh đạo"],
       heroImage: "https://i.postimg.cc/sDXNxb9V/1-X-y-d-ng-P-CSKH.jpg",
@@ -1065,7 +1110,7 @@ export const vi = {
           "**Xây dựng văn hóa dịch vụ khách hàng**<br />&bull; Xây dựng bộ tiêu chuẩn giao tiếp và quy tắc ứng xử với khách hàng.<br />&bull; Biên soạn cẩm nang dịch vụ khách hàng và tài liệu hướng dẫn nội bộ.<br />&bull; Triển khai văn hóa phục vụ dựa trên sự thấu hiểu, đồng hành và tạo trải nghiệm vượt mong đợi cho khách hàng.",
           "**Đào tạo và phát triển năng lực nhân viên**<br />&bull; Xây dựng chương trình đào tạo hội nhập và đào tạo chuyên môn.<br />&bull; Đào tạo kỹ năng giao tiếp, chăm sóc khách hàng đa kênh.<br />&bull; Đào tạo kỹ năng xử lý khiếu nại, kiểm soát cảm xúc và giải quyết tình huống khó.<br />&bull; Tổ chức đánh giá năng lực định kỳ và chương trình nâng cao chất lượng dịch vụ.",
           "**Xây dựng hệ thống quản lý và vận hành nội bộ**<br />&bull; Thiết kế và chuẩn hóa quy trình vận hành chăm sóc khách hàng.<br />&bull; Xây dựng hệ thống quản lý công việc, theo dõi hiệu suất và báo cáo vận hành.<br />&bull; Tham gia xây dựng và triển khai hệ thống CRM, Helpdesk, Ticket Management và Knowledge Base.<br />&bull; Xây dựng hệ thống SLA, KPI, Dashboard và các chỉ số đo lường chất lượng dịch vụ.<br />&bull; Chuẩn hóa dữ liệu khách hàng và quy trình quản trị thông tin nhằm hỗ trợ ra quyết định dựa trên dữ liệu.",
-          "**Kết quả đạt được:**<br />&bull; Xây dựng thành công bộ máy Chăm sóc Khách hàng từ giai đoạn khởi tạo đến vận hành ổn định.<br />&bull; Hình thành đội ngũ nhân sự có năng lực chuyên môn và định hướng dịch vụ rõ ràng.<br />&bull; Chuẩn hóa quy trình vận hành và hệ thống quản lý dịch vụ khách hàng.<br />&bull; Tạo nền tảng cho việc mở rộng quy mô, nâng cao trải nghiệm khách hàng và tối ưu hiệu quả hoạt động doanh nghiệp."
+          "**Kết quả đạt được:** Xây dựng thành công bộ máy Chăm sóc Khách hàng từ giai đoạn khởi tạo đến vận hành ổn định.<br />&bull; Hình thành đội ngũ nhân sự có năng lực chuyên môn và định hướng dịch vụ rõ ràng.<br />&bull; Chuẩn hóa quy trình vận hành và hệ thống quản lý dịch vụ khách hàng.<br />&bull; Tạo nền tảng cho việc mở rộng quy mô, nâng cao trải nghiệm khách hàng và tối ưu hiệu quả hoạt động doanh nghiệp."
         ]
       }
     },
@@ -1486,9 +1531,9 @@ export const vi = {
     emptyResult: "Kết quả trống (không nhận diện được giọng nói trong âm thanh)."
   },
   aiChatPage: {
-    badge: 'AI Chat',
-    collectInfoGreeting: 'Xin chào! Vui lòng nhập tên và giới tính của bạn để chúng ta bắt đầu.',
-    welcomeMessage: 'Chào bạn! Rất vui được hỗ trợ!',
+    badge: 'Trợ Lý AI Trí Nhân',
+    collectInfoGreeting: 'Xin chào! Tôi là Trí Nhân, trợ lý AI của anh Thái. Trước khi bắt đầu, vui lòng cho tôi biết tên và giới tính của bạn.',
+    welcomeMessage: 'Xin chào! Tôi là Trí Nhân, trợ lý AI của anh Thái. Tôi có thể giúp gì cho bạn hôm nay? Bạn có thể hỏi tôi về kinh nghiệm, các dự án, hoặc kỹ năng của anh ấy.',
     startChatBtn: 'Bắt đầu',
     speakerOn: 'Bật loa',
     speakerOff: 'Tắt loa',
@@ -1505,26 +1550,26 @@ export const vi = {
     suggestedQuestionsBtn: 'Câu hỏi gợi ý',
     attachFile: 'Đính kèm tệp',
     placeholder: 'Nhập tin nhắn...',
-    demoQuestions: [
+        demoQuestions: [
         {
             category: "I. Giới thiệu cá nhân",
             items: [
                 { q: "Chào anh Nguyễn Hùng Thái, anh có thể giới thiệu ngắn gọn về bản thân cũng như hành trình 22 năm trong lĩnh vực chăm sóc khách hàng của mình không?", a: "Anh Nguyễn Hùng Thái (sinh năm 1984), là một chuyên gia thực chiến dày dặn với hơn 22 năm kinh nghiệm trong ngành dịch vụ và trải nghiệm khách hàng. Bắt đầu hành trình từ năm 2002 khi ngành này tại Việt Nam còn rất thô sơ, anh đã nỗ lực đi lên từ vị trí nhân viên tổng đài thế hệ đầu để tiến lên các cấp bậc trưởng nhóm, trưởng phòng tại nhiều tập đoàn lớn." },
                 { q: "Điều gì khiến anh gắn bó lâu dài với lĩnh vực chăm sóc khách hàng đến vậy?", a: "Anh Thái luôn có niềm đam mê sâu sắc và gắn bó lâu dài với nghề vì trân trọng từng lời cảm ơn từ người dùng. Đối với anh, ngay cả những bài học từ các khách hàng chưa hài lòng đều là cơ hội quý giá để thấu hiểu, tự sửa mình và kiến tạo nên các trải nghiệm chạm đến trái tim." },
                 { q: "Thành tựu nào anh cảm thấy tự hảo nhất trong sự nghiệp của mình?", a: "Thành tựu lớn nhất mà anh tự hào không chỉ là việc trực tiếp giải quyết các ca khiếu nại khó, mà là khả năng thiết lập và chuẩn hóa thành công 100% quy trình hệ thống tại mọi đơn vị từng đi qua. Mục tiêu tối cao của anh là xây dựng nền tảng vững chắc nhằm chuyển giao năng lực, giúp toàn bộ đội ngũ cấp dưới có thể vận hành hiệu quả hơn cả chính mình." },
-                { q: "Các lĩnh vực ngành nghề anh từng tham gia và trải nghiệm đa dạng như thế nào?", a: "Kinh nghiệm của anh Thái vô cùng đa dạng khi trải dài qua 5 mô hình vận hành hoàn toàn khác biệt: Viễn thông (Mobifone, V247), Trò chơi trực tuyến & Giải trí công nghệ (Garena/VED), Thương mại điện tử (Shopee), Bảo hiểm nhân thọ (Prudential Vietnam), và Tài chính số & Ví điện tử (MoMo, Finviet)." },
-                { q: "Nếu muốn tìm hiểu thêm về anh (CV/Hồ sơ năng lực), chúng tôi có thể xem ở đâu?", a: "Toàn bộ hệ sinh thái thông tin của anh Thái được đồng bộ công khai tại: Trang thông tin năng lực cá nhân nguyenhungthai.powerservice.one, Thư mục lưu trữ Hồ sơ năng lực (Google Drive), và Linkedin Nguyễn Hùng Thái." }
+                { q: "Các lĩnh vực ngành nghề anh từng tham gia và trải nghiệm đa dạng như thế nào?", a: "Kinh nghiệm của anh Thái vô cùng đa dạng khi trải dài qua 5 mô hình vận hành hoàn toàn khác biệt:\n- Viễn thông: Vận hành tổng đài quy mô lớn tại Mobifone và V247.\n- Trò chơi trực tuyến & Giải trí công nghệ: Quản lý đội ngũ lớn lên tới 130 người tại Garena (VED).\n- Thương mại điện tử: Hỗ trợ khách hàng, người kinh doanh và kiểm soát đơn hàng tại Shopee.\n- Bảo hiểm nhân thọ: Điều hành tổng đài trong môi trường bảo mật khắt khe của Prudential Vietnam.\n- Tài chính số & Ví điện tử: Dẫn dắt hệ thống đa kênh, kiểm soát rủi ro gian lận tại MoMo và Finviet." },
+                { q: "Nếu muốn tìm hiểu thêm về anh (CV/Hồ sơ năng lực), chúng tôi có thể xem ở đâu?", a: "Toàn bộ hệ sinh thái thông tin của anh Thái được đồng bộ công khai tại:\n- Trang thông tin năng lực cá nhân: nguyenhungthai.powerservice.one\n- Thư mục lưu trữ Hồ sơ năng lực: Đường dẫn Google Drive (Tệp dạng PDF)\n- Mạng xã hội nghề nghiệp: Linkedin Nguyễn Hùng Thái" }
             ]
         },
         {
             category: "II. Tầm nhìn & Chiến lược",
             items: [
-                { q: "Anh hãy mô tả một chiến lược chăm sóc khách hàng thành công mà anh từng triển khai (bối cảnh – giải pháp – kết quả)?", a: "Bối cảnh: Tại Ví điện tử MoMo (giai đoạn 2018 - 2021), lượng người dùng bùng nổ theo cấp số nhân gây quá tải hệ thống tiếp nhận cũ. Giải pháp: Anh Thái trực tiếp dẫn dắt dự án tái cấu trúc hệ thống quản trị quan hệ khách hàng đa kênh, thành lập trung tâm hỗ trợ tập trung và hợp tác thuê ngoài nhân sự vận hành với đối tác Mắt Bảo, đồng thời phối hợp với phòng Sản phẩm thiết lập cơ chế tự động hỗ trợ ngay trên ứng dụng. Kết quả: Chuẩn hóa thành công 100% quy trình vận hành, nâng tỷ lệ hỗ trợ cộng đồng ổn định lên mức 80% và giải phóng áp lực lớn cho nhân sự nội bộ." },
+                { q: "Anh hãy mô tả một chiến lược chăm sóc khách hàng thành công mà anh từng triển khai (bối cảnh – giải pháp – kết quả)?", a: "- Bối cảnh: Tại Ví điện tử MoMo (giai đoạn 2018 - 2021), lượng người dùng bùng nổ theo cấp số nhân gây quá tải hệ thống tiếp nhận cũ.\n- Giải pháp: Anh Thái trực tiếp dẫn dắt dự án tái cấu trúc hệ thống quản trị quan hệ khách hàng đa kênh, thành lập trung tâm hỗ trợ tập trung và hợp tác thuê ngoài nhân sự vận hành với đối tác Mắt Bảo, đồng thời phối hợp với phòng Sản phẩm thiết lập cơ chế tự động hỗ trợ ngay trên ứng dụng.\n- Kết quả: Chuẩn hóa thành công 100% quy trình vận hành, nâng tỷ lệ hỗ trợ cộng đồng ổn định lên mức 80% và giải phóng áp lực lớn cho nhân sự nội bộ." },
                 { q: "Theo anh, chăm sóc khách hàng đóng vai trò gì trong toàn bộ vòng đời khách hàng?", a: "Bộ phận này không đơn thuần làm nhiệm vụ 'giải quyết hậu quả' ở chặng cuối khi có sự cố. Vai trò cốt lõi là xuất hiện tại mọi điểm chạm để giữ nhịp độ hài lòng, dịch chuyển người dùng từ trạng thái 'sử dụng sản phẩm' sang 'tin tưởng doanh nghiệp' và biến họ thành người đồng hành bền vững, sẵn sàng giới thiệu thương hiệu cho cộng đồng." },
-                { q: "Nếu được xây lại hệ thống chăm sóc khách hàng từ đầu, anh sẽ bắt đầu từ đâu: con người, quy trình, công nghệ, hay dữ liệu?", a: "Anh Thái tuân thủ nghiêm ngặt lộ trình 3 giai đoạn rõ ràng: 1. Giai đoạn 1: Bắt đầu từ Quy trình & Con người để thiết lập cơ cấu tổ chức và bộ quy trình vận hành tiêu chuẩn trước. 2. Giai đoạn 2: Đưa Công nghệ & Dữ liệu vào để đồng bộ đa kênh và xây dựng bảng chỉ số thời gian thực. 3. Giai đoạn 3: Tiến hành Tối ưu & Tự động hóa thông qua robot trò chuyện trí tuệ nhân tạo và cổng thông tin tự phục vụ." },
+                { q: "Nếu được xây lại hệ thống chăm sóc khách hàng từ đầu, anh sẽ bắt đầu từ đâu: con người, quy trình, công nghệ, hay dữ liệu?", a: "Anh Thái tuân thủ nghiêm ngặt lộ trình 3 giai đoạn rõ ràng:\n1. Giai đoạn 1: Bắt đầu từ Quy trình & Con người để thiết lập cơ cấu tổ chức và bộ quy trình vận hành tiêu chuẩn trước. Anh nhấn mạnh: quy trình không chuẩn thì công nghệ chỉ làm tự động hóa các sai lầm.\n2. Giai đoạn 2: Đưa Công nghệ & Dữ liệu vào để đồng bộ đa kênh và xây dựng bảng chỉ số thời gian thực.\n3. Giai đoạn 3: Tiến hành Tối ưu & Tự động hóa thông qua robot trò chuyện trí tuệ nhân tạo và cổng thông tin tự phục vụ." },
                 { q: "Theo anh, yếu tố quan trọng nhất khi xây dựng phòng Chăm Sóc Khách Hàng là gì?", a: "Yếu tố tiên quyết chính là sự cân bằng hài hòa giữa 'Xương sườn' Quy trình chắc chắn và 'Trái tim' Thấu cảm của con người." },
-                { q: "Những chỉ số thành công nào (Chỉ số đo lường lòng trung thành, Mức độ hài lòng, Tỷ lệ nỗ lực của khách hàng…) anh đặc biệt quan tâm trong các chiến lược của mình?", a: "Anh quản trị hiệu suất dựa trên việc cân bằng chặt chẽ giữa hai nhóm chỉ số: Nhóm trải nghiệm cảm xúc (CSAT, NPS, CES) và Nhóm hiệu quả vận hành (FCR, SLA, AHT)." },
-                { q: "Anh hình dung thế nào về một “hệ sinh thái chăm sóc khách hàng lý tưởng” trong 3–5 năm tới?", a: "Đó là một hệ sinh thái vận hành theo triết lý 'Không ma sát'. Tại đó, trí tuệ nhân tạo và dữ liệu lớn sẽ giúp doanh nghiệp dự đoán trước vấn đề để hỗ trợ chủ động trước khi khách hàng liên hệ. Tổng đài truyền thống sẽ thu nhỏ lại, nhường không gian cho các kênh tự phục vụ thông minh và các kết nối thấu cảm chuyên sâu giữa con người với con người." }
+                { q: "Những chỉ số thành công nào anh đặc biệt quan tâm trong các chiến lược của mình?", a: "Anh quản trị hiệu suất dựa trên việc cân bằng chặt chẽ giữa hai nhóm chỉ số:\n- Nhóm trải nghiệm cảm xúc: Mức độ hài lòng của khách hàng (CSAT), Chỉ số đo lường lòng trung thành (NPS), và Chỉ số nỗ lực của khách hàng (CES).\n- Nhóm hiệu quả vận hành: Tỷ lệ giải quyết ngay trong cuộc gọi đầu tiên (FCR), Cam kết chất lượng dịch vụ (SLA), và Thời gian xử lý cuộc gọi trung bình (AHT)." },
+                { q: "Anh hình dung thế nào về một 'hệ sinh thái chăm sóc khách hàng lý tưởng' trong 3–5 năm tới?", a: "Đó là một hệ sinh thái vận hành theo triết lý 'Không ma sát'. Tại đó, trí tuệ nhân tạo và dữ liệu lớn sẽ giúp doanh nghiệp dự đoán trước vấn đề để hỗ trợ chủ động trước khi khách hàng liên hệ. Tổng đài truyền thống sẽ thu nhỏ lại, nhường không gian cho các kênh tự phục vụ thông minh và các kết nối thấu cảm chuyên sâu giữa con người với con người." }
             ]
         },
         {
@@ -1541,11 +1586,11 @@ export const vi = {
         {
             category: "IV. Tình huống & Khủng hoảng",
             items: [
-                { q: "Anh có thể chia sẻ một tình huống khủng hoảng dịch vụ mà anh từng xử lý theo mô hình Tình huống - Nhiệm vụ - Hành động - Kết quả?", a: "Tình huống: Hệ thống Ví điện tử MoMo bị lỗi diện rộng gây nghẽn toàn bộ giao dịch tài chính của người dùng. Nhiệm vụ: Ngay lập tức giải tỏa áp lực cho hệ thống tổng đài đang quá tải, truyền thông minh bạch thông tin và bảo vệ uy tín thương hiệu. Hành động: Kịch bản khẩn cấp liên phòng ban được kích hoạt; thiết lập thông điệp lời chào tự động tại tổng đài kết hợp đẩy thông báo đa kênh để khách hàng nắm bắt thông tin; sau khi hệ thống ổn định thì gửi thư xin lỗi kèm theo chính sách đền bù tri ân. Kết quả: Giảm nhanh 70% lượng cuộc gọi chờ quá tải, bảo vệ thành công lòng tin và giữ chân lượng người dùng trung thành." },
+                { q: "Anh có thể chia sẻ một tình huống khủng hoảng dịch vụ mà anh từng xử lý theo mô hình STAR?", a: "- Tình huống (S): Hệ thống Ví điện tử MoMo bị lỗi diện rộng gây nghẽn toàn bộ giao dịch tài chính của người dùng.\n- Nhiệm vụ (T): Ngay lập tức giải tỏa áp lực cho hệ thống tổng đài đang quá tải, truyền thông minh bạch thông tin và bảo vệ uy tín thương hiệu.\n- Hành động (A): Kịch bản khẩn cấp liên phòng ban được kích hoạt; thiết lập thông điệp lời chào tự động tại tổng đài kết hợp đẩy thông báo đa kênh để khách hàng nắm bắt thông tin; sau khi hệ thống ổn định thì gửi thư xin lỗi kèm theo chính sách đền bù tri tri ân.\n- Kết quả (R): Giảm nhanh 70% lượng cuộc gọi chờ quá tải, bảo vệ thành công lòng tin và giữ chân lượng người dùng trung thành." },
                 { q: "Tình huống áp lực nhất anh từng xử lý trong Chăm Sóc Khách Hàng là gì?", a: "Đó là việc trực tiếp đối mặt và xử lý các khiếu nại tranh chấp phức tạp giữa người mua - người bán, đi kèm kiểm soát rủi ro gian lận tài chính tại các đơn vị Công nghệ tài chính và Thương mại điện tử quy mô lớn." },
-                { q: "Khi gặp khách hàng VIP tức giận và yêu cầu gặp cấp cao, anh thường giải quyết ra sao?", a: "Anh thực hiện nghiêm túc theo quy trình 3 bước chặt chẽ: 1. Lắng nghe với thái độ cầu thị cao nhất để hạ nhiệt cảm xúc. 2. Xuất hiện trực tiếp với vai trò Trưởng phòng để khẳng định thẩm quyền giải quyết cao nhất. 3. Đưa ra giải pháp đặc cách nhanh chóng nằm trong khung rủi ro doanh nghiệp cho phép để xử lý triệt để vấn đề." },
+                { q: "Khi gặp khách hàng VIP tức giận và yêu cầu gặp cấp cao, anh thường giải quyết ra sao?", a: "Anh thực hiện nghiêm túc theo quy trình 3 bước chặt chẽ:\n- Bước 1: Lắng nghe với thái độ cầu thị cao nhất để hạ nhiệt cảm xúc.\n- Bước 2: Xuất hiện trực tiếp với vai trò Trưởng phòng để khẳng định thẩm quyền giải quyết cao nhất.\n- Bước 3: Đưa ra giải pháp đặc cách nhanh chóng nằm trong khung rủi ro doanh nghiệp cho phép để xử lý triệt để vấn đề." },
                 { q: "Trong trường hợp hệ thống lỗi diện rộng, anh sẽ truyền thông và giữ uy tín thế nào với khách hàng?", a: "Anh chủ động triển khai truyền thông đa kênh (thông báo tức thời trên ứng dụng, treo biểu ngữ, cài lời thoại tự động tổng đài) để thể hiện sự minh bạch, không trốn tránh trách nhiệm. Song song đó, anh phối hợp chặt chẽ với phòng kỹ thuật để liên tục cập nhật tiến độ khắc phục cụ thể cho khách hàng." },
-                { q: "Nếu có mâu thuẫn gay gắt giữa chăm sóc khách hàng và khách hàng, đâu là nguyên tắc “đỏ” anh luôn tuân thủ?", a: "Nguyên tắc 'đỏ' tối cao của anh là: 'Không tranh luận đúng sai – Tập trung vào giải pháp'. Anh thấu hiểu rằng, nếu đẩy khách hàng vào thế thua cuộc trong một cuộc tranh cãi, doanh nghiệp luôn là bên thất bại." },
+                { q: "Nếu có mâu thuẫn gay gắt giữa chăm sóc khách hàng và khách hàng, đâu là nguyên tắc 'đỏ' anh luôn tuân thủ?", a: "Nguyên tắc 'đỏ' tối cao của anh là: 'Không tranh luận đúng sai – Tập trung vào giải pháp'. Anh thấu hiểu rằng, nếu đẩy khách hàng vào thế thua cuộc trong một cuộc tranh cãi, doanh nghiệp luôn là bên thất bại." },
                 { q: "Bài học lớn nhất anh rút ra từ một sự cố khủng hoảng dịch vụ là gì?", a: "Anh Thái đúc kết rằng: Một quy trình tốt chỉ là điểm khởi đầu, sự thấu cảm kịp thời mới là thứ cứu vãn được mối quan hệ. Đồng thời, mọi sự cố khủng hoảng đều phải được mổ xẻ nghiêm túc để đưa ngược dữ liệu vào vòng lặp cải tiến quy trình." }
             ]
         },
@@ -1554,7 +1599,7 @@ export const vi = {
             items: [
                 { q: "Anh từng triển khai hoặc cải tiến hệ thống quản trị dữ liệu khách hàng/tiếp nhận yêu cầu nào?", a: "Anh có kinh nghiệm thực tế trong việc vận hành, thiết kế cấu trúc dữ liệu và tích hợp các hệ thống lớn như Zoho, các công cụ tiếp nhận yêu cầu (Helpdesk) và phần mềm văn phòng Larksuite. Bản thân anh cũng tự học và cập nhật các ngôn ngữ lập trình (C++, PHP, HTML/CSS) để hiểu sâu về mặt kỹ thuật, giúp việc tích hợp hệ thống đạt hiệu quả tối ưu." },
                 { q: "Quan điểm của anh về ứng dụng chuyển đổi số trong Chăm Sóc Khách Hàng?", a: "Chuyển đổi số phải bám sát triết lý cốt lõi: Hiệu quả – Nhân văn – Bền vững. Công nghệ sinh ra là để giải phóng con người khỏi các tác vụ lặp lại, nâng cao hiệu suất doanh nghiệp chứ không phải để triệt tiêu đi sự thấu cảm chân thành." },
-                { q: "Với một hệ thống chăm sóc khách hàng, theo anh đâu là “mảnh ghép công nghệ” quan trọng nhất?", a: "Đó chính là Hệ thống dữ liệu khách hàng tập trung (Single Source of Truth). Mảnh ghép này giúp gom toàn bộ hành trình tương tác của người dùng từ mọi kênh về một màn hình duy nhất, giúp nhân viên không bị thiếu thông tin khi xử lý." },
+                { q: "Với một hệ thống chăm sóc khách hàng, theo anh đâu là 'mảnh ghép công nghệ' quan trọng nhất?", a: "Đó chính là Hệ thống dữ liệu khách hàng tập trung (Single Source of Truth). Mảnh ghép này giúp gom toàn bộ hành trình tương tác của người dùng từ mọi kênh về một màn hình duy nhất, giúp nhân viên không bị thiếu thông tin khi xử lý." },
                 { q: "Anh thường sử dụng các chỉ số hiệu suất nào để đánh giá hiệu quả dịch vụ?", a: "Anh sử dụng bộ công cụ đo lường toàn diện bao gồm: Tỷ lệ giải quyết ngay từ cuộc gọi đầu tiên (FCR), Chỉ số đo lường lòng trung thành (NPS), Mức độ hài lòng (CSAT), Chỉ số nỗ lực khách hàng (CES), Cam kết mức độ dịch vụ (SLA) và Thời gian xử lý cuộc gọi trung bình (AHT)." },
                 { q: "Khi mở rộng quy mô, làm sao để hệ thống chăm sóc khách hàng vẫn cá nhân hóa và ổn định?", a: "Chìa khóa nằm ở sự kết hợp giữa Tự động hóa và Phân loại phân khúc khách hàng. Các câu hỏi thông thường sẽ được giải quyết nhanh gọn bằng robot trò chuyện (Chatbot AI) để tiết kiệm chi phí. Trong khi đó, dữ liệu hệ thống sẽ tự động nhận diện chân dung khách VIP hoặc khách đang có khiếu nại dở dang để định tuyến thẳng tới nhân sự chuyên trách." },
                 { q: "Anh có thể chia sẻ một ví dụ thực tế về việc dùng dữ liệu/Trí tuệ nhân tạo để nâng trải nghiệm khách hàng?", a: "Anh Thái từng triển khai ứng dụng công cụ phân tích văn bản (AI Text Analytics) để tự động quét các từ khóa tiêu cực/tích cực trong lịch sử trò chuyện và ghi âm cuộc gọi, từ đó nhận diện và đo lường cảm xúc khách hàng một cách chủ động ngoài các con số khảo sát khô khan." }
@@ -1563,9 +1608,9 @@ export const vi = {
         {
             category: "VI. Văn hóa & Thấu cảm",
             items: [
-                { q: "Theo anh, thế thế nào là một “dịch vụ tuyệt hảo”?", a: "Dịch vụ tuyệt hảo không đến từ một hệ thống hoàn hảo không bao giờ lỗi. Nó đến từ sự tận tâm đúng lúc và thấu cảm đúng nơi: cách doanh nghiệp chủ động nhận trách nhiệm và giải quyết vượt kỳ vọng của khách hàng ngay cả khi họ đang thất vọng nhất, biến một trải nghiệm tồi tệ thành một kỷ niệm đáng nhớ." },
+                { q: "Theo anh, thế nào là một 'dịch vụ tuyệt hảo'?", a: "Dịch vụ tuyệt hảo không đến từ một hệ thống hoàn hảo không bao giờ lỗi. Nó đến từ sự tận tâm đúng lúc và thấu cảm đúng nơi: cách doanh nghiệp chủ động nhận trách nhiệm và giải quyết vượt kỳ vọng của khách hàng ngay cả khi họ đang thất vọng nhất, biến một trải nghiệm tồi tệ thành một kỷ niệm đáng nhớ." },
                 { q: "Làm sao để đo lường được cảm xúc khách hàng ngoài những con số khảo sát?", a: "Anh chú trọng lắng nghe và phân tích Tiếng nói Khách hàng (VoC) thông qua việc kết hợp công cụ quét từ khóa cảm xúc, theo dõi tần suất quay lại tương tác tích cực trên cộng đồng và phân tích sâu nguyên nhân gốc rễ các khiếu nại bị lặp lại." },
-                { q: "Trong đội ngũ, anh nuôi dưỡng “tư duy dịch vụ” bằng cách nào?", a: "Anh tập trung đào tạo đội ngũ theo nguyên tắc: Biết lắng nghe kỹ - hiểu sâu - xử lý tinh tế. Đồng thời, bản thân người quản lý phải luôn làm gương và xây dựng văn hóa thấu cảm trong nội bộ phòng ban trước khi lan tỏa tinh thần đó tới khách hàng." },
+                { q: "Trong đội ngũ, anh nuôi dưỡng 'tư duy dịch vụ' bằng cách nào?", a: "Anh tập trung đào tạo đội ngũ theo nguyên tắc: Biết lắng nghe kỹ - hiểu sâu - xử lý tinh tế. Đồng thời, bản thân người quản lý phải luôn làm gương và xây dựng văn hóa thấu cảm trong nội bộ phòng ban trước khi lan tỏa tinh thần đó tới khách hàng." },
                 { q: "Anh có câu chuyện nào đáng nhớ về việc thấu cảm với khách hàng một cách ngoài mong đợi không?", a: "Tại Ví MoMo, anh cùng phòng Sản phẩm từng chủ động thiết lập quy trình xử lý sự cố đặc cách dành riêng cho các ca kẹt tiền nhạy cảm, phức tạp mà pháp luật Việt Nam chưa quy định rõ ràng. Giải pháp kịp thời này đã giúp tháo gỡ khó khăn và xoa dịu tâm lý hoảng loạn của khách hàng một cách nhân văn." },
                 { q: "Nếu phải chọn một giá trị cốt lõi duy nhất cho văn hóa dịch vụ của phòng chăm sóc khách hàng, anh sẽ chọn gì?", a: "Anh Thái kiên định chọn chữ 'THẤU CẢM'. Có thấu cảm, nhân viên sẽ tự biết tối ưu quy trình, công nghệ sẽ được ứng dụng nhân văn và khách hàng sẽ thực sự cảm nhận được họ đang được lắng nghe." }
             ]
@@ -1573,8 +1618,8 @@ export const vi = {
         {
             category: "VII. Tổ chức & Phối hợp",
             items: [
-                { q: "Nếu chia phòng chăm sóc khách hàng thành các nhóm nhỏ, anh sẽ tổ chức như thế nào?", a: "Cơ cấu tổ chức tối ưu mà anh thường áp dụng bao gồm 4 nhóm chức năng liên kết chặt chẽ: 1. Nhóm tiếp nhận (Inbound): Xử lý nhanh các yêu cầu đa kênh đổ về (Hotline, Chat, Email). 2. Nhóm chủ động (Outbound): Gọi chăm sóc, xử lý chiến dịch tái kích hoạt và khảo sát chất lượng. 3. Nhóm Nghiệp vụ chuyên sâu: Giải quyết khiếu nại khó, tranh chấp tài chính và kiểm soát vận hành. 4. Nhóm Đảm bảo chất lượng & Đào tạo (QA & Training): Kiểm tra chất lượng cuộc gọi, tối ưu quy trình và huấn luyện đội ngũ liên tục." },
-                { q: "Chăm sóc khách hàng nên phối hợp thế nào với phòng Kinh doanh, Tiếp thị, Sản phẩm để tạo trải nghiệm liền mạch?", a: "Anh luôn thiết lập cơ chế 'Vòng lặp phản hồi' liên phòng ban: 1. Với phòng Sản phẩm: Đóng gói dữ liệu lỗi ứng dụng, hành vi khách hàng khó thao tác để cải tiến tính năng. 2. Với phòng Tiếp thị/Kinh doanh: Cảnh báo sớm các chương trình khuyến mãi có quy trình phức tạp dễ gây hiểu lầm, điều chỉnh kịch bản truyền thông trước khi tung ra thị trường." },
+                { q: "Nếu chia phòng chăm sóc khách hàng thành các nhóm nhỏ, anh sẽ tổ chức như thế nào?", a: "Cơ cấu tổ chức tối ưu mà anh thường áp dụng bao gồm 4 nhóm chức năng liên kết chặt chẽ:\n1. Nhóm tiếp nhận (Inbound): Xử lý nhanh các yêu cầu đa kênh đổ về (Hotline, Chat, Email).\n2. Nhóm chủ động (Outbound): Gọi chăm sóc, xử lý chiến dịch tái kích hoạt và khảo sát chất lượng.\n3. Nhóm Nghiệp vụ chuyên sâu: Giải quyết khiếu nại khó, tranh chấp tài chính và kiểm soát vận hành.\n4. Nhóm Đảm bảo chất lượng & Đào tạo (QA & Training): Kiểm tra chất lượng cuộc gọi, tối ưu quy trình và huấn luyện đội ngũ liên tục." },
+                { q: "Chăm sóc khách hàng nên phối hợp thế nào với phòng Kinh doanh, Tiếp thị, Sản phẩm để tạo trải nghiệm liền mạch?", a: "Anh luôn thiết lập cơ chế 'Vòng lặp phản hồi' liên phòng ban:\n1. Với phòng Sản phẩm: Đóng gói dữ liệu lỗi ứng dụng, hành vi khách hàng khó thao tác để cải tiến tính năng.\n2. Với phòng Tiếp thị/Kinh doanh: Cảnh báo sớm các chương trình khuyến mãi có quy trình phức tạp dễ gây hiểu lầm, điều chỉnh kịch bản truyền thông trước khi tung ra thị trường." },
                 { q: "Khi có mâu thuẫn giữa phòng chăm sóc khách hàng và các phòng ban khác, anh thường xử lý thế nào?", a: "Anh Thái sẽ sử dụng dữ liệu phản hồi thực tế từ khách hàng kết hợp với các chỉ số cam kết chất lượng dịch vụ nội bộ (SLA) để làm trọng tài phân xử khách quan, hướng các bên tới mục tiêu chung là tối ưu trải nghiệm người dùng." },
                 { q: "Anh từng tham gia dự án liên phòng ban nào để cải thiện trải nghiệm khách hàng chưa?", a: "Tiêu biểu là dự án phối hợp cùng phòng Sản phẩm và phòng Pháp lý tại MoMo nhằm định hình khung quy trình xử lý các sự cố công nghệ mới cho ví điện tử, vừa bảo vệ quyền lợi người dùng vừa bám sát quy định pháp lý." },
                 { q: "Theo anh, đâu là cơ chế báo cáo – phối hợp hiệu quả nhất giữa chăm sóc khách hàng và lãnh đạo cấp cao?", a: "Đó là việc thiết lập hệ thống bảng theo dõi chỉ số thời gian thực (Realtime Dashboard) để Ban giám đốc nắm bắt tình hình một cách trực quan, đi kèm cơ chế báo cáo nhanh các chỉ số vận hành trọng yếu nhằm đưa ra quyết định chiến lược kịp thời." }
@@ -1583,11 +1628,11 @@ export const vi = {
         {
             category: "VIII. Lãnh đạo & Tư duy khác biệt",
             items: [
-                { q: "Nếu nhận vai trò Trưởng phòng chăm sóc khách hàng, 90 ngày đầu tiên anh sẽ tập trung làm gì?", a: "Kế hoạch hành động được chia làm 3 cột mốc nghiêm túc: 1. 30 ngày đầu (Lắng nghe & Đánh giá): Trực tiếp nghe cuộc gọi, rà soát toàn bộ quy trình vận hành tiêu chuẩn (SOP), đánh giá hiện trạng hệ thống quản trị dữ liệu và năng lực đội ngũ. 2. 30 ngày tiếp theo (Chuẩn hóa & Tối ưu ngắn hạn): Vá ngay các lỗ hổng quy trình gây ma sát lớn cho khách hàng, điều chỉnh lại mục tiêu KPIs/OKRs cho phòng ban nếu cần. 3. 30 ngày cuối (Xây nền tảng dài hạn): Lên lộ trình tự động hóa công nghệ và thiết lập cơ chế báo cáo realtime trực tiếp với Ban giám đốc." },
+                { q: "Nếu nhận vai trò Trưởng phòng chăm sóc khách hàng, 90 ngày đầu tiên anh sẽ tập trung làm gì?", a: "Kế hoạch hành động được chia làm 3 cột mốc nghiêm túc:\n1. 30 ngày đầu (Lắng nghe & Đánh giá): Trực tiếp nghe cuộc gọi, rà soát toàn bộ quy trình vận hành tiêu chuẩn (SOP), đánh giá hiện trạng hệ thống quản trị dữ liệu và năng lực đội ngũ.\n2. 30 ngày tiếp theo (Chuẩn hóa & Tối ưu ngắn hạn): Vá ngay các lỗ hổng quy trình gây ma sát lớn cho khách hàng, điều chỉnh lại mục tiêu KPIs/OKRs cho phòng ban nếu cần.\n3. 30 ngày cuối (Xây nền tảng dài hạn): Lên lộ trình tự động hóa công nghệ và thiết lập cơ chế báo cáo realtime trực tiếp với Ban giám đốc." },
                 { q: "Tư duy dịch vụ của anh khác gì so với thông thường?", a: "Nhiều trưởng phòng thông thường chỉ tập trung quản lý vi mô, ép chỉ số cuộc gọi (AHT) thật ngắn để cắt giảm chi phí. Tư duy của anh Thái định vị bộ phận này là một 'trung tâm tạo ra giá trị'. Dữ liệu từ khách hàng sẽ được đưa ngược vào hệ thống để cải tiến sản phẩm, tối ưu doanh thu và giữ chân khách hàng bền vững." },
                 { q: "Anh nhìn nhận thế nào về vai trò lãnh đạo: kiểm soát – đồng hành – hay dẫn dắt?", a: "Anh nhìn nhận vai trò lãnh đạo tối ưu là sự kết hợp giữa Đồng hành và dẫn dắt. Tạo ra một nền tảng chuyển giao năng lực vững chắc để mỗi nhân sự đều có cơ hội phát triển tốt hơn cấp trên của mình." },
-                { q: "Theo anh, đâu là sự cân bằng giữa “chi tiết” và “tầm nhìn xa” trong lãnh đạo dịch vụ?", a: "Anh Thái sở hữu khả năng nhìn nhận bức tranh chiến lược trải nghiệm lớn lao (tầm nhìn xa), nhưng đồng thời cực kỳ nghiêm túc, chú trọng chuẩn hóa tỉ mỉ từng chi tiết nhỏ nhất trong quy trình vận hành thực tế (chi tiết)." },
-                { q: "Trong bối cảnh chuyển đổi số, đâu là “điểm khác biệt” mà anh muốn để lại dấu ấn?", a: "Dấu ấn cốt lõi mà anh muốn để lại là một hệ thống vận hành tự động, thông minh nhưng mang đậm tính nhân văn; chuyển hóa thành công văn hóa doanh nghiệp từ trạng thái 'phục vụ bị động' sang 'chủ động đồng hành' cùng khách hàng." }
+                { q: "Theo anh, đâu là sự cân bằng giữa 'chi tiết' và 'tầm nhìn xa' trong lãnh đạo dịch vụ?", a: "Anh Thái sở hữu khả năng nhìn nhận bức tranh chiến lược trải nghiệm lớn lao (tầm nhìn xa), nhưng đồng thời cực kỳ nghiêm túc, chú trọng chuẩn hóa tỉ mỉ từng chi tiết nhỏ nhất trong quy trình vận hành thực tế (chi tiết)." },
+                { q: "Trong bối cảnh chuyển đổi số, đâu là 'điểm khác biệt' mà anh muốn để lại dấu ấn?", a: "Dấu ấn cốt lõi mà anh muốn để lại là một hệ thống vận hành tự động, thông minh nhưng mang đậm tính nhân văn; chuyển hóa thành công văn hóa doanh nghiệp từ trạng thái 'phục vụ bị động' sang 'chủ động đồng hành' cùng khách hàng." }
             ]
         }
     ],
@@ -1596,51 +1641,45 @@ export const vi = {
             key: 'sampleInterview',
             title: 'Mẫu phỏng vấn',
             icon: 'PlayIcon',
-            embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
-        },
-        {
-            key: 'showQuestions',
-            title: 'Danh mục câu hỏi',
-            icon: 'ListIcon',
-            action: 'show_questions'
+            embedUrl: 'https://cdn.scena.ai/project/9741/021c21b2f677c4341e06c62c9432d06d251e22c83716e55b927633e254a67730.mp4'
         }
     ]
   }
 };
 
+
 export const en = {
+  "languageName": "English",
+  "languageNameForAI": "English",
   "weather": {
     "city": "Ho Chi Minh City",
     "country": "Vietnam",
     "condition": "Mostly cloudy, sunny intervals"
   },
-  "languageName": "English",
-  "languageNameForAI": "English",
   "sidebar": {
+    "title": "Interactive Profile",
+    "subtitle": "Nguyen Hung Thai",
+    "copyright": "© 2026 Nguyen Hung Thai. All rights reserved.",
     "nav": {
       "home": "Home",
       "coverLetter": "Cover Letter",
       "about": "About Me",
       "experience": "Work Experience",
-      "skills": "Key Skills",
       "education": "Education",
-      "achievements": "Achievements",
-      "projects": "My Projects",
       "services": "My Services",
-      "horoscope": "AI Horoscope",
-      "memories": "Memories",
-      "blog": "Blog",
+      "skills": "Key Skills",
+      "projects": "My Projects",
       "systems": "Operated Systems",
       "interview": "AI Interview",
+      "horoscope": "AI Horoscope",
+      "memories": "Memories",
       "scheduler": "Book Scheduler",
       "aiChat": "AI Assistant",
-      "transcribe": "AI Dictation",
       "settings": "System Settings",
       "print": "View & Print CV",
-      "glassmorphism": "Glassmorphism"
-    },
-    "name": "Nguyen Hung Thai",
-    "jobTitle": "Customer Service Director"
+      "glassmorphism": "Glassmorphism",
+      "demo": "Demo Page"
+    }
   },
   "hero": {
     "intro": "I am,",
@@ -1655,6 +1694,68 @@ export const en = {
     "badge": "Home",
     "tooltipTitle": "Welcome to my profile",
     "tooltipText": "Welcome to my interactive profile. Start here to explore my cover letter, career journey, and featured projects."
+  },
+  "settingsPage": {
+    "badge": "Settings",
+    "tooltipTitle": "Interface Customization",
+    "tooltipText": "Change interface, colors, wallpaper, and effects to personalize your experience.",
+    "title": "System Settings",
+    "themeLabel": "Theme Settings",
+    "audioLabel": "Audio / Sound",
+    "voiceLabel": "AI Voice Reader",
+    "scaleLabel": "Layout Zoom Scale"
+  },
+  "settings": {
+    "resetButton": "Reset",
+    "saveButton": "Save Changes",
+    "featuresTitle": "Features & Effects",
+    "generalSettings": "General Settings",
+    "interfaceSettings": "Interface & Layout",
+    "aiSettings": "Assistant & Audio",
+    "systemSettings": "System & Data",
+    "cardLayout": "Card Layout",
+    "grid2x2": "2x2 Grid",
+    "soundEffects": "Sound Effects",
+    "aiVoice": "AI Voice",
+    "aiVoiceSelect": "Select Voice",
+    "interfaceTitle": "Interface",
+    "mode": "Mode",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "accentColor": "Accent Color",
+    "cardOpacity": "Card Opacity",
+    "sidebarOpacity": "Sidebar Opacity",
+    "wallpaper": "Wallpaper",
+    "gradient": "Gradient",
+    "video": "Video",
+    "image": "Image",
+    "dataManagementTitle": "Data Management",
+    "exportButton": "Export Data",
+    "importButton": "Import Data",
+    "exportAppTitle": "Export App",
+    "exportAsHTML": "Export as HTML",
+    "exportAsTXT": "Export as TXT",
+    "importSuccess": "Data imported successfully! The page will reload.",
+    "importError": "Error importing data. Please check CSV file format.",
+    "soundTitle": "Sound Features",
+    "soundToggleTitle": "Enable/Disable Sound",
+    "soundToggleDesc": "Enable sound for the entire system",
+    "aiVoiceTitle": "AI Voice",
+    "aiVoiceToggleTitle": "Enable/Disable AI Voice",
+    "aiVoiceToggleDesc": "Use AI to read content",
+    "aiVoiceSelectTitle": "Select Voice",
+    "genderSelectTitle": "AI Voice Gender (Recommended)",
+    "genderFemale": "Female",
+    "genderMale": "Male",
+    "genderAny": "Any / Default",
+    "testVoiceBtn": "Test Voice",
+    "stopVoiceBtn": "Stop Test",
+    "rateTitle": "Reading Rate",
+    "pitchTitle": "Pitch",
+    "colorTitle": "Color Features",
+    "modeTitle": "Accent Color Type",
+    "solidMode": "Solid Color"
   },
   "coverLetterPage": {
     "badge": "Cover Letter",
@@ -1674,6 +1775,9 @@ export const en = {
     "signature": "Nguyen Hung Thai",
     "signatureImage": "https://i.postimg.cc/VNfdSvPT/Ch-k.png"
   },
+  "schedulerPage": {
+    "tooltipTitle": "Book Scheduler"
+  },
   "aboutPage": {
     "badge": "About Me",
     "tooltipTitle": "Introduce myself",
@@ -1685,69 +1789,70 @@ export const en = {
     ],
     "coreValues": "Efficiency – Humanity – Sustainability",
     "concludingParagraph": "I always strive to deliver high-quality products and services at reasonable costs. And above all, for every customer to feel a simple yet core thing: <strong>They are always listened to.</strong>",
-    "personalInfoTitle": "Personal Information",
+    "personalInfoTitle": "personal information",
     "infoItems": [
       {
         "key": "gender",
-        "label": "Gender",
+        "label": "gender",
         "value": "Male",
         "icon": "UserIcon"
       },
       {
         "key": "ethnicity",
-        "label": "Ethnicity",
+        "label": "ethnicity",
         "value": "Kinh",
         "icon": "GlobeAltIcon"
       },
       {
-        "key": "maritalStatus",
-        "label": "Status",
+        "key": "status",
+        "label": "status",
         "value": "Single",
         "icon": "HeartIcon"
       },
       {
         "key": "birthday",
-        "label": "Birthday",
+        "label": "birthday",
         "value": "22/06/1984",
         "icon": "CalendarDaysIcon"
       },
       {
-        "key": "zodiac",
-        "label": "Zodiac",
-        "value": "Rat (Mouse)",
-        "icon": "MonkeyIcon"
-      },
-      {
         "key": "tempResidence",
-        "label": "Temporary Residence",
+        "label": "temporary residence",
         "value": "District 7, Ho Chi Minh",
         "icon": "MapPinIcon"
       },
       {
-        "key": "permResidence",
-        "label": "Permanent Residence",
+        "key": "residence",
+        "label": "residence",
         "value": "My Tho, Tien Giang",
         "icon": "HomeIcon"
       },
       {
         "key": "email",
-        "label": "Email",
+        "label": "email",
         "value": "hungthai84@gmail.com",
         "link": "mailto:hungthai84@gmail.com",
         "icon": "MailIcon"
       },
       {
         "key": "phoneZalo",
-        "label": "Phone Zalo",
+        "label": "phone zalo",
         "value": "0909097882",
         "link": "https://zalo.me/0909097882",
         "icon": "PhoneIcon"
       },
       {
         "key": "website",
-        "label": "Website",
-        "value": "www.nguyenhungthai.powerservice.one",
-        "link": "https://www.nguyenhungthai.powerservice.one",
+        "label": "website",
+        "value": "https://nguyenhungthai.powerservice.one/",
+        "link": "https://nguyenhungthai.powerservice.one/",
+        "icon": "GlobeAltIcon"
+      },
+      {
+        "key": "linkedin",
+        "label": "linkedin",
+        "value": "https://www.linkedin.com/in/hungthai84/",
+        "link": "https://www.linkedin.com/in/hungthai84/",
         "icon": "LinkIcon"
       }
     ]
@@ -1854,7 +1959,7 @@ export const en = {
       {
         "key": "lbc",
         "date": "2011 - 2013",
-        "company": "LBC BroadBrand Media JSC (HTVC Cable TV)",
+        "company": "LBC Life Broadband Media Joint Stock Company (HTVC Cable TV)",
         "logoUrl": "https://i.ibb.co/DDYsQ20B/LBC.png",
         "color": "#009E49",
         "title": "Customer Service Manager",
@@ -2141,31 +2246,21 @@ export const en = {
         "logoUrl": "https://i.ibb.co/ynnj4BXr/T-m-vi-c-2026.png",
         "color": "gradient-2026",
         "title": "Ready for new challenges",
-        "teamSize": "N/A",
-        "responsibilities": [
-          "I am looking for opportunities as a Customer Service Manager/Director (Head of CS/CX Director) or Operations Project Manager in technology, Fintech, or Insurance companies."
-        ],
-        "tasks": [
-          "Analyzing labor market and technology trends.",
-          "Updating knowledge on AI and automation in Customer Service.",
-          "Building a professional networking structure.",
-          "Preparing for large-scale digital transformation projects."
-        ],
         "projects": [
-          "Personal Portfolio Development",
-          "AI Operations Research"
+          "Phát triển Portfolio cá nhân",
+          "Nghiên cứu ứng dụng AI trong quản trị vận hành"
         ],
         "achievements": [
           {
-            "label": "Readiness",
+            "label": "Sẵn sàng",
             "value": 100
           },
           {
-            "label": "Energy",
+            "label": "Năng lượng",
             "value": 100
           },
           {
-            "label": "Experience",
+            "label": "Kinh nghiệm",
             "value": 100
           }
         ],
@@ -2177,76 +2272,36 @@ export const en = {
     "title": "Key Skills",
     "tooltipTitle": "My Competencies",
     "tooltipText": "Core professional skills, software tools, and leadership competencies accumulated over 22 years.",
-    "daysLabel": "Days of Experience",
+    "ratingTitle": "Competency Level",
+    "noData": "Skill data is being updated. <br/>Please check back later.",
     "categories": [
       {
         "key": "professional",
         "title": "Professional Skills",
         "color": "#0078D4",
         "skills": [
-          {
-            "name": "Deep CRM Systems Knowledge",
-            "level": 95
-          },
-          {
-            "name": "Customer Data Analysis",
-            "level": 90
-          },
-          {
-            "name": "Service Process Design",
-            "level": 90
-          },
-          {
-            "name": "Process Automation",
-            "level": 85
-          },
-          {
-            "name": "Customer Data Analysis",
-            "level": 85
-          },
-          {
-            "name": "Customer-Centric Mindset",
-            "level": 90
-          },
-          {
-            "name": "Project Management",
-            "level": 80
-          }
+          { "name": "Web Design & Development (Responsive)", "level": 85 },
+          { "name": "CRM Systems Expertise", "level": 95 },
+          { "name": "Customer Data Analysis", "level": 90 },
+          { "name": "Service Process Design", "level": 90 },
+          { "name": "Automation", "level": 85 },
+          { "name": "Customer Insights Analysis", "level": 85 },
+          { "name": "Customer-Centric Mindset", "level": 90 },
+          { "name": "Project Management", "level": 80 }
         ]
       },
       {
         "key": "soft",
-        "title": "Soft Skills & Leadership",
+        "title": "Leadership & Soft Skills",
         "color": "#49C16C",
         "skills": [
-          {
-            "name": "Leadership & Team Development",
-            "level": 90
-          },
-          {
-            "name": "Training & Effective Feedback",
-            "level": 90
-          },
-          {
-            "name": "Performance Management (KPIs, OKRs)",
-            "level": 85
-          },
-          {
-            "name": "Problem Solving",
-            "level": 90
-          },
-          {
-            "name": "Effective Communication",
-            "level": 85
-          },
-          {
-            "name": "Complaint Resolution",
-            "level": 85
-          },
-          {
-            "name": "Strategic Thinking & Long-term Vision",
-            "level": 80
-          }
+          { "name": "Leadership & Team Development", "level": 90 },
+          { "name": "Training & Effective Feedback", "level": 90 },
+          { "name": "Performance Management (KPIs, OKRs)", "level": 85 },
+          { "name": "Problem Solving", "level": 90 },
+          { "name": "Communication", "level": 85 },
+          { "name": "Complaint Resolution", "level": 85 },
+          { "name": "Strategic Thinking & Vision", "level": 80 }
         ]
       },
       {
@@ -2254,22 +2309,10 @@ export const en = {
         "title": "Interdisciplinary Skills",
         "color": "#6C6CE5",
         "skills": [
-          {
-            "name": "Customer Experience (CX)",
-            "level": 90
-          },
-          {
-            "name": "English Language",
-            "level": 85
-          },
-          {
-            "name": "Internal Service Culture Building",
-            "level": 85
-          },
-          {
-            "name": "Cross-functional Collaboration",
-            "level": 90
-          }
+          { "name": "Customer Experience", "level": 90 },
+          { "name": "English Language", "level": 90 },
+          { "name": "Internal Service Culture Building", "level": 85 },
+          { "name": "Cross-functional Coordination", "level": 90 }
         ]
       },
       {
@@ -2277,53 +2320,43 @@ export const en = {
         "title": "Business Development & Adaptability",
         "color": "#F37021",
         "skills": [
-          {
-            "name": "Service Risk Management",
-            "level": 85
-          },
-          {
-            "name": "Operational Budget Optimization",
-            "level": 90
-          },
-          {
-            "name": "Continuous Improvement Mindset",
-            "level": 90
-          },
-          {
-            "name": "Technology Adaptation",
-            "level": 85
-          }
+          { "name": "Service Risk Management", "level": 85 },
+          { "name": "Operating Budget Optimization", "level": 90 },
+          { "name": "Continuous Improvement Mindset", "level": 90 },
+          { "name": "Technology Adaptability", "level": 85 }
         ]
       }
     ]
   },
   "educationPage": {
-    "title": "Học vấn",
-    "tooltipTitle": "Hành trình học tập & phát triển",
-    "tooltipText": "Nền tảng học vấn và các khóa đào tạo chuyên môn đã định hình và nâng cao sự nghiệp của tôi.",
-    "yearPrefix": "Năm",
+    "title": "Education",
+    "tooltipTitle": "Learning & Development Journey",
+    "tooltipText": "The educational foundation and professional training courses that have shaped and enhanced my career.",
+    "yearPrefix": "Year",
     "items": [
       {
         "year": "2024",
-        "title": "Webpage Design",
-        "institution": "Self-study and development",
-        "description": "Learned webpage layout and design logic using C++ / PHP / CSS / HTML.",
+        "title": "Webpages Design",
+        "institution": "Self-study & Professional development",
+        "description": "Equipped with knowledge of modern website development with HTML5, CSS3, JavaScript, PHP, and C++, while enhancing Responsive design skills, UI/UX optimization, and AI application in web development.",
         "icon": "CodeIcon",
-        "color": "#6C6CE5"
+        "color": "#6C6CE5",
+        "logos": ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         "year": "2019",
-        "title": "Big Data Analysis",
+        "title": "Big Data Analytics",
         "institution": "Professional development",
-        "description": "Completed data analytics modules for advanced reporting dashboards.",
+        "description": "Enhanced capabilities in data analysis and visualization, building reports, KPIs, and Dashboards to support management and data-driven decision making.",
         "icon": "ChartBarIcon",
-        "color": "#0078D4"
+        "color": "#0078D4",
+        "logos": ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         "year": "2017",
         "title": "Risk Management",
-        "institution": "Prudential",
-        "description": "Completed project and risk management courses hosted by Prudential.",
+        "institution": "Prudential Vietnam",
+        "description": "Trained in methods for identifying, assessing, and controlling risks, building mitigation plans to minimize impacts and ensure project operational efficiency.",
         "icon": "ShieldCheckIcon",
         "color": "#AE2070",
         "logos": [
@@ -2333,8 +2366,8 @@ export const en = {
       {
         "year": "2016",
         "title": "Project Management",
-        "institution": "Prudential",
-        "description": "Completed project and risk management courses hosted by Prudential.",
+        "institution": "Prudential Vietnam",
+        "description": "Mastered project management processes from planning, resource allocation, progress, budget, and quality management to post-implementation evaluation.",
         "icon": "FolderIcon",
         "color": "#AE2070",
         "logos": [
@@ -2344,8 +2377,8 @@ export const en = {
       {
         "year": "2015",
         "title": "Senior Management",
-        "institution": "Dale Carnegie School",
-        "description": "Course sponsored by VED to complete management training.",
+        "institution": "Dale Carnegie Training",
+        "description": "Developed leadership mindset, strategic management, team building, and enhanced organizational executive capability in enterprise environments.",
         "icon": "UsersIcon",
         "color": "#ED1B2F",
         "logos": [
@@ -2355,8 +2388,8 @@ export const en = {
       {
         "year": "2014",
         "title": "Middle Management",
-        "institution": "Dale Carnegie School",
-        "description": "Course sponsored by VED to complete management training.",
+        "institution": "Dale Carnegie Training",
+        "description": "Perfected personnel management, task delegation, monitoring execution, employee coaching, and cross-departmental coordination.",
         "icon": "UsersIcon",
         "color": "#ED1B2F",
         "logos": [
@@ -2367,31 +2400,34 @@ export const en = {
         "year": "2013",
         "title": "Training & Presentation",
         "institution": "VietnamWorks",
-        "description": "Learned presentation and training techniques from VietnamWorks.",
+        "description": "Enhanced skills in training curriculum building, content design, presentation, and effective knowledge transfer to diverse audiences.",
         "icon": "PresentationIcon",
-        "color": "#FFB300"
+        "color": "#FFB300",
+        "logos": ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         "year": "2013",
         "title": "Interviewing Skills",
         "institution": "VietnamWorks",
-        "description": "Completed training on professional recruitment and interviewing techniques from VietnamWorks.",
+        "description": "Equipped with recruitment methods, interviewing techniques, candidate competency assessment, and choosing the right talent for job requirements.",
         "icon": "ClipboardDocumentListIcon",
-        "color": "#FFB300"
+        "color": "#FFB300",
+        "logos": ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         "year": "2007",
-        "title": "Bachelor of IT Degree",
-        "institution": "STU Technology University",
-        "description": "Completed formal higher education curriculum at STU University of Technology.",
+        "title": "Bachelor of Information Technology",
+        "institution": "Saigon Technology University (STU)",
+        "description": "Trained in programming fundamentals, databases, system analysis and design, computer networks, and software development, establishing a solid foundation for a tech career.",
         "icon": "AcademicCapIcon",
-        "color": "#1E90FF"
+        "color": "#1E90FF",
+        "logos": ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         "year": "2007",
-        "title": "Mobifone Certification",
-        "institution": "Mobifone",
-        "description": "Completed internal agent standard training program certified by Mobifone.",
+        "title": "Contact Center Agent Certification",
+        "institution": "MobiFone",
+        "description": "Deeply trained in Contact Center operations, customer care procedures, communication skills, handling issues, and service quality standards.",
         "icon": "PhoneIcon",
         "color": "#0078D4",
         "logos": [
@@ -2400,156 +2436,146 @@ export const en = {
       },
       {
         "year": "2006",
-        "title": "CCNA Networking",
-        "institution": "Nhat Nghe Vocational School",
-        "description": "Completed course module on network engineering and CCNA system administration.",
+        "title": "CCNA Network Administration",
+        "institution": "Nhat Nghhe IT Academy",
+        "description": "Trained in Cisco network design, implementation, and management, including Routing, Switching, TCP/IP, VLAN, and network security techniques.",
         "icon": "ServerIcon",
-        "color": "#1E90FF"
+        "color": "#1E90FF",
+        "logos": ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       },
       {
         "year": "2005",
-        "title": "MCSA Server Admin",
-        "institution": "Nhat Nghe Vocational School",
-        "description": "Completed course module on Windows server engineering and MCSA systems administration.",
+        "title": "MCSA System Administration",
+        "institution": "Nhat Nghe IT Academy",
+        "description": "Equipped with knowledge of Windows Server administration, Active Directory, DNS, DHCP, security, resource management, and enterprise server infrastructure operations.",
         "icon": "ServerIcon",
-        "color": "#1E90FF"
+        "color": "#1E90FF",
+        "logos": ["https://i.ibb.co/Lzz7Nh83/H-nh-tr-nh-ki-n-t-o.png"]
       }
     ]
   },
   "horoscopePage": {
     "badge": "Horoscope",
-    "tooltipTitle": "Astrology & Work Portrait",
-    "tooltipText": "Analyze zodiac alignment and element compatibility based on Nguyen Hung Thai's profile.",
+    "tooltipTitle": "Explore Career Astrological Chart",
+    "tooltipText": "Astrological analysis focusing on professional strengths, leadership style, and zodiac compatibility based on personal profile.",
     "personalInfo": {
       "name": "Nguyen Hung Thai",
       "birthDate": "22/06/1984",
-      "birthHour": "Dau Hour (17h–19h)",
-      "gender": "Yang Male (Dương Nam)",
-      "year": "Giap Ty (Year of the Rat)",
-      "element": "Hai Trung Kim (Metal in the Ocean)",
-      "destiny": "Kim Tu Cuc (Metal 4)",
-      "summary": "This section analyzes the convergence of major stars in the Destiny and Body domains. The combination of Thien Phu and Pha Quan creates a perfect paradox: the ability to maintain a solid system while ready to break it for restructuring."
+      "birthHour": "Rooster Hour (17h–19h)",
+      "gender": "Yang Male",
+      "year": "Giáp Tý (Wood Rat)",
+      "element": "Hải Trung Kim (Sea Metal)",
+      "destiny": "Metal Four Bureau",
+      "summary": "This section analyzes the convergence of major stars in the Life and Body palaces. The combination of Thiên Phủ (Heavenly Mansion) and Phá Quân (Army Destroyer) creates a perfect paradox: The ability to maintain stable systems while being ready to break them for restructuring."
+    },
+
+    "radarSection": {
+      "title": "The Intersection of Stability & Breakthrough",
+      "items": [
+        {
+          "title": "System Creation (Thiên Phủ)",
+          "description": "Ability to maintain, manage resources, and operate the organization compassionately and sustainably."
+        },
+        {
+          "title": "Restructuring Ability (Phá Quân)",
+          "description": "Fierce determination to break down the old and stagnant to build more efficient new processes."
+        },
+        {
+          "title": "Empirical Authority (Khoa / Quyền)",
+          "description": "Power built on reputation, qualifications, and true respect from the organization."
+        }
+      ],
+      "chart": [
+        { "subject": "System\nGovernance (Phủ)", "A": 80, "fullMark": 100 },
+        { "subject": "Restructuring\nAbility (Phá)", "A": 40, "fullMark": 100 },
+        { "subject": "Academic\nPrestige (Khoa)", "A": 100, "fullMark": 100 },
+        { "subject": "Leadership\nPower (Quyền)", "A": 100, "fullMark": 100 },
+        { "subject": "Facing\nAdversity", "A": 20, "fullMark": 100 }
+      ]
     },
     "sections": {
       "portrait": {
-        "title": "Astrological Work Portrait",
+        "title": "Astro Portrait in Career",
         "points": [
           {
-            "header": "Core Competencies\n(Thien Phu – Thien Tuong)",
-            "content": "A star duo for governance, coordination, and system maintenance. Structured working style, strong in processes (SOP, CRM). Results speak louder than words, steady control with minimal errors. A valuable and sustainable 'anchor' for the organization."
+            "header": "Core Competencies\n(Heavenly Mansion – Heavenly General)",
+            "content": "Governance and coordination star group. Structured work, strong in processes (SOP, CRM). Results speak for themselves, reliable control, minimal errors. A 'pillar holder' with sustainable value."
           },
           {
-            "header": "Core Personality\n(Tham Lang – Linh Tinh)",
-            "content": "Eager to learn, eager to work, never standing still. Quick reflexes, calm crisis handling. Unafraid to reform legacy systems. However, needs to avoid taking on too many tasks at once."
+            "header": "Core Personality\n(Greedy Wolf – Spirit Star)",
+            "content": "Eager to learn, hardworking, cannot stand still. Quick reflexes, calm crisis management. Not afraid to restructure old systems. However, avoid taking on too much at once."
           },
           {
-            "header": "Work Style\n(Standardization – Sustainability)",
-            "content": "Speak less but hit the target. Standardize processes instead of micromanaging. Prefer working with capable and responsible colleagues. Fits the Head/Director role."
+            "header": "Working Style\n(Standardization – Sustainability)",
+            "content": "Speaks little but hits the target. Standardizes processes rather than micro-managing. Prefers working with smart and responsible colleagues. Fits Head/Director roles."
           }
         ]
       },
       "traits": {
-        "title": "Work Personality Traits",
-        "strengthsTitle": "Outstanding Strengths",
-        "strengths": [
-          "Systematic & logical thinking",
-          "High pressure tolerance",
-          "Trustworthiness & keeping promises",
-          "Fair team leadership",
-          "Ability to see the big picture"
-        ],
-        "weaknessesTitle": "Areas for Self-Management",
-        "weaknesses": [
-          "Not suited for office politics",
-          "Easily frustrated by carelessness",
-          "Prone to silence when overloaded, leading to internal burnout"
-        ],
-        "rolesTitle": "Suitable Work Roles",
+        "title": "Astrological Personality Traits",
+        "strengthsTitle": "Notable Strengths",
+        "strengths": ["Systematic thinking, logic", "High pressure endurance", "Reliable", "Fair team leadership", "Big picture vision"],
+        "weaknessesTitle": "Weaknesses to Self-Manage",
+        "weaknesses": ["Not good at office politics", "Easily annoyed by negligence", "Tendency to be silent when overloaded"],
+        "rolesTitle": "Suitable Roles",
         "roles": [
-          "Head / Director of Customer Service",
-          "Operations Manager / Director",
-          "Customer Experience (CX) Director",
-          "CRM / Process / Training Lead",
-          "Customer Service System Consultant",
-          "Service Business Operations Administrator"
+           "Head / Director Customer Service",
+           "Operations Manager / Director",
+           "Customer Experience (CX) Director",
+           "CRM / Process / Training Lead",
+           "CSKH System Deployment Consultant",
+           "Service Enterprise Operations Management"
         ]
       },
       "compatibility": {
-        "title": "Zodiac Compatibility in Collaboration",
+        "title": "Work Compatibility",
         "groups": [
           {
-            "title": "Highly Compatible Ages",
-            "subtitle": "Recommended as key partners / deputies / collaborators",
+            "title": "Highly Compatible Group",
+            "subtitle": "Should be Partners / Deputy / Collaborators",
             "color": "#27ae60",
             "items": [
-              {
-                "age": "Monkey (1980, 1992)",
-                "trait": "Excellent implementation and execution"
-              },
-              {
-                "age": "Dragon (1976, 1988)",
-                "trait": "Strategic vision and planning"
-              },
-              {
-                "age": "Rooster (1981, 1993)",
-                "trait": "Detail-oriented, disciplined, operational fit"
-              }
+              { "age": "Monkey (1980, 1992)", "trait": "Good at deployment and execution" },
+              { "age": "Dragon (1976, 1988)", "trait": "Visionary, strategic holder" },
+              { "age": "Rooster (1981, 1993)", "trait": "Detailed, disciplined, operational" }
             ]
           },
           {
-            "title": "Moderately Compatible Ages",
-            "subtitle": "Good collaboration, but requires clear alignment",
+            "title": "Moderately Compatible Group",
+            "subtitle": "Works, but needs clarity",
             "color": "#f39c12",
             "items": [
-              {
-                "age": "Ox (1985, 1997)",
-                "trait": "Persistent but needs clear deadlines"
-              },
-              {
-                "age": "Snake (1977, 1989)",
-                "trait": "Intelligent but needs transparency"
-              },
-              {
-                "age": "Pig (1983, 1995)",
-                "trait": "Hardworking, needs guidance"
-              }
+              { "age": "Ox (1985, 1997)", "trait": "Persistent but needs clear deadlines" },
+              { "age": "Snake (1977, 1989)", "trait": "Smart but needs transparency" },
+              { "age": "Pig (1983, 1995)", "trait": "Hardworking, needs guidance" }
             ]
           },
           {
-            "title": "Clashing / Challenging Ages",
-            "subtitle": "Avoid placing in key mutually dependent roles",
+            "title": "Conflicting Group",
+            "subtitle": "Limit in key roles",
             "color": "#e74c3c",
             "items": [
-              {
-                "age": "Horse (1978, 1990)",
-                "trait": "Potential speed mismatch in decision-making"
-              },
-              {
-                "age": "Rabbit (1975, 1987)",
-                "trait": "Highly emotional, potential alignment gaps"
-              },
-              {
-                "age": "Rat (Same age)",
-                "trait": "Potential leadership/authority overlaps"
-              }
+              { "age": "Horse (1978, 1990)", "trait": "Easily mismatched in decision speed" },
+              { "age": "Cat (1975, 1987)", "trait": "Emotional, easily misaligned" },
+              { "age": "Rat (Same Age)", "trait": "Potential power conflict or mental strain" }
             ]
           }
         ]
       },
       "roles": {
-        "title": "IV. OPTIMAL CAREER ROLES",
+        "title": "IV. OPTIMIZED CAREER ROLES",
         "items": [
-          "Head / Director of Customer Service",
+          "Head / Director Customer Service",
           "Operations Manager / Director",
           "Customer Experience (CX) Director",
           "CRM / Process / Training Lead",
-          "Customer Service System Consultant",
-          "Service-Tech Business Operations Administrator"
+          "CSKH System Deployment Consultant",
+          "Technology-Service Enterprise Operations Management"
         ]
       },
       "conclusion": {
-        "title": "V. SUMMARY & CONCLUSION",
-        "content": "This section analyzes the convergence of major stars in the Destiny and Body domains. The combination of Thien Phu and Pha Quan creates a perfect paradox: the ability to maintain a solid system while ready to break it for restructuring. The Dau hour makes him sharp in the late afternoon/evening, perfect for key decisions at the end of the day. Working with the right partners, he will go very far."
+        "title": "V. CONCLUSION FROM TRÍ NHÂN",
+        "content": "This section analyzes the convergence of major stars in the Life and Body palaces. The combination of Heavenly Mansion and Army Destroyer creates a perfect paradox: The ability to maintain stable systems while being ready to break them for restructuring. The Rooster hour makes you sharp towards the end of the day, very suitable for important decisions. Combined with the right people, you will go very far."
       }
     }
   },
@@ -2560,8 +2586,8 @@ export const en = {
     "achievements": [
       {
         "id": "1.1",
-        "title": "Xây dựng Phòng Dịch vụ Khách hàng",
-        "branch": "Xây dựng Phòng Dịch vụ Khách hàng",
+        "title": "Xây dựng Phòng Dịch Vụ Khách Hàng",
+        "branch": "Xây dựng Phòng Dịch Vụ Khách Hàng",
         "rate": 100,
         "category": "📌 1. Chiến lược & Quản lý",
         "hashtag": "#CS_Strategy",
@@ -2721,7 +2747,7 @@ export const en = {
     ]
   },
   "servicesPage": {
-    "badge": "Services",
+    "title": "My Services",
     "tooltipTitle": "Expert Services",
     "tooltipText": "Professional management consulting and operational design services in customer care.",
     "services": [
@@ -2796,28 +2822,20 @@ export const en = {
     ]
   },
   "projectsPage": {
-    "badge": "Projects",
+    "title": "My Projects",
     "tooltipTitle": "Key Projects",
     "tooltipText": "Technical and operational systems built to scale customer support and experience.",
-    "stageLabel": "Stage",
-    "filters": {
-      "all": "All",
-      "strategy": "Strategy",
-      "operations": "Operations",
-      "tech": "Technology",
-      "learning": "Training",
-      "selfService": "Self-Service"
-    },
     "projects": [
       {
         "id": "1.1",
-        "title": "V247 Call Center Integration",
+        "title": "1. Xây dựng P.CSKH",
         "description": "Integrated multi-channel support channels (Fax, Web, Voice) for overseas telecommunication calling cards, improving response rates.",
         "group": "Chiến lược & Quản lý",
         "stage": "1",
         "hashtags": [
-          "#CS_Strategy",
-          "#Structure"
+          "CS Strategy",
+          "Cấu trúc",
+          "Lãnh đạo"
         ],
         "imageUrl": "https://i.ibb.co/27LMqKRp/1-X-y-d-ng-P-CSKH.jpg"
       },
@@ -3004,58 +3022,51 @@ export const en = {
     ]
   },
   "memoriesPage": {
-    "badge": "Memories",
+    "title": "Career Memories",
     "tooltipTitle": "Team Highlights",
     "tooltipText": "Captured moments of teamwork, milestones, and success with colleagues across my 22-year journey.",
-    "filters": {
-      "all": "All",
-      "mobifone": "Mobifone",
-      "v247": "V247",
-      "lbc": "LBC",
-      "ved": "VED",
-      "prudential": "Prudential",
-      "mservice": "MoMo",
-      "finviet": "Finviet"
-    },
-    "companyLabels": {
-      "lbc": "LBC",
-      "mobifone": "Mobifone",
-      "mservice": "M-Service (MoMo)",
-      "prudential": "Prudential",
-      "v247": "V247",
-      "ved": "VED",
-      "finviet": "Finviet"
-    },
     "memories": [
       {
         "src": "https://i.ibb.co/6Rp6rqXt/Mobifone-1.webp",
         "alt": "Mobifone 1",
-        "company": "mobifone"
+        "company": "mobifone",
+        "title": "Prudential Call Center Team",
+        "description": "Working together with call center supervisors and managers to optimize insurance claims."
       },
       {
         "src": "https://i.ibb.co/0HHrmyz/Mobifone-2.webp",
         "alt": "Mobifone 2",
-        "company": "mobifone"
+        "company": "mobifone",
+        "title": "VED Shopee Operations Launch",
+        "description": "Group photo celebrating the successful launch of Shopee and Garena support services."
       },
       {
         "src": "https://i.ibb.co/ZzjXpjsX/HTVC-1.webp",
         "alt": "HTVC 1",
-        "company": "lbc"
+        "company": "lbc",
+        "title": "HTVC Cable TV Team Building",
+        "description": "Fun team building trip promoting solidarity and collaboration among service members."
       },
       {
         "src": "https://i.ibb.co/BKjZQfY5/HTVC-2.webp",
         "alt": "HTVC 2",
-        "company": "lbc"
+        "company": "lbc",
+        "title": "Garena Esports Event Support",
+        "description": "Providing direct customer support during large Garena esports matches in Ho Chi Minh City."
       },
       {
         "src": "https://i.ibb.co/357kHb63/HTVC-3.webp",
         "alt": "HTVC 3",
-        "company": "lbc"
+        "company": "lbc",
+        "title": "MoMo Team Outing",
+        "description": "Outdoor team activity to relax and celebrate achieving monthly operational KPIs."
       },
       {
         "src": "https://i.ibb.co/39Sjm7S0/HTVC-4.webp",
         "alt": "HTVC 4",
-        "company": "lbc"
+        "company": "lbc",
+        "title": "Finviet ECO Wallet Team",
+        "description": "Collaborating with ECO Wallet developers and operators to test the new chat support widget."
       },
       {
         "src": "https://i.ibb.co/ds1qm1WD/VED-1.webp",
@@ -3189,45 +3200,6 @@ export const en = {
       }
     ]
   },
-  "settingsPage": {
-    "badge": "Settings",
-    "tooltipTitle": "Customize Interface",
-    "tooltipText": "Change the interface theme, colors, background wallpaper, and voice options to personalize your experience."
-  },
-  "settings": {
-    "resetButton": "Reset",
-    "saveButton": "Save Changes",
-    "featuresTitle": "Features & Effects",
-    "generalSettings": "General Settings",
-    "interfaceSettings": "Interface & Layout",
-    "aiSettings": "Assistant & Audio",
-    "systemSettings": "System & Data",
-    "cardLayout": "Card Layout",
-    "grid2x2": "2x2 Grid",
-    "soundEffects": "Sound Effects",
-    "aiVoice": "AI Voice",
-    "aiVoiceSelect": "Select Voice",
-    "interfaceTitle": "Interface Mode",
-    "mode": "Theme Mode",
-    "light": "Light",
-    "dark": "Dark",
-    "system": "System Default",
-    "accentColor": "Accent Color",
-    "cardOpacity": "Card Glass Opacity",
-    "sidebarOpacity": "Sidebar Glass Opacity",
-    "wallpaper": "Wallpaper Background",
-    "gradient": "Gradient Color",
-    "video": "Video Loop",
-    "image": "Static Image",
-    "dataManagementTitle": "Data Management",
-    "exportButton": "Export Data",
-    "importButton": "Import Data",
-    "exportAppTitle": "Export App Bundle",
-    "exportAsHTML": "Export as HTML File",
-    "exportAsTXT": "Export as TXT File",
-    "importSuccess": "Data imported successfully! Reloading page...",
-    "importError": "Failed to import data. Please verify the CSV format."
-  },
   "projectPosts": {
     "default": {
       "title": "Thông tin dự án chưa được cập nhật",
@@ -3266,7 +3238,7 @@ export const en = {
           "**Xây dựng văn hóa dịch vụ khách hàng**<br />&bull; Xây dựng bộ tiêu chuẩn giao tiếp và quy tắc ứng xử với khách hàng.<br />&bull; Biên soạn cẩm nang dịch vụ khách hàng và tài liệu hướng dẫn nội bộ.<br />&bull; Triển khai văn hóa phục vụ dựa trên sự thấu hiểu, đồng hành và tạo trải nghiệm vượt mong đợi cho khách hàng.",
           "**Đào tạo và phát triển năng lực nhân viên**<br />&bull; Xây dựng chương trình đào tạo hội nhập và đào tạo chuyên môn.<br />&bull; Đào tạo kỹ năng giao tiếp, chăm sóc khách hàng đa kênh.<br />&bull; Đào tạo kỹ năng xử lý khiếu nại, kiểm soát cảm xúc và giải quyết tình huống khó.<br />&bull; Tổ chức đánh giá năng lực định kỳ và chương trình nâng cao chất lượng dịch vụ.",
           "**Xây dựng hệ thống quản lý và vận hành nội bộ**<br />&bull; Thiết kế và chuẩn hóa quy trình vận hành chăm sóc khách hàng.<br />&bull; Xây dựng hệ thống quản lý công việc, theo dõi hiệu suất và báo cáo vận hành.<br />&bull; Tham gia xây dựng và triển khai hệ thống CRM, Helpdesk, Ticket Management và Knowledge Base.<br />&bull; Xây dựng hệ thống SLA, KPI, Dashboard và các chỉ số đo lường chất lượng dịch vụ.<br />&bull; Chuẩn hóa dữ liệu khách hàng và quy trình quản trị thông tin nhằm hỗ trợ ra quyết định dựa trên dữ liệu.",
-          "**Kết quả đạt được:**<br />&bull; Xây dựng thành công bộ máy Chăm sóc Khách hàng từ giai đoạn khởi tạo đến vận hành ổn định.<br />&bull; Hình thành đội ngũ nhân sự có năng lực chuyên môn và định hướng dịch vụ rõ ràng.<br />&bull; Chuẩn hóa quy trình vận hành và hệ thống quản lý dịch vụ khách hàng.<br />&bull; Tạo nền tảng cho việc mở rộng quy mô, nâng cao trải nghiệm khách hàng và tối ưu hiệu quả hoạt động doanh nghiệp."
+          "**Kết quả đạt được:** Xây dựng thành công bộ máy Chăm sóc Khách hàng từ giai đoạn khởi tạo đến vận hành ổn định.<br />&bull; Hình thành đội ngũ nhân sự có năng lực chuyên môn và định hướng dịch vụ rõ ràng.<br />&bull; Chuẩn hóa quy trình vận hành và hệ thống quản lý dịch vụ khách hàng.<br />&bull; Tạo nền tảng cho việc mở rộng quy mô, nâng cao trải nghiệm khách hàng và tối ưu hiệu quả hoạt động doanh nghiệp."
         ]
       }
     },
@@ -3705,307 +3677,66 @@ export const en = {
     }
   },
   "projectPostPopup": {
-    "badge": "Project Details",
-    "tooltipTitle": "In-depth Analysis",
-    "tooltipText": "Explore detailed objectives, implementation process, and key results achieved for this project.",
-    "backToProjects": "Back to Projects",
-    "readAloud": "Read Aloud",
-    "pauseReading": "Pause",
-    "nowPlaying": "Now Reading...",
-    "listenToArticle": "Read Content",
-    "generatingOverview": "Generating overview...",
-    "summaryError": "Failed to generate overview.",
-    "relatedPosts": "Related Projects",
-    "comments": "Comments",
-    "namePlaceholder": "Your Name",
-    "emailPlaceholder": "Your Email Address",
-    "commentPlaceholder": "Write your comment or question here...",
-    "submitComment": "Submit Comment",
-    "generatingMindMap": "Generating mind map...",
-    "mindMapError": "Unable to generate mind map at this moment.",
-    "sidebarWidgetTitle": "Mind Map Summary",
-    "referenceLinksTitle": "Reference Links",
-    "referenceLinks": [
-      {
-        "title": "Understand Agile Methodologies",
-        "url": "https://www.atlassian.com/agile"
-      },
-      {
-        "title": "Introduction to CRM Systems",
-        "url": "https://www.salesforce.com/crm/what-is-crm/"
-      },
-      {
-        "title": "Core Customer Experience (CX) Metrics",
-        "url": "https://www.hotjar.com/customer-experience/"
-      }
-    ]
+    "closeButton": "Close",
+    "dateLabel": "Published",
+    "authorLabel": "Author",
+    "tagsLabel": "Tags",
+    "relatedTitle": "Related Projects"
   },
   "transcribePage": {
-    "badge": "AI Dictation",
-    "title": "Audio Recording & AI Transcription",
-    "tooltipTitle": "Voice Recording",
-    "tooltipText": "Record voice notes using your microphone and transcribe them using Gemini 3.5 Flash.",
-    "recordBtnStart": "Start Recording",
-    "recordBtnStop": "Stop Recording",
-    "recordingStatus": "Recording from microphone...",
-    "transcribingStatus": "Transcribing audio to text...",
-    "resultTitle": "Transcribed Text:",
-    "copyBtn": "Copy Text",
-    "copied": "Copied to clipboard!",
-    "errorAudio": "Microphone access denied. Please verify microphone permissions in browser settings.",
-    "emptyResult": "Result is empty (could not recognize speech from audio)."
+    "title": "AI Voice Dictation",
+    "tooltipTitle": "Voice Notes",
+    "tooltipText": "Record your voice to transcribe notes or questions regarding Nguyen Hung Thai's profile.",
+    "placeholder": "Say something...",
+    "startBtn": "Start Recording",
+    "stopBtn": "Stop Recording",
+    "clearBtn": "Clear",
+    "transcriptionLabel": "Transcription Output"
   },
   "aiChatPage": {
-    "badge": "AI Chat",
-    "collectInfoGreeting": "Hello! Please enter your name and gender to begin.",
-    "welcomeMessage": "Hello! Glad to support you!",
+    "badge": "Tri Nhan AI Assistant",
+    "collectInfoGreeting": "Hello! I am Tri Nhan, Mr. Thai's AI assistant. Before we start, please tell me your name and gender.",
+    "welcomeMessage": "Hello! I am Nguyen Hung Thai's virtual assistant. You can ask me anything about his career, experience, projects, or zodiac compatibility!",
     "startChatBtn": "Start",
-    "speakerOn": "Unmute",
-    "speakerOff": "Mute",
+    "speakerOn": "Enable speaker",
+    "speakerOff": "Disable speaker",
     "avatarAlt": "AI Support",
     "errorMessage": "An error occurred, please try again.",
     "interviewResponseText": "Here is the interview information.",
     "namePlaceholder": "Your name",
     "genderMale": "Male",
     "genderFemale": "Female",
-    "questionsPopupTitle": "Suggested Questions",
+    "questionsPopupTitle": "Suggested questions",
     "tooltipTitle": "AI Assistant",
-    "tooltipText": "AI Assistant to support you.",
-    "newChat": "New Chat",
-    "suggestedQuestionsBtn": "Suggested Questions",
-    "attachFile": "Attach File",
-    "placeholder": "Type a message...",
-    "mediaPrompts": [
-      {
-        "key": "sampleInterview",
-        "title": "Sample Interview",
-        "icon": "PlayIcon",
-        "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
-      },
-      {
-        "key": "showQuestions",
-        "title": "Question List",
-        "icon": "ListIcon",
-        "action": "show_questions"
-      }
-    ],
-    "demoQuestions": [
-      {
-        "category": "I. Overview & Personal",
-        "items": [
-          {
-            "q": "Chào anh Nguyễn Hùng Thái, anh có thể giới thiệu ngắn gọn về bản thân cũng như hành trình 22 năm trong lĩnh vực chăm sóc khách hàng của mình không?",
-            "a": "Anh Nguyễn Hùng Thái (sinh năm 1984), là một chuyên gia thực chiến dày dặn với hơn 22 năm kinh nghiệm trong ngành dịch vụ và trải nghiệm khách hàng. Bắt đầu hành trình từ năm 2002 khi ngành này tại Việt Nam còn rất thô sơ, anh đã nỗ lực đi lên từ vị trí nhân viên tổng đài thế hệ đầu để tiến lên các cấp bậc trưởng nhóm, trưởng phòng tại nhiều tập đoàn lớn."
-          },
-          {
-            "q": "Điều gì khiến anh gắn bó lâu dài với lĩnh vực chăm sóc khách hàng đến vậy?",
-            "a": "Anh Thái luôn có niềm đam mê sâu sắc và gắn bó lâu dài với nghề vì trân trọng từng lời cảm ơn từ người dùng. Đối với anh, ngay cả những bài học từ các khách hàng chưa hài lòng đều là cơ hội quý giá để thấu hiểu, tự sửa mình và kiến tạo nên các trải nghiệm chạm đến trái tim."
-          },
-          {
-            "q": "Thành tựu nào anh cảm thấy tự hảo nhất trong sự nghiệp của mình?",
-            "a": "Thành tựu lớn nhất mà anh tự hào không chỉ là việc trực tiếp giải quyết các ca khiếu nại khó, mà là khả năng thiết lập và chuẩn hóa thành công 100% quy trình hệ thống tại mọi đơn vị từng đi qua. Mục tiêu tối cao của anh là xây dựng nền tảng vững chắc nhằm chuyển giao năng lực, giúp toàn bộ đội ngũ cấp dưới có thể vận hành hiệu quả hơn cả chính mình."
-          },
-          {
-            "q": "Các lĩnh vực ngành nghề anh từng tham gia và trải nghiệm đa dạng như thế nào?",
-            "a": "Kinh nghiệm của anh Thái vô cùng đa dạng khi trải dài qua 5 mô hình vận hành hoàn toàn khác biệt: Viễn thông (Mobifone, V247), Trò chơi trực tuyến & Giải trí công nghệ (Garena/VED), Thương mại điện tử (Shopee), Bảo hiểm nhân thọ (Prudential Vietnam), và Tài chính số & Ví điện tử (MoMo, Finviet)."
-          },
-          {
-            "q": "Nếu muốn tìm hiểu thêm về anh (CV/Hồ sơ năng lực), chúng tôi có thể xem ở đâu?",
-            "a": "Toàn bộ hệ sinh thái thông tin của anh Thái được đồng bộ công khai tại: Trang thông tin năng lực cá nhân nguyenhungthai.powerservice.one, Thư mục lưu trữ Hồ sơ năng lực (Google Drive), và Linkedin Nguyễn Hùng Thái."
-          }
-        ]
-      },
-      {
-        "category": "II. Education & Qualifications",
-        "items": [
-          {
-            "q": "Anh hãy mô tả một chiến lược chăm sóc khách hàng thành công mà anh từng triển khai (bối cảnh – giải pháp – kết quả)?",
-            "a": "Bối cảnh: Tại Ví điện tử MoMo (giai đoạn 2018 - 2021), lượng người dùng bùng nổ theo cấp số nhân gây quá tải hệ thống tiếp nhận cũ. Giải pháp: Anh Thái trực tiếp dẫn dắt dự án tái cấu trúc hệ thống quản trị quan hệ khách hàng đa kênh, thành lập trung tâm hỗ trợ tập trung và hợp tác thuê ngoài nhân sự vận hành với đối tác Mắt Bảo, đồng thời phối hợp với phòng Sản phẩm thiết lập cơ chế tự động hỗ trợ ngay trên ứng dụng. Kết quả: Chuẩn hóa thành công 100% quy trình vận hành, nâng tỷ lệ hỗ trợ cộng đồng ổn định lên mức 80% và giải phóng áp lực lớn cho nhân sự nội bộ."
-          },
-          {
-            "q": "Theo anh, chăm sóc khách hàng đóng vai trò gì trong toàn bộ vòng đời khách hàng?",
-            "a": "Bộ phận này không đơn thuần làm nhiệm vụ 'giải quyết hậu quả' ở chặng cuối khi có sự cố. Vai trò cốt lõi là xuất hiện tại mọi điểm chạm để giữ nhịp độ hài lòng, dịch chuyển người dùng từ trạng thái 'sử dụng sản phẩm' sang 'tin tưởng doanh nghiệp' và biến họ thành người đồng hành bền vững, sẵn sàng giới thiệu thương hiệu cho cộng đồng."
-          },
-          {
-            "q": "Nếu được xây lại hệ thống chăm sóc khách hàng từ đầu, anh sẽ bắt đầu từ đâu: con người, quy trình, công nghệ, hay dữ liệu?",
-            "a": "Anh Thái tuân thủ nghiêm ngặt lộ trình 3 giai đoạn rõ ràng: 1. Giai đoạn 1: Bắt đầu từ Quy trình & Con người để thiết lập cơ cấu tổ chức và bộ quy trình vận hành tiêu chuẩn trước. 2. Giai đoạn 2: Đưa Công nghệ & Dữ liệu vào để đồng bộ đa kênh và xây dựng bảng chỉ số thời gian thực. 3. Giai đoạn 3: Tiến hành Tối ưu & Tự động hóa thông qua robot trò chuyện trí tuệ nhân tạo và cổng thông tin tự phục vụ."
-          },
-          {
-            "q": "Theo anh, yếu tố quan trọng nhất khi xây dựng phòng Chăm Sóc Khách Hàng là gì?",
-            "a": "Yếu tố tiên quyết chính là sự cân bằng hài hòa giữa 'Xương sườn' Quy trình chắc chắn và 'Trái tim' Thấu cảm của con người."
-          },
-          {
-            "q": "Những chỉ số thành công nào (Chỉ số đo lường lòng trung thành, Mức độ hài lòng, Tỷ lệ nỗ lực của khách hàng…) anh đặc biệt quan tâm trong các chiến lược của mình?",
-            "a": "Anh quản trị hiệu suất dựa trên việc cân bằng chặt chẽ giữa hai nhóm chỉ số: Nhóm trải nghiệm cảm xúc (CSAT, NPS, CES) và Nhóm hiệu quả vận hành (FCR, SLA, AHT)."
-          },
-          {
-            "q": "Anh hình dung thế nào về một “hệ sinh thái chăm sóc khách hàng lý tưởng” trong 3–5 năm tới?",
-            "a": "Đó là một hệ sinh thái vận hành theo triết lý 'Không ma sát'. Tại đó, trí tuệ nhân tạo và dữ liệu lớn sẽ giúp doanh nghiệp dự đoán trước vấn đề để hỗ trợ chủ động trước khi khách hàng liên hệ. Tổng đài truyền thống sẽ thu nhỏ lại, nhường không gian cho các kênh tự phục vụ thông minh và các kết nối thấu cảm chuyên sâu giữa con người với con người."
-          }
-        ]
-      },
-      {
-        "category": "III. Astrological Profile",
-        "items": [
-          {
-            "q": "Anh từng quản lý đội ngũ bao nhiêu nhân sự, với những cấp độ nào?",
-            "a": "Quy mô nhân sự lớn nhất anh Thái từng trực tiếp điều hành là 130 người tại VED (Garena) và khoảng 60 người tại Ví MoMo. Cơ cấu quản lý bao gồm đầy đủ các cấp bậc: Nhân viên tổng đài, Trưởng nhóm, Giám sát viên và các Quản lý cấp trung phụ trách chuyên mảng."
-          },
-          {
-            "q": "Phong cách lãnh đạo của anh trong vai trò trưởng phòng Chăm Sóc Khách Hàng là gì?",
-            "a": "Phong cách chủ đạo của anh là Đồng hành và dẫn dắt. Thay vì quản lý vi mô kiểm soát, anh tập trung xây dựng nền tảng vững chắc để trao quyền, chuyển giao năng lực và giúp nhân viên tự hào về giá trị họ tạo ra."
-          },
-          {
-            "q": "Khi xây dựng đội nhóm, anh thường ưu tiên điều gì trước: kỹ năng, thái độ hay văn hóa dịch vụ?",
-            "a": "Thái độ và Tư duy dịch vụ luôn là ưu tiên hàng đầu của anh. Kỹ năng chuyên môn hoàn toàn có thể đào tạo được thông qua các khóa học trực tuyến nội bộ, nhưng một nhân sự thiếu sự đồng cảm chân thành thì không thể đồng hành lâu dài dưới áp lực ngành dịch vụ."
-          },
-          {
-            "q": "Anh xử lý ra sao khi nhân viên chăm sóc khách hàng bị khách hàng phàn nàn?",
-            "a": "Anh Thái sẽ rà soát lại toàn bộ bản ghi âm cuộc gọi hoặc lịch sử trò chuyện để phân tích nguyên nhân gốc rễ. Từ đó, anh đưa ra phản hồi mang tính xây dựng để huấn luyện lại nhân viên, đồng thời tiến hành vá các lỗ hổng của quy trình hệ thống nếu phát hiện sai sót vận hành."
-          },
-          {
-            "q": "Anh có kinh nghiệm thiết kế lộ trình thăng tiến hoặc khung năng lực cho phòng chăm sóc khách hàng không?",
-            "a": "Có. Thừa hưởng từ các khóa đào tạo quản lý cấp trung và cấp cao, anh xây dựng Khung năng lực rõ ràng chia làm 3 nhánh minh bạch: Năng lực chuyên môn (vận hành hệ thống, quy trình), Năng lực lãnh đạo (quản trị hiệu suất, giải quyết xung đột), và Năng lực liên ngành (trải nghiệm khách hàng, quản lý rủi ro dịch vụ)."
-          },
-          {
-            "q": "Với vai trò lãnh đạo, anh thường truyền động lực cho đội ngũ bằng cách nào?",
-            "a": "Anh giúp nhân viên thay đổi nhận thức bằng cách định vị bộ phận của mình là một 'trung tâm tạo ra giá trị' cho doanh nghiệp chứ không phải nơi tiêu tốn chi phí. Điều này khiến họ luôn tự hào khi tháo gỡ được mỗi khó khăn cho khách hàng."
-          }
-        ]
-      },
-      {
-        "category": "IV. Professional Experience",
-        "items": [
-          {
-            "q": "Anh có thể chia sẻ một tình huống khủng hoảng dịch vụ mà anh từng xử lý theo mô hình Tình huống - Nhiệm vụ - Hành động - Kết quả?",
-            "a": "Tình huống: Hệ thống Ví điện tử MoMo bị lỗi diện rộng gây nghẽn toàn bộ giao dịch tài chính của người dùng. Nhiệm vụ: Ngay lập tức giải tỏa áp lực cho hệ thống tổng đài đang quá tải, truyền thông minh bạch thông tin và bảo vệ uy tín thương hiệu. Hành động: Kịch bản khẩn cấp liên phòng ban được kích hoạt; thiết lập thông điệp lời chào tự động tại tổng đài kết hợp đẩy thông báo đa kênh để khách hàng nắm bắt thông tin; sau khi hệ thống ổn định thì gửi thư xin lỗi kèm theo chính sách đền bù tri ân. Kết quả: Giảm nhanh 70% lượng cuộc gọi chờ quá tải, bảo vệ thành công lòng tin và giữ chân lượng người dùng trung thành."
-          },
-          {
-            "q": "Tình huống áp lực nhất anh từng xử lý trong Chăm Sóc Khách Hàng là gì?",
-            "a": "Đó là việc trực tiếp đối mặt và xử lý các khiếu nại tranh chấp phức tạp giữa người mua - người bán, đi kèm kiểm soát rủi ro gian lận tài chính tại các đơn vị Công nghệ tài chính và Thương mại điện tử quy mô lớn."
-          },
-          {
-            "q": "Khi gặp khách hàng VIP tức giận và yêu cầu gặp cấp cao, anh thường giải quyết ra sao?",
-            "a": "Anh thực hiện nghiêm túc theo quy trình 3 bước chặt chẽ: 1. Lắng nghe với thái độ cầu thị cao nhất để hạ nhiệt cảm xúc. 2. Xuất hiện trực tiếp với vai trò Trưởng phòng để khẳng định thẩm quyền giải quyết cao nhất. 3. Đưa ra giải pháp đặc cách nhanh chóng nằm trong khung rủi ro doanh nghiệp cho phép để xử lý triệt để vấn đề."
-          },
-          {
-            "q": "Trong trường hợp hệ thống lỗi diện rộng, anh sẽ truyền thông và giữ uy tín thế nào với khách hàng?",
-            "a": "Anh chủ động triển khai truyền thông đa kênh (thông báo tức thời trên ứng dụng, treo biểu ngữ, cài lời thoại tự động tổng đài) để thể hiện sự minh bạch, không trốn tránh trách nhiệm. Song song đó, anh phối hợp chặt chẽ với phòng kỹ thuật để liên tục cập nhật tiến độ khắc phục cụ thể cho khách hàng."
-          },
-          {
-            "q": "Nếu có mâu thuẫn gay gắt giữa chăm sóc khách hàng và khách hàng, đâu là nguyên tắc “đỏ” anh luôn tuân thủ?",
-            "a": "Nguyên tắc 'đỏ' tối cao của anh là: 'Không tranh luận đúng sai – Tập trung vào giải pháp'. Anh thấu hiểu rằng, nếu đẩy khách hàng vào thế thua cuộc trong một cuộc tranh cãi, doanh nghiệp luôn là bên thất bại."
-          },
-          {
-            "q": "Bài học lớn nhất anh rút ra từ một sự cố khủng hoảng dịch vụ là gì?",
-            "a": "Anh Thái đúc kết rằng: Một quy trình tốt chỉ là điểm khởi đầu, sự thấu cảm kịp thời mới là thứ cứu vãn được mối quan hệ. Đồng thời, mọi sự cố khủng hoảng đều phải được mổ xẻ nghiêm túc để đưa ngược dữ liệu vào vòng lặp cải tiến quy trình."
-          }
-        ]
-      },
-      {
-        "category": "V. Process & SOPs",
-        "items": [
-          {
-            "q": "Anh từng triển khai hoặc cải tiến hệ thống quản trị dữ liệu khách hàng/tiếp nhận yêu cầu nào?",
-            "a": "Anh có kinh nghiệm thực tế trong việc vận hành, thiết kế cấu trúc dữ liệu và tích hợp các hệ thống lớn như Zoho, các công cụ tiếp nhận yêu cầu (Helpdesk) và phần mềm văn phòng Larksuite. Bản thân anh cũng tự học và cập nhật các ngôn ngữ lập trình (C++, PHP, HTML/CSS) để hiểu sâu về mặt kỹ thuật, giúp việc tích hợp hệ thống đạt hiệu quả tối ưu."
-          },
-          {
-            "q": "Quan điểm của anh về ứng dụng chuyển đổi số trong Chăm Sóc Khách Hàng?",
-            "a": "Chuyển đổi số phải bám sát triết lý cốt lõi: Hiệu quả – Nhân văn – Bền vững. Công nghệ sinh ra là để giải phóng con người khỏi các tác vụ lặp lại, nâng cao hiệu suất doanh nghiệp chứ không phải để triệt tiêu đi sự thấu cảm chân thành."
-          },
-          {
-            "q": "Với một hệ thống chăm sóc khách hàng, theo anh đâu là “mảnh ghép công nghệ” quan trọng nhất?",
-            "a": "Đó chính là Hệ thống dữ liệu khách hàng tập trung (Single Source of Truth). Mảnh ghép này giúp gom toàn bộ hành trình tương tác của người dùng từ mọi kênh về một màn hình duy nhất, giúp nhân viên không bị thiếu thông tin khi xử lý."
-          },
-          {
-            "q": "Anh thường sử dụng các chỉ số hiệu suất nào để đánh giá hiệu quả dịch vụ?",
-            "a": "Anh sử dụng bộ công cụ đo lường toàn diện bao gồm: Tỷ lệ giải quyết ngay từ cuộc gọi đầu tiên (FCR), Chỉ số đo lường lòng trung thành (NPS), Mức độ hài lòng (CSAT), Chỉ số nỗ lực khách hàng (CES), Cam kết mức độ dịch vụ (SLA) và Thời gian xử lý cuộc gọi trung bình (AHT)."
-          },
-          {
-            "q": "Khi mở rộng quy mô, làm sao để hệ thống chăm sóc khách hàng vẫn cá nhân hóa và ổn định?",
-            "a": "Chìa khóa nằm ở sự kết hợp giữa Tự động hóa và Phân loại phân khúc khách hàng. Các câu hỏi thông thường sẽ được giải quyết nhanh gọn bằng robot trò chuyện (Chatbot AI) để tiết kiệm chi phí. Trong khi đó, dữ liệu hệ thống sẽ tự động nhận diện chân dung khách VIP hoặc khách đang có khiếu nại dở dang để định tuyến thẳng tới nhân sự chuyên trách."
-          },
-          {
-            "q": "Anh có thể chia sẻ một ví dụ thực tế về việc dùng dữ liệu/Trí tuệ nhân tạo để nâng trải nghiệm khách hàng?",
-            "a": "Anh Thái từng triển khai ứng dụng công cụ phân tích văn bản (AI Text Analytics) để tự động quét các từ khóa tiêu cực/tích cực trong lịch sử trò chuyện và ghi âm cuộc gọi, từ đó nhận diện và đo lường cảm xúc khách hàng một cách chủ động ngoài các con số khảo sát khô khan."
-          }
-        ]
-      },
-      {
-        "category": "VI. Tools & Technology",
-        "items": [
-          {
-            "q": "Theo anh, thế thế nào là một “dịch vụ tuyệt hảo”?",
-            "a": "Dịch vụ tuyệt hảo không đến từ một hệ thống hoàn hảo không bao giờ lỗi. Nó đến từ sự tận tâm đúng lúc và thấu cảm đúng nơi: cách doanh nghiệp chủ động nhận trách nhiệm và giải quyết vượt kỳ vọng của khách hàng ngay cả khi họ đang thất vọng nhất, biến một trải nghiệm tồi tệ thành một kỷ niệm đáng nhớ."
-          },
-          {
-            "q": "Làm sao để đo lường được cảm xúc khách hàng ngoài những con số khảo sát?",
-            "a": "Anh chú trọng lắng nghe và phân tích Tiếng nói Khách hàng (VoC) thông qua việc kết hợp công cụ quét từ khóa cảm xúc, theo dõi tần suất quay lại tương tác tích cực trên cộng đồng và phân tích sâu nguyên nhân gốc rễ các khiếu nại bị lặp lại."
-          },
-          {
-            "q": "Trong đội ngũ, anh nuôi dưỡng “tư duy dịch vụ” bằng cách nào?",
-            "a": "Anh tập trung đào tạo đội ngũ theo nguyên tắc: Biết lắng nghe kỹ - hiểu sâu - xử lý tinh tế. Đồng thời, bản thân người quản lý phải luôn làm gương và xây dựng văn hóa thấu cảm trong nội bộ phòng ban trước khi lan tỏa tinh thần đó tới khách hàng."
-          },
-          {
-            "q": "Anh có câu chuyện nào đáng nhớ về việc thấu cảm với khách hàng một cách ngoài mong đợi không?",
-            "a": "Tại Ví MoMo, anh cùng phòng Sản phẩm từng chủ động thiết lập quy trình xử lý sự cố đặc cách dành riêng cho các ca kẹt tiền nhạy cảm, phức tạp mà pháp luật Việt Nam chưa quy định rõ ràng. Giải pháp kịp thời này đã giúp tháo gỡ khó khăn và xoa dịu tâm lý hoảng loạn của khách hàng một cách nhân văn."
-          },
-          {
-            "q": "Nếu phải chọn một giá trị cốt lõi duy nhất cho văn hóa dịch vụ của phòng chăm sóc khách hàng, anh sẽ chọn gì?",
-            "a": "Anh Thái kiên định chọn chữ 'THẤU CẢM'. Có thấu cảm, nhân viên sẽ tự biết tối ưu quy trình, công nghệ sẽ được ứng dụng nhân văn và khách hàng sẽ thực sự cảm nhận được họ đang được lắng nghe."
-          }
-        ]
-      },
-      {
-        "category": "VII. Organization & Alignment",
-        "items": [
-          {
-            "q": "Nếu chia phòng chăm sóc khách hàng thành các nhóm nhỏ, anh sẽ tổ chức như thế nào?",
-            "a": "Cơ cấu tổ chức tối ưu mà anh thường áp dụng bao gồm 4 nhóm chức năng liên kết chặt chẽ: 1. Nhóm tiếp nhận (Inbound): Xử lý nhanh các yêu cầu đa kênh đổ về (Hotline, Chat, Email). 2. Nhóm chủ động (Outbound): Gọi chăm sóc, xử lý chiến dịch tái kích hoạt và khảo sát chất lượng. 3. Nhóm Nghiệp vụ chuyên sâu: Giải quyết khiếu nại khó, tranh chấp tài chính và kiểm soát vận hành. 4. Nhóm Đảm bảo chất lượng & Đào tạo (QA & Training): Kiểm tra chất lượng cuộc gọi, tối ưu quy trình và huấn luyện đội ngũ liên tục."
-          },
-          {
-            "q": "Chăm sóc khách hàng nên phối hợp thế nào với phòng Kinh doanh, Tiếp thị, Sản phẩm để tạo trải nghiệm liền mạch?",
-            "a": "Anh luôn thiết lập cơ chế 'Vòng lặp phản hồi' liên phòng ban: 1. Với phòng Sản phẩm: Đóng gói dữ liệu lỗi ứng dụng, hành vi khách hàng khó thao tác để cải tiến tính năng. 2. Với phòng Tiếp thị/Kinh doanh: Cảnh báo sớm các chương trình khuyến mãi có quy trình phức tạp dễ gây hiểu lầm, điều chỉnh kịch bản truyền thông trước khi tung ra thị trường."
-          },
-          {
-            "q": "Khi có mâu thuẫn giữa phòng chăm sóc khách hàng và các phòng ban khác, anh thường xử lý thế nào?",
-            "a": "Anh Thái sẽ sử dụng dữ liệu phản hồi thực tế từ khách hàng kết hợp với các chỉ số cam kết chất lượng dịch vụ nội bộ (SLA) để làm trọng tài phân xử khách quan, hướng các bên tới mục tiêu chung là tối ưu trải nghiệm người dùng."
-          },
-          {
-            "q": "Anh từng tham gia dự án liên phòng ban nào để cải thiện trải nghiệm khách hàng chưa?",
-            "a": "Tiêu biểu là dự án phối hợp cùng phòng Sản phẩm và phòng Pháp lý tại MoMo nhằm định hình khung quy trình xử lý các sự cố công nghệ mới cho ví điện tử, vừa bảo vệ quyền lợi người dùng vừa bám sát quy định pháp lý."
-          },
-          {
-            "q": "Theo anh, đâu là cơ chế báo cáo – phối hợp hiệu quả nhất giữa chăm sóc khách hàng và lãnh đạo cấp cao?",
-            "a": "Đó là việc thiết lập hệ thống bảng theo dõi chỉ số thời gian thực (Realtime Dashboard) để Ban giám đốc nắm bắt tình hình một cách trực quan, đi kèm cơ chế báo cáo nhanh các chỉ số vận hành trọng yếu nhằm đưa ra quyết định chiến lược kịp thời."
-          }
-        ]
-      },
-      {
-        "category": "VIII. Leadership & Mindset",
-        "items": [
-          {
-            "q": "Nếu nhận vai trò Trưởng phòng chăm sóc khách hàng, 90 ngày đầu tiên anh sẽ tập trung làm gì?",
-            "a": "Kế hoạch hành động được chia làm 3 cột mốc nghiêm túc: 1. 30 ngày đầu (Lắng nghe & Đánh giá): Trực tiếp nghe cuộc gọi, rà soát toàn bộ quy trình vận hành tiêu chuẩn (SOP), đánh giá hiện trạng hệ thống quản trị dữ liệu và năng lực đội ngũ. 2. 30 ngày tiếp theo (Chuẩn hóa & Tối ưu ngắn hạn): Vá ngay các lỗ hổng quy trình gây ma sát lớn cho khách hàng, điều chỉnh lại mục tiêu KPIs/OKRs cho phòng ban nếu cần. 3. 30 ngày cuối (Xây nền tảng dài hạn): Lên lộ trình tự động hóa công nghệ và thiết lập cơ chế báo cáo realtime trực tiếp với Ban giám đốc."
-          },
-          {
-            "q": "Tư duy dịch vụ của anh khác gì so với thông thường?",
-            "a": "Nhiều trưởng phòng thông thường chỉ tập trung quản lý vi mô, ép chỉ số cuộc gọi (AHT) thật ngắn để cắt giảm chi phí. Tư duy của anh Thái định vị bộ phận này là một 'trung tâm tạo ra giá trị'. Dữ liệu từ khách hàng sẽ được đưa ngược vào hệ thống để cải tiến sản phẩm, tối ưu doanh thu và giữ chân khách hàng bền vững."
-          },
-          {
-            "q": "Anh nhìn nhận thế nào về vai trò lãnh đạo: kiểm soát – đồng hành – hay dẫn dắt?",
-            "a": "Anh nhìn nhận vai trò lãnh đạo tối ưu là sự kết hợp giữa Đồng hành và dẫn dắt. Tạo ra một nền tảng chuyển giao năng lực vững chắc để mỗi nhân sự đều có cơ hội phát triển tốt hơn cấp trên của mình."
-          },
-          {
-            "q": "Theo anh, đâu là sự cân bằng giữa “chi tiết” và “tầm nhìn xa” trong lãnh đạo dịch vụ?",
-            "a": "Anh Thái sở hữu khả năng nhìn nhận bức tranh chiến lược trải nghiệm lớn lao (tầm nhìn xa), nhưng đồng thời cực kỳ nghiêm túc, chú trọng chuẩn hóa tỉ mỉ từng chi tiết nhỏ nhất trong quy trình vận hành thực tế (chi tiết)."
-          },
-          {
-            "q": "Trong bối cảnh chuyển đổi số, đâu là “điểm khác biệt” mà anh muốn để lại dấu ấn?",
-            "a": "Dấu ấn cốt lõi mà anh muốn để lại là một hệ thống vận hành tự động, thông minh nhưng mang đậm tính nhân văn; chuyển hóa thành công văn hóa doanh nghiệp từ trạng thái 'phục vụ bị động' sang 'chủ động đồng hành' cùng khách hàng."
-          }
-        ]
-      }
-    ]
+    "tooltipText": "AI assistant supporting you.",
+    "newChat": "New chat",
+    "suggestedQuestionsBtn": "Suggested questions",
+    "attachFile": "Attach file",
+    "placeholder": "Enter message...",
+    "suggestions": {
+      "experience": "Tell me about his Garena experience.",
+      "momo": "What did he build at MoMo?",
+      "zodiac": "How compatible is he with the Dragon sign?",
+      "skills": "What are his key CRM skills?"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "coverLetter": "Cover Letter",
+    "about": "About Me",
+    "experience": "Work Experience",
+    "education": "Education",
+    "services": "My Services",
+    "skills": "Key Skills",
+    "projects": "My Projects",
+    "systems": "Operated Systems",
+    "interview": "AI Interview",
+    "horoscope": "AI Horoscope",
+    "memories": "Memories",
+    "scheduler": "Book Scheduler",
+    "aiChat": "AI Assistant",
+    "settings": "System Settings",
+    "print": "View & Print CV",
+    "glassmorphism": "Glassmorphism"
   }
 };

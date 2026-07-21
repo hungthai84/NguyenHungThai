@@ -5,12 +5,35 @@ import { useI18n } from '../contexts/i18n';
 import PageLayout from './PageLayout';
 import * as Icons from './Icons';
 import CardTitle from './CardTitle';
+import HoroscopeNav from './HoroscopeNav';
+import TimelineChart from './TimelineChart';
+import StrategySection from './StrategySection';
 
 const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
     const { t, language } = useI18n();
     const pageData = t.horoscopePage || { personalInfo: {}, sections: {} };
     const info = pageData.personalInfo || {};
-    const sections = pageData.sections || {};
+    const rawSections = pageData.sections || {};
+    const sections = {
+        portrait: rawSections.portrait || { title: '', points: [] },
+        traits: rawSections.traits || { title: '', strengthsTitle: '', strengths: [], weaknessesTitle: '', weaknesses: [], rolesTitle: '', roles: [], solution: '' },
+        compatibility: rawSections.compatibility || { title: '', groups: [] },
+        roles: rawSections.roles || { title: '', items: [] },
+        conclusion: rawSections.conclusion || { title: '', content: '' },
+    };
+
+    if (typeof sections.traits === 'string') {
+        sections.traits = {
+            title: sections.traits,
+            strengthsTitle: 'Strengths',
+            strengths: pageData.traits?.items?.map((i: any) => i.desc) || [],
+            weaknessesTitle: 'Weaknesses',
+            weaknesses: [],
+            rolesTitle: 'Roles',
+            roles: [],
+            solution: ''
+        };
+    }
 
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -45,7 +68,8 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
     }, [isTogglingPlay]);
 
     return (
-        <PageLayout id={id}>
+        <div className="min-h-screen bg-stone-50 dark:bg-stone-950">
+            <PageLayout id={id}>
             <style>{`
                  .horoscope-banner-card {
                      background: var(--card-bg);
@@ -174,7 +198,7 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                      align-items: center;
                      gap: 0.5rem;
                      color: var(--accent-color);
-                     font-size: 0.95rem;
+                     font-size: 16px;
                      font-weight: 700;
                      line-height: 1.4;
                  }
@@ -208,7 +232,7 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                      display: flex;
                      align-items: center;
                      gap: 0.5rem;
-                     font-size: 1rem;
+                     font-size: 16px;
                      font-weight: 700;
                      margin-bottom: 1rem;
                  }
@@ -250,7 +274,7 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                  .horoscope-compat-grid-main {
                      display: grid;
                      grid-template-columns: repeat(3, 1fr);
-                     gap: 10px;
+                     gap: 16px;
                  }
                  .compat-group-column {
                      display: flex;
@@ -261,7 +285,7 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                  }
                  .compat-group-title {
                      margin: 0;
-                     font-size: 0.95rem;
+                     font-size: 16px;
                      font-weight: 700;
                      letter-spacing: 0.02em;
                  }
@@ -300,7 +324,7 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                  .compat-trait {
                      font-size: 0.8rem;
                      color: var(--color-brand-text-secondary);
-                     text-align: right;
+                     text-align: left;
                  }
                  .compat-group-summary {
                      margin-top: 0.75rem;
@@ -314,7 +338,7 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                      gap: 10px;
                  }
                  .role-pill {
-                     .5rem 1.25rem;
+                     padding: 0.5rem 1.25rem;
                      background: var(--card-bg);
                      color: var(--color-brand-text-secondary);
                      border: 1px solid rgba(var(--accent-color-rgb), 0.25);
@@ -346,7 +370,7 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                  }
                  .conclusion-text {
                      margin: 0;
-                     font-size: 0.95rem;
+                     font-size: 16px;
                      line-height: 1.7;
                      font-style: italic;
                      text-align: justify;
@@ -591,14 +615,16 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                      50% { transform: translate(-6px, -50%); }
                  }
             `}</style>
-            <div className="info-card no-padding flex flex-col h-full" style={{ position: 'relative' }}>
-                <CardTitle
-                    icon={<Icons.SparklesIcon />}
-                    text={pageData.badge}
-                    tooltipTitle={pageData.tooltipTitle}
-                    tooltipText={pageData.tooltipText}
-                    style={{ marginBottom: '1.5rem' }}
-                />
+            <div className="info-card no-padding flex flex-col h-full !p-0" style={{ position: 'relative' }}>
+                <div style={{ padding: "24px 24px 0 24px" }}>
+                    <CardTitle
+                        icon={<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#c67c3f] mt-1 shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" fill="currentColor"/></svg>}
+                        text={pageData.badge}
+                        tooltipTitle={pageData.tooltipTitle}
+                        tooltipText={pageData.tooltipText}
+                        style={{ marginBottom: '1.5rem' }}
+                    />
+                </div>
 
                 {/* Horoscope Player Container (Absolute Top Right) */}
                 <div className={`custom-video-player-wrapper ${isPlaying ? 'is-playing' : ''}`}>
@@ -695,56 +721,26 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-gradient-x"></div>
                                     <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-[15px] opacity-30 group-hover:opacity-100 blur-sm transition-opacity duration-500 -z-10"></div>
                                     
-                                    <Icons.SparklesIcon className="absolute top-3 right-3 text-yellow-400 animate-pulse opacity-70" size={20} />
-                                    <p className="relative z-10 text-[1.05rem] leading-relaxed font-medium text-[var(--color-brand-text-primary)] w-full flex items-center justify-center p-2">
-                                        {info.summary}
-                                    </p>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#c67c3f] mt-1 shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" fill="currentColor"/></svg>
+                                    <div className="relative z-10 text-[1.05rem] leading-relaxed font-medium text-[var(--color-brand-text-primary)] w-full p-4 flex flex-col gap-4">
+                                        {info.summary.split('\n\n').map((part: string, idx: number) => (
+                                            idx === 0 ? (
+                                                <p key={idx} className="text-left">{part}</p>
+                                            ) : (
+                                                <blockquote 
+                                                    key={idx} 
+                                                    className="relative pl-6 border-l-4 border-[var(--accent-color)] italic text-[1.1rem] text-[var(--accent-color)] font-semibold bg-[var(--accent-color)]/5 py-3 pr-4 rounded-r-lg"
+                                                >
+                                                    <Icons.QuoteIcon className="absolute -top-2 -left-2 opacity-20" size={24} />
+                                                    {part.replace(/"/g, '')}
+                                                </blockquote>
+                                            )
+                                        ))}
+                                    </div>
                                 </div>
                             )}
                         </div>
 
-                        {/* Right Column: Radar Chart */}
-                        <div className="horoscope-radar-card">
-
-                            <h4 className="text-center text-slate-800 dark:text-slate-200 font-extrabold mb-6 tracking-wide text-base sm:text-lg" style={{ fontFamily: 'var(--font-heading)', textTransform: 'uppercase' }}>
-                                CÁN CÂN TỐ CHẤT LÃNH ĐẠO
-                            </h4>
-                            <div style={{ width: '100%', flex: 1, minHeight: '350px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <RadarChart cx="50%" cy="50%" outerRadius="70%" data={[
-                                        { subject: 'Kiến tạo Hệ thống\n(Thiên Phủ)', A: 90, fullMark: 100 },
-                                        { subject: 'Tái Cấu Trúc\n(Phá Quân)', A: 35, fullMark: 100 },
-                                        { subject: 'Uy Tín Thực Chứng\n(Hóa Khoa)', A: 95, fullMark: 100 },
-                                        { subject: 'Quyền Lực Điều Hành\n(Hóa Quyền)', A: 90, fullMark: 100 },
-                                        { subject: 'Chịu Áp Lực\n(Linh Tinh)', A: 55, fullMark: 100 },
-                                    ]}>
-                                        <PolarGrid stroke="rgba(148, 163, 184, 0.25)" />
-                                        <PolarAngleAxis 
-                                            dataKey="subject" 
-                                            tick={(props: any) => {
-                                                const { payload, x, y, textAnchor } = props;
-                                                const lines = payload.value.split('\n');
-                                                return (
-                                                    <text 
-                                                        x={x} 
-                                                        y={y + (lines.length > 1 ? -6 : 0)} 
-                                                        textAnchor={textAnchor} 
-                                                        fill="currentColor" 
-                                                        className="text-slate-600 dark:text-slate-300 text-[11px] font-bold"
-                                                    >
-                                                        {lines.map((line: string, index: number) => (
-                                                            <tspan x={x} dy={index === 0 ? 0 : 13} key={index}>{line}</tspan>
-                                                        ))}
-                                                    </text>
-                                                );
-                                            }} 
-                                        />
-                                        <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                                        <Radar name="Tố chất" dataKey="A" stroke="#06b6d4" strokeWidth={2} fill="#06b6d4" fillOpacity={0.4} />
-                                    </RadarChart>
-                                </ResponsiveContainer>
-                            </div>
-                        </div>
                     </div>
 
                     {/* I. Portrait */}
@@ -845,7 +841,19 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                         </h3>
                         <div className="horoscope-compat-grid-main">
                             {sections.compatibility.groups.map((group, i) => (
-                                <div key={i} className="compat-group-column">
+                                <div key={i} className="compat-group-column" style={{ 
+                                    padding: '16px', 
+                                    display: 'flex', 
+                                    flexDirection: 'column', 
+                                    height: '100%', 
+                                    border: `1px solid ${group.color}40`,
+                                    borderTop: `4px solid ${group.color}`,
+                                    borderRadius: '16px',
+                                    background: 'var(--card-bg, rgba(255, 255, 255, 0.05))',
+                                    backdropFilter: 'blur(30px)',
+                                    WebkitBackdropFilter: 'blur(30px)',
+                                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.05)'
+                                }}>
                                     <div className="compat-group-header">
                                         <h4 className="compat-group-title" style={{ color: group.color }}>{group.title}</h4>
                                         <p className="compat-group-subtitle">{group.subtitle}</p>
@@ -902,9 +910,7 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                                                             style={{ 
                                                                 width: '40px', 
                                                                 height: '40px',
-                                                                paddingRight: '0px',
-                                                                marginRight: '0px',
-                                                                marginLeft: '58px'
+                                                                padding: '4px'
                                                             }} 
                                                         />
                                                     </div>
@@ -936,14 +942,43 @@ const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
                                         <p className="compat-group-summary" style={{ color: group.color }}>{group.summary}</p>
                                     )}
                                 </div>
-                            ))}
-                        </div>
-                    </section>
+                            ))
+                        }
+                    </div>
+                </section>
+
+                    {/* V. Conclusion */}
+                    {sections.conclusion.content && (
+                        <section style={{ marginBottom: '2rem' }}>
+                            <h3 className="personal-info-title" style={{ marginBottom: '10px', paddingTop: '15px', paddingBottom: '10px', paddingLeft: '15px', paddingRight: '15px', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#c67c3f] mt-1 shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" fill="currentColor"/></svg>
+                                <span>{sections.conclusion.title}</span>
+                            </h3>
+                            <div className="conclusion-card animate-fadeIn">
+                                <Icons.QuoteIcon className="absolute top-4 left-4 text-[var(--accent-color)] opacity-10" size={60} />
+                                <div className="conclusion-text flex flex-col gap-4">
+                                    {sections.conclusion.content.split('\n\n').map((part: string, idx: number) => (
+                                        part.startsWith('"') ? (
+                                            <blockquote 
+                                                key={idx} 
+                                                className="relative pl-6 border-l-4 border-[var(--accent-color)] italic text-[1.1rem] text-[var(--accent-color)] font-semibold bg-[var(--accent-color)]/5 py-3 pr-4 rounded-r-lg"
+                                            >
+                                                {part.replace(/"/g, '')}
+                                            </blockquote>
+                                        ) : (
+                                            <p key={idx}>{part}</p>
+                                        )
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
 
 
                 </div>
             </div>
         </PageLayout>
+        </div>
     );
 };
 

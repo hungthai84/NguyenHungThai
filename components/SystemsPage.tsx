@@ -129,8 +129,8 @@ const systemsData: System[] = [
 ];
 
 // --- Sub-component: SystemCard ---
-const SystemCard: React.FC<{ system: System, index: number }> = ({ system, index }) => {
-    const isVi = true;
+const SystemCard: React.FC<{ system: System, index: number, language: string }> = ({ system, index, language }) => {
+    const isVi = language === 'vi';
     const Icon = Icons[system.icon] || Icons.FolderIcon;
     const cardRef = useRef<HTMLDivElement>(null);
     const [isFlipped, setIsFlipped] = useState(false);
@@ -211,7 +211,7 @@ const SystemCard: React.FC<{ system: System, index: number }> = ({ system, index
                                     textOverflow: 'ellipsis'
                                 }}
                             >
-                                {system.name}
+                                {isVi ? system.name : system.nameEn}
                             </div>
                         </div>
                     </div>
@@ -230,7 +230,8 @@ const SystemCard: React.FC<{ system: System, index: number }> = ({ system, index
 
 // --- Main Page Component ---
 const SystemsPage: React.FC<{ id?: string }> = ({ id }) => {
-    const { isSpeaking, cancel } = useSpeechSynthesis();
+    const { t, language } = useI18n();
+    const isVi = language === 'vi';
     
     // Video player state
     const infoCardRef = useRef<HTMLDivElement>(null);
@@ -441,14 +442,11 @@ const SystemsPage: React.FC<{ id?: string }> = ({ id }) => {
     const handlePlayPauseVideo = useCallback(() => {
         if (isTogglingPlay) return;
         setIsTogglingPlay(true);
-        if (isSpeaking) {
-            cancel();
-        }
         setIsPlaying(prev => !prev);
         setIsTogglingPlay(false);
-    }, [isTogglingPlay, isSpeaking, cancel]);
+    }, [isTogglingPlay]);
 
-    const textToSpeak = "Bấm vào để xem video giới thiệu của anh!";
+    const textToSpeak = isVi ? "Bấm vào để xem video giới thiệu của anh!" : "Click to watch my intro video!";
 
     return (
         <PageLayout id={id}>
@@ -574,9 +572,9 @@ const SystemsPage: React.FC<{ id?: string }> = ({ id }) => {
                 <div className="flex items-start justify-between pr-4">
                     <CardTitle
                         icon={<Icons.ServerIcon />}
-                        text='Hệ thống'
-                        tooltipTitle='Hệ sinh thái Hệ thống'
-                        tooltipText='Danh mục các hệ thống nghiệp vụ, hoạch định và điều hành tôi từng xây dựng, vận hành và quản lý.'
+                        text={isVi ? 'Hệ thống' : 'Operated Systems'}
+                        tooltipTitle={isVi ? 'Hệ sinh thái Hệ thống' : 'Systems Ecosystem'}
+                        tooltipText={isVi ? 'Danh mục các hệ thống nghiệp vụ, hoạch định và điều hành tôi từng xây dựng, vận hành và quản lý.' : 'Catalog of business systems, planning and management tools I have built, operated, and managed.'}
                         style={{ marginBottom: '1.5rem', flexShrink: 0, marginLeft: '0px' }}
                     />
                 </div>
@@ -623,7 +621,7 @@ const SystemsPage: React.FC<{ id?: string }> = ({ id }) => {
 
                 <div className="systems-grid no-scrollbar overflow-y-auto pr-1 flex-1" style={{ flex: 1 }}>
                     {systemsData.map((system, index) => (
-                        <SystemCard key={system.key} system={system} index={index} />
+                        <SystemCard key={system.key} system={system} index={index} language={language} />
                     ))}
                 </div>
             </div>

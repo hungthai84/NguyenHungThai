@@ -36,7 +36,7 @@ export const getAccentGradient = (colorHex: string, type: 'solid' | 'gradient'):
     return `linear-gradient(135deg, ${colorHex} 0%, rgba(0,0,0,0.8) 100%)`;
 };
 
-export type ThemePreset = 'default' | 'glass-fluent-hybrid' | 'material-design-3' | 'neumorphism' | 'apple-human-interface' | 'glassmorphism' | 'fluent-ui-2';
+export type ThemePreset = 'glassmorphism';
 
 // Helper functions to convert between Hex and HSL for Material 3 dynamic color generation
 const hexToHsl = (hex: string): { h: number, s: number, l: number } => {
@@ -110,6 +110,8 @@ interface ThemeContextType {
     setDarkThemeColor: (color: ThemeColor) => void;
     isSoundOn: boolean;
     setSoundOn: (isOn: boolean) => void;
+    isMouseCursorOn: boolean;
+    setMouseCursorOn: (isOn: boolean) => void;
     isAiVoiceOn: boolean;
     setAiVoiceOn: (isOn: boolean) => void;
     selectedAiVoiceName: string;
@@ -151,6 +153,18 @@ interface ThemeContextType {
     uiScaleValue: number;
     setUiScaleValue: (value: number) => void;
     currentUiScale: number;
+    globalFontSize: number;
+    setGlobalFontSize: (size: number) => void;
+    globalLineHeight: number;
+    setGlobalLineHeight: (height: number) => void;
+    sidebarFontSize: number;
+    setSidebarFontSize: (size: number) => void;
+    cardTitleFontSize: number;
+    setCardTitleFontSize: (size: number) => void;
+    contentFontSize: number;
+    setContentFontSize: (size: number) => void;
+    menuItemFontSize: number;
+    setMenuItemFontSize: (size: number) => void;
     resetToDefault: () => void;
 }
 
@@ -161,11 +175,12 @@ const DEFAULT_SETTINGS = {
     lightThemeColor: '#101733',
     darkThemeColor: '#FFFFFF',
     isSoundOn: true,
+    isMouseCursorOn: true,
     isAiVoiceOn: true,
     selectedAiVoiceName: 'Nam Minh',
     aiVoicePitch: 1,
     aiVoiceRate: 0.95,
-    wallpaper: 'gradient',
+    wallpaper: 'ai-blob',
     cardOpacity: 0.4,
     sidebarOpacity: 0.4,
     gridCardOpacity: 0.45,
@@ -178,6 +193,13 @@ const DEFAULT_SETTINGS = {
     uiScaleMode: 'auto' as const,
     uiScaleValue: 1.0,
     accentColorType: 'solid' as const,
+    themePreset: 'glassmorphism' as ThemePreset,
+    globalFontSize: 16,
+    globalLineHeight: 1.6,
+    sidebarFontSize: 56,
+    cardTitleFontSize: 24,
+    contentFontSize: 16,
+    menuItemFontSize: 15,
 };
 
 const hexToRgb = (hex: string): string => {
@@ -199,6 +221,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     
     
     const [isSoundOn, setSoundOnState] = useState<boolean>(DEFAULT_SETTINGS.isSoundOn);
+    const [isMouseCursorOn, setMouseCursorOnState] = useState<boolean>(DEFAULT_SETTINGS.isMouseCursorOn);
     const [isAiVoiceOn, setAiVoiceOnState] = useState<boolean>(DEFAULT_SETTINGS.isAiVoiceOn);
     const [selectedAiVoiceName, setSelectedAiVoiceNameState] = useState<string>(DEFAULT_SETTINGS.selectedAiVoiceName);
     const [aiVoicePitch, setAiVoicePitchState] = useState<number>(DEFAULT_SETTINGS.aiVoicePitch);
@@ -225,78 +248,99 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     const setIsSidebarDetached = (detached: boolean) => {
         setIsSidebarDetachedState(detached);
+        localStorage.setItem('isSidebarDetached', String(detached));
     };
 
     const setUiScaleMode = (mode: 'auto' | 'manual') => {
         setUiScaleModeState(mode);
+        localStorage.setItem('uiScaleMode', mode);
     };
 
     const setUiScaleValue = (val: number) => {
         setUiScaleValueState(val);
+        localStorage.setItem('uiScaleValue', String(val));
     };
 
-    const [themePreset, setThemePresetState] = useState<ThemePreset>('default');
+    const setGlobalFontSize = (size: number) => {
+        setGlobalFontSizeState(size);
+        localStorage.setItem('globalFontSize', String(size));
+    };
+
+    const setGlobalLineHeight = (height: number) => {
+        setGlobalLineHeightState(height);
+        localStorage.setItem('globalLineHeight', String(height));
+    };
+
+    const setSidebarFontSize = (size: number) => {
+        setSidebarFontSizeState(size);
+        localStorage.setItem('sidebarFontSize', String(size));
+    };
+
+    const setCardTitleFontSize = (size: number) => {
+        setCardTitleFontSizeState(size);
+        localStorage.setItem('cardTitleFontSize', String(size));
+    };
+
+    const setContentFontSize = (size: number) => {
+        setContentFontSizeState(size);
+        localStorage.setItem('contentFontSize', String(size));
+    };
+
+    const setMenuItemFontSize = (size: number) => {
+        setMenuItemFontSizeState(size);
+        localStorage.setItem('menuItemFontSize', String(size));
+    };
+
+    const [themePreset, setThemePresetState] = useState<ThemePreset>(DEFAULT_SETTINGS.themePreset);
     const [uiScaleMode, setUiScaleModeState] = useState<'auto' | 'manual'>('auto');
     const [uiScaleValue, setUiScaleValueState] = useState<number>(1.0);
     const [currentUiScale, setCurrentUiScale] = useState<number>(1.0);
+    const [globalFontSize, setGlobalFontSizeState] = useState<number>(DEFAULT_SETTINGS.globalFontSize);
+    const [globalLineHeight, setGlobalLineHeightState] = useState<number>(DEFAULT_SETTINGS.globalLineHeight);
+    const [sidebarFontSize, setSidebarFontSizeState] = useState<number>(DEFAULT_SETTINGS.sidebarFontSize);
+    const [cardTitleFontSize, setCardTitleFontSizeState] = useState<number>(DEFAULT_SETTINGS.cardTitleFontSize);
+    const [contentFontSize, setContentFontSizeState] = useState<number>(DEFAULT_SETTINGS.contentFontSize);
+    const [menuItemFontSize, setMenuItemFontSizeState] = useState<number>(DEFAULT_SETTINGS.menuItemFontSize);
     
     const resetToDefault = () => {
-        setThemeModeState(DEFAULT_SETTINGS.themeMode);
-        setLightThemeColorState(DEFAULT_SETTINGS.lightThemeColor);
-        setDarkThemeColorState(DEFAULT_SETTINGS.darkThemeColor);
-        setSoundOnState(DEFAULT_SETTINGS.isSoundOn);
-        setAiVoiceOnState(DEFAULT_SETTINGS.isAiVoiceOn);
-        setSelectedAiVoiceNameState(DEFAULT_SETTINGS.selectedAiVoiceName);
-        setAiVoicePitchState(DEFAULT_SETTINGS.aiVoicePitch);
-        setAiVoiceRateState(DEFAULT_SETTINGS.aiVoiceRate);
-        setWallpaperState(DEFAULT_SETTINGS.wallpaper);
-        setCardOpacityState(DEFAULT_SETTINGS.cardOpacity);
-        setSidebarOpacityState(DEFAULT_SETTINGS.sidebarOpacity);
-        setGridCardOpacityState(DEFAULT_SETTINGS.gridCardOpacity);
-        setContentOpacityState(DEFAULT_SETTINGS.contentOpacity);
-        setLayoutOpacityState(DEFAULT_SETTINGS.layoutOpacity);
-        setSubComponentOpacityState(DEFAULT_SETTINGS.subComponentOpacity);
-        setIsMirrorOnState(DEFAULT_SETTINGS.isMirrorOn);
-        setIs2x2GridState(DEFAULT_SETTINGS.is2x2Grid);
-        setIsGlassEnabledState(DEFAULT_SETTINGS.isGlassEnabled);
-        setAccentColorTypeState(DEFAULT_SETTINGS.accentColorType);
-        setThemePresetState('default');
-        setIsSidebarDetachedState(false);
-        setProjectFilterState([]);
-        setUiScaleModeState('auto');
-        setUiScaleValueState(1.0);
-
-        // Reset localStorage too
-        localStorage.setItem('themeMode', DEFAULT_SETTINGS.themeMode);
-        localStorage.setItem('lightThemeColor', DEFAULT_SETTINGS.lightThemeColor);
-        localStorage.setItem('darkThemeColor', DEFAULT_SETTINGS.darkThemeColor);
-        localStorage.setItem('isSoundOn', String(DEFAULT_SETTINGS.isSoundOn));
-        localStorage.setItem('isAiVoiceOn', String(DEFAULT_SETTINGS.isAiVoiceOn));
-        localStorage.setItem('selectedAiVoiceName', DEFAULT_SETTINGS.selectedAiVoiceName);
-        localStorage.setItem('aiVoicePitch', String(DEFAULT_SETTINGS.aiVoicePitch));
-        localStorage.setItem('aiVoiceRate', String(DEFAULT_SETTINGS.aiVoiceRate));
-        localStorage.setItem('wallpaper', DEFAULT_SETTINGS.wallpaper);
-        localStorage.setItem('cardOpacity', String(DEFAULT_SETTINGS.cardOpacity));
-        localStorage.setItem('sidebarOpacity', String(DEFAULT_SETTINGS.sidebarOpacity));
-        localStorage.setItem('gridCardOpacity', String(DEFAULT_SETTINGS.gridCardOpacity));
-        localStorage.setItem('contentOpacity', String(DEFAULT_SETTINGS.contentOpacity));
-        localStorage.setItem('layoutOpacity', String(DEFAULT_SETTINGS.layoutOpacity));
-        localStorage.setItem('subComponentOpacity', String(DEFAULT_SETTINGS.subComponentOpacity));
-        localStorage.setItem('isMirrorOn', String(DEFAULT_SETTINGS.isMirrorOn));
-        localStorage.setItem('is2x2Grid', String(DEFAULT_SETTINGS.is2x2Grid));
-        localStorage.setItem('isGlassEnabled', String(DEFAULT_SETTINGS.isGlassEnabled));
-        localStorage.setItem('accentColorType', DEFAULT_SETTINGS.accentColorType);
-        localStorage.setItem('themePreset', 'default');
-        localStorage.setItem('isSidebarDetached', 'false');
-        localStorage.setItem('projectFilter', '[]');
-        localStorage.setItem('uiScaleMode', 'auto');
-        localStorage.setItem('uiScaleValue', '1.0');
+        setThemeMode(DEFAULT_SETTINGS.themeMode);
+        setLightThemeColor(DEFAULT_SETTINGS.lightThemeColor);
+        setDarkThemeColor(DEFAULT_SETTINGS.darkThemeColor);
+        setSoundOn(DEFAULT_SETTINGS.isSoundOn);
+        setMouseCursorOn(DEFAULT_SETTINGS.isMouseCursorOn);
+        setAiVoiceOn(DEFAULT_SETTINGS.isAiVoiceOn);
+        setSelectedAiVoiceName(DEFAULT_SETTINGS.selectedAiVoiceName);
+        setAiVoicePitch(DEFAULT_SETTINGS.aiVoicePitch);
+        setAiVoiceRate(DEFAULT_SETTINGS.aiVoiceRate);
+        setWallpaper(DEFAULT_SETTINGS.wallpaper);
+        setCardOpacity(DEFAULT_SETTINGS.cardOpacity);
+        setSidebarOpacity(DEFAULT_SETTINGS.sidebarOpacity);
+        setGridCardOpacity(DEFAULT_SETTINGS.gridCardOpacity);
+        setContentOpacity(DEFAULT_SETTINGS.contentOpacity);
+        setLayoutOpacity(DEFAULT_SETTINGS.layoutOpacity);
+        setSubComponentOpacity(DEFAULT_SETTINGS.subComponentOpacity);
+        setIsMirrorOn(DEFAULT_SETTINGS.isMirrorOn);
+        setIs2x2Grid(DEFAULT_SETTINGS.is2x2Grid);
+        setIsGlassEnabled(DEFAULT_SETTINGS.isGlassEnabled);
+        setAccentColorType(DEFAULT_SETTINGS.accentColorType);
+        setThemePreset('glassmorphism');
+        setIsSidebarDetached(false);
+        setProjectFilter([]);
+        setUiScaleMode('auto');
+        setUiScaleValue(1.0);
+        setGlobalFontSize(DEFAULT_SETTINGS.globalFontSize);
+        setGlobalLineHeight(DEFAULT_SETTINGS.globalLineHeight);
+        setSidebarFontSize(DEFAULT_SETTINGS.sidebarFontSize);
+        setCardTitleFontSize(DEFAULT_SETTINGS.cardTitleFontSize);
+        setContentFontSize(DEFAULT_SETTINGS.contentFontSize);
+        setMenuItemFontSize(DEFAULT_SETTINGS.menuItemFontSize);
     };
     
-    // --- Setter Functions (state-only for Settings page persistence) ---
+    // --- Setter Functions that include saving to localStorage ---
 
     const setAccentColorType = (type: 'solid' | 'gradient') => {
         setAccentColorTypeState(type);
+        localStorage.setItem('accentColorType', type);
     };
 
     const setThemeMode = (mode: ThemeMode) => {
@@ -311,30 +355,44 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     const setLightThemeColor = (color: ThemeColor) => {
         setLightThemeColorState(color);
+        localStorage.setItem('lightThemeColor', color);
     };
 
     const setDarkThemeColor = (color: ThemeColor) => {
         setDarkThemeColorState(color);
+        localStorage.setItem('darkThemeColor', color);
     };
+
+    
 
     const setSoundOn = (isOn: boolean) => {
         setSoundOnState(isOn);
+        localStorage.setItem('isSoundOn', String(isOn));
+    };
+    
+    const setMouseCursorOn = (isOn: boolean) => {
+        setMouseCursorOnState(isOn);
+        localStorage.setItem('isMouseCursorOn', String(isOn));
     };
     
     const setAiVoiceOn = (isOn: boolean) => {
         setAiVoiceOnState(isOn);
+        localStorage.setItem('isAiVoiceOn', String(isOn));
     };
 
     const setSelectedAiVoiceName = (name: string) => {
         setSelectedAiVoiceNameState(name);
+        localStorage.setItem('selectedAiVoiceName', name);
     };
 
     const setAiVoicePitch = (pitch: number) => {
         setAiVoicePitchState(pitch);
+        localStorage.setItem('aiVoicePitch', String(pitch));
     };
 
     const setAiVoiceRate = (rate: number) => {
         setAiVoiceRateState(rate);
+        localStorage.setItem('aiVoiceRate', String(rate));
     };
 
     const setProjectFilter = (filter: string[]) => {
@@ -344,105 +402,63 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     const setWallpaper = (wp: WallpaperType) => {
         setWallpaperState(wp);
+        localStorage.setItem('wallpaper', wp);
     };
 
     const setCardOpacity = (opacity: number) => {
         setCardOpacityState(opacity);
+        localStorage.setItem('cardOpacity', String(opacity));
     };
 
     const setSidebarOpacity = (opacity: number) => {
         setSidebarOpacityState(opacity);
+        localStorage.setItem('sidebarOpacity', String(opacity));
     };
 
     const setGridCardOpacity = (opacity: number) => {
         setGridCardOpacityState(opacity);
+        localStorage.setItem('gridCardOpacity', String(opacity));
     };
 
     const setContentOpacity = (opacity: number) => {
         setContentOpacityState(opacity);
+        localStorage.setItem('contentOpacity', String(opacity));
     };
 
     const setLayoutOpacity = (opacity: number) => {
         setLayoutOpacityState(opacity);
+        localStorage.setItem('layoutOpacity', String(opacity));
     };
 
     const setSubComponentOpacity = (opacity: number) => {
         setSubComponentOpacityState(opacity);
+        localStorage.setItem('subComponentOpacity', String(opacity));
     };
 
     const setIsMirrorOn = (isOn: boolean) => {
         setIsMirrorOnState(isOn);
+        localStorage.setItem('isMirrorOn', String(isOn));
     };
 
     const setIs2x2Grid = (isOn: boolean) => {
         setIs2x2GridState(isOn);
+        localStorage.setItem('is2x2Grid', String(isOn));
     };
 
     const setIsGlassEnabled = (isEnabled: boolean) => {
         setIsGlassEnabledState(isEnabled);
+        localStorage.setItem('isGlassEnabled', String(isEnabled));
     };
     const setThemePreset = (preset: ThemePreset) => {
         setThemePresetState(preset);
+        localStorage.setItem('themePreset', preset);
         // Apply preset logic here
-        switch (preset) {
-            case 'glass-fluent-hybrid':
-                setIsGlassEnabled(true);
-                setCardOpacity(0.6);
-                setSidebarOpacity(0.6);
-                setWallpaper('glass-fluent-hybrid');
-                setLightThemeColor('#8A5CF6');
-                setDarkThemeColor('#9D7BFF');
-                break;
-            case 'material-design-3':
-                setIsGlassEnabled(false);
-                setCardOpacity(1);
-                setSidebarOpacity(1);
-                setWallpaper('material-design-3');
-                setAccentColorType('solid');
-                setLightThemeColor('#6750A4');
-                setDarkThemeColor('#D0BCFF');
-                break;
-            case 'neumorphism':
-                setIsGlassEnabled(false);
-                setCardOpacity(1);
-                setSidebarOpacity(1);
-                setWallpaper('neumorphism');
-                setLightThemeColor('#3B82F6');
-                setDarkThemeColor('#60A5FA');
-                break;
-            case 'apple-human-interface':
-                setIsGlassEnabled(true);
-                setCardOpacity(0.9);
-                setSidebarOpacity(0.9);
-                setWallpaper('apple-glass');
-                setLightThemeColor('#007AFF');
-                setDarkThemeColor('#0A84FF');
-                break;
-            case 'glassmorphism':
-                setIsGlassEnabled(true);
-                setCardOpacity(0.3);
-                setSidebarOpacity(0.3);
-                setWallpaper('glassmorphism-effect');
-                setLightThemeColor('#3B82F6');
-                setDarkThemeColor('#3B82F6');
-                break;
-            case 'fluent-ui-2':
-                setIsGlassEnabled(false);
-                setCardOpacity(0.9);
-                setSidebarOpacity(0.9);
-                setWallpaper('gradient');
-                setLightThemeColor('#0078D4');
-                setDarkThemeColor('#0078D4');
-                break;
-            case 'default':
-            default:
-                setIsGlassEnabled(false);
-                setCardOpacity(0.4);
-                setSidebarOpacity(0.4);
-                setLightThemeColor('#101733');
-                setDarkThemeColor('#FFFFFF');
-                break;
-        }
+        setIsGlassEnabled(true);
+        setCardOpacity(0.3);
+        setSidebarOpacity(0.3);
+        setWallpaper('glassmorphism-effect');
+        setLightThemeColor('#3B82F6');
+        setDarkThemeColor('#3B82F6');
     };
     // Effect to load settings from localStorage on initial mount
     useEffect(() => {
@@ -453,6 +469,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         let savedWallpaper = localStorage.getItem('wallpaper');
         
         const savedSound = localStorage.getItem('isSoundOn');
+        const savedMouseCursor = localStorage.getItem('isMouseCursorOn');
         const savedAiVoice = localStorage.getItem('isAiVoiceOn');
         const savedVoiceName = localStorage.getItem('selectedAiVoiceName');
         const savedVoicePitch = localStorage.getItem('aiVoicePitch');
@@ -474,6 +491,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         if (savedDarkColor) setDarkThemeColorState(savedDarkColor);
         
         setSoundOnState(savedSound === null ? true : savedSound === 'true');
+        setMouseCursorOnState(savedMouseCursor === null ? true : savedMouseCursor === 'true');
         setAiVoiceOnState(savedAiVoice === null ? true : savedAiVoice === 'true');
         if (savedVoiceName) setSelectedAiVoiceNameState(savedVoiceName);
         if (savedVoicePitch) setAiVoicePitchState(parseFloat(savedVoicePitch));
@@ -512,6 +530,29 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         const savedScaleValue = localStorage.getItem('uiScaleValue');
         if (savedScaleMode) setUiScaleModeState(savedScaleMode);
         if (savedScaleValue) setUiScaleValueState(parseFloat(savedScaleValue));
+
+        const savedGlobalFontSize = localStorage.getItem('globalFontSize');
+        const savedGlobalLineHeight = localStorage.getItem('globalLineHeight');
+        if (savedGlobalFontSize) setGlobalFontSizeState(parseFloat(savedGlobalFontSize));
+        if (savedGlobalLineHeight) setGlobalLineHeightState(parseFloat(savedGlobalLineHeight));
+
+        const savedSidebarFontSize = localStorage.getItem('sidebarFontSize');
+        const savedCardTitleFontSize = localStorage.getItem('cardTitleFontSize');
+        const savedContentFontSize = localStorage.getItem('contentFontSize');
+        const savedMenuItemFontSize = localStorage.getItem('menuItemFontSize');
+
+        if (savedSidebarFontSize) setSidebarFontSizeState(parseFloat(savedSidebarFontSize));
+        if (savedCardTitleFontSize) setCardTitleFontSizeState(parseFloat(savedCardTitleFontSize));
+        if (savedContentFontSize) setContentFontSizeState(parseFloat(savedContentFontSize));
+        if (savedMenuItemFontSize) setMenuItemFontSizeState(parseFloat(savedMenuItemFontSize));
+
+        const savedThemePreset = localStorage.getItem('themePreset') as ThemePreset | null;
+        if (savedThemePreset) {
+            setThemePresetState(savedThemePreset);
+        } else {
+            // If nothing is saved, ensure we apply the default (neumorphism logic)
+            setThemePresetState(DEFAULT_SETTINGS.themePreset);
+        }
 
         // Fallback if no wallpaper saved
         if (savedWallpaper) {
@@ -636,43 +677,24 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         root.style.setProperty('--content-opacity', String(contentOpacity));
         root.style.setProperty('--layout-opacity', String(layoutOpacity));
         root.style.setProperty('--sub-component-opacity', String(subComponentOpacity));
+        root.style.setProperty('--global-font-size', `${globalFontSize}px`);
+        root.style.setProperty('--global-line-height', String(globalLineHeight));
+        root.style.setProperty('--sidebar-font-size', `${sidebarFontSize}px`);
+        root.style.setProperty('--card-title-font-size', `${cardTitleFontSize}px`);
+        root.style.setProperty('--content-font-size', `${contentFontSize}px`);
+        root.style.setProperty('--menu-item-font-size', `${menuItemFontSize}px`);
         if (isGlassEnabled) {
             root.classList.add('glass-enabled');
         } else {
             root.classList.remove('glass-enabled');
         }
-        if (themePreset === 'material-design-3') {
-            root.classList.add('m3-enabled');
-            root.classList.add('theme-m3');
-        } else {
-            root.classList.remove('m3-enabled');
-            root.classList.remove('theme-m3');
-        }
-        if (themePreset === 'neumorphism') {
-            root.classList.add('theme-neumorphism');
-        } else {
-            root.classList.remove('theme-neumorphism');
-        }
-        if (themePreset === 'glassmorphism') {
-            root.classList.add('theme-glassmorphism');
-        } else {
-            root.classList.remove('theme-glassmorphism');
-        }
-        if (themePreset === 'apple-human-interface') {
-            root.classList.add('theme-apple-human');
-        } else {
-            root.classList.remove('theme-apple-human');
-        }
-        if (themePreset === 'glass-fluent-hybrid') {
-            root.classList.add('theme-glass-fluent-hybrid');
-        } else {
-            root.classList.remove('theme-glass-fluent-hybrid');
-        }
-        if (themePreset === 'fluent-ui-2') {
-            root.classList.add('theme-fluent-2');
-        } else {
-            root.classList.remove('theme-fluent-2');
-        }
+        
+        // Always Glassmorphism
+        root.classList.add('theme-glassmorphism');
+        
+        // Remove other theme classes
+        root.classList.remove('m3-enabled', 'theme-m3', 'theme-neumorphism', 'theme-aurora-glass', 'theme-apple-human', 'theme-glass-fluent-hybrid', 'theme-fluent-2');
+
         if (isSidebarDetached) {
             root.classList.add('sidebar-detached');
         } else {
@@ -732,6 +754,8 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         setDarkThemeColor,
         isSoundOn,
         setSoundOn,
+        isMouseCursorOn,
+        setMouseCursorOn,
         isAiVoiceOn,
         setAiVoiceOn,
         selectedAiVoiceName,
@@ -773,6 +797,18 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         uiScaleValue,
         setUiScaleValue,
         currentUiScale,
+        globalFontSize,
+        setGlobalFontSize,
+        globalLineHeight,
+        setGlobalLineHeight,
+        sidebarFontSize,
+        setSidebarFontSize,
+        cardTitleFontSize,
+        setCardTitleFontSize,
+        contentFontSize,
+        setContentFontSize,
+        menuItemFontSize,
+        setMenuItemFontSize,
         resetToDefault,
     };
 

@@ -12,7 +12,6 @@ import { useTheme } from './contexts/ThemeContext';
 import { useI18n } from './contexts/i18n';
 import MobileHeader from './components/MobileHeader';
 
-import LanguageSwitcher from './components/LanguageSwitcher';
 import ClockWeatherWidget from './components/ClockWeatherWidget';
 import PdfFallbackModal from './components/PdfFallbackModal';
 import { generatePdfFromElement } from './utils/pdfGenerator';
@@ -56,7 +55,6 @@ const AboutPage = lazyWithRetry(() => import('./components/AboutPage'));
 const SystemsPage = lazyWithRetry(() => import('./components/SystemsPage'));
 const InterviewPage = lazyWithRetry(() => import('./components/InterviewPage'));
 const HoroscopePage = lazyWithRetry(() => import('./components/HoroscopePage'));
-const DemoPage = lazyWithRetry(() => import('./components/DemoPage'));
 
 // Lazy load heavy components
 const ProjectsPage = lazyWithRetry(() => import('./components/ProjectsPage'));

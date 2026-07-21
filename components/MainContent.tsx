@@ -5,7 +5,6 @@ import { useTheme } from '../contexts/ThemeContext';
 import PageLayout from './PageLayout';
 import * as Icons from './Icons';
 import VideoHomeCard from './VideoHomeCard';
-import LanguageSwitcher from './LanguageSwitcher';
 import ThemeButton from './ThemeButton';
 
 declare var Typed: any; // Let TypeScript know Typed exists on the global scope

@@ -7,7 +7,6 @@ import * as Icons from './Icons';
 import CardTitle from './CardTitle';
 import HoroscopeNav from './HoroscopeNav';
 import TimelineChart from './TimelineChart';
-import StrategySection from './StrategySection';
 
 const HoroscopePage: React.FC<{ id?: string }> = ({ id }) => {
     const { t, language } = useI18n();

@@ -196,7 +196,7 @@ export const useSpeechSynthesis = () => {
         }
     }, []);
     
-    const speak = useCallback((text: string, options: { voiceName?: string; lang?: 'vi' | 'en' | string; pitch?: number; rate?: number; gender?: 'male' | 'female' | 'any'; onEnd?: () => void } = {}) => {
+    const speak = useCallback((text: string, options: { voiceName?: string; lang?: 'vi' | 'en' | string; pitch?: number; rate?: number; gender?: 'male' | 'female' | 'any'; onEnd?: () => void; forceNative?: boolean } = {}) => {
         
         const doSpeak = async () => {
             if (!text?.trim()) {
@@ -210,7 +210,7 @@ export const useSpeechSynthesis = () => {
             const sessionId = Math.random().toString(36).substring(2);
             activeSessionRef.current = sessionId;
 
-            const isGttsVoice = options.voiceName && options.voiceName.includes('gTTS');
+            const isGttsVoice = options.voiceName && options.voiceName.includes('gTTS') && !options.forceNative;
 
             if (isGttsVoice) {
                 try {
@@ -254,21 +254,18 @@ export const useSpeechSynthesis = () => {
                                 playNext();
                             };
                             audio.onerror = (e) => {
-                                console.error('Audio object error details:', e);
+                                console.error('Audio object error details, attempting fallback:', e);
                                 if (activeSessionRef.current !== sessionId) return;
                                 globalGttsAudioQueue = globalGttsAudioQueue.filter(a => a !== audio);
-                                currentIndex++;
-                                playNext(); // Skip error and try next
+                                speak(text, { ...options, forceNative: true });
                             };
                             
                             audio.play().catch(err => {
                                 if (err.name !== 'AbortError') {
-                                    console.error('gTTS Audio Play Error:', err);
-                                }
-                                if (activeSessionRef.current === sessionId) {
-                                    setIsSpeaking(false);
-                                    window.dispatchEvent(new Event('speech-synthesis-stopped'));
-                                    options.onEnd?.();
+                                    console.error('gTTS Audio Play Error, trying fallback:', err);
+                                    if (activeSessionRef.current === sessionId) {
+                                        speak(text, { ...options, forceNative: true });
+                                    }
                                 }
                             });
                         };

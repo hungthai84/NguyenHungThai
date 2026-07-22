@@ -1027,15 +1027,13 @@ const WorkExperiencePage: React.FC<WorkExperiencePageProps> = ({
             position: "relative",
           }}
         >
-          {/* Card Header with Title */}
+          {/* Card Header with Title, Filters and View switcher */}
           <div
+            className="flex flex-col lg:flex-row lg:items-center justify-between gap-4"
             style={{
-              padding: "24px 24px 0 24px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "1rem",
-              width: "100%"
+              padding: "24px 24px 16px 24px",
+              width: "100%",
+              borderBottom: "1px solid rgba(255, 255, 255, 0.08)"
             }}
           >
             <CardTitle
@@ -1043,14 +1041,11 @@ const WorkExperiencePage: React.FC<WorkExperiencePageProps> = ({
               text={pageData.title}
               tooltipTitle={pageData.tooltipTitle}
               tooltipText={pageData.tooltipText}
-              containerStyle={{ height: "50px" }}
+              containerStyle={{ height: "auto", marginBottom: 0 }}
             />
-          </div>
-
-          {/* Integrated Filter and View controls wrapper (matching Projects Page) */}
-          <div className="projects-controls-wrapper" style={{ padding: "0 24px", marginBottom: "1.5rem" }}>
-            <div className="projects-main-controls">
-              <div className="project-filters-group">
+            
+            <div className="flex flex-wrap items-center gap-4 project-filters-group-header">
+              <div className="flex flex-wrap items-center gap-2">
                 <FilterDropdown
                   title={language === 'vi' ? 'Vị trí / Cấp bậc' : 'Position / Level'}
                   options={roleOptions}
@@ -1089,7 +1084,7 @@ const WorkExperiencePage: React.FC<WorkExperiencePageProps> = ({
                 />
               </div>
 
-              <div className="view-switcher">
+              <div className="view-switcher" style={{ margin: 0 }}>
                 <button
                   className={`view-mode-btn ${viewMode === "timeline" ? "active" : ""}`}
                   onClick={() => {
@@ -1115,6 +1110,7 @@ const WorkExperiencePage: React.FC<WorkExperiencePageProps> = ({
               </div>
             </div>
           </div>
+          <div style={{ height: "16px" }}></div>
 
           {viewMode === "card" ? (
             <div
